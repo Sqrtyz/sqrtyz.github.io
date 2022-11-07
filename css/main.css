@@ -2049,7 +2049,7 @@ header.header {
 .post-eof {
   background: #ccc;
   height: 1px;
-  margin: 80px auto 60px;
+  margin: 40px auto 40px;
   width: 8%;
 }
 .post-block:last-of-type .post-eof {
