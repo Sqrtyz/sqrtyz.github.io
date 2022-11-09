@@ -126,13 +126,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -188,6 +188,104 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://sqrtyz.github.io/2022/11/09/221109/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Sqrtyz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sqrtyz's Home">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Sqrtyz's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/09/221109/" class="post-title-link" itemprop="url">CF Global Round 23 复盘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-09 13:02:56 / Modified: 13:03:51" itemprop="dateCreated datePublished" datetime="2022-11-09T13:02:56+08:00">2022-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Link: <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746/">https://codeforces.com/contest/1746/</a></p>
+<h2 id="C-Permutation-Operations"><a href="#C-Permutation-Operations" class="headerlink" title="C Permutation Operations"></a>C Permutation Operations</h2><ul>
+<li>对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。</li>
+</ul>
+<p>有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q_i$ 单调不减。 </p>
+<h2 id="D-Paths-on-the-Tree"><a href="#D-Paths-on-the-Tree" class="headerlink" title="D Paths on the Tree"></a>D Paths on the Tree</h2><ul>
+<li>$n$ 个点的以 $1$ 为根的树。每个点有一个权值。选择 $k$ 条从 $1$ 开始的简单路径覆盖在树上。使得对于每个点，它的儿子们被路径覆盖的次数之间极差为 0/1。在此基础上，最大化权值乘被覆盖次数的和。$n \leq 10^5, k \leq 10^9$。</li>
+</ul>
+<p>先看根。假如它有 $s$ 个儿子，那么先给它的儿子各分配 $[\frac{k}{s}]$ 条路径。剩余 $k \bmod s$ 条路径，肯定要分配给 $s$ 个儿子中的某几个。</p>
+<p>dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分配后还剩余 $q$ 条路径，那么从其所有 $s_x$ 个儿子中返回的 $s_x$ 个可以“候补”的路径中选择前 $q$ 大的，然后把第 $q+1$ 大的给 $x$ 的父亲作为其父亲的候补路径之一。这是一个不断递归的过程。</p>
+<hr>
+<p>补题</p>
+<h2 id="E1-Joking"><a href="#E1-Joking" class="headerlink" title="E1 Joking"></a>E1 Joking</h2><ul>
+<li>这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。</li>
+</ul>
+<p>感觉是一道好题。不过听说和 IMO2012 的 idea 重了。</p>
+<p>首先，我们发现如果确定范围里有两个数，那肯定是解决不掉了。交互库可以恶心你，让你始终找不到这两个数哪个是对的（自证）。</p>
+<p>不过这道题给了我们 2 次回答的机会。因而这道题还是可做的。这道题最关键的部分，在于找到三个数的解法。如何将三个数确定到两个数。假设这三个数分别为 $A,B,C$。</p>
+<p>我们问两次是否 $x \in \{A\}$。如果两次均为否，那么 $A$ 排除。</p>
+<p>如果回答了一次是，我们问 $B$。<strong>若回答为是，那么 $C$ 排除。</strong>若回答为否，那么就是 $A$。</p>
+<p>当剩余范围超过三个时，把它分为三组照上做就可以了。通过不超过三次询问，我们可以至少缩小 $1/3$ 的范围。</p>
+<p>不得不说非常巧妙。尤其是加粗的部分。</p>
+<p>赛时只在想二分，一直没弄出来。根本原因是没有注意到，$n=2$ 时是根本无法确定的。（脑子糊了）</p>
+<p>其实也想过三分，不过没有深入想，可惜了。 </p>
+<h2 id="F-Kazaee"><a href="#F-Kazaee" class="headerlink" title="F Kazaee"></a>F Kazaee</h2><ul>
+<li>一个数列，两种操作。修改：单点修改。查询：查询 $[l,r]$ 内所有数出现的次数是否都是 $k$ 的倍数。</li>
+</ul>
+<p>注意到如果查询是 YES 的话，那么 $[l,r]$ 内的和一定整除 $k$。故而我们可以深挖这一性质。</p>
+<p>随机选择 30 个 subset，关注 $[l,r]$ 内的所有在这个 subset 里面的数，若它们的和是 $k$ 的倍数，我们就输出 YES。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
