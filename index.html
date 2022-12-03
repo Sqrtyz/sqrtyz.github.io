@@ -126,7 +126,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -182,6 +182,137 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://sqrtyz.github.io/2022/12/03/Fuckin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="Sqrtyz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sqrtyz's Home">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Sqrtyz's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/03/Fuckin/" class="post-title-link" itemprop="url">PTA 弱智总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-03 17:05:07 / Modified: 17:05:50" itemprop="dateCreated datePublished" datetime="2022-12-03T17:05:07+08:00">2022-12-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li><p>0<code>开头表示八进制。</code>0x` 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild</p>
+</li>
+<li><p><code>%o</code> 以八进制格式输出 / <code>%x</code> 以十六进制格式输出</p>
+</li>
+<li><p>设置输出宽度，可以在输出格式前加代表宽度的数字，比如 <code>%14d</code>，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 <code>%-14d</code>。</p>
+</li>
+<li><p><code>scanf(&quot;%3d%2d&quot;,&amp;i,&amp;j);</code> 输入 1234567， i = 123, j = 45.</p>
+</li>
+<li><p>原码反码补码</p>
+<ul>
+<li><p>正数 - 原反补相同。</p>
+</li>
+<li><p>负数 - 原码：符号位为1 / 反码：除了符号位，全部取反 / 补码：反码+1.<br>e.g. char (-10): (10: 00001010)<br>原 10001010 反 11110101 补 11110110</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>在计算机中，所有的整数使用补码计算与存储。</p>
+</li>
+<li><p><code>sizeof()</code> 中的运算不会被进行。<br><code>int k = 3; sizeof(++k);</code> k 的值仍是 3。</p>
+</li>
+</ul>
+<ul>
+<li><p>scanf 和 gets 的区别</p>
+<ul>
+<li><p>开头：scanf 忽略开头的所有空格。gets 不会忽略。</p>
+</li>
+<li><p>scanf 的结尾：scanf 遇到空格或者回车都会结束。同时，scanf 会将使其结束的空格（回车）留下来留给下一次读入。scanf 还会在最后加一个 <code>\0</code>。</p>
+</li>
+<li><p>gets 的结尾：gets 遇到回车才会结束。同时，gets 会将使其结束的回车吃掉并将这个 <code>\n</code> 替换为 <code>\0</code>。</p>
+</li>
+</ul>
+<p>(也就是说，两种读入方式均以 <code>\0</code> 结尾)</p>
+</li>
+<li><p>字符数组 和 字符指针</p>
+<ul>
+<li><p>两种方式均可以表示字符串。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>;</span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>这两种声明方式下，<code>str1</code> 和 <code>str2</code> 均是指向 首地址 <code>f/s</code> 的指针。</p>
+</li>
+<li><p>字符 / 字符串的输出</p>
+<p>用 %s 可以输出从指针地址到第一个 <code>\0</code> 间的所有字符。</p>
+<p>用 %p 就是单纯地输出一个指针地址。</p>
+<p>用 %c 并解引用就是输出指针地址指向的那个字符。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;fuckoff&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str); <span class="comment">// fuckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str); <span class="comment">// 0040b044</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *str); <span class="comment">// f</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// uckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// 0040b045</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *(str + <span class="number">1</span>)); <span class="comment">// u</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只读性</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>;</span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>需要注意的是，和 int 数组一样，<code>str</code> 将是一个只读的指针变量。我们不能 <code>++str1</code> 。</p>
+<p>但是我们可以 <code>++str2</code> 。之后 <code>printf(&quot;%s\n&quot;, str2);</code> 的结果为 <code>hit</code>。</p>
+</li>
+<li><p>不过，对于第一种声明方式，字符数组中的字符可以改变。比如我们可以 <code>str1[2] = &#39;\0&#39;</code>，这之后 <code>printf(&quot;%s\n&quot;, str1);</code> 的结果为 <code>fu</code>。</p>
+<p>对于第二种声明方式，字符数组中的字符无法改变。<code>*(str2 + 2) = &#39;a&#39;;</code> 和 <code>str2[2] = &#39;a&#39;;</code> 都是不合法的。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
