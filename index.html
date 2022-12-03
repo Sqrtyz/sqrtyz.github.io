@@ -221,7 +221,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-12-03 17:05:07 / Modified: 17:08:26" itemprop="dateCreated datePublished" datetime="2022-12-03T17:05:07+08:00">2022-12-03</time>
+      <time title="Created: 2022-12-03 17:05:07 / Modified: 17:11:32" itemprop="dateCreated datePublished" datetime="2022-12-03T17:05:07+08:00">2022-12-03</time>
     </span>
 
   
@@ -285,7 +285,7 @@
 <li><p>只读性</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>;</span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>需要注意的是，和 int 数组一样，<code>str</code> 将是一个只读的指针变量。我们不能 <code>++str1</code> 。</p>
+<li><p>需要注意的是，和 int 数组一样，<code>str1</code> 将是一个只读的指针变量。我们不能 <code>++str1</code> 。</p>
 <p>但是我们可以 <code>++str2</code> 。之后 <code>printf(&quot;%s\n&quot;, str2);</code> 的结果为 <code>hit</code>。</p>
 </li>
 <li><p>不过，对于第一种声明方式，字符数组中的字符可以改变。比如我们可以 <code>str1[2] = &#39;\0&#39;</code>，这之后 <code>printf(&quot;%s\n&quot;, str1);</code> 的结果为 <code>fu</code>。</p>
