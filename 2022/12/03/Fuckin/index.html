@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"sqrtyz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出  设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(&quot;%3d%2d&amp;q">
+    <meta name="description" content="0 开头表示八进制。0x&#96; 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出  设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(&quot;%3d%2d&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PTA 弱智总结">
 <meta property="og:url" content="http://sqrtyz.github.io/2022/12/03/Fuckin/index.html">
 <meta property="og:site_name" content="Sqrtyz&#39;s Home">
-<meta property="og:description" content="0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出  设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(&quot;%3d%2d&amp;q">
+<meta property="og:description" content="0 开头表示八进制。0x&#96; 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出  设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(&quot;%3d%2d&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-03T09:05:07.394Z">
-<meta property="article:modified_time" content="2022-12-03T09:11:32.543Z">
+<meta property="article:modified_time" content="2022-12-20T06:51:25.361Z">
 <meta property="article:author" content="Sqrtyz">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -225,9 +225,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-12-03 17:05:07 / Modified: 17:11:32" itemprop="dateCreated datePublished" datetime="2022-12-03T17:05:07+08:00">2022-12-03</time>
+      <time title="Created: 2022-12-03 17:05:07" itemprop="dateCreated datePublished" datetime="2022-12-03T17:05:07+08:00">2022-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-20 14:51:25" itemprop="dateModified" datetime="2022-12-20T14:51:25+08:00">2022-12-20</time>
     </span>
 
   
@@ -248,7 +254,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <ul>
-<li><p><code>0</code> 开头表示八进制。<code>0x</code> 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild</p>
+<li><p>0 <code>开头表示八进制。</code>0x` 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild</p>
 </li>
 <li><p><code>%o</code> 以八进制格式输出 / <code>%x</code> 以十六进制格式输出</p>
 </li>
@@ -264,14 +270,10 @@
 </li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>在计算机中，所有的整数使用补码计算与存储。</p>
 </li>
-<li><p><code>sizeof()</code> 中的运算不会被进行。<br><code>int k = 3; sizeof(++k);</code> k 的值仍是 3。</p>
+<li><p><code>sizeof()</code> 中的运算不会被进行。 <code>int k = 3; sizeof(++k);</code> k 的值仍是 3。</p>
 </li>
-</ul>
-<ul>
 <li><p>scanf 和 gets 的区别</p>
 <ul>
 <li><p>开头：scanf 忽略开头的所有空格。gets 不会忽略。</p>
@@ -281,28 +283,86 @@
 <li><p>gets 的结尾：gets 遇到回车才会结束。同时，gets 会将使其结束的回车吃掉并将这个 <code>\n</code> 替换为 <code>\0</code>。</p>
 </li>
 </ul>
-<p>(也就是说，两种读入方式均以 <code>\0</code> 结尾)</p>
 </li>
-<li><p>字符数组 和 字符指针</p>
+</ul>
+<p>(也就是说，两种读入方式均以 <code>\0</code> 结尾)</p>
+<ul>
+<li><p>字符数组、字符串常量、字符指针</p>
 <ul>
 <li><p>两种方式均可以表示字符串。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>;</span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>; <span class="comment">/* 字符数组，并对其进行了初始化。*/</span></span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>; <span class="comment">/* 字符指针 str2 指向了一个字符串常量的首地址，</span></span><br><span class="line"><span class="comment">字符串常量在内存中的位置由系统自动安排。*/</span></span><br></pre></td></tr></table></figure>
 <p>这两种声明方式下，<code>str1</code> 和 <code>str2</code> 均是指向 首地址 <code>f/s</code> 的指针。</p>
 </li>
 <li><p>字符 / 字符串的输出</p>
-<p>用 %s 可以输出从指针地址到第一个 <code>\0</code> 间的所有字符。</p>
+<p>用 %s 可以输出从指针地址到第一个 <code>&#39;\0&#39;</code> 间的所有字符。</p>
 <p>用 %p 就是单纯地输出一个指针地址。</p>
 <p>用 %c 并解引用就是输出指针地址指向的那个字符。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;fuckoff&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str); <span class="comment">// fuckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str); <span class="comment">// 0040b044</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *str); <span class="comment">// f</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// uckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// 0040b045</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *(str + <span class="number">1</span>)); <span class="comment">// u</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;fuckoff&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str); <span class="comment">// fuckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str); <span class="comment">// 0040b044</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *str); <span class="comment">// f</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// uckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// 0040b045</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *(str + <span class="number">1</span>)); <span class="comment">// u</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>只读性</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>;</span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>需要注意的是，和 int 数组一样，<code>str1</code> 将是一个只读的指针变量。我们不能 <code>++str1</code> 。</p>
-<p>但是我们可以 <code>++str2</code> 。之后 <code>printf(&quot;%s\n&quot;, str2);</code> 的结果为 <code>hit</code>。</p>
+<p>但是我们可以 <code>++str2</code> 。之后 <code>printf(&quot;%s\n&quot;, str2);</code> 的结果为 <code>hit</code>。本质上是改变了 <code>str2</code> 的地址。</p>
 </li>
 <li><p>不过，对于第一种声明方式，字符数组中的字符可以改变。比如我们可以 <code>str1[2] = &#39;\0&#39;</code>，这之后 <code>printf(&quot;%s\n&quot;, str1);</code> 的结果为 <code>fu</code>。</p>
-<p>对于第二种声明方式，字符数组中的字符无法改变。<code>*(str2 + 2) = &#39;a&#39;;</code> 和 <code>str2[2] = &#39;a&#39;;</code> 都是不合法的。</p>
+<p>对于第二种声明方式，由于是指向字符串常量，其中的字符无法改变。<code>*(str2 + 2) = &#39;a&#39;;</code> 和 <code>str2[2] = &#39;a&#39;;</code> 都是不合法的。但如果 <code>str2</code> 指向的是一个字符数组的话，就可以改变了。例如</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="type">char</span> str[] = <span class="string">&quot;fuckoff&quot;</span>;</span><br><span class="line">   <span class="type">char</span> *p = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">   p = str;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str + <span class="number">2</span>); <span class="comment">// ckoff</span></span><br><span class="line">   *(p + <span class="number">3</span>) = <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, p + <span class="number">2</span>); <span class="comment">// czoff</span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>假设 p 是一个指针。<code>p = NULL;</code> 和 <code>p = 0;</code> 都代表将 p 赋为空指针。</p>
+</li>
+<li><p>动态内存申请</p>
+<ul>
+<li><p>malloc 函数：<code>*malloc(unsigned size)</code> 申请长度为 size 的内存空间并返回首地址。申请失败返回 NULL。</p>
+</li>
+<li><p>calloc 函数：<code>*calloc(unsigned n, unsigned size)</code> 分配 n 个连续空间，每一存储空间的长度为 size，并且初始化值全部为 0。申请成功返回首地址。申请失败返回 NULL。</p>
+</li>
+<li><p>free 函数：<code>free(*p)</code> 释放由动态存储分配函数（如上）申请到的整块内存空间。p 为指向要释放空间的首地址。</p>
+</li>
+<li><p>realloc 函数：<code>realloc(*p, unsigned size)</code> 更改以前的内存分配。p 是之前由动态内存分配得到的指针，size 为现在需要的空间大小。分配失败保留原空间并返回 NULL。分配成功返回一片大小为 size 的区块，并保证该块的内容与原块的一致。注意，如果分配成功，原存储块的内容可能改变并不再允许使用。</p>
+</li>
+</ul>
+</li>
+<li><p>Fuck the Pointer More</p>
+<ul>
+<li><p>指针数组</p>
+<p>通过 <code>char *str[5];</code> 可以声明一个含有 5 个元素的数组。每个元素的类型都是字符指针。</p>
+</li>
+<li><p>二级指针、二维数组与指针</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> *p = &amp;a;</span><br><span class="line"><span class="type">int</span> **p = &amp;p;</span><br></pre></td></tr></table></figure>
+<p>上述代码中，p 为 a 的地址，pp 为 p 的地址。</p>
+<p><strong>二维数组与指针：</strong></p>
+<p><code>int a[3][4];</code> 可以看成由 <code>a[0], a[1], a[2]</code> 作为元素组成的一维数组（每个元素本身又是一个长度为 4 的一维数组）。</p>
+<p><code>a[0]</code> 是一个一级指针，指向数组 <code>a[0]</code> 的首地址，即 <code>&amp;a[0][0]</code> 。而 <code>a</code> 则为一个二级指针，指向首元素的地址 <code>&amp;a[0]</code> 。</p>
+<p>推广地，<code>a + 1</code> 表示第一行的地址。<code>*(a + 1)</code> 表示第一行这个元素，也代表第一行首元素的地址。进而，<code>**(a + 1)</code> 表示第一行的首元素，亦即 <code>a[1][0]</code> 的值。</p>
+<p><code>*(*(a + i) + j)</code> 等价于 <code>a[i][j]</code> 。</p>
+</li>
+<li><p>指向函数的指针</p>
+<p>例如 <code>int (*funcp)(int, int)</code> 定义了一个函数指针 funcp。它可以指向任意有两个整型参数并且返回值为 int 类型的函数。</p>
+<p>假设函数 <code>func(x, y)</code> 已经定义，那么 <code>funcp = func;</code> 就可以将 func 的 <strong>入口地址</strong> 赋给 funcp（类比：数组名本质上也是指针），funcp 于是指向了函数 <code>func(x, y)</code> 。</p>
+<p>然后我们就可以这样调用函数：<code>(*funcp)(1, 2);</code> 。</p>
+</li>
+<li><p>链表</p>
+<p>链表中每个节点由数据部分和下一个结点的地址构成。链表变量一般用指针 <code>head</code> 表示，用来存放链表首节点的地址。链表中的最后一个节点称为表尾，其下一个节点的地址为 NULL（注意表尾节点的数据部分仍是有效的）。</p>
+<ul>
+<li><p>链表的声明</p>
+<p>通常借用 <strong>结构体嵌套</strong> 的方式来定义一个链表。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">  <span class="type">int</span> info1, info2, info3;</span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">node</span>* next; <span class="comment">// 结构的递归定义</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>info 是这个节点的数据部分。next 则指向了下一个节点。</p>
+</li>
+<li><p>链表是动态存储分配的数据结构</p>
+<p>比如，如果想要申请 node 结构的动态内存空间，需要使用以下语句。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>* p;</span><br><span class="line">p = (<span class="keyword">struct</span> node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> node); <span class="comment">// 需要强制转换</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Basic Operations</p>
+<p><strong>insert</strong> pn between p1 &amp; p2</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = pn;</span><br><span class="line">pn -&gt; next = p2;</span><br></pre></td></tr></table></figure>
+<p><strong>delete</strong> p2 (p1 points to p2)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = p2 -&gt; next;</span><br><span class="line"><span class="built_in">free</span>(p2);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
