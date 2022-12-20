@@ -227,7 +227,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-20 15:55:31" itemprop="dateModified" datetime="2022-12-20T15:55:31+08:00">2022-12-20</time>
+      <time title="Modified: 2022-12-20 18:35:08" itemprop="dateModified" datetime="2022-12-20T18:35:08+08:00">2022-12-20</time>
     </span>
 
   
@@ -310,13 +310,15 @@
 </li>
 <li><p>动态内存申请</p>
 <ul>
-<li><p>malloc 函数：<code>*malloc(unsigned size)</code> 申请长度为 size 的内存空间并返回首地址。申请失败返回 NULL。</p>
+<li><p>malloc 函数：<code>void* malloc(unsigned size)</code> 申请长度为 size 的内存空间并返回首地址。申请失败返回 NULL。</p>
 </li>
-<li><p>calloc 函数：<code>*calloc(unsigned n, unsigned size)</code> 分配 n 个连续空间，每一存储空间的长度为 size，并且初始化值全部为 0。申请成功返回首地址。申请失败返回 NULL。</p>
+<li><p>calloc 函数：<code>void* calloc(unsigned n, unsigned size)</code> 分配 n 个连续空间，每一存储空间的长度为 size，并且初始化值全部为 0。申请成功返回首地址。申请失败返回 NULL。</p>
 </li>
-<li><p>free 函数：<code>free(*p)</code> 释放由动态存储分配函数（如上）申请到的整块内存空间。p 为指向要释放空间的首地址。</p>
+<li><p>free 函数：<code>void free(*p)</code> 释放由动态存储分配函数（如上）申请到的整块内存空间。p 为指向要释放空间的首地址。</p>
 </li>
-<li><p>realloc 函数：<code>realloc(*p, unsigned size)</code> 更改以前的内存分配。p 是之前由动态内存分配得到的指针，size 为现在需要的空间大小。分配失败保留原空间并返回 NULL。分配成功返回一片大小为 size 的区块，并保证该块的内容与原块的一致。注意，如果分配成功，原存储块的内容可能改变并不再允许使用。</p>
+<li><p>realloc 函数：<code>void* ealloc(*p, unsigned size)</code> 更改以前的内存分配。p 是之前由动态内存分配得到的指针，size 为现在需要的空间大小。分配失败保留原空间并返回 NULL。分配成功返回一片大小为 size 的区块，并保证该块的内容与原块的一致。注意，如果分配成功，原存储块的内容可能改变并不再允许使用。</p>
+</li>
+<li><p>为什么 malloc, calloc, realloc 函数有返回值却是 void 类型？因为这是一种 <strong>通用指针</strong>，即它的返回值的类型是不确定的。当我们需要某种特定类型的返回值时，直接在前面用 <code>(data type)</code> 进行强制类型转换即可。（参见链表动态存储空间的申请）</p>
 </li>
 </ul>
 </li>
