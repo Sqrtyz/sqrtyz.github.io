@@ -227,7 +227,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-20 15:38:29" itemprop="dateModified" datetime="2022-12-20T15:38:29+08:00">2022-12-20</time>
+      <time title="Modified: 2022-12-20 15:55:31" itemprop="dateModified" datetime="2022-12-20T15:55:31+08:00">2022-12-20</time>
     </span>
 
   
@@ -320,13 +320,11 @@
 </li>
 </ul>
 </li>
-<li><p>Fuck the Pointer More</p>
-</li>
-</ul>
+<li><p>Pointer More</p>
 <ul>
 <li><p>数组指针</p>
 <p>数组指针本质上是一个指向数组的指针变量。例如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="type">int</span> a[<span class="number">3</span>][<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>&#125;;</span><br><span class="line">   <span class="built_in">int</span> (*num)[<span class="number">4</span>]; </span><br><span class="line">   num = &amp;a[<span class="number">1</span>];</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(*num + <span class="number">1</span>)); <span class="comment">// output 6.</span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> a[<span class="number">3</span>][<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>&#125;;</span><br><span class="line">  <span class="built_in">int</span> (*num)[<span class="number">4</span>]; </span><br><span class="line">  num = &amp;a[<span class="number">1</span>];</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(*num + <span class="number">1</span>)); <span class="comment">// output 6.</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>指针数组</p>
 <p>通过 <code>char *str[5];</code> 可以声明一个含有 5 个元素的数组。每个元素的类型都是字符指针。</p>
@@ -365,6 +363,8 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = pn;</span><br><span class="line">pn -&gt; next = p2;</span><br></pre></td></tr></table></figure>
 <p><strong>delete</strong> p2 (p1 points to p2)</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = p2 -&gt; next;</span><br><span class="line"><span class="built_in">free</span>(p2);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 </ul>
 </li>
