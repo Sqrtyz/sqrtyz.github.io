@@ -27,7 +27,7 @@
 <meta property="og:description" content="八进制与十六进制  0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出      设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-03T09:05:07.394Z">
-<meta property="article:modified_time" content="2022-12-20T10:35:08.953Z">
+<meta property="article:modified_time" content="2022-12-21T15:15:15.027Z">
 <meta property="article:author" content="Sqrtyz">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-20 18:35:08" itemprop="dateModified" datetime="2022-12-20T18:35:08+08:00">2022-12-20</time>
+      <time title="Modified: 2022-12-21 23:15:15" itemprop="dateModified" datetime="2022-12-21T23:15:15+08:00">2022-12-21</time>
     </span>
 
   
@@ -377,9 +377,24 @@
 <p><strong>insert</strong> pn between p1 &amp; p2</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = pn;</span><br><span class="line">pn -&gt; next = p2;</span><br></pre></td></tr></table></figure>
 <p><strong>delete</strong> p2 (p1 points to p2)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = p2 -&gt; next;</span><br><span class="line"><span class="built_in">free</span>(p2);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = p2 -&gt; next;</span><br><span class="line"><span class="built_in">free</span>(p2);</span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ul>
+</li>
+</ul>
+<ul>
+<li><p>Struct</p>
+<ul>
+<li><p>关于 struct 的优先级问题：<code>-&gt;</code> 大于 <code>.</code> 大于 <code>*</code> 大于 <code>++(--)</code> 。</p>
+</li>
+<li><p>关于 C 语言中 struct 的初始化：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">3</span>, <span class="number">4</span>&#125;&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d %d %d\n&quot;</span>, a[<span class="number">0</span>].x, a[<span class="number">0</span>].y, a[<span class="number">1</span>].x, a[<span class="number">1</span>].y);</span><br><span class="line">    <span class="comment">// Output: 1 2 3 4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以采取如上的初始化方式。</p>
+<p>但是需要注意，这种初始化方式必须在声明时使用。以下语句段是不合法的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>];</span><br><span class="line">a[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;; a[<span class="number">1</span>] = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>但如果采用以下方式，又是可以的了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>];</span><br><span class="line">a[<span class="number">0</span>] = (<span class="keyword">struct</span> A)&#123;<span class="number">1</span>, <span class="number">2</span>&#125;; a[<span class="number">1</span>] = (<span class="keyword">struct</span> A)&#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// 这个相当于是把一个临时定义的 struct 赋到了 a[0] 和 a[1] 上。</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
