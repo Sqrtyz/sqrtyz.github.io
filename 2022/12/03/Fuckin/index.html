@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"sqrtyz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","width":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="八进制与十六进制  0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出      设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(">
+    <meta name="description" content="八进制与十六进制  0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出 （输出不带 0 和 0x ）  %#o 以八进制格式输出 &#x2F; %#x 以十六进制格式输出 （输出带 0 和 0x ）      设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PTA 弱智总结">
 <meta property="og:url" content="http://sqrtyz.github.io/2022/12/03/Fuckin/index.html">
 <meta property="og:site_name" content="Sqrtyz&#39;s Home">
-<meta property="og:description" content="八进制与十六进制  0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出      设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。  scanf(">
+<meta property="og:description" content="八进制与十六进制  0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild  %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出 （输出不带 0 和 0x ）  %#o 以八进制格式输出 &#x2F; %#x 以十六进制格式输出 （输出带 0 和 0x ）      设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-03T09:05:07.394Z">
-<meta property="article:modified_time" content="2022-12-21T15:15:15.027Z">
+<meta property="article:modified_time" content="2022-12-27T07:26:07.435Z">
 <meta property="article:author" content="Sqrtyz">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-21 23:15:15" itemprop="dateModified" datetime="2022-12-21T23:15:15+08:00">2022-12-21</time>
+      <time title="Modified: 2022-12-27 15:26:07" itemprop="dateModified" datetime="2022-12-27T15:26:07+08:00">2022-12-27</time>
     </span>
 
   
@@ -258,7 +258,9 @@
 <ul>
 <li><p><code>0</code> 开头表示八进制。<code>0x</code> 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild</p>
 </li>
-<li><p><code>%o</code> 以八进制格式输出 / <code>%x</code> 以十六进制格式输出</p>
+<li><p><code>%o</code> 以八进制格式输出 / <code>%x</code> 以十六进制格式输出 （输出不带 <code>0</code> 和 <code>0x</code> ）</p>
+</li>
+<li><p><code>%#o</code> 以八进制格式输出 / <code>%#x</code> 以十六进制格式输出 （输出带 <code>0</code> 和 <code>0x</code> ）</p>
 </li>
 </ul>
 </li>
@@ -395,6 +397,14 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>];</span><br><span class="line">a[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;; a[<span class="number">1</span>] = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
 <p>但如果采用以下方式，又是可以的了。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>];</span><br><span class="line">a[<span class="number">0</span>] = (<span class="keyword">struct</span> A)&#123;<span class="number">1</span>, <span class="number">2</span>&#125;; a[<span class="number">1</span>] = (<span class="keyword">struct</span> A)&#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// 这个相当于是把一个临时定义的 struct 赋到了 a[0] 和 a[1] 上。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Switch</p>
+<ul>
+<li><p>case 后 <strong>只能为常量或常量表达式</strong> 。switch 支持的变量类型有 byte、short、int、char。</p>
+</li>
+<li><p>循环体内的 switch 可以使用 continue。此时 continue 作用于循环体本身，即（执行 i++ 后）跳到下一次循环。</p>
 </li>
 </ul>
 </li>
