@@ -156,12 +156,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
                 笔记
-                <div class="category-count">1</div>
+                <div class="category-count">7</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">
                 杂记
                 <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
+                算法竞赛
+                <div class="category-count">4</div>
             </a>
         </div>
     </div>
@@ -211,7 +216,7 @@
           </li>
         
           <li>
-            <a href="/2023/07/09/liner_base_note/">线性基 学习笔记</a>
+            <a href="/2023/07/09/large_c_programming/">C 大程笔记</a>
           </li>
         
       </ul>
@@ -559,77 +564,6 @@ E 题想到缩点后就不怎么会了。开始以为是在叶子节点之间建
 
    
 
-<article id="post-liner_base_note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/liner_base_note/">线性基 学习笔记</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-08T17:24:03.615Z" itemprop="datePublished">2023-07-09</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            728 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            问题导入给定一个图。求一条回路使得该路径的异或和最大。
-线性基线性基的构造
-对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。
-123456789101112for(int i = 1; i &lt;= cnt; ++i) &#123;        LL cur = S[i];        for(int k = 59; k &gt;= 0; --k) &#123;            if(cur &amp; (1ll &lt;&lt; k)) &#123;                if(d[k]) cur ^= d[k];                else &#123;                    d[k] = cur;                    break;                &#125;            &#125;        &#125;    &#125;
-线性基的性质及略证
-如此构建后，线性基中的所有数满足如下性质。
-
-若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的...  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/07/09/liner_base_note/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
 <article id="post-large_c_programming" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -715,7 +649,7 @@ C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读
 
    
 
-<article id="post-vscode_setting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-liner_base_note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -726,7 +660,7 @@ C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/vscode_setting/">VSCode 设置相关</a>
+        <a class="p-name article-title" href="/2023/07/09/liner_base_note/">线性基 学习笔记</a>
       </h1>
     
   
@@ -739,13 +673,13 @@ C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            384 words 
+            728 words 
           </div>
         </div>
         
@@ -753,25 +687,14 @@ C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
-            CMake 的使用
-CMakelist.txt 相关
+            问题导入给定一个图。求一条回路使得该路径的异或和最大。
+线性基线性基的构造
+对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。
+123456789101112for(int i = 1; i &lt;= cnt; ++i) &#123;        LL cur = S[i];        for(int k = 59; k &gt;= 0; --k) &#123;            if(cur &amp; (1ll &lt;&lt; k)) &#123;                if(d[k]) cur ^= d[k];                else &#123;                    d[k] = cur;                    break;                &#125;            &#125;        &#125;    &#125;
+线性基的性质及略证
+如此构建后，线性基中的所有数满足如下性质。
 
-
-CMake 带命令行参数 build
-  在 .vscode 下创建 setting.json，并填充以下内容：
-  12345678&#123;    &quot;cmake.debugConfig&quot;: &#123;        &quot;args&quot;: [            &quot;arg1&quot;,            &quot;arg2&quot;        ]    &#125;&#125;
-  这会使得 run 时将 arg1 和 arg2 作为命令行参数运行。
-
-
-tasks.json 和 launch.json个人目前的理解是，tasks.json 可用于配置运行脚本和启动进程，launch.json 可以用于配置调试选项。
-使用 Ctrl + Space 显示光标位置处可以使用的属性或参数。鼠标放在属性上可以显示属性的意义。
-可能有用的 VSCode 官方文档：
-
-预定义的变量 Predefined Variables
-
-launch.json 的配置
-
-task...  
+若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的...  
           </div>
         
       </div>
@@ -782,7 +705,7 @@ task...
      
     <a class="right-panel  non-pic  "
       
-      href="/2023/07/09/vscode_setting/" 
+      href="/2023/07/09/liner_base_note/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -874,6 +797,88 @@ sizeof() 中的运算不会被进行。 in...
     <a class="right-panel  non-pic  "
       
       href="/2023/07/09/little_c_programming/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-vscode_setting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/09/vscode_setting/">VSCode 设置相关</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-08T17:24:03.615Z" itemprop="datePublished">2023-07-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            384 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            CMake 的使用
+CMakelist.txt 相关
+
+
+CMake 带命令行参数 build
+  在 .vscode 下创建 setting.json，并填充以下内容：
+  12345678&#123;    &quot;cmake.debugConfig&quot;: &#123;        &quot;args&quot;: [            &quot;arg1&quot;,            &quot;arg2&quot;        ]    &#125;&#125;
+  这会使得 run 时将 arg1 和 arg2 作为命令行参数运行。
+
+
+tasks.json 和 launch.json个人目前的理解是，tasks.json 可用于配置运行脚本和启动进程，launch.json 可以用于配置调试选项。
+使用 Ctrl + Space 显示光标位置处可以使用的属性或参数。鼠标放在属性上可以显示属性的意义。
+可能有用的 VSCode 官方文档：
+
+预定义的变量 Predefined Variables
+
+launch.json 的配置
+
+task...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/09/vscode_setting/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
