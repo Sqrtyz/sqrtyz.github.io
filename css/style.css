@@ -773,6 +773,7 @@ navbar,
 }
 navbar {
   height: 72px;
+  max-width: 700px;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -796,6 +797,8 @@ navbar {
 }
 #title-nav {
   margin-left: 16px;
+  position: relative;
+  top: -5px;
 }
 #title-nav a {
   color: var(--btn-text-content);
@@ -1017,6 +1020,8 @@ navbar {
 }
 .main-nav-link {
   font-weight: bold;
+  font-size: 130%;
+  font-family: 'Geosans';
   height: 44px;
   padding: 0px 16px;
   display: -webkit-box;
@@ -1051,6 +1056,14 @@ navbar {
   display: box;
   display: flex;
   gap: 4px;
+}
+#lightbg {
+  position: absolute;
+  opacity: var(--display-light-icon);
+}
+#darkbg {
+  position: absolute;
+  opacity: var(--display-dark-icon);
 }
 .article {
   margin-bottom: 16px;

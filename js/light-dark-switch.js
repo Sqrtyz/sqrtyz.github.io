@@ -12,4 +12,3 @@ let themeFunc = async function() {
     });
 };
 themeFunc();
-

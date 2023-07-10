@@ -44,10 +44,10 @@
   
     
 <div id="banner" class=" is_home ">
-  <img src="/assets/banner2.png" itemprop="image">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
   <div id="banner-dim"></div>
-</div>
- 
+</div> 
    
   <div id="main-grid" class="shadow   ">
     <div id="nav" class=" is_home "  >
@@ -208,15 +208,15 @@
           </li>
         
           <li>
-            <a href="/2023/07/09/git_notes/">Git 学习笔记</a>
-          </li>
-        
-          <li>
             <a href="/2023/07/09/icpc_regional_dairy/">ICPC 2022 沈阳区域赛 小记</a>
           </li>
         
           <li>
-            <a href="/2023/07/09/large_c_programming/">C 大程笔记</a>
+            <a href="/2023/07/09/git_notes/">Git 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/09/liner_base_note/">线性基 学习笔记</a>
           </li>
         
       </ul>
@@ -261,7 +261,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            215 words 
+            334 words 
           </div>
         </div>
         
@@ -270,10 +270,10 @@
         
           <div class="truncate-text">
             HTML：创建网页的标准标记语言CSS：自定义你的页面CSS 选择器
-优先级 1#：直接在标签内部写 CSS 代码
+权重 1000：内联样式表
 1&lt;h3 style=&quot;color:red;&quot;&gt; Redemption &lt;/h3&gt;
-优先级 2#：ID 选择器
-  123456789101112131415161718&lt;!DOCTYPE html&gt;&lt;html&gt;    &lt;head&gt;        &lt;meta charset=&quot;utf-8&quot;&gt;         &lt;style&gt;        #para1        &#123;            text-align:center;            color:red;        &#125;         &lt;/style&gt;    &lt;/head&gt;    &lt;body&gt;        &lt;p id=&quot;para1&quot;&gt;Hello World!&lt;/p&gt;     ...  
+权重 100：ID 选择器
+  123456789101112131415161718&lt;!DOCTYPE html&gt;&lt;html&gt;    &lt;head&gt;        &lt;meta charset=&quot;utf-8&quot;&gt;         &lt;style&gt;        #para1        &#123;            text-align:center;            color:red;        &#125;         &lt;/style&gt;    &lt;/head&gt;    &lt;body&gt;        &lt;p id=&quot;para1&quot;&gt;Hello World!&lt;/p&gt;        &lt;p&...  
           </div>
         
       </div>
@@ -353,6 +353,79 @@
     <a class="right-panel  non-pic  "
       
       href="/2023/07/09/QXMX/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-icpc_regional_dairy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/09/icpc_regional_dairy/">ICPC 2022 沈阳区域赛 小记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-08T17:24:03.615Z" itemprop="datePublished">2023-07-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            723 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            流水账进入大学以来的第一场 ICPC。前一天两点钟才睡觉，因为在捣鼓这个博客。
+开局发现一分钟内 D 题过了快有一百来个，顿时人都麻了。我寻思题面第一页不是写了 Do not open before the contest has started 吗？
+签掉之后看了下榜，发现 C 和 F 有过。于是先想了下 C，感觉 $n \leq 5000$ 怎么乱搞都行，然后就过了。
+这个时候队友说 A 有思路了，于是乎上位敲 A。然后我去看 F。
+F 是一道构造题，想了一下转化成一维的就很简单了，但是队友这个时候还在锤 A。于是去看了下有一两个人过的 E 题（埋下祸根）
+E 题想到缩点后就不怎么会了。开始以为是在叶子节点之间建生成树然后生成树计数，我寻思这玩意儿可做吗？
+这个时候队友过了 A 样例了，好家伙交上去格式错误？
+去了个结尾换行再交，还是格式错误。
+这个时候我突然意识到多半是傻逼 PTA 把 SPJ 给的错误反馈认为是格式错误了，于是让队友看一下精度问题。队友手玩了几个数据感觉没啥问题。中途我发现一堆人过了炉石题，看了下题鉴定为大爆搜。
+于是我先上机把 F 过了（这个时候 pen...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/09/icpc_regional_dairy/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -477,164 +550,6 @@ git status 查看在你上次提交之后是否有对文件进行再次修改。
     <a class="right-panel  non-pic  "
       
       href="/2023/07/09/git_notes/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-icpc_regional_dairy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/icpc_regional_dairy/">ICPC 2022 沈阳区域赛 小记</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-08T17:24:03.615Z" itemprop="datePublished">2023-07-09</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            723 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            流水账进入大学以来的第一场 ICPC。前一天两点钟才睡觉，因为在捣鼓这个博客。
-开局发现一分钟内 D 题过了快有一百来个，顿时人都麻了。我寻思题面第一页不是写了 Do not open before the contest has started 吗？
-签掉之后看了下榜，发现 C 和 F 有过。于是先想了下 C，感觉 $n \leq 5000$ 怎么乱搞都行，然后就过了。
-这个时候队友说 A 有思路了，于是乎上位敲 A。然后我去看 F。
-F 是一道构造题，想了一下转化成一维的就很简单了，但是队友这个时候还在锤 A。于是去看了下有一两个人过的 E 题（埋下祸根）
-E 题想到缩点后就不怎么会了。开始以为是在叶子节点之间建生成树然后生成树计数，我寻思这玩意儿可做吗？
-这个时候队友过了 A 样例了，好家伙交上去格式错误？
-去了个结尾换行再交，还是格式错误。
-这个时候我突然意识到多半是傻逼 PTA 把 SPJ 给的错误反馈认为是格式错误了，于是让队友看一下精度问题。队友手玩了几个数据感觉没啥问题。中途我发现一堆人过了炉石题，看了下题鉴定为大爆搜。
-于是我先上机把 F 过了（这个时候 pen...  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/07/09/icpc_regional_dairy/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-large_c_programming" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/large_c_programming/">C 大程笔记</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-08T17:24:03.615Z" itemprop="datePublished">2023-07-09</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.2k words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            学习 C 大程过程中的一些零散笔记。
-多文件编程注意事项
-头文件
-自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。
-编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。
-
-变量的关联
-我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许多次声明，但只能有一次定义。
-
-对于一个变量，定义的方法是 type var;。而声明则是在其之前加上一个 extern。
-
-对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 int foo(int x); 。
-
-
-
-
-sscanf() 函数
-C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读取格式化输入。
-
-和 scanf 基本一致。唯一的区别是从输入流读入数据变为了从 str 读入数据。所以这个函数常常用于格式化一些字符串。
-
-特别地两个用法：%n 用于接收当前读入和开...  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/07/09/large_c_programming/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -797,6 +712,91 @@ sizeof() 中的运算不会被进行。 in...
     <a class="right-panel  non-pic  "
       
       href="/2023/07/09/little_c_programming/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-large_c_programming" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/09/large_c_programming/">C 大程笔记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-08T17:24:03.615Z" itemprop="datePublished">2023-07-09</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            学习 C 大程过程中的一些零散笔记。
+多文件编程注意事项
+头文件
+自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。
+编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。
+
+变量的关联
+我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许多次声明，但只能有一次定义。
+
+对于一个变量，定义的方法是 type var;。而声明则是在其之前加上一个 extern。
+
+对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 int foo(int x); 。
+
+
+
+
+sscanf() 函数
+C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读取格式化输入。
+
+和 scanf 基本一致。唯一的区别是从输入流读入数据变为了从 str 读入数据。所以这个函数常常用于格式化一些字符串。
+
+特别地两个用法：%n 用于接收当前读入和开...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/09/large_c_programming/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
