@@ -159,14 +159,14 @@
                 <div class="category-count">7</div>
             </a>
         
-            <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">
-                杂记
-                <div class="category-count">1</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
                 算法竞赛
                 <div class="category-count">4</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">
+                杂记
+                <div class="category-count">1</div>
             </a>
         </div>
     </div>
@@ -208,15 +208,15 @@
           </li>
         
           <li>
-            <a href="/2023/07/09/icpc_regional_dairy/">ICPC 2022 沈阳区域赛 小记</a>
-          </li>
-        
-          <li>
             <a href="/2023/07/09/git_notes/">Git 学习笔记</a>
           </li>
         
           <li>
-            <a href="/2023/07/09/liner_base_note/">线性基 学习笔记</a>
+            <a href="/2023/07/09/icpc_regional_dairy/">ICPC 2022 沈阳区域赛 小记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/09/large_c_programming/">C 大程笔记</a>
           </li>
         
       </ul>
@@ -231,7 +231,7 @@
       
    
 
-<article id="post-cf_global_round_23" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-arc163" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -242,7 +242,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/cf_global_round_23/">CF Global Round 23 复盘</a>
+        <a class="p-name article-title" href="/2023/07/09/arc163/">ARC163 补题</a>
       </h1>
     
   
@@ -261,7 +261,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            866 words 
+            843 words 
           </div>
         </div>
         
@@ -269,16 +269,14 @@
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
-            Link: https://codeforces.com/contest/1746/
-C Permutation Operations
-对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。
+            D - Sum of DCC
+题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30,  m \leq n(n+1)/2$。
+1）$G$ 是 $n$ 个点的竞赛图。
+2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。
 
-有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q_i$ 单调不减。 
-D Paths on the Tree
-$n$ 个点的以 $1$ 为根的树。每个点有一个权值。选择 $k$ 条从 $1$ 开始的简单路径覆盖在树上。使得对于每个点，它的儿子们被路径覆盖的次数之间极差为 0/1。在此基础上，最大化权值乘被覆盖次数的和。$n \leq 10^5, k \leq 10^9$。
-
-先看根。假如它有 $s$ 个儿子，那么先给它的儿子各分配 $[\frac{k}{s}]$ 条路径。剩余 $k \bmod s$ 条路径，肯定要分配给 $s$ 个儿子中的某几个。
-dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分配后还剩余 $q$ 条路...  
+题解：
+考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集 $A,B$，使得所有存在于 $A,B$ 之间的边都是 $A$ 指向 $B$ 的方案数为 $Q$。则 $P=Q-1$。
+引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,…,s_k$。这几个 SCC 作为新点之后，它们依然组成一个竞赛图，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,…,s_k$，那么唯一的点划分方法就是按照 $A=\{s_1…s_t\},  B=\{s_{t+1}…s_{n}\}$ 的形式划分。可以看到，这样的划...  
           </div>
         
       </div>
@@ -289,7 +287,7 @@ dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分
      
     <a class="right-panel  non-pic  "
       
-      href="/2023/07/09/cf_global_round_23/" 
+      href="/2023/07/09/arc163/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -433,6 +431,6 @@ dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- -->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><!---->/script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>

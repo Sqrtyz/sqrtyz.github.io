@@ -135,6 +135,7 @@
   --display-light-icon: 0;
   --display-dark-icon: 1;
   --selection-bg: var(--V40);
+  --code-color: #ccc;
 }
 :root[theme='light'] {
   --page-background: var(--light-L95G);
@@ -181,6 +182,8 @@
   --display-light-icon: 1;
   --display-dark-icon: 0;
   --selection-bg: var(--V90);
+  --article-block: var(--light-L95G);
+  --code-color: #555;
 }
 body {
   width: 100%;
@@ -1190,7 +1193,7 @@ navbar {
   margin-bottom: 0px;
 }
 .article-header .meta-info-bar {
-  margin-bottom: 6px;
+  margin-bottom: 16px;
 }
 .right-panel {
   display: -webkit-box;
@@ -1365,8 +1368,8 @@ a.article-title:active {
 .article-entry ul,
 .article-entry ol,
 .article-entry dl {
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+  margin-top: 0.16em;
+  margin-bottom: 0.16em;
 }
 .article-entry img,
 .article-entry video {
@@ -1414,6 +1417,8 @@ a.article-title:active {
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  border: 0px var(--V70) solid;
+  border-left-width: 5px;
 }
 .article-entry blockquote footer {
   font-size: 16px;
@@ -2272,7 +2277,7 @@ a.article-title:active {
   padding: 15px 20px;
   margin: 16px auto;
   overflow: auto;
-  color: #ccc;
+  color: var(--code-color);
   line-height: 25.6px;
 }
 .article-entry pre ::selection,
@@ -2286,7 +2291,7 @@ a.article-title:active {
 }
 .article-entry pre,
 .article-entry code {
-  font-family: "JetBrains Mono", "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: "Fira Code", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry code {
   background: var(--article-code-bg);
@@ -2349,7 +2354,7 @@ a.article-title:active {
 }
 .article-entry .gist .gist-file {
   border: none;
-  font-family: "JetBrains Mono", "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: "Fira Code", Consolas, Monaco, Menlo, Consolas, monospace;
   margin: 0;
   padding: 12px;
 }
