@@ -1346,7 +1346,7 @@ a.article-title:active {
 .article-entry p,
 .article-entry table {
   line-height: 1.6em;
-  margin: 1.2em 0;
+  margin: 0.8em 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -1520,6 +1520,7 @@ a.article-title:active {
 }
 .widget-tag-list,
 .article-tag-list {
+  margin-bottom: 12px;
   margin-top: 12px;
   display: -webkit-box;
   display: -moz-box;

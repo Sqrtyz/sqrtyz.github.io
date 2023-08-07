@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>CF Global Round 23 复盘 | Dormant Echoes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Link: https:&#x2F;&#x2F;codeforces.com&#x2F;contest&#x2F;1746&#x2F; C Permutation Operations  对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。  有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF Global Round 23 复盘">
+<meta property="og:url" content="http://example.com/2023/07/31/cfgr23/index.html">
+<meta property="og:site_name" content="Dormant Echoes">
+<meta property="og:description" content="Link: https:&#x2F;&#x2F;codeforces.com&#x2F;contest&#x2F;1746&#x2F; C Permutation Operations  对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。  有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-31T06:31:22.900Z">
+<meta property="article:modified_time" content="2023-07-09T14:20:56.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.jpg">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
+  <div id="banner-dim"></div>
+</div> 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <img src="/assets/icon.png" width="33px" height="20.5px">
+        <!---
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        -->
+      </div>
+      <div id="vivia-diy-title">Dormant Echoes </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="material-symbols-rounded light-mode-icon">wb_sunny</span>
+      <span class="material-symbols-rounded dark-mode-icon">dark_mode</span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <span class="material-symbols-rounded rss">rss_feed</span>
+      </a>
+    
+    <a id="nav-search-btn" class="nav-icon" title="Search" style="display: none;">
+      <span class="material-symbols-rounded">search</span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <span class="material-symbols-rounded">menu</span>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sqrtyz </div>
+      <div class="dot"></div>
+      <div class="subtitle">We need no boundary </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://codeforces.com/profile/Sqrtyz" title="Codeforces"><i class="fa-solid fa-code"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Sqrtyz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
+                算法竞赛
+                <div class="category-count">4</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">9</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">
+                杂记
+                <div class="category-count">1</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2023/07 ">
+          July 2023 
+          <div class="archive-count">15 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <li>
+            <a href="/2023/07/31/vscode_setting/">VSCode 设置相关</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/31/QXMX/">《情系母校》-- Dream Goes On</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/31/python_notes/">Python 3 Getting Started</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/31/little_c_programming/">C 小程笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/31/liner_base_note/">线性基 学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-cfgr23" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        CF Global Round 23 复盘
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:22.900Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            866 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>Link: <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746/">https://codeforces.com/contest/1746/</a></p>
+<h2 id="C-Permutation-Operations">C Permutation Operations</h2>
+<ul>
+<li>对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。</li>
+</ul>
+<p>有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q_i$ 单调不减。</p>
+<h2 id="D-Paths-on-the-Tree">D Paths on the Tree</h2>
+<ul>
+<li>$n$ 个点的以 $1$ 为根的树。每个点有一个权值。选择 $k$ 条从 $1$ 开始的简单路径覆盖在树上。使得对于每个点，它的儿子们被路径覆盖的次数之间极差为 0/1。在此基础上，最大化权值乘被覆盖次数的和。$n \leq 10^5, k \leq 10^9$。</li>
+</ul>
+<p>先看根。假如它有 $s$ 个儿子，那么先给它的儿子各分配 $[\frac{k}{s}]$ 条路径。剩余 $k \bmod s$ 条路径，肯定要分配给 $s$ 个儿子中的某几个。</p>
+<p>dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分配后还剩余 $q$ 条路径，那么从其所有 $s_x$ 个儿子中返回的 $s_x$ 个可以“候补”的路径中选择前 $q$ 大的，然后把第 $q+1$ 大的给 $x$ 的父亲作为其父亲的候补路径之一。这是一个不断递归的过程。</p>
+<hr>
+<p>补题</p>
+<h2 id="E1-Joking">E1 Joking</h2>
+<ul>
+<li>这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。</li>
+</ul>
+<p>感觉是一道好题。不过听说和 IMO2012 的 idea 重了。</p>
+<p>首先，我们发现如果确定范围里有两个数，那肯定是解决不掉了。交互库可以恶心你，让你始终找不到这两个数哪个是对的（自证）。</p>
+<p>不过这道题给了我们 2 次回答的机会。因而这道题还是可做的。这道题最关键的部分，在于找到三个数的解法。如何将三个数确定到两个数。假设这三个数分别为 $A,B,C$。</p>
+<p>我们问两次是否 $x \in {A}$。如果两次均为否，那么 $A$ 排除。</p>
+<p>如果回答了一次是，我们问 $B$。**若回答为是，那么 $C$ 排除。**若回答为否，那么就是 $A$。</p>
+<p>当剩余范围超过三个时，把它分为三组照上做就可以了。通过不超过三次询问，我们可以至少缩小 $1/3$ 的范围。</p>
+<p>不得不说非常巧妙。尤其是加粗的部分。</p>
+<p>赛时只在想二分，一直没弄出来。根本原因是没有注意到，$n=2$ 时是根本无法确定的。（脑子糊了）</p>
+<p>其实也想过三分，不过没有深入想，可惜了。</p>
+<h2 id="F-Kazaee">F Kazaee</h2>
+<ul>
+<li>一个数列，两种操作。修改：单点修改。查询：查询 $[l,r]$ 内所有数出现的次数是否都是 $k$ 的倍数。</li>
+</ul>
+<p>注意到如果查询是 YES 的话，那么 $[l,r]$ 内的和一定整除 $k$。故而我们可以深挖这一性质。</p>
+<p>随机选择 30 个 subset，关注 $[l,r]$ 内的所有在这个 subset 里面的数，若它们的和是 $k$ 的倍数，我们就输出 YES。</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2023/07/31/cpp_notes/"
+      title="重新认识 C++"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        重新认识 C++
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2023/07/31/asm_notes/"
+      title="汇编语言学习笔记"
+     >
+
+    <p class="title-text">
+      
+        汇编语言学习笔记
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2023 Sqrtyz<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn" onclick="topFunction()">
+        <span class="material-symbols-rounded">keyboard_arrow_up</span>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.style.opacity = 1;
+        } else {
+            btn.style.opacity = 0;
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>

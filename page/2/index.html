@@ -154,14 +154,14 @@
     <div class="widget">
       <h3 class="widget-title">Categories</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
-                笔记
-                <div class="category-count">7</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
                 算法竞赛
                 <div class="category-count">4</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">9</div>
             </a>
         
             <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">
@@ -175,6 +175,13 @@
 
     
       
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+    </div>
+  </div>
+
 
     
       
@@ -185,7 +192,7 @@
       
         <a class="archive-link" href="/archives/2023/07 ">
           July 2023 
-          <div class="archive-count">12 </div>
+          <div class="archive-count">15 </div>
         </a>
       
     </div>
@@ -200,23 +207,23 @@
       <ul>
         
           <li>
-            <a href="/2023/07/09/front/">前端初探</a>
+            <a href="/2023/07/31/vscode_setting/">VSCode 设置相关</a>
           </li>
         
           <li>
-            <a href="/2023/07/09/QXMX/">《情系母校》-- Dream Goes On</a>
+            <a href="/2023/07/31/QXMX/">《情系母校》-- Dream Goes On</a>
           </li>
         
           <li>
-            <a href="/2023/07/09/git_notes/">Git 学习笔记</a>
+            <a href="/2023/07/31/python_notes/">Python 3 Getting Started</a>
           </li>
         
           <li>
-            <a href="/2023/07/09/icpc_regional_dairy/">ICPC 2022 沈阳区域赛 小记</a>
+            <a href="/2023/07/31/little_c_programming/">C 小程笔记</a>
           </li>
         
           <li>
-            <a href="/2023/07/09/large_c_programming/">C 大程笔记</a>
+            <a href="/2023/07/31/liner_base_note/">线性基 学习笔记</a>
           </li>
         
       </ul>
@@ -231,7 +238,7 @@
       
    
 
-<article id="post-arc163" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-css_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -242,7 +249,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/arc163/">ARC163 补题</a>
+        <a class="p-name article-title" href="/2023/07/31/css_notes/">前端初探：CSS</a>
       </h1>
     
   
@@ -250,33 +257,46 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-08T17:24:03.600Z" itemprop="datePublished">2023-07-09</time>
+  <time class="dt-published" datetime="2023-07-31T06:31:22.950Z" itemprop="datePublished">2023-07-31</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            843 words 
+            1.8k words 
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
-            D - Sum of DCC
-题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30,  m \leq n(n+1)/2$。
-1）$G$ 是 $n$ 个点的竞赛图。
-2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。
+            
+前端三部曲之一。CSS 描述了网页的布局。整理自「菜鸟教程」。
 
-题解：
-考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集 $A,B$，使得所有存在于 $A,B$ 之间的边都是 $A$ 指向 $B$ 的方案数为 $Q$。则 $P=Q-1$。
-引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,…,s_k$。这几个 SCC 作为新点之后，它们依然组成一个竞赛图，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,…,s_k$，那么唯一的点划分方法就是按照 $A=\{s_1…s_t\},  B=\{s_{t+1}…s_{n}\}$ 的形式划分。可以看到，这样的划...  
+2.0 什么是 CSS
+CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，CSS 文件扩展名为 .css 。
+通过使用 CSS 可以大大提升网页开发的工作效率。
+2.1 CSS 选择器
+如果要在 HTML 元素中设置 CSS 样式，需要在元素中设置一些选择器——告诉网页在什么地方运用什么样的样式。
+
+
+权重 1000：内联样式表
+在标签内部加上 style=&quot;&quot; 属性即可。属性内部的条目以分号分隔。
+推荐在比较特殊的个别元素身上使用。
+1&lt;h3 style=&quot;color:red;&quot;&gt; Redemption &lt;/h3&gt;
+
+
+权重 100：ID 选择器
+如果我们想让 body 里面的代码看起来更紧凑一些…… 为何不在 head 中事先声明某个 ID 的样式呢？
+  1234567891011121314&lt;!DOCTYPE htm...  
           </div>
         
       </div>
@@ -287,7 +307,7 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2023/07/09/arc163/" 
+      href="/2023/07/31/css_notes/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -313,7 +333,7 @@
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/09/cpp_notes/">重新认识 C++</a>
+        <a class="p-name article-title" href="/2023/07/31/cpp_notes/">重新认识 C++</a>
       </h1>
     
   
@@ -321,7 +341,7 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-08T17:24:03.600Z" itemprop="datePublished">2023-07-09</time>
+  <time class="dt-published" datetime="2023-07-31T06:31:22.930Z" itemprop="datePublished">2023-07-31</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -336,11 +356,14 @@
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
-            类  
+            类
+  
           </div>
         
       </div>
@@ -351,7 +374,233 @@
      
     <a class="right-panel  non-pic  "
       
-      href="/2023/07/09/cpp_notes/" 
+      href="/2023/07/31/cpp_notes/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-cfgr23" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/31/cfgr23/">CF Global Round 23 复盘</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:22.900Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            866 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            Link: https://codeforces.com/contest/1746/
+C Permutation Operations
+
+对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。
+
+有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q_i$ 单调不减。
+D Paths on the Tree
+
+$n$ 个点的以 $1$ 为根的树。每个点有一个权值。选择 $k$ 条从 $1$ 开始的简单路径覆盖在树上。使得对于每个点，它的儿子们被路径覆盖的次数之间极差为 0/1。在此基础上，最大化权值乘被覆盖次数的和。$n \leq 10^5, k \leq 10^9$。
+
+先看根。假如它有 $s$ 个儿子，那么先给它的儿子各分配 $[\frac{k}{s}]$ 条路径。剩余 $k \bmod s$ 条路径，肯定要分配给 $s$ 个儿子中的某几个。
+dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分配后还剩余 $q$ 条...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/31/cfgr23/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-asm_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/31/asm_notes/">汇编语言学习笔记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:22.870Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            93 words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            数据的表示
+位、字节、字、双字、四字、十字节
+
+位（bit）：一个二进制位，比如 0。
+字节（byte）：8 个 bit，对应八个二进制位或者两个十六进制。有资格分配地址的最小数据单位是字节。对应一个 char 或者 unsigned char。
+字（word）
+双字（double word, dword）
+四字（quadruple word, qword）
+十字节（ten byte, tbyte）
+
+
+  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/31/asm_notes/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-arc163" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/31/arc163/">ARC163 补题</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:22.840Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            843 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            D - Sum of DCC
+
+
+题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30, \ m \leq n(n+1)/2$。
+1）$G$ 是 $n$ 个点的竞赛图。
+2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。
+
+
+题解：
+考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集 $A,B$，使得所有存在于 $A,B$ 之间的边都是 $A$ 指向 $B$ 的方案数为 $Q$。则 $P=Q-1$。
+引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,…,s_k$。这几个 SCC 作为新点之后，它们依然组成一个竞赛图，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,…,s_k$，那么唯一的点划分方法就是按照 $A={s_1…s_t}, \ B={s_{t+1}…s_{n}}$ 的形式划分。可以看到，这样的...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/31/arc163/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
