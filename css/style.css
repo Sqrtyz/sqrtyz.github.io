@@ -2760,7 +2760,7 @@ input[type="range"] {
 }
 .info-card .subtitle {
   font-style: italic;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   color: var(--info-sub);
   margin-bottom: 8px;
