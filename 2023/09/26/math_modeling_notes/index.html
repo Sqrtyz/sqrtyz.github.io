@@ -21,7 +21,7 @@
 <meta property="og:description" content="0924 1. 秘密共享问题   组合解法  $2n + 1$ 个人，开锁阈值为 $n+1$。最少几把锁？  考虑某把锁 $A$。显然 $A$ 至多只能有 $n$ 个人不能开（1）（一旦有 $n+1$ 个人就暴毙了） 考虑来了 $a_1,a_2,\cdots,a_n$ 这 $n$ 个人，按理说它们不能开锁。注意到无论多少个只制约了小于 $n$ 个人的锁在这 $n$ 个人面前都是无效的，根据（1）我">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-26T06:39:13.446Z">
-<meta property="article:modified_time" content="2023-09-26T06:39:46.426Z">
+<meta property="article:modified_time" content="2023-09-26T07:42:51.534Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
@@ -272,7 +272,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            914 words 
+            926 words 
           </div>
         </div>
         
@@ -304,24 +304,23 @@
 <p><strong>开锁</strong> 当有 $t$ 个人集齐时（简便起见编号为 $1 \sim t$），解同余意义下的线性方程组</p>
 <p>$$<br>
 \begin{bmatrix}<br>
-1 &amp; c_1 &amp; c_1^2 &amp; \cdots &amp; c_1^{t-1} \<br>
-1 &amp; c_2 &amp; c_2^2 &amp; \cdots &amp; c_2^{t-1} \<br>
-\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>
-1 &amp; c_t &amp; c_t^2 &amp; \cdots &amp; c_t^{t-1} \<br>
-\end{bmatrix}</p>
-<p>\begin{bmatrix}<br>
-K \<br>
-x_1 \<br>
-\vdots \<br>
-x_{t-1} \<br>
-\end{bmatrix} \equiv</p>
-<p>\begin{bmatrix}<br>
-b_1 \<br>
-b_2 \<br>
-\vdots \<br>
-b_t \<br>
-\end{bmatrix} (\bmod \ p)<br>
-$$</p>
+1 &amp; c_1 &amp; c_1^2 &amp; \cdots &amp; c_1^{t-1} \newline<br>
+1 &amp; c_2 &amp; c_2^2 &amp; \cdots &amp; c_2^{t-1} \newline<br>
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots \newline<br>
+1 &amp; c_t &amp; c_t^2 &amp; \cdots &amp; c_t^{t-1} \newline<br>
+\end{bmatrix}<br>
+\begin{bmatrix}<br>
+K \newline<br>
+x_1 \newline<br>
+\vdots \newline<br>
+x_{t-1} \newline<br>
+\end{bmatrix} \equiv<br>
+\begin{bmatrix}<br>
+b_1 \newline<br>
+b_2 \newline<br>
+\vdots \newline<br>
+b_t \newline<br>
+\end{bmatrix} (\bmod \ p)$$</p>
 <p>左侧是一个范特蒙德行列式，由于行列式非零（$c_i$ 互不相同）所以系数矩阵的秩为 $t$，同时正向的计算保证方程组有且只有一个解。</p>
 <p>当集齐 $t$ 个人时，这个线性方程组可以解得模 $p$ 意义下的唯一解。但凡少一个人，这个方程都有无限个解。</p>
 </li>
