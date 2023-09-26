@@ -154,11 +154,6 @@
     <div class="widget">
       <h3 class="widget-title">Categories</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E6%9D%82%E8%AE%B0/">
-                杂记
-                <div class="category-count">1</div>
-            </a>
-        
             <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
                 算法竞赛
                 <div class="category-count">4</div>
@@ -178,7 +173,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">Tags</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/unfinished/" rel="tag">unfinished</a></li></ul>
     </div>
   </div>
 
@@ -190,9 +185,14 @@
       <h3 class="widget-title">Archives</h3>
       
       
+        <a class="archive-link" href="/archives/2023/09 ">
+          September 2023 
+          <div class="archive-count">2 </div>
+        </a>
+      
         <a class="archive-link" href="/archives/2023/07 ">
           July 2023 
-          <div class="archive-count">15 </div>
+          <div class="archive-count">12 </div>
         </a>
       
     </div>
@@ -207,11 +207,15 @@
       <ul>
         
           <li>
-            <a href="/2023/07/31/vscode_setting/">VSCode 设置相关</a>
+            <a href="/2023/09/26/cf_notes_i/">Codeforces 补题合集 I</a>
           </li>
         
           <li>
-            <a href="/2023/07/31/QXMX/">《情系母校》-- Dream Goes On</a>
+            <a href="/2023/09/26/math_modeling_notes/">数学建模学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/31/vscode_setting/">VSCode 设置相关</a>
           </li>
         
           <li>
@@ -220,10 +224,6 @@
         
           <li>
             <a href="/2023/07/31/little_c_programming/">C 小程笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2023/07/31/liner_base_note/">线性基 学习笔记</a>
           </li>
         
       </ul>
@@ -236,6 +236,141 @@
     </div>
     <div id="content-body">
       
+   
+
+<article id="post-git_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/31/git_notes/">Git 学习笔记</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:22.980Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            717 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            常用命令查表
+
+Linux 相关命令
+
+
+
+
+命令
+用途
+
+
+
+
+vim a.txt
+在 vim 中打开 a.txt
+
+
+cat a.txt
+显示 a.txt 文件内容
+
+
+ls
+列出当前目录所有文件
+
+
+ll
+等价于 ls -l，列出当前目录所有文件并显示详细信息
+
+
+
+Git 的四大区域
+
+
+工作区（workspace）
+
+
+暂存区（staging area）
+
+
+本地库（local repository）
+
+
+远程库（remote repository）
+
+
+详细内容
+初始化相关
+
+git init 初始化仓库。
+git clone [url] 从远程下载一个仓库。
+
+暂存区相关
+
+
+git add 添加文件到暂存区。
+
+
+添加一个或多个文件到暂存区：git add [file1] [file2] ...
+
+
+添加指定目录到暂存区，包括子目录：git add [dir]
+
+
+添加当前目录下的所有文件到暂存区：git add .
+
+
+
+
+git rm --cached [file] 删除 暂存区 中的 file。
+
+
+git status 查看在你上次提交之后是否有对文件进行...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/31/git_notes/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
    
 
 <article id="post-css_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
@@ -389,7 +524,7 @@ CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化�
 
    
 
-<article id="post-cfgr23" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-atc_notes_i" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -400,159 +535,7 @@ CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化�
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/31/cfgr23/">CF Global Round 23 复盘</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-31T06:31:22.900Z" itemprop="datePublished">2023-07-31</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            866 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            Link: https://codeforces.com/contest/1746/
-C Permutation Operations
-
-对一个 $n-$ 排列进行 $n$ 次操作。第 $i$ 次操作可以将后缀全部加 $i$。求使得操作后序列逆序对最少的一种方案。
-
-有很多种构造方案。我是把第 $i$ 次操作加到 $n-i+1$ 这个数字上。最后显然所有数字全部变成 $n+1+Q_i$，其中 $Q_i$ 单调不减。
-D Paths on the Tree
-
-$n$ 个点的以 $1$ 为根的树。每个点有一个权值。选择 $k$ 条从 $1$ 开始的简单路径覆盖在树上。使得对于每个点，它的儿子们被路径覆盖的次数之间极差为 0/1。在此基础上，最大化权值乘被覆盖次数的和。$n \leq 10^5, k \leq 10^9$。
-
-先看根。假如它有 $s$ 个儿子，那么先给它的儿子各分配 $[\frac{k}{s}]$ 条路径。剩余 $k \bmod s$ 条路径，肯定要分配给 $s$ 个儿子中的某几个。
-dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分配后还剩余 $q$ 条...  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/07/31/cfgr23/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-asm_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/31/asm_notes/">汇编语言学习笔记</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2023-07-31T06:31:22.870Z" itemprop="datePublished">2023-07-31</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            93 words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            数据的表示
-位、字节、字、双字、四字、十字节
-
-位（bit）：一个二进制位，比如 0。
-字节（byte）：8 个 bit，对应八个二进制位或者两个十六进制。有资格分配地址的最小数据单位是字节。对应一个 char 或者 unsigned char。
-字（word）
-双字（double word, dword）
-四字（quadruple word, qword）
-十字节（ten byte, tbyte）
-
-
-  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2023/07/31/asm_notes/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
-   
-
-<article id="post-arc163" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2023/07/31/arc163/">ARC163 补题</a>
+        <a class="p-name article-title" href="/2023/07/31/atc_notes_i/">ATCoder 补题合集 I</a>
       </h1>
     
   
@@ -579,7 +562,7 @@ dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
-            D - Sum of DCC
+            ARC163D - Sum of DCC
 
 
 题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30, \ m \leq n(n+1)/2$。
@@ -589,7 +572,7 @@ dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分
 
 题解：
 考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集 $A,B$，使得所有存在于 $A,B$ 之间的边都是 $A$ 指向 $B$ 的方案数为 $Q$。则 $P=Q-1$。
-引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,…,s_k$。这几个 SCC 作为新点之后，它们依然组成一个竞赛图，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,…,s_k$，那么唯一的点划分方法就是按照 $A={s_1…s_t}, \ B={s_{t+1}…s_{n}}$ 的形式划分。可以看到，这样的...  
+引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,…,s_k$。这几个 SCC 作为新点之后，它们依然组成一个竞赛图，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,…,s_k$，那么唯一的点划分方法就是按照 $A={s_1…s_t}, \ B={s_{t+1}…s_{n}}$ 的形式划分。可以...  
           </div>
         
       </div>
@@ -600,7 +583,7 @@ dfs 处理这个问题。我们假设对于中间的一个节点 $x$，整除分
      
     <a class="right-panel  non-pic  "
       
-      href="/2023/07/31/arc163/" 
+      href="/2023/07/31/atc_notes_i/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
