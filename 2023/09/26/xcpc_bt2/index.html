@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="Dormant Echoes">
 <meta property="og:description" content="CF1746E1 Joking  这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。  感觉是一道好题。不过听说和 IMO2012 的 idea 重了。 首先，我们发现如果确定范围里有两个">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/.com//cf_pic_1.png">
+<meta property="og:image" content="http://example.com/resources/cf_pic_1.png">
 <meta property="article:published_time" content="2023-09-26T06:42:24.008Z">
 <meta property="article:modified_time" content="2024-03-14T08:07:02.892Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/.com//cf_pic_1.png">
+<meta name="twitter:image" content="http://example.com/resources/cf_pic_1.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -336,7 +336,7 @@
 <li>两个排列 $p$ 和 $q$，长度分别为 $n$ 和 $m$。每次可以进行一种操作 $(i,j)$，把 $p$ 和 $q$ 分别以下标 $i$ 和 $j$ 为翻转中心进行一种翻转。例如，$p$ 会从 $p_1, …,p_{i-1},p_i,p_{i+1},…,n$ 变为 $p_{i+1},…,n,p_i,p_1, …,p_{i-1}$。$q$ 同理。构造一种长度不超过 $10^4$ 的操作序列使得两个序列分别变为 $1,2,…,n$ 和 $1,2,…,m$。$n, m \leq 2500$。</li>
 </ul>
 <p>只考虑单个排列的话，我们有如下的策略。</p>
-<p><img src="/.com//cf_pic_1.png" alt></p>
+<p><img src="/resources/cf_pic_1.png" alt=""></p>
 <p>也就是说我们可以在两步内完成一个数字的排位。分开来看，我们分别至多只用 $2n$ 和 $2m$ 个步骤就可以完成两个排列的排序。</p>
 <p>假设实际使用的步数分别为 $tot_p$ 和 $tot_q$。不妨设 $tot_p&gt;tot_q$，如果 $tot_p-tot_q$ 是偶数的话，我们可以通过 $[1,m,1,m,…,1,m]$ 来对排列 $q$ 进行周期为 2 的「不动」操作。</p>
 <p>若 $tot_p-tot_q$ 是奇数，上述操作无法进行。考虑如果 $n$ 和 $m$ 中有一个为奇数（不妨设为 $n$），我们可以通过对排列 $p$ 进行 $[1,2,…,n]$ 进行「不动」操作，同时使得 $tot_p-tot_q$ 变为偶数，于是又可以用上面的步骤完成对齐。</p>
