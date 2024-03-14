@@ -13,20 +13,20 @@
   
   <title>【笔记】ADS | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Topic 1. Splay 复杂度分析用到了势能分析的方法。  \hat{c_i}&#x3D;c_i+\varphi(D_i)-\varphi(D_{i-1})定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)&#x3D;\sum\limits_{i \in T} R(i)&#x3D;\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。  考虑 单个">
+  <meta name="description" content="Topic 1. Splay 复杂度分析 用到了势能分析的方法。 $$ \hat{c_i}&#x3D;c_i+\varphi(D_i)-\varphi(D_{i-1}) $$ 定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)&#x3D;\sum\limits_{i \in T} R(i)&#x3D;\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【笔记】ADS">
 <meta property="og:url" content="http://example.com/2024/02/26/notes_ads/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="Topic 1. Splay 复杂度分析用到了势能分析的方法。  \hat{c_i}&#x3D;c_i+\varphi(D_i)-\varphi(D_{i-1})定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)&#x3D;\sum\limits_{i \in T} R(i)&#x3D;\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。  考虑 单个">
+<meta property="og:description" content="Topic 1. Splay 复杂度分析 用到了势能分析的方法。 $$ \hat{c_i}&#x3D;c_i+\varphi(D_i)-\varphi(D_{i-1}) $$ 定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)&#x3D;\sum\limits_{i \in T} R(i)&#x3D;\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/resources/splay.png">
 <meta property="og:image" content="http://example.com/resources/rbt1.png">
 <meta property="og:image" content="http://example.com/resources/rbt2.png">
 <meta property="og:image" content="http://example.com/resources/rbt3.png">
-<meta property="og:image" content="http://example.com/resources/ads-invfile-1.png">
-<meta property="og:image" content="http://example.com/resources/ads-invfile-2.png">
-<meta property="og:image" content="http://example.com/resources/ads-invfile-3.png">
+<meta property="og:image" content="http://example.com/2024/02/26/notes_ads/%5Cresources%5Cads-invfile-1.png">
+<meta property="og:image" content="http://example.com/2024/02/26/notes_ads/%5Cresources%5Cads-invfile-2.png">
+<meta property="og:image" content="http://example.com/2024/02/26/notes_ads/%5Cresources%5Cads-invfile-3.png">
 <meta property="article:published_time" content="2024-02-26T10:02:35.595Z">
 <meta property="article:modified_time" content="2024-03-14T14:46:22.541Z">
 <meta property="article:author" content="John Doe">
@@ -304,176 +304,229 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="Topic-1-Splay-复杂度分析"><a href="#Topic-1-Splay-复杂度分析" class="headerlink" title="Topic 1. Splay 复杂度分析"></a>Topic 1. Splay 复杂度分析</h3><p>用到了势能分析的方法。</p>
-<script type="math/tex; mode=display">
-\hat{c_i}=c_i+\varphi(D_i)-\varphi(D_{i-1})</script><p>定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)=\sum\limits_{i \in T} R(i)=\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。</p>
-<p><img src="/resources/splay.png" width="80%" height="80%" align=center></p>
+          <h3 id="Topic-1-Splay-复杂度分析">Topic 1. Splay 复杂度分析</h3>
+<p>用到了势能分析的方法。</p>
+<p>$$<br>
+\hat{c_i}=c_i+\varphi(D_i)-\varphi(D_{i-1})<br>
+$$</p>
+<p>定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)=\sum\limits_{i \in T} R(i)=\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。</p>
+<img src="/resources/splay.png" width="80%" height="80%" align=center>
 <p>考虑 <strong>单个</strong> 节点的 Splay 到根的过程，会经历若干次如下过程（其中 zig 至多经过一次）：</p>
 <ul>
-<li><p>引理（对数均值不等式）</p>
-<p>  若有 $a+b \le c$，那么 $\log a + \log b \le 2 \log c - 2$。</p>
-<p>  证明：等价形式 $4ab \le c^2$，这是显然的。</p>
+<li>
+<p>引理（对数均值不等式）</p>
+<p>若有 $a+b \le c$，那么 $\log a + \log b \le 2 \log c - 2$。</p>
+<p>证明：等价形式 $4ab \le c^2$，这是显然的。</p>
 </li>
-<li><p>zig</p>
-<script type="math/tex; mode=display">
-  \begin{aligned}
-  \hat{c_i} & =  c_i+\varphi(D_i)-\varphi(D_{i-1}) \\
-  & = 1 - R(P) - R(X) + R(P') + R(X') \\
-  & = 1 + R(P') - R(X) \\
-  & \le 1 + R(X') - R(X) \\
-  & \le 1 + 3(R(X')-R(X))
-  \end{aligned}</script></li>
-<li><p>zig-zag</p>
-<script type="math/tex; mode=display">
-  \begin{aligned}
-  \hat{c_i} & =  c_i+\varphi(D_i)-\varphi(D_{i-1}) \\
-  & = 2 - R(G) - R(P) - R(X) + R(G') + R(P') + R(X') \\
-  & = 2 - R(P) - R(X) + R(G') + R(P') \\
-  & \le 2 + R(G') + R(P') - 2 R(X)\\
-  \end{aligned}</script><p>  由于 $size(G’) + size(P’) \le size(X’)$，由引理 $R(G’)+R(P’) \le 2R(X’)-2$。</p>
-<p>  进而</p>
-<script type="math/tex; mode=display">
-  \begin{aligned}
-  \hat{c_i} & \le 2(R(X')-R(X)) \\
-  & \le 3(R(X')-R(X))
-  \end{aligned}</script></li>
-<li><p>zig-zig</p>
-<script type="math/tex; mode=display">
-  \begin{aligned}
-  \hat{c_i} & =  c_i+\varphi(D_i)-\varphi(D_{i-1}) \\
-  & = 2 - R(G) - R(P) - R(X) + R(G') + R(P') + R(X') \\
-  & = 2 - R(P) - R(X) + R(G') + R(P')
-  \end{aligned}</script><p>  由于 $size(X) + size(G’) \le size(X’)$，由引理 $R(X)+R(G’) \le 2R(X’)-2$。</p>
-<p>  进而</p>
-<script type="math/tex; mode=display">
-  \begin{aligned}
-  \hat{c_i} & \le 2R(X')-2R(X)+R(P')-R(P) \\
-  & \le 3(R(X')-R(X))
-  \end{aligned}</script></li>
+<li>
+<p>zig</p>
+<p>$$<br>
+\begin{aligned}<br>
+\hat{c_i} &amp; =  c_i+\varphi(D_i)-\varphi(D_{i-1}) \<br>
+&amp; = 1 - R(P) - R(X) + R(P’) + R(X’) \<br>
+&amp; = 1 + R(P’) - R(X) \<br>
+&amp; \le 1 + R(X’) - R(X) \<br>
+&amp; \le 1 + 3(R(X’)-R(X))<br>
+\end{aligned}<br>
+$$</p>
+</li>
+<li>
+<p>zig-zag</p>
+<p>$$<br>
+\begin{aligned}<br>
+\hat{c_i} &amp; =  c_i+\varphi(D_i)-\varphi(D_{i-1}) \<br>
+&amp; = 2 - R(G) - R(P) - R(X) + R(G’) + R(P’) + R(X’) \<br>
+&amp; = 2 - R(P) - R(X) + R(G’) + R(P’) \<br>
+&amp; \le 2 + R(G’) + R(P’) - 2 R(X)\<br>
+\end{aligned}<br>
+$$</p>
+<p>由于 $size(G’) + size(P’) \le size(X’)$，由引理 $R(G’)+R(P’) \le 2R(X’)-2$。</p>
+<p>进而</p>
+<p>$$<br>
+\begin{aligned}<br>
+\hat{c_i} &amp; \le 2(R(X’)-R(X)) \<br>
+&amp; \le 3(R(X’)-R(X))<br>
+\end{aligned}<br>
+$$</p>
+</li>
+<li>
+<p>zig-zig</p>
+<p>$$<br>
+\begin{aligned}<br>
+\hat{c_i} &amp; =  c_i+\varphi(D_i)-\varphi(D_{i-1}) \<br>
+&amp; = 2 - R(G) - R(P) - R(X) + R(G’) + R(P’) + R(X’) \<br>
+&amp; = 2 - R(P) - R(X) + R(G’) + R(P’)<br>
+\end{aligned}<br>
+$$</p>
+<p>由于 $size(X) + size(G’) \le size(X’)$，由引理 $R(X)+R(G’) \le 2R(X’)-2$。</p>
+<p>进而</p>
+<p>$$<br>
+\begin{aligned}<br>
+\hat{c_i} &amp; \le 2R(X’)-2R(X)+R(P’)-R(P) \<br>
+&amp; \le 3(R(X’)-R(X))<br>
+\end{aligned}<br>
+$$</p>
+</li>
 </ul>
 <p>于是，单个节点旋转到根的步数 $\sum\limits_{i=1}^k c_i$ 满足 $\sum\limits_{i=1}^k \hat{c_i} = \left( \sum\limits_{i=1}^k c_i \right )+ \varphi(D_k)-\varphi(D_0)$。$k$ 表示某次操作旋转的次数。</p>
 <p>记第 $l$ 次 Splay 操作总耗时为 $F(l)=\sum\limits_{i=1}^k c_i$。由于 $\sum\limits_{i=1}^k \hat{c_i} \leq 3(R(T)-R(X))+1 = \mathcal{O}(\log n)$，所以 $F(l) + \varphi(D_l) - \varphi(D_{l-1}) \leq \mathcal{O}(\log n)  $。</p>
 <p>再考虑全部操作序列（共 $m$ 次操作）。</p>
 <p>$m$ 次操作累加，得 $\sum\limits_{l=1}^m F(l) + \varphi(D_m) - \varphi(D_0)=\mathcal{O}(m \log n) $</p>
 <p>由于 $\varphi(D_m) - \varphi(D_0) &gt; 0$，故而 $\sum\limits_{l=1}^m F(l) = \mathcal{O}(m \log n)$。这也是整个算法的复杂度。</p>
-<h3 id="Topic-2-Red-Black-Tree"><a href="#Topic-2-Red-Black-Tree" class="headerlink" title="Topic 2. Red-Black Tree"></a>Topic 2. Red-Black Tree</h3><ul>
-<li><p>红黑树的五条性质</p>
+<h3 id="Topic-2-Red-Black-Tree">Topic 2. Red-Black Tree</h3>
+<ul>
+<li>
+<p>红黑树的五条性质</p>
 <ol>
 <li>Every node is either red or black.</li>
 <li>The root is black.</li>
 <li>Every leaf (NIL) is black.</li>
 <li>If a node is red, then both its children are black.</li>
-<li><p>For each node, all simple paths from the node to descendant </p>
+<li>For each node, all simple paths from the node to descendant</li>
+</ol>
 <p>注意有 NIL，也就是说有个虚拟的叶子节点。</p>
 </li>
-</ol>
+<li>
+<p>红黑树的高度界</p>
+<p><img src="/resources/rbt1.png" alt="alt text"></p>
 </li>
-<li><p>红黑树的高度界</p>
-<p>  <img src="/resources/rbt1.png" alt="alt text"></p>
-</li>
-<li><p>插入操作</p>
-<p>  <img src="/resources/rbt2.png" alt="alt text"></p>
-<p>  步骤与正确性分析：</p>
+<li>
+<p>插入操作</p>
+<p><img src="/resources/rbt2.png" alt="alt text"></p>
+<p>步骤与正确性分析：</p>
 <ul>
-<li><p>首先，插入的点令为红点，其父亲若为黑点则可以直接完成插入，接下来只需讨论父亲为红点的情况。记插入红点为 $x$，父亲为 $p$，爷爷为 $g$，叔叔为 $u$。</p>
+<li>
+<p>首先，插入的点令为红点，其父亲若为黑点则可以直接完成插入，接下来只需讨论父亲为红点的情况。记插入红点为 $x$，父亲为 $p$，爷爷为 $g$，叔叔为 $u$。</p>
 </li>
-<li><p>在正确性分析过程中，着重关注性质 4（红子必黑）和性质 5（黑高等同）是否能得到满足。插入前 4/5 均是满足的，插入后性质 4 不再满足（且只有一处），性质 5 依然满足。也就是说，接下来通过归纳证明性质 5 的始终满足，并能经过调整使得性质 4 得到满足。</p>
+<li>
+<p>在正确性分析过程中，着重关注性质 4（红子必黑）和性质 5（黑高等同）是否能得到满足。插入前 4/5 均是满足的，插入后性质 4 不再满足（且只有一处），性质 5 依然满足。也就是说，接下来通过归纳证明性质 5 的始终满足，并能经过调整使得性质 4 得到满足。</p>
 </li>
-<li><p>【初始状态】根据 $u$ 的情况分为两类：显然 $u$ 要么为红点要么为 NIL，分别对应到 Case 1 与 Case 3。</p>
+<li>
+<p>【初始状态】根据 $u$ 的情况分为两类：显然 $u$ 要么为红点要么为 NIL，分别对应到 Case 1 与 Case 3。</p>
 </li>
-<li><p>在接下来的三种 case 的讨论中，我们约定深度最大的那个红点为 $x$，其父亲为 $p$，爷爷为 $g$，叔叔为 $u$。</p>
+<li>
+<p>在接下来的三种 case 的讨论中，我们约定深度最大的那个红点为 $x$，其父亲为 $p$，爷爷为 $g$，叔叔为 $u$。</p>
 </li>
-<li><p>【Case 1】假设调整前此时性质 5 满足，性质 4 只有一处不满足。那么做一次 $g$ 层和 $f,u$ 层的颜色对换。显然对换后 <strong>性质 5 依然可以得到满足</strong>，性质 4 是否满足则要根据 $g$ 父亲的颜色决定。若 $g$ 父亲为黑色，性质 4 得到满足，状态转移结束，红黑树完成颜色维护；否则，将 $g$ 视作新的 $x$（向上递归），转移到 Case 1/2/3，此后性质 4 依然只会有一处不满足。</p>
+<li>
+<p>【Case 1】假设调整前此时性质 5 满足，性质 4 只有一处不满足。那么做一次 $g$ 层和 $f,u$ 层的颜色对换。显然对换后 <strong>性质 5 依然可以得到满足</strong>，性质 4 是否满足则要根据 $g$ 父亲的颜色决定。若 $g$ 父亲为黑色，性质 4 得到满足，状态转移结束，红黑树完成颜色维护；否则，将 $g$ 视作新的 $x$（向上递归），转移到 Case 1/2/3，此后性质 4 依然只会有一处不满足。</p>
 <p>值得一提的是，在本 case 中 $x$ 是可能有后代的。因为 Case 1 不一定总是初始状态，也可能由其它的 Case 1 转移而来。</p>
 <p>在 Case 1 中 $x$ 和 $f$ 的关系并不重要（$x$ 是 $f$ 的左右儿子都执行的一样的颜色对换操作）。</p>
 </li>
-<li><p>【Case 2】假设调整前此时性质 5 满足，性质 4 有一处不满足。那么我们接下来进行一次左旋即可。不难发现左旋之后性质 5 依然是满足的，但性质 4 则未得到修复（依然有且只有一处不满足）。不过我们转移到了 Case 3。</p>
+<li>
+<p>【Case 2】假设调整前此时性质 5 满足，性质 4 有一处不满足。那么我们接下来进行一次左旋即可。不难发现左旋之后性质 5 依然是满足的，但性质 4 则未得到修复（依然有且只有一处不满足）。不过我们转移到了 Case 3。</p>
 <p>仍然，在图中可能 $f$ 具有左子树，$x$ 有子代，$u$ 有子代。不过这些并不影响左旋后性质 5 的始终满足，也不会使得左旋后性质 4 在其它地方得到破坏。Case 3 同理，后续不再说明。</p>
 </li>
-<li><p>【Case 3】假设调整前此时性质 5 满足，性质 4 不满足。那么接下来先进行颜色调换，而后右旋。在纸上画一下可以发现这两波操作之后性质 5 依然满足，同时性质 4 在此处得到修复。</p>
+<li>
+<p>【Case 3】假设调整前此时性质 5 满足，性质 4 不满足。那么接下来先进行颜色调换，而后右旋。在纸上画一下可以发现这两波操作之后性质 5 依然满足，同时性质 4 在此处得到修复。</p>
 </li>
 </ul>
 </li>
-<li><p>删除操作</p>
-<p>  <img src="/resources/rbt3.png" alt="alt text"></p>
-<p>  步骤与正确性分析：</p>
+<li>
+<p>删除操作</p>
+<p><img src="/resources/rbt3.png" alt="alt text"></p>
+<p>步骤与正确性分析：</p>
 <ul>
-<li><p>首先像普通的 BST 那样，在待删除的节点左侧找一个最大的 / 右侧找一个最小的，和待删除节点进行键值交换（不换颜色）。</p>
+<li>
+<p>首先像普通的 BST 那样，在待删除的节点左侧找一个最大的 / 右侧找一个最小的，和待删除节点进行键值交换（不换颜色）。</p>
 </li>
-<li><p>记交换后待删除的节点为 $x$。若 $x$ 为红色则可以直接删除；若为黑色则需要想办法在 $R \to x$ 的路径上加一个黑点（且不影响其他部分，亦即这个黑点只能作用于 $x$ 下的叶子），然后再删除 $x$。接下来只考虑后者。记 $x$ 的父亲为 $p$，兄弟为 $w$，侄子为 $c$。</p>
+<li>
+<p>记交换后待删除的节点为 $x$。若 $x$ 为红色则可以直接删除；若为黑色则需要想办法在 $R \to x$ 的路径上加一个黑点（且不影响其他部分，亦即这个黑点只能作用于 $x$ 下的叶子），然后再删除 $x$。接下来只考虑后者。记 $x$ 的父亲为 $p$，兄弟为 $w$，侄子为 $c$。</p>
 </li>
-<li><p>【初始状态】根据 $x$ 的兄弟 $w$ 分到 Case 1 / Case 2.3.4，再根据侄子 $c$ 的情况分为 Case 2 / Case 3 / Case 4。接下来考虑状态转移，正确性分析时性质 5（黑高等同）会是一个难点。</p>
+<li>
+<p>【初始状态】根据 $x$ 的兄弟 $w$ 分到 Case 1 / Case 2.3.4，再根据侄子 $c$ 的情况分为 Case 2 / Case 3 / Case 4。接下来考虑状态转移，正确性分析时性质 5（黑高等同）会是一个难点。</p>
 </li>
-<li><p>【Case 1】调整前性质 4, 5 均满足。通过 $p,w$ 颜色对换以及一次左旋转移到 Case 2/3/4 的情况（注意两次操作后 $x$ 的兄弟变黑了）。不难发现操作和性质 4 和 5 依然是满足的。</p>
+<li>
+<p>【Case 1】调整前性质 4, 5 均满足。通过 $p,w$ 颜色对换以及一次左旋转移到 Case 2/3/4 的情况（注意两次操作后 $x$ 的兄弟变黑了）。不难发现操作和性质 4 和 5 依然是满足的。</p>
 </li>
-<li><p>【Case 2】调整前性质 4, 5 均满足。若 $p$ 为红色，那么可以将 $p,w$ 颜色对换来使得 $R \to x$ 的路径上多一个合适的黑点。调整直接结束。</p>
-<p>  若 $p$ 为黑色，则我们首先把 $w$ 标红，然后递归地处理 $p$（$x$ 的父亲 $p$ 作为新的 $x$，可能进到 Case 1/2/3/4 中的某个）。注意我们只是要让 $R \to p$ 上的黑点多一个，待删除的 $x$ 本身是 <strong>始终不发生移动的</strong>。只要能处理好这个递归的子任务后，再删除 $x$ 便可以让 $R \to w$ 和 $R \to p$ 的黑高全部到达一个合法的情况。</p>
-<p>  注意 Case 2.2 的 Notation 和图片所示有所差异。</p>
+<li>
+<p>【Case 2】调整前性质 4, 5 均满足。若 $p$ 为红色，那么可以将 $p,w$ 颜色对换来使得 $R \to x$ 的路径上多一个合适的黑点。调整直接结束。</p>
+<p>若 $p$ 为黑色，则我们首先把 $w$ 标红，然后递归地处理 $p$（$x$ 的父亲 $p$ 作为新的 $x$，可能进到 Case 1/2/3/4 中的某个）。注意我们只是要让 $R \to p$ 上的黑点多一个，待删除的 $x$ 本身是 <strong>始终不发生移动的</strong>。只要能处理好这个递归的子任务后，再删除 $x$ 便可以让 $R \to w$ 和 $R \to p$ 的黑高全部到达一个合法的情况。</p>
+<p>注意 Case 2.2 的 Notation 和图片所示有所差异。</p>
 </li>
-<li><p>【Case 3】调整前性质 4, 5 均满足。通过一次 $w,c$ 易色和右旋，改变树的结构以进入 Case 4。显然调整后性质 4, 5 依然是满足的。</p>
+<li>
+<p>【Case 3】调整前性质 4, 5 均满足。通过一次 $w,c$ 易色和右旋，改变树的结构以进入 Case 4。显然调整后性质 4, 5 依然是满足的。</p>
 </li>
-<li><p>【Case 4】调整前性质 4, 5 均满足。通过一次 $p,w$ 易色和某个侄子 $c$ 的红变黑，以及一次左旋，使得有且只有 $x$ 处不满足性质 5，其他依然满足，在此情形下删除 5 即可完成维护。同时显然性质 4 一直得到了满足。</p>
+<li>
+<p>【Case 4】调整前性质 4, 5 均满足。通过一次 $p,w$ 易色和某个侄子 $c$ 的红变黑，以及一次左旋，使得有且只有 $x$ 处不满足性质 5，其他依然满足，在此情形下删除 5 即可完成维护。同时显然性质 4 一直得到了满足。</p>
 </li>
 </ul>
 </li>
-<li><p>SP：若某操作后发现根是红的，将其染黑即可。</p>
+<li>
+<p>SP：若某操作后发现根是红的，将其染黑即可。</p>
 </li>
-<li><p>红黑树的单次 Insert / Delete 都是 $\log$ 的。</p>
+<li>
+<p>红黑树的单次 Insert / Delete 都是 $\log$ 的。</p>
 </li>
 </ul>
-<h3 id="Topic-3-B-Tree"><a href="#Topic-3-B-Tree" class="headerlink" title="Topic 3. B+ Tree"></a>Topic 3. B+ Tree</h3><p>咕</p>
-<h3 id="Topic-4-Inverted-File-Index"><a href="#Topic-4-Inverted-File-Index" class="headerlink" title="Topic 4. Inverted File Index"></a>Topic 4. Inverted File Index</h3><ul>
-<li><p>基本存放方法</p>
-<p>  <img src="\resources\ads-invfile-1.png" alt="alt text"></p>
-<p>  查找时，例如想找 silver truck，只需要将 10 和 11 号的 Posting List 取并。图中取并后剩下 <code>&lt;1,3&gt;</code>，说明检索结果为 1, 3 两篇文章。</p>
-<p>  Posting List 一般采取链表查询。</p>
-</li>
-<li><p>插入（新文档）</p>
-<p>  <img src="\resources\ads-invfile-2.png" alt="alt text"></p>
+<h3 id="Topic-3-B-Tree">Topic 3. B+ Tree</h3>
+<p>咕</p>
+<h3 id="Topic-4-Inverted-File-Index">Topic 4. Inverted File Index</h3>
 <ul>
-<li><p><code>read a document D</code> 直接遍历所有文档</p>
+<li>
+<p>基本存放方法</p>
+<p><img src="%5Cresources%5Cads-invfile-1.png" alt="alt text"></p>
+<p>查找时，例如想找 silver truck，只需要将 10 和 11 号的 Posting List 取并。图中取并后剩下 <code>&lt;1,3&gt;</code>，说明检索结果为 1, 3 两篇文章。</p>
+<p>Posting List 一般采取链表查询。</p>
 </li>
-<li><p><code>read a term T in D</code> 读取所有的 term</p>
-<p>  需要语义分割算法。</p>
+<li>
+<p>插入（新文档）</p>
+<p><img src="%5Cresources%5Cads-invfile-2.png" alt="alt text"></p>
+<ul>
+<li>
+<p><code>read a document D</code> 直接遍历所有文档</p>
 </li>
-<li><p><code>Find (Dictionary, T)</code> &amp; <code>Insert (Dictionary, T)</code> 看某个 term 是否在字典（参见上表 Term 列）中；如果不在则插入。</p>
-<p>  可以使用 B+ / Trie 等数据结构对 Term 进行存储。 </p>
+<li>
+<p><code>read a term T in D</code> 读取所有的 term</p>
+<p>需要语义分割算法。</p>
 </li>
-<li><p><code>Insert a node to T&#39;s posting list</code> 向 $T$ 后面跟的 Posting List 插入本文档的索引。</p>
-<p>  一般使用链表存储 Posting List。因为涉及插入操作且长度不定。</p>
+<li>
+<p><code>Find (Dictionary, T)</code> &amp; <code>Insert (Dictionary, T)</code> 看某个 term 是否在字典（参见上表 Term 列）中；如果不在则插入。</p>
+<p>可以使用 B+ / Trie 等数据结构对 Term 进行存储。</p>
+</li>
+<li>
+<p><code>Insert a node to T's posting list</code> 向 $T$ 后面跟的 Posting List 插入本文档的索引。</p>
+<p>一般使用链表存储 Posting List。因为涉及插入操作且长度不定。</p>
 </li>
 </ul>
 </li>
-<li><p>查询（对于若干词汇）</p>
-<p>  例如，现有关键词 $A,B,C$，只需要将 $A,B,C$ 的 Posting List 中的链表项取 AND 即可。</p>
+<li>
+<p>查询（对于若干词汇）</p>
+<p>例如，现有关键词 $A,B,C$，只需要将 $A,B,C$ 的 Posting List 中的链表项取 AND 即可。</p>
 </li>
-<li><p>Tricks</p>
+<li>
+<p>Tricks</p>
 <ol>
-<li><p>Memory 不够时的插入</p>
-<p> 解决方案如上图所示。当内存不够时，可以把当前处理好的 Posting List 事先写入硬盘，最后在排序之后依次合并（排序是为了归并加速）。</p>
+<li>
+<p>Memory 不够时的插入</p>
+<p>解决方案如上图所示。当内存不够时，可以把当前处理好的 Posting List 事先写入硬盘，最后在排序之后依次合并（排序是为了归并加速）。</p>
 </li>
-<li><p>Posting List 存储空间不够</p>
-<p> 使用分布式存储，方案有如下两种（一般而言认为第二种更好）。</p>
-<p> <img src="\resources\ads-invfile-3.png" alt="alt text"></p>
+<li>
+<p>Posting List 存储空间不够</p>
+<p>使用分布式存储，方案有如下两种（一般而言认为第二种更好）。</p>
+<p><img src="%5Cresources%5Cads-invfile-3.png" alt="alt text"></p>
 </li>
-<li><p>Dynamic Indexing</p>
-<p> 假如整个 Index 的修改需要很长时间，那么一旦产生新文档就将其加入 Index 是一个低效率的方法。</p>
-<p> 解决方案是将 Index 分为 Main Index（快读慢写）和 Auxiliary Index（慢读快写）。每当有新文档产生时先将其加入 Auxiliary Index，等一定周期（例如一天）统一地将 Auxiliary Index 中的内容加入 Main Index。</p>
-<p> 注意搜索时需要同时搜索 Main Index 和 Auxiliary Index。</p>
+<li>
+<p>Dynamic Indexing</p>
+<p>假如整个 Index 的修改需要很长时间，那么一旦产生新文档就将其加入 Index 是一个低效率的方法。</p>
+<p>解决方案是将 Index 分为 Main Index（快读慢写）和 Auxiliary Index（慢读快写）。每当有新文档产生时先将其加入 Auxiliary Index，等一定周期（例如一天）统一地将 Auxiliary Index 中的内容加入 Main Index。</p>
+<p>注意搜索时需要同时搜索 Main Index 和 Auxiliary Index。</p>
 </li>
-<li><p>Posting List 地址差分压缩</p>
-<p> 回顾本节的第一幅图。每个 term 实际上对应了一个 Posting List。</p>
-<p> 每个 Posting List 的地址都不一样，将他们存储下来，例如 $\{2,15,47,\cdots,58879,58890,\cdots\}$ 可能需要很大的空间开销（例如 long long 都不够存储地址位置）。</p>
-<p> 一个可能的方法是使用差分「压缩」这些数字的大小。比如上面的例子就可以压缩为 $\{2,13(15-2),32(47-15),\cdots,11,\cdots\}$，节省数字的存储空间。</p>
+<li>
+<p>Posting List 地址差分压缩</p>
+<p>回顾本节的第一幅图。每个 term 实际上对应了一个 Posting List。</p>
+<p>每个 Posting List 的地址都不一样，将他们存储下来，例如 ${2,15,47,\cdots,58879,58890,\cdots}$ 可能需要很大的空间开销（例如 long long 都不够存储地址位置）。</p>
+<p>一个可能的方法是使用差分「压缩」这些数字的大小。比如上面的例子就可以压缩为 ${2,13(15-2),32(47-15),\cdots,11,\cdots}$，节省数字的存储空间。</p>
 </li>
-<li><p>查询策略：从更稀有的单词开始查找</p>
-<p> 之前提到，对于关键词 $A,B,C$，要查询对应的文档，只需要将 $A,B,C$ 的 Posting List 中的链表项取 AND 即可。</p>
-<p> 如果 term $A$ 的链表大小为 $10$，term $B$ 的 $10^3$，term $C$ 的链表大小为 $10^6$，显然以 $A \to B \to C$ 的顺序进行取和更好。</p>
+<li>
+<p>查询策略：从更稀有的单词开始查找</p>
+<p>之前提到，对于关键词 $A,B,C$，要查询对应的文档，只需要将 $A,B,C$ 的 Posting List 中的链表项取 AND 即可。</p>
+<p>如果 term $A$ 的链表大小为 $10$，term $B$ 的 $10^3$，term $C$ 的链表大小为 $10^6$，显然以 $A \to B \to C$ 的顺序进行取和更好。</p>
 </li>
 </ol>
 </li>
 </ul>
-<h3 id="Topic-5"><a href="#Topic-5" class="headerlink" title="Topic 5."></a>Topic 5.</h3>
+<h3 id="Topic-5">Topic 5.</h3>
+
         
       </div>
 
