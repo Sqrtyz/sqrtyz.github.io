@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>【杂记】前端初探：CSS | Dormant Echoes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前端三部曲之一。CSS 描述了网页的布局。整理自「菜鸟教程」。  2.0 什么是 CSS CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，CSS 文件扩展名为 .css 。 通过使用 CSS 可以大大提升网页开发的工作效率。 2.1 CSS 选择器 如果要在 HTML 元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【杂记】前端初探：CSS">
+<meta property="og:url" content="http://example.com/2023/07/31/bydnotes_css/index.html">
+<meta property="og:site_name" content="Dormant Echoes">
+<meta property="og:description" content="前端三部曲之一。CSS 描述了网页的布局。整理自「菜鸟教程」。  2.0 什么是 CSS CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，CSS 文件扩展名为 .css 。 通过使用 CSS 可以大大提升网页开发的工作效率。 2.1 CSS 选择器 如果要在 HTML 元素">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/resources/box-model.gif">
+<meta property="article:published_time" content="2023-07-31T06:31:22.950Z">
+<meta property="article:modified_time" content="2024-03-14T08:10:32.423Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Unfinished">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/resources/box-model.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.jpg">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
+  <div id="banner-dim"></div>
+</div> 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <img src="/assets/icon.png" width="33px" height="20.5px">
+        <!---
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        -->
+      </div>
+      <div id="vivia-diy-title">Dormant Echoes </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="material-symbols-rounded light-mode-icon">wb_sunny</span>
+      <span class="material-symbols-rounded dark-mode-icon">dark_mode</span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <span class="material-symbols-rounded rss">rss_feed</span>
+      </a>
+    
+    <a id="nav-search-btn" class="nav-icon" title="Search" style="display: none;">
+      <span class="material-symbols-rounded">search</span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <span class="material-symbols-rounded">menu</span>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sqrtyz </div>
+      <div class="dot"></div>
+      <div class="subtitle">求知没有尽头 厄运只是开始 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://codeforces.com/profile/Sqrtyz" title="Codeforces"><i class="fa-solid fa-code"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Sqrtyz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/Notes/">
+                Notes
+                <div class="category-count">12</div>
+            </a>
+        
+            <a class="category-link" href="/categories/Others/">
+                Others
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/XCPC/">
+                XCPC
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2024/03 ">
+          March 2024 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2024/02 ">
+          February 2024 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/09 ">
+          September 2023 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2023/07 ">
+          July 2023 
+          <div class="archive-count">11 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <li>
+            <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/07/notes_dbs/">【笔记】数据库系统</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/05/notes_cod/">【笔记】计算机组成</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-bydnotes_css" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        【杂记】前端初探：CSS
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:22.950Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/Notes/">Notes</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.8k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unfinished/" rel="tag">Unfinished</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <blockquote>
+<p>前端三部曲之一。CSS 描述了网页的布局。整理自「菜鸟教程」。</p>
+</blockquote>
+<h3 id="2-0-什么是-CSS">2.0 什么是 CSS</h3>
+<p>CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，CSS 文件扩展名为 <code>.css</code> 。</p>
+<p>通过使用 CSS 可以大大提升网页开发的工作效率。</p>
+<h3 id="2-1-CSS-选择器">2.1 CSS 选择器</h3>
+<p>如果要在 HTML 元素中设置 CSS 样式，需要在元素中设置一些选择器——<strong>告诉网页在什么地方运用什么样的样式</strong>。</p>
+<ul>
+<li>
+<p>权重 1000：<strong>内联样式表</strong></p>
+<p>在标签内部加上 <code>style=&quot;&quot;</code> 属性即可。属性内部的条目以分号分隔。</p>
+<p>推荐在比较特殊的个别元素身上使用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">style</span>=<span class="string">&quot;color:red;&quot;</span>&gt;</span> Redemption <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>权重 100：<strong>ID 选择器</strong></p>
+<p>如果我们想让 body 里面的代码看起来更紧凑一些…… 为何不在 head 中事先声明某个 ID 的样式呢？</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span> <span class="tag">&lt;<span class="name">html</span>&gt;</span> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-id">#para1</span></span></span><br><span class="line"><span class="language-css">    &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>:red;</span></span><br><span class="line"><span class="language-css">    &#125; </span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;para1&quot;</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这个段落不受该样式的影响。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果是，「Hello world」变成了居中红色文本。</p>
+</li>
+<li>
+<p>权重 10：<strong>Class 选择器</strong></p>
+<p>如果想让一类元素都变成一个样式，试试 class 选择器。</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span> <span class="tag">&lt;<span class="name">html</span>&gt;</span> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.fuck</span></span></span><br><span class="line"><span class="language-css">    &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>:red;</span></span><br><span class="line"><span class="language-css">    &#125; </span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;fuck&quot;</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这个段落不受该样式的影响。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果同上。</p>
+</li>
+<li>
+<p>权重 1：<strong>HTML 标签选择器</strong></p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span> <span class="tag">&lt;<span class="name">html</span>&gt;</span> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">p</span></span></span><br><span class="line"><span class="language-css">    &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>:red;</span></span><br><span class="line"><span class="language-css">    &#125; </span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这个段落受该样式的影响。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span> <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果是，两行字都居中变红了。</p>
+</li>
+<li>
+<p>CSS 优先级法则：</p>
+<ul>
+<li><strong>A</strong> 选择器都有一个权值，权值越大越优先；</li>
+<li><strong>B</strong> 当权值相等时，后出现的样式表设置要优于先出现的样式表设置；</li>
+<li><strong>C</strong> 创作者的规则高于浏览者：即网页编写者设置的 CSS 样式的优先权高于浏览器所设置的样式；</li>
+<li><strong>D</strong> 继承的 CSS 样式不如后来指定的 CSS 样式；</li>
+<li><strong>E</strong> 在同一组属性设置中标有 <code>!important</code> 规则的优先级最大。关于 <code>!important</code> 的使用，后面会再次涉及。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-CSS-的创建">2.2 CSS 的创建</h3>
+<p>插入 <strong>样式表</strong> 的方法有三种：</p>
+<ul>
+<li>外部样式表（External style sheet）</li>
+<li>内部样式表（Internal style sheet）</li>
+<li>内联样式（Inline style）</li>
+</ul>
+<p>在 2.1 中，我们介绍的四种选择方式，给出的示例代码都属于 <strong>内部样式表</strong> 或者 <strong>内联样式</strong>。而我们最常用的其实是 <strong>外部样式表</strong>，也就是我们常见的 <code>.css</code> 文件。</p>
+<p>当样式需要应用于很多页面时，外部样式表将是理想的选择。在使用外部样式表的情况下，我们可以通过改变一个文件来改变整个站点的外观。</p>
+<p><strong>每个页面使用 <code>&lt;link&gt;</code> 标签即可链接到某个样式表，<code>&lt;link&gt;</code> 标签位于文档头部。具体如下：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;mystyle.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>rel=&quot;stylesheet&quot;</code> 表示这个链接关联的是一个样式表文档。它同时说明这个 link 将在文档初始化时被使用。</li>
+<li><code>type=&quot;text/css&quot;</code> type 属性规定被链接资源的 MIME 类型。<em>根据试验这个属性没有的时候也能正常工作？</em></li>
+<li><code>href=&quot;mystyle.css&quot;</code> 告知了 CSS 的地址。</li>
+<li>注意 <code>&lt;link&gt;</code> 标签没有对应的结束标签。这意味着你不需要在结尾再来一个 <code>&lt;/link&gt;</code>。</li>
+</ul>
+<p>浏览器会从文件 <code>mystyle.css</code> 中读到样式声明，并根据它来格式文档。<strong>你可以想象成，把 CSS 文件插入到 html 文件的 head &gt; style 中。</strong></p>
+<p>下面是一个样式表文件的例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hr &#123;<span class="attribute">color</span>:sienna;&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">margin-left</span>:<span class="number">20px</span>;&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">&quot;/images/back40.gif&quot;</span>);&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-基本的-CSS-参数表">2.3 基本的 CSS 参数表</h3>
+<h5 id="1）背景-Background">1）背景 Background</h5>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Example Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>background-color</code></td>
+<td><code>#b0c4de</code></td>
+<td>设置背景颜色</td>
+</tr>
+<tr>
+<td><code>background-image</code></td>
+<td><code>url('bg.png')</code></td>
+<td>设置背景图片</td>
+</tr>
+<tr>
+<td><code>background-repeat</code></td>
+<td><code>repeat-x</code></td>
+<td>设置背景平铺方式</td>
+</tr>
+<tr>
+<td><code>background-attachment</code></td>
+<td><code>no</code> / <code>fixed</code></td>
+<td>设置背景图像是否固定或者随着页面的其余部分滚动</td>
+</tr>
+<tr>
+<td><code>background-position</code></td>
+<td><code>right top</code></td>
+<td>设置背景贴合位置</td>
+</tr>
+</tbody>
+</table>
+<p>当使用简写属性时，属性值的顺序为上述 Keys 的列顺序。例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background</span>:<span class="number">#ffffff</span> <span class="built_in">url</span>(<span class="string">&#x27;img_tree.png&#x27;</span>) no-repeat right top;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2）文本-Text">2）文本 Text</h5>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Example Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>rgb(255,0,0)</code></td>
+<td>设置文字颜色</td>
+</tr>
+<tr>
+<td><code>text-align</code></td>
+<td><code>center</code> / <code>right</code> / <code>justify</code>（等宽）</td>
+<td>文本对齐方式</td>
+</tr>
+<tr>
+<td><code>text-indent</code></td>
+<td><code>3px</code></td>
+<td>设置文本缩进</td>
+</tr>
+<tr>
+<td><code>line-height</code></td>
+<td><code>200%</code></td>
+<td>设置文字行高</td>
+</tr>
+<tr>
+<td><code>text-decoration</code></td>
+<td><code>underline</code>（下划线）/ <code>blink</code>（闪烁）</td>
+<td>向文本添加修饰</td>
+</tr>
+</tbody>
+</table>
+<p>更多文本属性参见 <a target="_blank" rel="noopener" href="https://www.runoob.com/css/css-text.html">这里</a>。</p>
+<h5 id="3）字体-Font">3）字体 Font</h5>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Example Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font-family</code></td>
+<td><code>&quot;Times New Roman&quot;, Times, serif</code></td>
+<td>设置文本字体系列</td>
+</tr>
+<tr>
+<td><code>font-style</code></td>
+<td><code>italic</code> / <code>normal</code></td>
+<td>设置字体样式属性</td>
+</tr>
+<tr>
+<td><code>font-size</code></td>
+<td><code>14px</code> / <code>2.5em</code> / <code>90%</code></td>
+<td>设置文本字体大小</td>
+</tr>
+</tbody>
+</table>
+<p>提示：</p>
+<ul>
+<li><code>font-family</code> 属性应该设置几个字体名称作为一种「后备」机制，如果浏览器不支持第一种字体，将尝试下一种字体。</li>
+<li>font-size 换算：px / 16 = em。</li>
+<li>同样的，可以使用 <code>font:15px arial,sans-serif;</code> 类似语句一次性设定某个文本的字体属性。</li>
+</ul>
+<h5 id="4）链接-Link">4）链接 Link</h5>
+<p>我们定制链接的样式时，采用下列语句：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;<span class="attribute">color</span>:<span class="number">#000000</span>;&#125;      <span class="comment">/* 未访问链接*/</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">color</span>:<span class="number">#00FF00</span>;&#125;  <span class="comment">/* 已访问链接 */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">color</span>:<span class="number">#FF00FF</span>;&#125;  <span class="comment">/* 鼠标移动到链接上 */</span></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;<span class="attribute">color</span>:<span class="number">#0000FF</span>;&#125;  <span class="comment">/* 鼠标点击时 */</span></span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>&#123;&#125;</code> 内部的内容和 2）3）通用。不同的是，在进行选择的时候，链接这一元素 <code>a</code> 被分为了四类：link, visited, hover &amp; active。它们分别代表链接的四种状态，而我们也可以为这四种状态分别编写不同的样式。</p>
+<h5 id="5）列表-List">5）列表 List</h5>
+<p>让我们先复习一下有序列表和无序列表的语法。有序列表是</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而无序列表是</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Example Values</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list-style-type</code></td>
+<td><code>circle</code> / <code>square</code></td>
+<td>确定 <strong>无序</strong> 列表的编号样式</td>
+</tr>
+<tr>
+<td><code>list-style-type</code></td>
+<td><code>upper-roman</code> / <code>lower-alpha</code></td>
+<td>确定 <strong>有序</strong> 列表的编号样式</td>
+</tr>
+<tr>
+<td><code>list-style-image</code></td>
+<td><code>url('a.gif')</code></td>
+<td>将无序列表的编号换成一个小图像</td>
+</tr>
+</tbody>
+</table>
+<h5 id="6）表格-Table">6）表格 Table</h5>
+<h3 id="2-4-CSS-盒子模型">2.4 CSS 盒子模型</h3>
+<ul>
+<li>
+<p>盒子模型（Box Model）简介：</p>
+<ul>
+<li><strong>Margin |</strong> 清除边框外的区域，外边距是透明的。</li>
+<li><strong>Border |</strong> 围绕在内边距和内容外的边框。</li>
+<li><strong>Padding |</strong> 清除内容周围的区域，内边距是透明的。</li>
+<li><strong>Content |</strong> 盒子的内容，显示文本和图像。</li>
+</ul>
+<p><img src="/resources/box-model.gif" alt="Box Model"></p>
+</li>
+<li>
+<p>盒子模型实例：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: lightgrey;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border</span>: <span class="number">25px</span> solid green;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">padding</span>: <span class="number">25px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">margin</span>: <span class="number">25px</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>盒子模型演示<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这里是盒子内的实际内容。有 25px 内间距，25px 外间距、25px 绿色边框。<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果如下（注意 margin 和 padding 是完全不可见的）：</p>
+  <div style="background-color: lightgrey;width: 300px;border: 25px solid green;padding: 25px;margin: 25px;">
+  这里是盒子内的实际内容。有 25px 内间距，25px 外间距、25px 绿色边框。
+  </div></li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2023/07/31/bydnotes_git/"
+      title="【杂记】Git"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        【杂记】Git
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2023/07/31/xcpc_bt1/"
+      title="【算法竞赛】补题 I"
+     >
+
+    <p class="title-text">
+      
+        【算法竞赛】补题 I
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 Sqrtyz<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn" onclick="topFunction()">
+        <span class="material-symbols-rounded">keyboard_arrow_up</span>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.style.opacity = 1;
+        } else {
+            btn.style.opacity = 0;
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>
