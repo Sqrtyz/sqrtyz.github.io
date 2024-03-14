@@ -156,7 +156,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/Notes/">
                 Notes
-                <div class="category-count">2</div>
+                <div class="category-count">12</div>
+            </a>
+        
+            <a class="category-link" href="/categories/Others/">
+                Others
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/XCPC/">
+                XCPC
+                <div class="category-count">4</div>
             </a>
         </div>
     </div>
@@ -182,7 +192,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">4 </div>
+          <div class="archive-count">3 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -212,10 +222,6 @@
       <ul>
         
           <li>
-            <a href="/2024/03/14/test/">test</a>
-          </li>
-        
-          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -231,6 +237,10 @@
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
           </li>
         
+          <li>
+            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -241,71 +251,6 @@
     </div>
     <div id="content-body">
       
-   
-
-<article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/03/14/test/">test</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-03-14T15:39:27.000Z" itemprop="datePublished">2024-03-14</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-    Uncategorized 
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1 words 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-  
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2024/03/14/test/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
- 
-
    
 
 <article id="post-notes_it" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
@@ -509,7 +454,7 @@ Relation Schema 和 Rela...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.2k words 
+            1.1k words 
           </div>
         </div>
         
@@ -532,14 +477,11 @@ Computer Organization
 
 Hardware
 
-
-
-
 Datapath 可以理解为一条「流水线」。
 
 
 Software
-  
+
 
 
 指令集（ISA）
@@ -558,7 +500,7 @@ Basic Concepts
 [CONCEPT] Response Time (Execution Time)：响应时间，how long it takes to do a task.
 
 
-[CONCEPT] Throughput (Bandwidth)：吞吐率，total ...  
+[CONCEPT] Throughput (Bandwidth)：吞吐率，total work ...  
           </div>
         
       </div>
@@ -1108,6 +1050,80 @@ sizeof() ...
     <a class="right-panel  non-pic  "
       
       href="/2023/07/31/notes_littlec/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+ 
+
+   
+
+<article id="post-xcpc_linearbase" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2023/07/31/xcpc_linearbase/">【算法竞赛】线性基</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2023-07-31T06:31:23.790Z" itemprop="datePublished">2023-07-31</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/XCPC/">XCPC</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            728 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            问题导入
+给定一个图。求一条回路使得该路径的异或和最大。
+线性基
+线性基的构造
+对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。
+123456789101112for(int i = 1; i &lt;= cnt; ++i) &#123;        LL cur = S[i];        for(int k = 59; k &gt;= 0; --k) &#123;            if(cur &amp; (1ll &lt;&lt; k)) &#123;                if(d[k]) cur ^= d[k];                else &#123;                    d[k] = cur;                    break;                &#125;            &#125;        &#125;    &#125;
+线性基的性质及略证
+如此构建后，线性基中的所有数满足如下性质。
+
+
+若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也...  
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2023/07/31/xcpc_linearbase/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

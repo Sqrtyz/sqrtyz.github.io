@@ -161,7 +161,17 @@
       <div class="category-box">
             <a class="category-link" href="/categories/Notes/">
                 Notes
-                <div class="category-count">2</div>
+                <div class="category-count">12</div>
+            </a>
+        
+            <a class="category-link" href="/categories/Others/">
+                Others
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/XCPC/">
+                XCPC
+                <div class="category-count">4</div>
             </a>
         </div>
     </div>
@@ -187,7 +197,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">4 </div>
+          <div class="archive-count">3 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -217,10 +227,6 @@
       <ul>
         
           <li>
-            <a href="/2024/03/14/test/">test</a>
-          </li>
-        
-          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -234,6 +240,10 @@
         
           <li>
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
           </li>
         
       </ul>
@@ -963,7 +973,7 @@
 <p>需要厘清的是，如果将 <strong>可变数据类型</strong> <code>var</code> 的「子内容」也看成数据类型的话，这些「子内容」的本质亦为指针。若某个「子内容」是不可变数据，那么修改「子内容」后，「子内容」的指向也将发生变化。</p>
 <p>例如，列表元素具有指针本质。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">b = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">b[<span class="number">0</span>] = <span class="number">2</span></span><br><span class="line">b[<span class="number">2</span>] = <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/p1.png" alt=""></p>
+<p><img src="images/p1.png" alt="" width="80%"></p>
 <p>元组元素也具有指针本质。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = (<span class="number">233</span>, a, a)</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line"><span class="built_in">print</span>(b)</span><br></pre></td></tr></table></figure>
 <p>上述代码输出 <code>(233, [10, 2, 3], [10, 2, 3])</code> 。</p>
