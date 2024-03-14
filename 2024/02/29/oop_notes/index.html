@@ -11,17 +11,17 @@
   <meta charset="utf-8">
   
   
-  <title>数学建模学习笔记 | Dormant Echoes</title>
+  <title>OOP 学习笔记 | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="0924 1. 秘密共享问题   组合解法  $2n + 1$ 个人，开锁阈值为 $n+1$。最少几把锁？  考虑某把锁 $A$。显然 $A$ 至多只能有 $n$ 个人不能开（1）（一旦有 $n+1$ 个人就暴毙了） 考虑来了 $a_1,a_2,\cdots,a_n$ 这 $n$ 个人，按理说它们不能开锁。注意到无论多少个只制约了小于 $n$ 个人的锁在这 $n$ 个人面前都是无效的，根据（1）我">
+  <meta name="description" content="类 (class)  类成员函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学建模学习笔记">
-<meta property="og:url" content="http://example.com/2023/09/26/math_modeling_notes/index.html">
+<meta property="og:title" content="OOP 学习笔记">
+<meta property="og:url" content="http://example.com/2024/02/29/oop_notes/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="0924 1. 秘密共享问题   组合解法  $2n + 1$ 个人，开锁阈值为 $n+1$。最少几把锁？  考虑某把锁 $A$。显然 $A$ 至多只能有 $n$ 个人不能开（1）（一旦有 $n+1$ 个人就暴毙了） 考虑来了 $a_1,a_2,\cdots,a_n$ 这 $n$ 个人，按理说它们不能开锁。注意到无论多少个只制约了小于 $n$ 个人的锁在这 $n$ 个人面前都是无效的，根据（1）我">
+<meta property="og:description" content="类 (class)  类成员函数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-09-26T06:39:13.446Z">
-<meta property="article:modified_time" content="2023-09-26T07:42:51.534Z">
+<meta property="article:published_time" content="2024-02-29T07:24:32.879Z">
+<meta property="article:modified_time" content="2024-03-04T09:54:32.639Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
@@ -157,14 +157,19 @@
     <div class="widget">
       <h3 class="widget-title">Categories</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">
-                算法竞赛
+            <a class="category-link" href="/categories/Notes/">
+                Notes
+                <div class="category-count">13</div>
+            </a>
+        
+            <a class="category-link" href="/categories/XCPC/">
+                XCPC
                 <div class="category-count">4</div>
             </a>
         
-            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
-                笔记
-                <div class="category-count">9</div>
+            <a class="category-link" href="/categories/Others/">
+                Others
+                <div class="category-count">1</div>
             </a>
         </div>
     </div>
@@ -188,14 +193,24 @@
       <h3 class="widget-title">Archives</h3>
       
       
+        <a class="archive-link" href="/archives/2024/03 ">
+          March 2024 
+          <div class="archive-count">3 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2024/02 ">
+          February 2024 
+          <div class="archive-count">3 </div>
+        </a>
+      
         <a class="archive-link" href="/archives/2023/09 ">
           September 2023 
-          <div class="archive-count">2 </div>
+          <div class="archive-count">1 </div>
         </a>
       
         <a class="archive-link" href="/archives/2023/07 ">
           July 2023 
-          <div class="archive-count">12 </div>
+          <div class="archive-count">11 </div>
         </a>
       
     </div>
@@ -210,23 +225,23 @@
       <ul>
         
           <li>
-            <a href="/2023/09/26/cf_notes_i/">Codeforces 补题合集 I</a>
+            <a href="/2024/03/10/it_notes/">【笔记】信息理论</a>
           </li>
         
           <li>
-            <a href="/2023/09/26/math_modeling_notes/">数学建模学习笔记</a>
+            <a href="/2024/03/07/DBS_notes/">【笔记】数据库系统</a>
           </li>
         
           <li>
-            <a href="/2023/07/31/vscode_setting/">VSCode 设置相关</a>
+            <a href="/2024/03/05/cod_notes/">【笔记】计算机组成</a>
           </li>
         
           <li>
-            <a href="/2023/07/31/python_notes/">Python 3 Getting Started</a>
+            <a href="/2024/02/29/oop_notes/">OOP 学习笔记</a>
           </li>
         
           <li>
-            <a href="/2023/07/31/little_c_programming/">C 小程笔记</a>
+            <a href="/2024/02/26/crypto/">密码学 学习笔记</a>
           </li>
         
       </ul>
@@ -240,7 +255,7 @@
     <div id="content-body">
        
 
-<article id="post-math_modeling_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-oop_notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   
     
    
@@ -253,7 +268,7 @@
   
     
       <h1 class="p-name article-title" itemprop="headline name">
-        数学建模学习笔记
+        OOP 学习笔记
       </h1>
     
   
@@ -261,18 +276,18 @@
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2023-09-26T06:39:13.446Z" itemprop="datePublished">2023-09-26</time>
+  <time class="dt-published" datetime="2024-02-29T07:24:32.879Z" itemprop="datePublished">2024-02-29</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  <a class="meta-cate-link" href="/categories/Notes/">Notes</a>
    
 </div>
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            926 words 
+            7 words 
           </div>
         </div>
         
@@ -281,83 +296,9 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h2 id="0924">0924</h2>
-<h3 id="1-秘密共享问题">1. 秘密共享问题</h3>
+          <h3 id="类-class">类 (class)</h3>
 <ul>
-<li>
-<p>组合解法</p>
-<blockquote>
-<p>$2n + 1$ 个人，开锁阈值为 $n+1$。最少几把锁？</p>
-</blockquote>
-<p>考虑某把锁 $A$。显然 $A$ 至多只能有 $n$ 个人不能开（1）（一旦有 $n+1$ 个人就暴毙了）</p>
-<p>考虑来了 $a_1,a_2,\cdots,a_n$ 这 $n$ 个人，按理说它们不能开锁。注意到无论多少个只制约了小于 $n$ 个人的锁在这 $n$ 个人面前都是无效的，根据（1）我们知道：要制约这 $n$ 个人，我们必须拿一把 $(a_1, a_2, \cdots, a_n)$ 都不能开的锁。</p>
-<p>枚举所有的 $\binom{2n+1}{n}$ 个来者组合，我们可以知道有 $\binom{2n+1}{n}$ 种锁都是必要的。考察这种方案，我们已经足够使得任意 $n$ 个人不能打开，任意 $n+1$ 个人可以打开。这意味着这个问题的最小需要的锁的数量就是 $\binom{2n+1}{n}$。</p>
-</li>
-<li>
-<p>密码学解法：Shamir 门限机制</p>
-<blockquote>
-<p>$n$ 个人，开锁阈值为 $t$。</p>
-</blockquote>
-<p>事先确定 $x_1, x_2, …, x_{t-1}$ 和 $n$ 个模 $p$ 下互不相同的整数 $c_1, c_2, …, c_n$。模数 $p \ge n$ 且为素数。</p>
-<p>假设秘密为 $K$，确定 $c_1, c_2, …, c_n$，$b_j \equiv f(c_j) \equiv (K + \sum\limits_{i=1}^{t-1}c_j^ix_i) \ (\bmod \ p)$。</p>
-<p><strong>加密</strong> 对于第 $j$ 个人，告诉 $(b_j,c_j)$。</p>
-<p><strong>开锁</strong> 当有 $t$ 个人集齐时（简便起见编号为 $1 \sim t$），解同余意义下的线性方程组</p>
-<p>$$<br>
-\begin{bmatrix}<br>
-1 &amp; c_1 &amp; c_1^2 &amp; \cdots &amp; c_1^{t-1} \newline<br>
-1 &amp; c_2 &amp; c_2^2 &amp; \cdots &amp; c_2^{t-1} \newline<br>
-\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots \newline<br>
-1 &amp; c_t &amp; c_t^2 &amp; \cdots &amp; c_t^{t-1} \newline<br>
-\end{bmatrix}<br>
-\begin{bmatrix}<br>
-K \newline<br>
-x_1 \newline<br>
-\vdots \newline<br>
-x_{t-1} \newline<br>
-\end{bmatrix} \equiv<br>
-\begin{bmatrix}<br>
-b_1 \newline<br>
-b_2 \newline<br>
-\vdots \newline<br>
-b_t \newline<br>
-\end{bmatrix} (\bmod \ p)$$</p>
-<p>左侧是一个范特蒙德行列式，由于行列式非零（$c_i$ 互不相同）所以系数矩阵的秩为 $t$，同时正向的计算保证方程组有且只有一个解。</p>
-<p>当集齐 $t$ 个人时，这个线性方程组可以解得模 $p$ 意义下的唯一解。但凡少一个人，这个方程都有无限个解。</p>
-</li>
-<li>
-<p>数论解法：Asmuth-Bloom 门限机制</p>
-<blockquote>
-<p>$n$ 个人，开锁阈值为 $t$。</p>
-</blockquote>
-<p>选取整数 $p$ 和 $m_1, m_2, …, m_n$。要求 $p &gt; K$，$m_1,m_2, …, m_n$ 单调递增且两两互素。$p$ 和所有 $m_i$ 互素。</p>
-<p>$\frac{m_1m_2…m_t}{m_{n-t+2}…m_n} &gt; p$，或者说任意 $t$ 个数的积除以任意 $t-1$ 个数的积大于 $p$。</p>
-<p>令 $K’ = K+rp$，其中 $r$ 要求满足 $0 \leq r \leq \frac{m_1m_2…m_t}{p}-1$。</p>
-<p>注意到如此便有 $K’ \leq K + m_1m_2…m_t-p &lt; m_1m_2…m_t$。</p>
-<p><strong>加密</strong> 令 $k_j \equiv K’ (\bmod \ m_j)$，告诉第 $j$ 人 $(k_j,m_j)$。</p>
-<p><strong>解密</strong></p>
-<ul>
-<li>
-<p>根据中国剩余定理，我们可以解出模 $m_1…m_n$ 意义下 $x \equiv k_j (\bmod \ m_j) (1 \leq j \leq n)$ 的<strong>唯一解</strong> $K’$。这是 $n$ 个方程的情况。（I）</p>
-</li>
-<li>
-<p>对于 $t$ 个方程的情况：根据中国剩余定理，我们可以解出模 $m_{i_1}…m_{i_t}$ 意义下 $x \equiv k_{i_j} (\bmod \ m_{i_j}) (1 \leq j \leq t)$ 的<strong>唯一解</strong> $X$。（II）</p>
-<p>显然 $K$ 也是方程 II 的解。由 $K’  &lt; m_1m_2…m_t \leq m_{i_1}…m_{i_t}$ 可知 $K’=X$</p>
-<p>根据 $K’$ 推出 $K$ 即可。</p>
-</li>
-<li>
-<p>对于 $t-1$ 个方程的情况：根据中国剩余定理，我们可以解出模 $m_{i_1}…m_{i_{t-1}}$ 意义下 $x \equiv k_{i_j} (\bmod \ m_{i_j}) (1 \leq j \leq t-1)$ 的<strong>唯一解</strong> $Y$。（III）</p>
-<p>$K$ 不再一定是方程 III 的解。一般 $r$ 会取得比较大，使得 $K’$ 尽可能地靠近 $m_1m_2…m_t$。因为 $m_1m_2…m_t &gt;&gt; \frac{m_1m_2…m_t}{p} &gt; m_{n-t+2}…m_n$。我们可以认为一定有 $K’ &gt; m_{n-t+2}…m_n$。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-数学基础与数学软件">2. 数学基础与数学软件</h3>
-<ul>
-<li>微积分</li>
-<li>线性代数</li>
-<li>概率论和数理统计</li>
-<li>微分方程*</li>
-<li>数论，代数与几何</li>
+<li>类成员函数</li>
 </ul>
 
         
@@ -373,25 +314,25 @@ b_t \newline<br>
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2023/09/26/cf_notes_i/"
-      title="Codeforces 补题合集 I"
+      href="/2024/03/05/cod_notes/"
+      title="【笔记】计算机组成"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
       
-        Codeforces 补题合集 I
+        【笔记】计算机组成
         
     </p>
   </a>
   <a class="article-nav-btn right "
     
-      href="/2023/07/31/vscode_setting/"
-      title="VSCode 设置相关"
+      href="/2024/02/26/crypto/"
+      title="密码学 学习笔记"
      >
 
     <p class="title-text">
       
-        VSCode 设置相关
+        密码学 学习笔记
         
     </p>
     <i class="fa-solid fa-angle-right"></i>
@@ -409,7 +350,7 @@ b_t \newline<br>
   
   <div id="footer-info" class="inner">
     
-    &copy; 2023 Sqrtyz<br>
+    &copy; 2024 Sqrtyz<br>
     Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
   </div>
 </footer>
