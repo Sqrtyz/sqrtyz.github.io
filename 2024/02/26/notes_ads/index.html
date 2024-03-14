@@ -20,19 +20,19 @@
 <meta property="og:site_name" content="Dormant Echoes">
 <meta property="og:description" content="Topic 1. Splay 复杂度分析 用到了势能分析的方法。 $$ \hat{c_i}&#x3D;c_i+\varphi(D_i)-\varphi(D_{i-1}) $$ 定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)&#x3D;\sum\limits_{i \in T} R(i)&#x3D;\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/resources/splay.png">
-<meta property="og:image" content="http://example.com/resources/rbt1.png">
-<meta property="og:image" content="http://example.com/resources/rbt2.png">
-<meta property="og:image" content="http://example.com/resources/rbt3.png">
-<meta property="og:image" content="http://example.com/2024/02/26/notes_ads/%5Cresources%5Cads-invfile-1.png">
-<meta property="og:image" content="http://example.com/2024/02/26/notes_ads/%5Cresources%5Cads-invfile-2.png">
-<meta property="og:image" content="http://example.com/2024/02/26/notes_ads/%5Cresources%5Cads-invfile-3.png">
+<meta property="og:image" content="http://example.com/.com//splay.png">
+<meta property="og:image" content="http://example.com/.com//rbt1.png">
+<meta property="og:image" content="http://example.com/.com//rbt2.png">
+<meta property="og:image" content="http://example.com/.com//rbt3.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cads-invfile-1.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cads-invfile-2.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cads-invfile-3.png">
 <meta property="article:published_time" content="2024-02-26T10:02:35.595Z">
 <meta property="article:modified_time" content="2024-03-14T14:46:22.541Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/resources/splay.png">
+<meta name="twitter:image" content="http://example.com/.com//splay.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -203,7 +203,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">3 </div>
+          <div class="archive-count">4 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -233,6 +233,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/14/test/">test</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -246,10 +250,6 @@
         
           <li>
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
           </li>
         
       </ul>
@@ -310,7 +310,7 @@
 \hat{c_i}=c_i+\varphi(D_i)-\varphi(D_{i-1})<br>
 $$</p>
 <p>定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)=\sum\limits_{i \in T} R(i)=\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。</p>
-<img src="/resources/splay.png" width="80%" height="80%" align=center>
+<img src="/.com//splay.png" width="80%" height="80%" align="center">
 <p>考虑 <strong>单个</strong> 节点的 Splay 到根的过程，会经历若干次如下过程（其中 zig 至多经过一次）：</p>
 <ul>
 <li>
@@ -388,11 +388,11 @@ $$</p>
 </li>
 <li>
 <p>红黑树的高度界</p>
-<p><img src="/resources/rbt1.png" alt="alt text"></p>
+<p><img src="/.com//rbt1.png" alt="alt text"></p>
 </li>
 <li>
 <p>插入操作</p>
-<p><img src="/resources/rbt2.png" alt="alt text"></p>
+<p><img src="/.com//rbt2.png" alt="alt text"></p>
 <p>步骤与正确性分析：</p>
 <ul>
 <li>
@@ -423,7 +423,7 @@ $$</p>
 </li>
 <li>
 <p>删除操作</p>
-<p><img src="/resources/rbt3.png" alt="alt text"></p>
+<p><img src="/.com//rbt3.png" alt="alt text"></p>
 <p>步骤与正确性分析：</p>
 <ul>
 <li>
@@ -464,13 +464,13 @@ $$</p>
 <ul>
 <li>
 <p>基本存放方法</p>
-<p><img src="%5Cresources%5Cads-invfile-1.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cads-invfile-1.png" alt="alt text"></p>
 <p>查找时，例如想找 silver truck，只需要将 10 和 11 号的 Posting List 取并。图中取并后剩下 <code>&lt;1,3&gt;</code>，说明检索结果为 1, 3 两篇文章。</p>
 <p>Posting List 一般采取链表查询。</p>
 </li>
 <li>
 <p>插入（新文档）</p>
-<p><img src="%5Cresources%5Cads-invfile-2.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cads-invfile-2.png" alt="alt text"></p>
 <ul>
 <li>
 <p><code>read a document D</code> 直接遍历所有文档</p>
@@ -503,7 +503,7 @@ $$</p>
 <li>
 <p>Posting List 存储空间不够</p>
 <p>使用分布式存储，方案有如下两种（一般而言认为第二种更好）。</p>
-<p><img src="%5Cresources%5Cads-invfile-3.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cads-invfile-3.png" alt="alt text"></p>
 </li>
 <li>
 <p>Dynamic Indexing</p>

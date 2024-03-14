@@ -20,18 +20,18 @@
 <meta property="og:site_name" content="Dormant Echoes">
 <meta property="og:description" content="Relation Model   Definition of Relation 设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。 例如，$r&#x3D;{(Bob,17),(Alice,18),(Gino,21)}$，其中 $D_1&#x3D;{Alice,Bob,Gino}, D_2 &#x3D; {1,2,\cdots,100}$。 注意这里的「关系」和离散数学">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-1.png">
-<meta property="og:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-3.png">
-<meta property="og:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-4.png">
-<meta property="og:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-5.png">
-<meta property="og:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-6.png">
-<meta property="og:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-7.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cdbs-1.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cdbs-3.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cdbs-4.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cdbs-5.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cdbs-6.png">
+<meta property="og:image" content="http://example.com/.com//%5Cresources%5Cdbs-7.png">
 <meta property="article:published_time" content="2024-03-07T02:40:59.914Z">
 <meta property="article:modified_time" content="2024-03-14T15:12:46.911Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/03/07/notes_dbs/%5Cresources%5Cdbs-1.png">
+<meta name="twitter:image" content="http://example.com/.com//%5Cresources%5Cdbs-1.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -202,7 +202,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">3 </div>
+          <div class="archive-count">4 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -232,6 +232,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/14/test/">test</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -245,10 +249,6 @@
         
           <li>
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
           </li>
         
       </ul>
@@ -320,7 +320,7 @@
 </li>
 <li>
 <p>关系的直观表示方法：Table</p>
-<p><img src="%5Cresources%5Cdbs-1.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cdbs-1.png" alt="alt text"></p>
 </li>
 <li>
 <p>Key</p>
@@ -344,7 +344,7 @@
 <li>
 <p>Foreign Key</p>
 <p>Foreign Key 是一个表中的一个 Attribute（或为 <strong>Attribute Set</strong>），它引用另一个表中的 Primary Key。<strong>注意一个表里面的 Primary Key 也可以同时是 Foreign Key</strong>。</p>
-<p><img src="%5Cresources%5Cdbs-3.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cdbs-3.png" alt="alt text"></p>
 </li>
 <li>
 <p>关系的运算 I：六个基本运算</p>
@@ -382,14 +382,14 @@
 </li>
 <li>
 <p>Natural Join 自然连接</p>
-<p><img src="%5Cresources%5Cdbs-4.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cdbs-4.png" alt="alt text"></p>
 <p>注意必须全部匹配才能够连接。比如在上图的例子中，$r.B=s.B$ 但 $r.D \neq s.D$ 是不能够连接的。</p>
 <p>同时在上图中，连接后的结果应当基于 $ABCDE$ 去重，而不是仅仅基于 $BD$ 进行去重。</p>
 </li>
 <li>
 <p>Division 除</p>
-<p><img src="%5Cresources%5Cdbs-5.png" alt="alt text"></p>
-<p><img src="%5Cresources%5Cdbs-6.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cdbs-5.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cdbs-6.png" alt="alt text"></p>
 </li>
 <li>
 <p>Assignment 赋值</p>
@@ -412,7 +412,7 @@
 <p>聚合函数可以看成 $<em>{G_1,G_2,\cdots,G_n} g</em>{F_1(A_1),F_2(A_2),\cdots, F_n(A_n)}(E)$。</p>
 <p>其中 $E$ 表示一个关系（也可以是关系的表达式），$G_i$ 是要分组的属性列表(可为空)，$F_i$ 表示一个聚合函数，$A_i$ 是被聚合的属性名称。</p>
 <p>一个直观的例子如下：</p>
-<p><img src="%5Cresources%5Cdbs-7.png" alt="alt text"></p>
+<p><img src="/.com//%5Cresources%5Cdbs-7.png" alt="alt text"></p>
 <p>聚合函数含有 avg, min, max, sum, count。注意一个属性被聚合之后都只剩下一个值。</p>
 </li>
 </ul>
