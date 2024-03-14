@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Category: Notes | Dormant Echoes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Chapter 1. Computer Abstractions and Technology History &amp; Development  第一代：电子管 &#x2F; 真空管 第二代：晶体管 第三代：集成电路 第四代：微处理器  Computer Organization   Hardware  Datapath 可以理解为一条「流水线」。   Software    指令集（ISA）   IS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="【笔记】计算机组成">
+<meta property="og:url" content="http://example.com/notes_cod.html">
+<meta property="og:site_name" content="Dormant Echoes">
+<meta property="og:description" content="Chapter 1. Computer Abstractions and Technology History &amp; Development  第一代：电子管 &#x2F; 真空管 第二代：晶体管 第三代：集成电路 第四代：微处理器  Computer Organization   Hardware  Datapath 可以理解为一条「流水线」。   Software    指令集（ISA）   IS">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-3.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-4.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-5.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-6.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-1.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-2.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-7.png">
+<meta property="og:image" content="http://example.com/..%5Cresources%5Ccod-8.png">
+<meta property="og:image" content="http://example.com/resources/cod-9.png">
+<meta property="og:image" content="http://example.com/resources/cod-10.png">
+<meta property="article:published_time" content="2024-03-14T09:21:11.520Z">
+<meta property="article:modified_time" content="2024-03-14T08:00:22.607Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/..%5Cresources%5Ccod-3.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.jpg">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
+  <div id="banner-dim"></div>
+</div> 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <img src="/assets/icon.png" width="33px" height="20.5px">
+        <!---
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        -->
+      </div>
+      <div id="vivia-diy-title">Dormant Echoes </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="material-symbols-rounded light-mode-icon">wb_sunny</span>
+      <span class="material-symbols-rounded dark-mode-icon">dark_mode</span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <span class="material-symbols-rounded rss">rss_feed</span>
+      </a>
+    
+    <a id="nav-search-btn" class="nav-icon" title="Search" style="display: none;">
+      <span class="material-symbols-rounded">search</span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <span class="material-symbols-rounded">menu</span>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sqrtyz </div>
+      <div class="dot"></div>
+      <div class="subtitle">求知没有尽头 厄运只是开始 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://codeforces.com/profile/Sqrtyz" title="Codeforces"><i class="fa-solid fa-code"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Sqrtyz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+      
+
+    
+      
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        【笔记】计算机组成
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-14T09:21:11.520Z" itemprop="datePublished">2024-03-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.1k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="Chapter-1-Computer-Abstractions-and-Technology">Chapter 1. Computer Abstractions and Technology</h2>
+<h3 id="History-Development">History &amp; Development</h3>
+<ul>
+<li>第一代：电子管 / 真空管</li>
+<li>第二代：晶体管</li>
+<li>第三代：集成电路</li>
+<li>第四代：微处理器</li>
+</ul>
+<h3 id="Computer-Organization">Computer Organization</h3>
+<ul>
+<li>
+<p>Hardware</p>
+<p><img src="..%5Cresources%5Ccod-3.png" alt="alt text"></p>
+<p>Datapath 可以理解为一条「流水线」。</p>
+</li>
+<li>
+<p>Software</p>
+<p><img src="..%5Cresources%5Ccod-4.png" alt="alt text"></p>
+</li>
+</ul>
+<h3 id="指令集（ISA）">指令集（ISA）</h3>
+<ul>
+<li>
+<p><strong>ISA</strong>: The interface between hardware and lowest-level software.</p>
+<p>指令集筑起了「硬件」与「软件」之间的桥梁。硬件生产厂商只需要支持指令集中的特定操作，而软件厂商只需要借助这些基本指令集来开发软件。</p>
+</li>
+</ul>
+<h3 id="CPU-Time-Calculation">CPU Time Calculation</h3>
+<ul>
+<li>
+<p>Basic Concepts</p>
+<ul>
+<li>
+<p><strong>[CONCEPT] Response Time</strong> (Execution Time)：响应时间，how long it takes to do a task.</p>
+</li>
+<li>
+<p><strong>[CONCEPT] Throughput</strong> (Bandwidth)：吞吐率，total work done per unit time.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Performance Measurement</p>
+<p>假设 X 比 Y 快 $n$ 倍，那么 $\frac{\text{Execution Time}_Y}{\text{Execution Time}_X}=n$。</p>
+</li>
+<li>
+<p>Clock</p>
+<p><img src="..%5Cresources%5Ccod-5.png" alt="alt text"></p>
+<ul>
+<li>
+<p><strong>[CONCEPT] Clock Cycle Time</strong>: duration of a clock cycle.</p>
+</li>
+<li>
+<p><strong>[CONCEPT] Clock Rate</strong>: cycles per second，与 Clock period 成倒数。</p>
+</li>
+<li>
+<p>CPU Time = CPU Clock Cycles × Clock Cycle Time = CPU Clock Cycles / Clock Rate</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Considering Instructions</p>
+<ul>
+<li>
+<p><strong>[CONCEPT] CPI</strong>: Cycles Per Instruction. <strong>CPI 的值由 CPU 本身决定，同时也受到指令种类的影响</strong>（例如，加法和乘法所需要的 Cycles 肯定不一样）。</p>
+</li>
+<li>
+<p>Clock Cycles = Instruction Count × CPI</p>
+<p>CPU Time = Instruction Count × CPI × Clock Cycle Time = Instruction Count × CPI / Clock Rate</p>
+</li>
+<li>
+<p>考虑不同 Instruction Type 对 CPI 的影响……</p>
+<p>$\text{Clock Cycles} = \sum\limits_{i=1}^n (\text{CPI}_i \times \text{Instruction Count}_i)$</p>
+<p>加权平均 CPI（global CPI）：字面意思。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Power Spent</p>
+<p>$\text{Power} = \text{Capacitive load}^2 \times \text{Voltage} \times \text{Frequency}$</p>
+</li>
+<li>
+<p>习题演示</p>
+<p><img src="..%5Cresources%5Ccod-6.png" alt="alt text"></p>
+</li>
+</ul>
+<h3 id="Some-Pitfalls-Fallacies">Some Pitfalls / Fallacies</h3>
+<ul>
+<li>
+<p>Amdahl’s Law 提升局部不一定能提升总体</p>
+<p>$$<br>
+T_{imporved} = \frac{T_{affected}}{\text{improvement factor}} + T_{unaffected}<br>
+$$</p>
+<p>其中 $T_{imporved}$ 表示提升后的总用时。$\text{improvement factor}$ 表示受影响的提升方面的提升比例。此公式意在说明，对于某种提升，只有 affected 的部分会变快，unaffected 的部分怎么都不会变快。</p>
+<p>例如，一个程序需要执行 80s 的乘法和 20s 的除法。无论乘法提升了多少，我们都无法把总时间提升 5 倍。</p>
+</li>
+<li>
+<p>Low Power at Idle 功耗和负载不成正比</p>
+<p>对于 i7 power benchmark，100% 负载下的功耗为 258W，50% 负载下为 170W，10% 负载下为 121W。也就是说，一味降低 CPU 的负载不一定能起到节能的效果。</p>
+</li>
+<li>
+<p>MIPS as a Performance Metric? MIPS 是否能作为衡量 CPU 运行速度的参数？</p>
+<p>MIPS: Millions of Instructions Per Second</p>
+<p>$$<br>
+\text{MIPS} = \frac{\text{Clock Rate}}{\text{CPI} \times 10^6}<br>
+$$</p>
+<p>之前提及，CPI 除了受 CPU 本身的影响，也受到 CPI 种类等因素的影响。不同电脑的指令集架构不同，进而导致 CPI 不同；同时，不同指令的 CPI 也不一样。所以 MIPS 并非一个只和 CPU 本身有关的量。所以用 MIPS 来衡量 CPU 的运行速度是不合理的。</p>
+</li>
+</ul>
+<h3 id="Eight-Great-Ideas">Eight Great Ideas</h3>
+<ul>
+<li>
+<p>Design for Moore’s Law (设计紧跟摩尔定律)</p>
+</li>
+<li>
+<p>Use Abstraction to Simplify Design (采用抽象简化设计)</p>
+</li>
+<li>
+<p>Make the Common Case Fast (加速大概率事件)</p>
+</li>
+<li>
+<p>Performance via Parallelism (通过并行提高性能)</p>
+</li>
+<li>
+<p>Performance via Pipelining (通过流水线提高性能)</p>
+</li>
+<li>
+<p>Performance via Prediction (通过预测提高性能)</p>
+</li>
+<li>
+<p>Hierarchy of Memories (存储器层次)</p>
+</li>
+<li>
+<p>Dependability via Redundancy (通过冗余提高可靠性)</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>Some illustrations:</p>
+<p>Use Abstraction to Simplify Design:</p>
+<p><img src="..%5Cresources%5Ccod-1.png" alt="alt text"></p>
+<p>Performance via Pipelining:</p>
+<p><img src="..%5Cresources%5Ccod-2.png" alt="alt text"></p>
+</li>
+</ul>
+<h2 id="Chapter-3-Arithmetic-for-Computer">Chapter 3. Arithmetic for Computer</h2>
+<h3 id="Signed-Numbers-Representations">Signed Numbers Representations</h3>
+<table>
+<thead>
+<tr>
+<th>Binary</th>
+<th>Signed Magnitude</th>
+<th>2’s Complement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>+0</td>
+<td>+0</td>
+</tr>
+<tr>
+<td>001</td>
+<td>+1</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>010</td>
+<td>+2</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>+3</td>
+<td>+3</td>
+</tr>
+<tr>
+<td>100</td>
+<td>-0</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>101</td>
+<td>-1</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>110</td>
+<td>-2</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>111</td>
+<td>-3</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>一般采取补码的表示方式。</p>
+<h3 id="Add-and-Subtraction">Add and Subtraction</h3>
+<p>减法可以改成加补码。这样加和减都统一成了加法。</p>
+<p>加减法都可能产生 overflow。例如：</p>
+<p><img src="..%5Cresources%5Ccod-7.png" alt="alt text"></p>
+<p>overflow 的判定遵循下表：</p>
+<p><img src="..%5Cresources%5Ccod-8.png" alt="alt text"></p>
+<ul>
+<li>
+<p>此处的 overflow 专指「溢出导致错误的计算结果」。例如 $(-1)+(-1)=(-2)$ 我们不认为发生了 overflow。</p>
+</li>
+<li>
+<p>只有以上四种 A, B 组合才可能产生 overflow。例如一个正数加一个负数是不可能产生 overflow 的。</p>
+</li>
+<li>
+<p>Result overflow 括号中的两个数分别表示「溢出位」和「最高位」。例如 $7+7=(0111)_2+(0111)_2=(1110)_2=-2$，其溢出位（第 4 位）为 $0$，最高位（第 3 位）为 $1$，属于表中的第一行情况。</p>
+</li>
+<li>
+<p>可以看到「溢出位」和「最高位」在溢出情况下总是相反的，这意味着我们可以使用 XOR 门进行判定。</p>
+</li>
+</ul>
+<h3 id="ALU">ALU</h3>
+<p>考虑建立具有如下功能的 ALU：</p>
+<p><img src="../resources/cod-9.png" width = "300" alt="cod-10" align=center /></p>
+<p>其中 srl 表示 shift right logical，Zero 位宽为 1，输出 1 当且仅当 Result 为 0。</p>
+<ul>
+<li>
+<p>And 与 Or</p>
+  <p><img src="../resources/cod-10.png" width = "300" alt="cod-10" align=center /></p>
+</li>
+<li>
+<p>Add</p>
+</li>
+</ul>
+<h3 id="Multiplication">Multiplication</h3>
+<h3 id="Division">Division</h3>
+<h3 id="Float">Float</h3>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 Sqrtyz<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn" onclick="topFunction()">
+        <span class="material-symbols-rounded">keyboard_arrow_up</span>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.style.opacity = 1;
+        } else {
+            btn.style.opacity = 0;
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Category: Notes | Dormant Echoes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="八进制与十六进制   0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild   %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出 （输出不带 0 和 0x ）   %#o 以八进制格式输出 &#x2F; %#x 以十六进制格式输出 （输出带 0 和 0x ）       设置输出宽度，可以在输出格式前加代表宽度的数字，比">
+<meta property="og:type" content="website">
+<meta property="og:title" content="【笔记】C 小程杂记">
+<meta property="og:url" content="http://example.com/notes_littlec.html">
+<meta property="og:site_name" content="Dormant Echoes">
+<meta property="og:description" content="八进制与十六进制   0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild   %o 以八进制格式输出 &#x2F; %x 以十六进制格式输出 （输出不带 0 和 0x ）   %#o 以八进制格式输出 &#x2F; %#x 以十六进制格式输出 （输出带 0 和 0x ）       设置输出宽度，可以在输出格式前加代表宽度的数字，比">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-14T09:21:11.612Z">
+<meta property="article:modified_time" content="2024-03-14T08:07:23.648Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.jpg">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
+  <div id="banner-dim"></div>
+</div> 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <img src="/assets/icon.png" width="33px" height="20.5px">
+        <!---
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        -->
+      </div>
+      <div id="vivia-diy-title">Dormant Echoes </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="material-symbols-rounded light-mode-icon">wb_sunny</span>
+      <span class="material-symbols-rounded dark-mode-icon">dark_mode</span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <span class="material-symbols-rounded rss">rss_feed</span>
+      </a>
+    
+    <a id="nav-search-btn" class="nav-icon" title="Search" style="display: none;">
+      <span class="material-symbols-rounded">search</span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <span class="material-symbols-rounded">menu</span>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sqrtyz </div>
+      <div class="dot"></div>
+      <div class="subtitle">求知没有尽头 厄运只是开始 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://codeforces.com/profile/Sqrtyz" title="Codeforces"><i class="fa-solid fa-code"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Sqrtyz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+      
+
+    
+      
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        【笔记】C 小程杂记
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-14T09:21:11.612Z" itemprop="datePublished">2024-03-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <ul>
+<li>
+<p>八进制与十六进制</p>
+<ul>
+<li>
+<p><code>0</code> 开头表示八进制。<code>0x</code> 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild</p>
+</li>
+<li>
+<p><code>%o</code> 以八进制格式输出 / <code>%x</code> 以十六进制格式输出 （输出不带 <code>0</code> 和 <code>0x</code> ）</p>
+</li>
+<li>
+<p><code>%#o</code> 以八进制格式输出 / <code>%#x</code> 以十六进制格式输出 （输出带 <code>0</code> 和 <code>0x</code> ）</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>设置输出宽度，可以在输出格式前加代表宽度的数字，比如 <code>%14d</code>，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 <code>%-14d</code>。</p>
+</li>
+<li>
+<p><code>scanf(&quot;%3d%2d&quot;,&amp;i,&amp;j);</code> 输入 1234567， i = 123, j = 45.</p>
+</li>
+<li>
+<p>原码反码补码</p>
+<ul>
+<li>
+<p>正数 - 原反补相同。</p>
+</li>
+<li>
+<p>负数 - 原码：符号位为1 / 反码：除了符号位，全部取反 / 补码：反码+1.<br>
+e.g. char (-10): (10: 00001010)<br>
+原 10001010 反 11110101 补 11110110</p>
+</li>
+<li>
+<p>在计算机中，所有的整数使用补码计算与存储。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>sizeof()</code> 中的运算不会被进行。 <code>int k = 3; sizeof(++k);</code> k 的值仍是 3。</p>
+</li>
+<li>
+<p>scanf 和 gets 的区别</p>
+<ul>
+<li>
+<p>开头：scanf 忽略开头的所有空格。gets 不会忽略。</p>
+</li>
+<li>
+<p>scanf 的结尾：scanf 遇到空格或者回车都会结束。同时，scanf 会将使其结束的空格（回车）留下来留给下一次读入。scanf 还会在最后加一个 <code>\0</code>。</p>
+</li>
+<li>
+<p>gets 的结尾：gets 遇到回车才会结束。同时，gets 会将使其结束的回车吃掉并将这个 <code>\n</code> 替换为 <code>\0</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>(也就是说，两种读入方式均以 <code>\0</code> 结尾)</p>
+<ul>
+<li>
+<p>字符数组、字符串常量、字符指针</p>
+<ul>
+<li>
+<p>两种方式均可以表示字符串。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>; <span class="comment">/* 字符数组，并对其进行了初始化。*/</span></span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>; <span class="comment">/* 字符指针 str2 指向了一个字符串常量的首地址，</span></span><br><span class="line"><span class="comment">字符串常量在内存中的位置由系统自动安排。*/</span></span><br></pre></td></tr></table></figure>
+<p>这两种声明方式下，<code>str1</code> 和 <code>str2</code> 均是指向 首地址 <code>f/s</code> 的指针。</p>
+</li>
+<li>
+<p>字符 / 字符串的输出</p>
+<p>用 %s 可以输出从指针地址到第一个 <code>'\0'</code> 间的所有字符。</p>
+<p>用 %p 就是单纯地输出一个指针地址。</p>
+<p>用 %c 并解引用就是输出指针地址指向的那个字符。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> *str = <span class="string">&quot;fuckoff&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str); <span class="comment">// fuckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str); <span class="comment">// 0040b044</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *str); <span class="comment">// f</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// uckoff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p\n&quot;</span>, str + <span class="number">1</span>); <span class="comment">// 0040b045</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c\n&quot;</span>, *(str + <span class="number">1</span>)); <span class="comment">// u</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>只读性</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> str1[<span class="number">5</span>] = <span class="string">&quot;fuck&quot;</span>;</span><br><span class="line"><span class="type">char</span> *str2 = <span class="string">&quot;shit&quot;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>需要注意的是，和 int 数组一样，<code>str1</code> 将是一个只读的指针变量。我们不能 <code>++str1</code> 。</p>
+<p>但是我们可以 <code>++str2</code> 。之后 <code>printf(&quot;%s\n&quot;, str2);</code> 的结果为 <code>hit</code>。本质上是改变了 <code>str2</code> 的地址。</p>
+</li>
+<li>
+<p>不过，对于第一种声明方式，字符数组中的字符可以改变。比如我们可以 <code>str1[2] = '\0'</code>，这之后 <code>printf(&quot;%s\n&quot;, str1);</code> 的结果为 <code>fu</code>。</p>
+<p>对于第二种声明方式，由于是指向字符串常量，其中的字符无法改变。<code>*(str2 + 2) = 'a';</code> 和 <code>str2[2] = 'a';</code> 都是不合法的。但如果 <code>str2</code> 指向的是一个字符数组的话，就可以改变了。例如</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="type">char</span> str[] = <span class="string">&quot;fuckoff&quot;</span>;</span><br><span class="line">   <span class="type">char</span> *p = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">   p = str;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str + <span class="number">2</span>); <span class="comment">// ckoff</span></span><br><span class="line">   *(p + <span class="number">3</span>) = <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, p + <span class="number">2</span>); <span class="comment">// czoff</span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>假设 p 是一个指针。<code>p = NULL;</code> 和 <code>p = 0;</code> 都代表将 p 赋为空指针。</p>
+</li>
+<li>
+<p>动态内存申请</p>
+<ul>
+<li>
+<p>malloc 函数：<code>void* malloc(unsigned size)</code> 申请长度为 size 的内存空间并返回首地址。申请失败返回 NULL。</p>
+</li>
+<li>
+<p>calloc 函数：<code>void* calloc(unsigned n, unsigned size)</code> 分配 n 个连续空间，每一存储空间的长度为 size，并且初始化值全部为 0。申请成功返回首地址。申请失败返回 NULL。</p>
+</li>
+<li>
+<p>free 函数：<code>void free(*p)</code> 释放由动态存储分配函数（如上）申请到的整块内存空间。p 为指向要释放空间的首地址。</p>
+</li>
+<li>
+<p>realloc 函数：<code>void* ealloc(*p, unsigned size)</code> 更改以前的内存分配。p 是之前由动态内存分配得到的指针，size 为现在需要的空间大小。分配失败保留原空间并返回 NULL。分配成功返回一片大小为 size 的区块，并保证该块的内容与原块的一致。注意，如果分配成功，原存储块的内容可能改变并不再允许使用。</p>
+</li>
+<li>
+<p>为什么 malloc, calloc, realloc 函数有返回值却是 void 类型？因为这是一种 <strong>通用指针</strong>，即它的返回值的类型是不确定的。当我们需要某种特定类型的返回值时，直接在前面用 <code>(data type)</code> 进行强制类型转换即可。（参见链表动态存储空间的申请）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Pointer More</p>
+<ul>
+<li>
+<p>数组指针</p>
+<p>数组指针本质上是一个指向数组的指针变量。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> a[<span class="number">3</span>][<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>&#125;;</span><br><span class="line">  <span class="built_in">int</span> (*num)[<span class="number">4</span>]; </span><br><span class="line">  num = &amp;a[<span class="number">1</span>];</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, *(*num + <span class="number">1</span>)); <span class="comment">// output 6.</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>指针数组</p>
+<p>通过 <code>char *str[5];</code> 可以声明一个含有 5 个元素的数组。每个元素的类型都是字符指针。</p>
+<p>指针数组的名字也是一个二级指针。比如上述例子中，<code>str</code> 本质上也是一个二级指针。</p>
+<p>此外，指针数组还可以进行类似数组的加法操作。下面的例子中，<code>p[3][2]</code> 等价于 <code>*(p[3] + 2)</code> 。（就像一维数组 <code>*(a + 2)</code> 等价于 <code>a[2]</code> 一样）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="type">int</span> i, a[<span class="number">12</span>] = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span> &#125;;</span><br><span class="line">      <span class="type">int</span> *p[<span class="number">4</span>];</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) p[i] = &amp;a[i * <span class="number">3</span>];</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p[<span class="number">3</span>][<span class="number">2</span>]);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; <span class="comment">// PTA 原题，输出 12。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>二级指针、二维数组与指针</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> *p = &amp;a;</span><br><span class="line"><span class="type">int</span> **p = &amp;p;</span><br></pre></td></tr></table></figure>
+<p>上述代码中，p 为 a 的地址，pp 为 p 的地址。</p>
+<p><strong>二维数组与指针：</strong></p>
+<p><code>int a[3][4];</code> 可以看成由 <code>a[0], a[1], a[2]</code> 作为元素组成的一维数组（每个元素本身又是一个长度为 4 的一维数组）。</p>
+<p><code>a[0]</code> 是一个一级指针，指向数组 <code>a[0]</code> 的首地址，即 <code>&amp;a[0][0]</code> 。而 <code>a</code> 则为一个二级指针，指向首元素的地址 <code>&amp;a[0]</code> 。</p>
+<p>推广地，<code>a + 1</code> 表示第一行的地址。<code>*(a + 1)</code> 表示第一行这个元素，也代表第一行首元素的地址。进而，<code>**(a + 1)</code> 表示第一行的首元素，亦即 <code>a[1][0]</code> 的值。</p>
+<p><code>*(*(a + i) + j)</code> 等价于 <code>a[i][j]</code> 。</p>
+</li>
+<li>
+<p>指向函数的指针</p>
+<p>例如 <code>int (*funcp)(int, int)</code> 定义了一个函数指针 funcp。它可以指向任意有两个整型参数并且返回值为 int 类型的函数。</p>
+<p>假设函数 <code>func(x, y)</code> 已经定义，那么 <code>funcp = func;</code> 就可以将 func 的 <strong>入口地址</strong> 赋给 funcp（类比：数组名本质上也是指针），funcp 于是指向了函数 <code>func(x, y)</code> 。</p>
+<p>然后我们就可以这样调用函数：<code>(*funcp)(1, 2);</code> 。</p>
+</li>
+<li>
+<p>链表</p>
+<p>链表中每个节点由数据部分和下一个结点的地址构成。链表变量一般用指针 <code>head</code> 表示，用来存放链表首节点的地址。链表中的最后一个节点称为表尾，其下一个节点的地址为 NULL（注意表尾节点的数据部分仍是有效的）。</p>
+<ul>
+<li>
+<p>链表的声明</p>
+<p>通常借用 <strong>结构体嵌套</strong> 的方式来定义一个链表。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;</span><br><span class="line">  <span class="type">int</span> info1, info2, info3;</span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">node</span>* next; <span class="comment">// 结构的递归定义</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>info 是这个节点的数据部分。next 则指向了下一个节点。</p>
+</li>
+<li>
+<p>链表是动态存储分配的数据结构</p>
+<p>比如，如果想要申请 node 结构的动态内存空间，需要使用以下语句。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>* p;</span><br><span class="line">p = (<span class="keyword">struct</span> node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> node); <span class="comment">// 需要强制转换</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Basic Operations</p>
+<p><strong>insert</strong> pn between p1 &amp; p2</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = pn;</span><br><span class="line">pn -&gt; next = p2;</span><br></pre></td></tr></table></figure>
+<p><strong>delete</strong> p2 (p1 points to p2)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1 -&gt; next = p2 -&gt; next;</span><br><span class="line"><span class="built_in">free</span>(p2);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>Struct</p>
+<ul>
+<li>
+<p>关于 struct 的优先级问题：<code>-&gt;</code> 大于 <code>.</code> 大于 <code>*</code> 大于 <code>++(--)</code> 。</p>
+</li>
+<li>
+<p>关于 C 语言中 struct 的初始化：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">3</span>, <span class="number">4</span>&#125;&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d %d %d\n&quot;</span>, a[<span class="number">0</span>].x, a[<span class="number">0</span>].y, a[<span class="number">1</span>].x, a[<span class="number">1</span>].y);</span><br><span class="line">    <span class="comment">// Output: 1 2 3 4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以采取如上的初始化方式。</p>
+<p>但是需要注意，这种初始化方式必须在声明时使用。以下语句段是不合法的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>];</span><br><span class="line">a[<span class="number">0</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;; a[<span class="number">1</span>] = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>但如果采用以下方式，又是可以的了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">A</span> a[<span class="number">2</span>];</span><br><span class="line">a[<span class="number">0</span>] = (<span class="keyword">struct</span> A)&#123;<span class="number">1</span>, <span class="number">2</span>&#125;; a[<span class="number">1</span>] = (<span class="keyword">struct</span> A)&#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// 这个相当于是把一个临时定义的 struct 赋到了 a[0] 和 a[1] 上。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>Switch</p>
+<ul>
+<li>
+<p>case 后 <strong>只能为常量或常量表达式</strong> 。switch 支持的变量类型有 byte、short、int、char。</p>
+</li>
+<li>
+<p>循环体内的 switch 可以使用 continue。此时 continue 作用于循环体本身，即（执行 i++ 后）跳到下一次循环。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 Sqrtyz<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn" onclick="topFunction()">
+        <span class="material-symbols-rounded">keyboard_arrow_up</span>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.style.opacity = 1;
+        } else {
+            btn.style.opacity = 0;
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>

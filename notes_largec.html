@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Category: Notes | Dormant Echoes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="学习 C 大程过程中的一些零散笔记。 多文件编程注意事项   头文件 自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。 编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。   变量的关联 我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许">
+<meta property="og:type" content="website">
+<meta property="og:title" content="【笔记】C 大程杂记">
+<meta property="og:url" content="http://example.com/notes_largec.html">
+<meta property="og:site_name" content="Dormant Echoes">
+<meta property="og:description" content="学习 C 大程过程中的一些零散笔记。 多文件编程注意事项   头文件 自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。 编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。   变量的关联 我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-14T09:21:11.596Z">
+<meta property="article:modified_time" content="2024-03-14T08:07:52.608Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.jpg">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
+  <div id="banner-dim"></div>
+</div> 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <img src="/assets/icon.png" width="33px" height="20.5px">
+        <!---
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        -->
+      </div>
+      <div id="vivia-diy-title">Dormant Echoes </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="material-symbols-rounded light-mode-icon">wb_sunny</span>
+      <span class="material-symbols-rounded dark-mode-icon">dark_mode</span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <span class="material-symbols-rounded rss">rss_feed</span>
+      </a>
+    
+    <a id="nav-search-btn" class="nav-icon" title="Search" style="display: none;">
+      <span class="material-symbols-rounded">search</span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <span class="material-symbols-rounded">menu</span>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sqrtyz </div>
+      <div class="dot"></div>
+      <div class="subtitle">求知没有尽头 厄运只是开始 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://codeforces.com/profile/Sqrtyz" title="Codeforces"><i class="fa-solid fa-code"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Sqrtyz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+      
+
+    
+      
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        【笔记】C 大程杂记
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-14T09:21:11.596Z" itemprop="datePublished">2024-03-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.2k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>学习 C 大程过程中的一些零散笔记。</p>
+<h3 id="多文件编程注意事项">多文件编程注意事项</h3>
+<ul>
+<li>
+<p>头文件</p>
+<p>自己编写头文件时，使用 <code>#ifndef</code> 和 <code>#endif</code> 来避免头文件的重复包含。</p>
+<p>编译器自带的头文件（例如 <code>stdio.h</code>）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。</p>
+</li>
+<li>
+<p>变量的关联</p>
+<p>我们将变量和函数分为 <strong>定义 (define)</strong> 和 <strong>声明 (declare)</strong> 两种情况。连接后的程序 <strong>允许多次声明，但只能有一次定义</strong>。</p>
+<ul>
+<li>
+<p>对于一个变量，定义的方法是 <code>type var;</code>。而声明则是在其之前加上一个 <code>extern</code>。</p>
+</li>
+<li>
+<p>对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 <code>int foo(int x);</code> 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sscanf-函数">sscanf() 函数</h3>
+<ul>
+<li>
+<p>C 库函数 <code>int sscanf(const char *str, const char *format, ...)</code> 从字符串读取格式化输入。</p>
+</li>
+<li>
+<p>和 <code>scanf</code> 基本一致。唯一的区别是从输入流读入数据变为了从 <code>str</code> 读入数据。所以这个函数常常用于格式化一些字符串。</p>
+</li>
+<li>
+<p>特别地两个用法：<code>%n</code> 用于接收当前读入和开头相比的偏移量，<code>%*</code> 用于忽略某个数据，即不存储于对应的参数中。</p>
+</li>
+<li>
+<p>例子 1：</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> s[] = <span class="string">&quot;wtfwtf 21&quot;</span>, a[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> b, p1, p2;</span><br><span class="line">    <span class="built_in">sscanf</span>(s, <span class="string">&quot;%s%n %d%n&quot;</span>, &amp;a, &amp;p1, &amp;b, &amp;p2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n%d\n&quot;</span>, a, b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, p1, p2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序输出：</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wtfwtf</span><br><span class="line">21</span><br><span class="line">6 9</span><br></pre></td></tr></table></figure>
+<p>可以看到 sscanf 的基本工作原理。并且，<code>%n</code> 不会读入 <code>str</code> 中的任何数据，只是会获得一个偏移量而已。</p>
+</li>
+<li>
+<p>例子 2：</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> s[] = <span class="string">&quot;wtf 233 466&quot;</span>, a[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> b;</span><br><span class="line">    <span class="built_in">sscanf</span>(s, <span class="string">&quot;%s %*d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n%d\n&quot;</span>, a, b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序输出：</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wtf</span><br><span class="line">466</span><br></pre></td></tr></table></figure>
+<p>可以看到中间的 <code>233</code> 被忽略了。</p>
+</li>
+</ul>
+<h3 id="函数指针与回调函数">函数指针与回调函数</h3>
+<ul>
+<li>
+<p>函数指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> (*pFunc)(<span class="type">int</span>, <span class="type">int</span>);</span><br><span class="line">pFunc = &amp;add; <span class="comment">// Interestingly, &amp; is optional</span></span><br><span class="line">(*pFunc)(<span class="number">3</span>, <span class="number">5</span>); <span class="comment">// Interestingly, * is also optional</span></span><br></pre></td></tr></table></figure>
+<p>第一行：定义了一个类型为 <code>void(int, int)</code> 的函数指针 <code>pFunc</code> 。</p>
+<p>第二行：<code>pFunc</code> 指向 <code>add</code> 的地址。</p>
+<p>第三行：调用 <code>pFunc</code> 指向的函数，亦即执行 <code>add(3, 5)</code> 。</p>
+<p>Example:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;<span class="keyword">return</span> a + b;&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">mul</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a * b);&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> (*fuck)(<span class="type">int</span>, <span class="type">int</span>);</span><br><span class="line">    <span class="type">void</span> (*shit)(<span class="type">int</span>, <span class="type">int</span>);</span><br><span class="line">    fuck = &amp;add;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, (*fuck)(<span class="number">3</span>, <span class="number">5</span>));</span><br><span class="line">    shit = &amp;mul;</span><br><span class="line">    (*shit)(<span class="number">3</span>, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出 <code>8</code> 和 <code>15</code> 。</p>
+</li>
+<li>
+<p>函数回调</p>
+<p>简单理解就是把函数作为传递的参数。当然了，我们传的是函数指针。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">populate_array</span><span class="params">(<span class="type">int</span> *<span class="built_in">array</span>, <span class="type">size_t</span> arraySize, <span class="type">int</span> (*GenerateMethod)())</span>&#123;</span><br><span class="line">    <span class="built_in">array</span>[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">1</span>; i &lt; arraySize; ++i)</span><br><span class="line">        <span class="built_in">array</span>[i] = (*GenerateMethod)(<span class="built_in">array</span>[i - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">Double</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> x * <span class="number">2</span>;&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Triple</span><span class="params">(<span class="type">int</span> x)</span> &#123;<span class="keyword">return</span> x * <span class="number">3</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> myarray[<span class="number">10</span>];</span><br><span class="line">    populate_array(myarray, <span class="number">10</span>, &amp;Double);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, myarray[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    populate_array(myarray, <span class="number">10</span>, &amp;Triple);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, myarray[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序生成了两个等比数列。分别是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 2 4 8 16 32 64 128 256 512 </span><br><span class="line">1 3 9 27 81 243 729 2187 6561 19683</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="typedef">typedef</h3>
+<p>作用和宏定义 <code>#define</code> 类似。</p>
+<ul>
+<li>
+<p>最简单的 typedef 用法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> INTEGER; <span class="comment">// typedef oldname newname</span></span><br><span class="line">INTEGER a, b;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>数组的 typedef 用法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> Line[<span class="number">233</span>];</span><br><span class="line">Line text;</span><br></pre></td></tr></table></figure>
+<p>第二行声明了一个长度为 233 的 text 数组。</p>
+</li>
+<li>
+<p>指针的 typedef 用法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">char</span> * pstr; </span><br><span class="line">pstr str = <span class="string">&quot;abc&quot;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>函数指针 typedef 用法</p>
+<p>对于我们之前给出的例子</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> (*pFunc)(<span class="type">int</span>, <span class="type">int</span>);</span><br><span class="line">pFunc = &amp;add;</span><br><span class="line">(*pFunc)(<span class="number">3</span>, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>它又可以写作</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span> <span class="params">(*FUNCPOINTER)</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br><span class="line">FUNCPOINTER pFunc; <span class="comment">// 声明函数指针 pFunc</span></span><br><span class="line">pFunc = &amp;add;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>归纳总结</p>
+<p>看起来 typedef 在进行不同类型的代替时写法也有很大区别。但是我们有一个比较简单的方法来进行记忆：</p>
+<ul>
+<li>注意到调用时采用的都是 <code>Type Var;</code> 的方式。</li>
+<li>用 <code>Var</code> 替代 typedef 语句中的 <code>Type</code>，即可得到原语句。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件操作">文件操作</h3>
+<ul>
+<li>
+<p>fopen() 函数</p>
+</li>
+<li>
+<p>feof() 函数</p>
+<p>当读取到 EOF 时，该函数返回一个非零值，否则返回零。</p>
+</li>
+<li>
+<p>读入</p>
+<p><code>fgetc(FILE* fo)</code> 从 fo 中读入一个字符。如果到达文件末尾或发生读错误，则返回 EOF。</p>
+</li>
+</ul>
+<h3 id="大小端">大小端</h3>
+<ul>
+<li>
+<p><strong>大端模式（Big-endian）</strong>：数据的高字节，保存在内存的低地址中；而数据的低字节，保存在内存的高地址中。这样的存储模式有点儿类似于把数据当作字符串顺序处理。</p>
+<p>e684 6c4e 0100 1800</p>
+<p>在大端模式下，前 32 位应该读作  <code>e6 84 6c 4e</code>。</p>
+</li>
+<li>
+<p><strong>小端模式（Little-endian）</strong>：数据的高字节，保存在内存的高地址中；而数据的低字节，保存在内存的低地址中。这种存储模式将地址的高低和数据位权结合起来——高地址部分权值高，低地址部分权值低。</p>
+<p>e684 6c4e 0100 1800</p>
+<p>在小端模式下，前 32 位应该读作 <code>4e 6c 84 e6</code>。</p>
+</li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 Sqrtyz<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn" onclick="topFunction()">
+        <span class="material-symbols-rounded">keyboard_arrow_up</span>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.style.opacity = 1;
+        } else {
+            btn.style.opacity = 0;
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>

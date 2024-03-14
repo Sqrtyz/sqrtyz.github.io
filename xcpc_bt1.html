@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Category: XCPC | Dormant Echoes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ARC163D - Sum of DCC   题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30, \ m \leq n(n+1)&#x2F;2$。 1）$G$ 是 $n$ 个点的竞赛图。 2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。   题解： 考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集">
+<meta property="og:type" content="website">
+<meta property="og:title" content="【算法竞赛】补题 I">
+<meta property="og:url" content="http://example.com/xcpc_bt1.html">
+<meta property="og:site_name" content="Dormant Echoes">
+<meta property="og:description" content="ARC163D - Sum of DCC   题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30, \ m \leq n(n+1)&#x2F;2$。 1）$G$ 是 $n$ 个点的竞赛图。 2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。   题解： 考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-14T09:21:11.656Z">
+<meta property="article:modified_time" content="2024-03-14T08:07:06.991Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/assets/favicon.jpg">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/assets/banner_light2.png" itemprop="image" id="lightbg">
+  <img src="/assets/banner2.png" itemprop="image" id="darkbg">
+  <div id="banner-dim"></div>
+</div> 
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <img src="/assets/icon.png" width="33px" height="20.5px">
+        <!---
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        -->
+      </div>
+      <div id="vivia-diy-title">Dormant Echoes </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="material-symbols-rounded light-mode-icon">wb_sunny</span>
+      <span class="material-symbols-rounded dark-mode-icon">dark_mode</span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <span class="material-symbols-rounded rss">rss_feed</span>
+      </a>
+    
+    <a id="nav-search-btn" class="nav-icon" title="Search" style="display: none;">
+      <span class="material-symbols-rounded">search</span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <span class="material-symbols-rounded">menu</span>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/assets/avatar2.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Sqrtyz </div>
+      <div class="dot"></div>
+      <div class="subtitle">求知没有尽头 厄运只是开始 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://codeforces.com/profile/Sqrtyz" title="Codeforces"><i class="fa-solid fa-code"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/Sqrtyz" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+
+    
+      
+
+    
+      
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        【算法竞赛】补题 I
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-03-14T09:21:11.656Z" itemprop="datePublished">2024-03-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            843 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h3 id="ARC163D-Sum-of-DCC">ARC163D - Sum of DCC</h3>
+<ul>
+<li>
+<p>题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30, \ m \leq n(n+1)/2$。</p>
+<p>1）$G$ 是 $n$ 个点的竞赛图。</p>
+<p>2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。</p>
+</li>
+<li>
+<p>题解：</p>
+<p>考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集 $A,B$，使得所有存在于 $A,B$ 之间的边都是 $A$ 指向 $B$ 的方案数为 $Q$。则 $P=Q-1$。</p>
+<p>引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,…,s_k$。这几个 SCC 作为新点之后，它们依然组成一个<strong>竞赛图</strong>，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,…,s_k$，那么唯一的点划分方法就是按照 $A={s_1…s_t}, \ B={s_{t+1}…s_{n}}$ 的形式划分。可以看到，这样的划分方法有 $k+1$ 种，而 $G$ 的 SCC 数目为 $k$，故而引理得证。</p>
+<p>接下来我们考虑 dp。首先我们忘掉 SCC 这个东西——记 $f[n][i][j]$ 为：考虑所有【低编号点指向高编号点的边恰有 $j$ 条】的【$n$ 个点的竞赛图】，按照上述规则【划分为大小为 $i$ 的点集 $A$，大小为 $n-i$ 的点集 $B$】的方案数之和。</p>
+<p>可以发现，最终的答案就是 $\sum f[n][0…n][m] - \binom{n(n-1)/2}{m}$ 的值。</p>
+<p>下面推导递推式。假设目前已计算出 $f[n][i][j]$，考虑它对后面的贡献：</p>
+<ul>
+<li>添加第 $n+1$ 个点，且添加到点集 $A$ 中。并且增加的 $n$ 条边中有 $k$ 条是「低指高」的，则对 $f[n+1][i+1][j+k]$ 有 $f[n][i][j] \times \binom{i}{k}$ 的贡献（低指高只存在于 A 内部，想想为什么）。</li>
+<li>添加第 $n+1$ 个点，且添加到点集 $B$ 中。并且增加的 $n$ 条边中有 $i+k$ 条是「低指高」的，则对 $f[n+1][i][j+i+k]$ 有 $f[n][i][j] \times \binom{n-i}{k}$ 的贡献（低指高包括 ${A} \to n+1$ 共 $i$ 条和  ${B} \to n+1$ 共 $k$ 条）。</li>
+</ul>
+</li>
+<li>
+<p>代码：</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 998244353</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LL long long</span></span><br><span class="line"></span><br><span class="line">LL f[<span class="number">32</span>][<span class="number">32</span>][<span class="number">905</span>];</span><br><span class="line"></span><br><span class="line">LL fac[<span class="number">905</span>], facinv[<span class="number">905</span>];</span><br><span class="line"><span class="function">LL <span class="title">Pow</span><span class="params">(LL a, LL b)</span> </span>&#123;</span><br><span class="line">    LL ret = <span class="number">1</span>, base = a;</span><br><span class="line">    <span class="keyword">while</span>(b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(b &amp; <span class="number">1</span>) ret = ret * base % MOD;</span><br><span class="line">        base = base * base % MOD;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">C</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fac[a] * facinv[b] % MOD * facinv[a - b] % MOD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>] = facinv[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">900</span>; ++i) fac[i] = fac[i - <span class="number">1</span>] * i % MOD;</span><br><span class="line">    facinv[<span class="number">900</span>] = <span class="built_in">Pow</span>(fac[<span class="number">900</span>], MOD - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">899</span>; i; --i) facinv[i] = facinv[i + <span class="number">1</span>] * (i + <span class="number">1</span>) % MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="built_in">read</span>(), m = <span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">Prepare</span>();</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>] = f[<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> ver = <span class="number">1</span>; ver &lt;= n; ++ver) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= ver; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= ver * (ver - <span class="number">1</span>) / <span class="number">2</span>; ++j) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt;= i; ++k) &#123;</span><br><span class="line">                    f[ver + <span class="number">1</span>][i + <span class="number">1</span>][j + k] += f[ver][i][j] * <span class="built_in">C</span>(i, k) % MOD;</span><br><span class="line">                    f[ver + <span class="number">1</span>][i + <span class="number">1</span>][j + k] %= MOD;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt;= ver - i; ++k) &#123;</span><br><span class="line">                    f[ver + <span class="number">1</span>][i][j + i + k] += f[ver][i][j] * <span class="built_in">C</span>(ver - i, k) % MOD;</span><br><span class="line">                    f[ver + <span class="number">1</span>][i][j + i + k] %= MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; ++i) ans = (ans + f[n][i][m]) % MOD;</span><br><span class="line">    ans -= <span class="built_in">C</span>(n * (n - <span class="number">1</span>) / <span class="number">2</span>, m);</span><br><span class="line">    ans = (ans % MOD + MOD) % MOD;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 Sqrtyz<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn" onclick="topFunction()">
+        <span class="material-symbols-rounded">keyboard_arrow_up</span>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.style.opacity = 1;
+        } else {
+            btn.style.opacity = 0;
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- ->script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>
