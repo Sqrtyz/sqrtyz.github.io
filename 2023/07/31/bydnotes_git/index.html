@@ -13,12 +13,12 @@
   
   <title>【杂记】Git | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="常用命令查表  Linux 相关命令     命令 用途     vim a.txt 在 vim 中打开 a.txt   cat a.txt 显示 a.txt 文件内容   ls 列出当前目录所有文件   ll 等价于 ls -l，列出当前目录所有文件并显示详细信息    Git 的四大区域   工作区（workspace）   暂存区（staging area）   本地库（local repo">
+  <meta name="description" content="常用命令查表 Linux 相关命令      命令 用途     vim a.txt 在 vim 中打开 a.txt   cat a.txt 显示 a.txt 文件内容   ls 列出当前目录所有文件   ll 等价于 ls -l，列出当前目录所有文件并显示详细信息     Git 的四大区域 工作区（workspace）  暂存区（staging area）  本地库（local reposit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【杂记】Git">
 <meta property="og:url" content="http://example.com/2023/07/31/bydnotes_git/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="常用命令查表  Linux 相关命令     命令 用途     vim a.txt 在 vim 中打开 a.txt   cat a.txt 显示 a.txt 文件内容   ls 列出当前目录所有文件   ll 等价于 ls -l，列出当前目录所有文件并显示详细信息    Git 的四大区域   工作区（workspace）   暂存区（staging area）   本地库（local repo">
+<meta property="og:description" content="常用命令查表 Linux 相关命令      命令 用途     vim a.txt 在 vim 中打开 a.txt   cat a.txt 显示 a.txt 文件内容   ls 列出当前目录所有文件   ll 等价于 ls -l，列出当前目录所有文件并显示详细信息     Git 的四大区域 工作区（workspace）  暂存区（staging area）  本地库（local reposit">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-31T06:31:22.980Z">
 <meta property="article:modified_time" content="2024-03-14T08:10:38.653Z">
@@ -158,7 +158,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/Notes/">
                 Notes
-                <div class="category-count">12</div>
+                <div class="category-count">13</div>
             </a>
         
             <a class="category-link" href="/categories/Others/">
@@ -194,7 +194,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">3 </div>
+          <div class="archive-count">4 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -224,6 +224,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/19/notes_cod_p2/">【笔记】计算机组成 (Part II)</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -232,15 +236,11 @@
           </li>
         
           <li>
-            <a href="/2024/03/05/notes_cod/">【笔记】计算机组成</a>
+            <a href="/2024/03/05/notes_cod_p1/">【笔记】计算机组成 (Part I)</a>
           </li>
         
           <li>
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
           </li>
         
       </ul>
@@ -293,10 +293,10 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="常用命令查表">常用命令查表</h3>
-<ul>
+          <h3 id="常用命令查表"><a href="#常用命令查表" class="headerlink" title="常用命令查表"></a>常用命令查表</h3><ul>
 <li>Linux 相关命令</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -323,123 +323,91 @@
 </tr>
 </tbody>
 </table>
-<h3 id="Git-的四大区域">Git 的四大区域</h3>
-<ul>
-<li>
-<p>工作区（workspace）</p>
+</div>
+<h3 id="Git-的四大区域"><a href="#Git-的四大区域" class="headerlink" title="Git 的四大区域"></a>Git 的四大区域</h3><ul>
+<li><p>工作区（workspace）</p>
 </li>
-<li>
-<p>暂存区（staging area）</p>
+<li><p>暂存区（staging area）</p>
 </li>
-<li>
-<p>本地库（local repository）</p>
+<li><p>本地库（local repository）</p>
 </li>
-<li>
-<p>远程库（remote repository）</p>
+<li><p>远程库（remote repository）</p>
 </li>
 </ul>
-<h3 id="详细内容">详细内容</h3>
-<h4 id="初始化相关">初始化相关</h4>
-<ul>
+<h3 id="详细内容"><a href="#详细内容" class="headerlink" title="详细内容"></a>详细内容</h3><h4 id="初始化相关"><a href="#初始化相关" class="headerlink" title="初始化相关"></a>初始化相关</h4><ul>
 <li><code>git init</code> 初始化仓库。</li>
 <li><code>git clone [url]</code> 从远程下载一个仓库。</li>
 </ul>
-<h4 id="暂存区相关">暂存区相关</h4>
+<h4 id="暂存区相关"><a href="#暂存区相关" class="headerlink" title="暂存区相关"></a>暂存区相关</h4><ul>
+<li><p><code>git add</code> 添加文件到暂存区。</p>
 <ul>
-<li>
-<p><code>git add</code> 添加文件到暂存区。</p>
-<ul>
-<li>
-<p>添加一个或多个文件到暂存区：<code>git add [file1] [file2] ...</code></p>
+<li><p>添加一个或多个文件到暂存区：<code>git add [file1] [file2] ...</code></p>
 </li>
-<li>
-<p>添加指定目录到暂存区，包括子目录：<code>git add [dir]</code></p>
+<li><p>添加指定目录到暂存区，包括子目录：<code>git add [dir]</code></p>
 </li>
-<li>
-<p>添加当前目录下的所有文件到暂存区：<code>git add .</code></p>
+<li><p>添加当前目录下的所有文件到暂存区：<code>git add .</code></p>
 </li>
 </ul>
 </li>
-<li>
-<p><code>git rm --cached [file]</code> 删除 <strong>暂存区</strong> 中的 file。</p>
+<li><p><code>git rm --cached [file]</code> 删除 <strong>暂存区</strong> 中的 file。</p>
 </li>
-<li>
-<p><code>git status</code> 查看在你上次提交之后是否有对文件进行再次修改。</p>
+<li><p><code>git status</code> 查看在你上次提交之后是否有对文件进行再次修改。</p>
 <ul>
 <li>使用 <code>git status -s</code> 获得更简短的报告。</li>
 </ul>
 </li>
-<li>
-<p><code>git diff [file]</code> 获取 file 文件在 <strong>工作区</strong> 和 <strong>暂存区</strong> 的差异。</p>
+<li><p><code>git diff [file]</code> 获取 file 文件在 <strong>工作区</strong> 和 <strong>暂存区</strong> 的差异。</p>
 </li>
 </ul>
-<h4 id="本地库相关">本地库相关</h4>
-<ul>
-<li>
-<p><code>git commit -m [message]</code> 提交本地库。其中 [message] 是本次提交的备注信息。</p>
+<h4 id="本地库相关"><a href="#本地库相关" class="headerlink" title="本地库相关"></a>本地库相关</h4><ul>
+<li><p><code>git commit -m [message]</code> 提交本地库。其中 [message] 是本次提交的备注信息。</p>
 <ul>
 <li>使用 <code>git commit [file1] [file2] ... -m [message]</code> 来提交暂存区中的指定几个文件。</li>
 </ul>
 </li>
-<li>
-<p><code>git reflog</code> 查看 commit 简略日志。</p>
+<li><p><code>git reflog</code> 查看 commit 简略日志。</p>
 </li>
-<li>
-<p><code>git log</code> 查看 commit 详细日志。</p>
+<li><p><code>git log</code> 查看 commit 详细日志。</p>
 </li>
 </ul>
-<h4 id="版本回退">版本回退</h4>
-<ul>
+<h4 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h4><ul>
 <li><code>git reset --hard [versionID]</code> 穿越回到 [versionID] 对应的版本。<strong>这会将暂存区与工作区都回退到上一次版本!</strong></li>
 </ul>
-<h4 id="Branch">Branch</h4>
-<ul>
-<li>
-<p><code>git branch</code> 显示当前所有的分支。</p>
+<h4 id="Branch"><a href="#Branch" class="headerlink" title="Branch"></a>Branch</h4><ul>
+<li><p><code>git branch</code> 显示当前所有的分支。</p>
 <ul>
 <li>使用 <code>git branch -v</code> 显示更为详细的信息。</li>
 </ul>
 </li>
-<li>
-<p><code>git branch [branchname]</code> 创建一个名为 branchname 的分支。</p>
+<li><p><code>git branch [branchname]</code> 创建一个名为 branchname 的分支。</p>
 </li>
-<li>
-<p><code>git checkout [branchname]</code> 切换到名为 branchname 的分支。</p>
+<li><p><code>git checkout [branchname]</code> 切换到名为 branchname 的分支。</p>
 <ul>
-<li>在切换分支之前，<strong>请保证目前工作区的修改已被 commit</strong>。否则将无法进行分支切换。</li>
+<li>在切换分支之前，<strong>请保证目前工作区的修改已被 commit</strong>。否则将无法进行分支切换。  </li>
 </ul>
 </li>
-<li>
-<p><code>git merge</code> 合并分支。</p>
+<li><p><code>git merge</code> 合并分支。</p>
 <ul>
-<li>
-<p>在切换分支之前，<strong>请保证目前工作区的修改已被 commit</strong>。否则将无法进行分支切换。</p>
+<li><p>在切换分支之前，<strong>请保证目前工作区的修改已被 commit</strong>。否则将无法进行分支切换。 </p>
 </li>
-<li>
-<p>假设当前在分支 A 下，<code>get merge B</code> 将会把 B 中的修改合并到 A 中。这一操作不会对分支 B 产生任何影响。</p>
+<li><p>假设当前在分支 A 下，<code>get merge B</code> 将会把 B 中的修改合并到 A 中。这一操作不会对分支 B 产生任何影响。</p>
 </li>
-<li>
-<p>如果合并产生冲突（conflict），则需要人为地决定新内容。**冲突合并完成后，需要重新 add 和 commit。**此时的 commit 后面不能携带 [file] 参数。</p>
+<li><p>如果合并产生冲突（conflict），则需要人为地决定新内容。<strong>冲突合并完成后，需要重新 add 和 commit。</strong>此时的 commit 后面不能携带 [file] 参数。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h4 id="提交到-Github">提交到 Github</h4>
-<ul>
-<li>
-<p><code>git remote</code> 查看当前的别名（alias）库。</p>
+<h4 id="提交到-Github"><a href="#提交到-Github" class="headerlink" title="提交到 Github"></a>提交到 Github</h4><ul>
+<li><p><code>git remote</code> 查看当前的别名（alias）库。</p>
 <ul>
 <li>使用 <code>git remote -v</code> 查看更详细的信息。</li>
 </ul>
 </li>
-<li>
-<p><code>git remote add [alias] [url]</code> 把 url 的别名设置为 alias。</p>
+<li><p><code>git remote add [alias] [url]</code> 把 url 的别名设置为 alias。</p>
 </li>
-<li>
-<p><code>git push [alias] [branch]</code> 将本地库的 branch 分支推送到 alias 对应的远程库。</p>
+<li><p><code>git push [alias] [branch]</code> 将本地库的 branch 分支推送到 alias 对应的远程库。</p>
 </li>
-<li>
-<p><code>git pull [alias] [branch]</code> 将别名为 alias 的远端的 branch 分支拉取下来。假设目前在分支 A，拉去下来的内容也会被保存在分支 A。</p>
+<li><p><code>git pull [alias] [branch]</code> 将别名为 alias 的远端的 branch 分支拉取下来。假设目前在分支 A，拉去下来的内容也会被保存在分支 A。</p>
 <ul>
 <li>如果本地仓库和远程仓库没有关联，可能产生 refusing to merge unrelated histories 错误。解决方案是：在 pull 后紧根 <code>--allow-unrelated-histories</code> 选项。</li>
 </ul>

@@ -13,26 +13,34 @@
   
   <title>【笔记】信息理论 | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Lec 1 随机变量的熵和互信息   自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X&#x3D;x_k}$ 的 自信息 定义为 $$I(x_k)&#x3D;-\log_ap(x_k)$$ 当 $a&#x3D;2$，为比特（bit）。当 $a&#x3D;e$，为奈特（nat）。 【自信息的理解】  事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表">
+  <meta name="description" content="Lec 1 随机变量的熵和互信息 自信息  对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X&#x3D;x_k\}$ 的 自信息 定义为  I(x_k)&#x3D;-\log_ap(x_k) 当 $a&#x3D;2$，为比特（bit）。当 $a&#x3D;e$，为奈特（nat）。  【自信息的理解】  事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【笔记】信息理论">
 <meta property="og:url" content="http://example.com/2024/03/10/notes_it/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="Lec 1 随机变量的熵和互信息   自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X&#x3D;x_k}$ 的 自信息 定义为 $$I(x_k)&#x3D;-\log_ap(x_k)$$ 当 $a&#x3D;2$，为比特（bit）。当 $a&#x3D;e$，为奈特（nat）。 【自信息的理解】  事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表">
+<meta property="og:description" content="Lec 1 随机变量的熵和互信息 自信息  对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X&#x3D;x_k\}$ 的 自信息 定义为  I(x_k)&#x3D;-\log_ap(x_k) 当 $a&#x3D;2$，为比特（bit）。当 $a&#x3D;e$，为奈特（nat）。  【自信息的理解】  事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/resources/it-1.png">
-<meta property="og:image" content="http://example.com/resources/it-2.png">
-<meta property="og:image" content="http://example.com/resources/it-3.png">
-<meta property="og:image" content="http://example.com/resources/it-4.png">
-<meta property="og:image" content="http://example.com/resources/it-5.png">
-<meta property="og:image" content="http://example.com/resources/it-6.png">
-<meta property="og:image" content="http://example.com/resources/it-7.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-1.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-2.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-3.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-4.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-5.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-6.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-7.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-8.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-9.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-12.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-13.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-14.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-15.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-16.png">
+<meta property="og:image" content="http://example.com/2024/03/10/resources/it-17.png">
 <meta property="article:published_time" content="2024-03-10T02:11:37.094Z">
-<meta property="article:modified_time" content="2024-03-14T17:52:43.798Z">
+<meta property="article:modified_time" content="2024-03-24T06:53:28.275Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/resources/it-1.png">
+<meta name="twitter:image" content="http://example.com/2024/03/10/resources/it-1.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -167,7 +175,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/Notes/">
                 Notes
-                <div class="category-count">12</div>
+                <div class="category-count">13</div>
             </a>
         
             <a class="category-link" href="/categories/Others/">
@@ -203,7 +211,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">3 </div>
+          <div class="archive-count">4 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -233,6 +241,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/19/notes_cod_p2/">【笔记】计算机组成 (Part II)</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -241,15 +253,11 @@
           </li>
         
           <li>
-            <a href="/2024/03/05/notes_cod/">【笔记】计算机组成</a>
+            <a href="/2024/03/05/notes_cod_p1/">【笔记】计算机组成 (Part I)</a>
           </li>
         
           <li>
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
           </li>
         
       </ul>
@@ -295,7 +303,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.3k words 
+            2.5k words 
           </div>
         </div>
         
@@ -304,141 +312,197 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="Lec-1-随机变量的熵和互信息">Lec 1 随机变量的熵和互信息</h3>
-<ul>
-<li>
-<p>自信息</p>
-<p>对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 <strong>自信息</strong> 定义为</p>
-<p>$$I(x_k)=-\log_ap(x_k)$$</p>
-<p>当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。</p>
-<p>【自信息的理解】</p>
+          <h3 id="Lec-1-随机变量的熵和互信息"><a href="#Lec-1-随机变量的熵和互信息" class="headerlink" title="Lec 1 随机变量的熵和互信息"></a>Lec 1 随机变量的熵和互信息</h3><ol>
+<li><p>自信息</p>
+<p> 对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X=x_k\}$ 的 <strong>自信息</strong> 定义为 </p>
+<script type="math/tex; mode=display">I(x_k)=-\log_ap(x_k)</script><p> 当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。</p>
+<p> 【自信息的理解】</p>
 <ol>
 <li>事件发生后对观察者提供的信息量；</li>
 <li>观察者为确证该事件所需要付出的代价（类比功与能量）；</li>
-<li>事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。</li>
-</ol>
+<li><p>事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。</p>
 <p>例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。</p>
 </li>
-<li>
-<p>条件自信息、两事件的互信息</p>
-<ul>
-<li>
-<p>条件自信息</p>
-<p>对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 <strong>条件自信息</strong> 定义为</p>
-<p>$$I(x_k|y_j)=-\log p(x_k|y_j)$$</p>
-<p>本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。</p>
+</ol>
 </li>
-<li>
-<p>互信息</p>
-<p>概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 <strong>互信息</strong> 定义为</p>
-<p>$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)$$</p>
-<p>本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。</p>
+<li><p>条件自信息、两事件的互信息</p>
+<ul>
+<li><p>条件自信息</p>
+<p>对于二维随机变量概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 发生的条件下事件 $\{X=x_k\}$ 的 <strong>条件自信息</strong> 定义为</p>
+<script type="math/tex; mode=display">I(x_k|y_j)=-\log p(x_k|y_j)</script><p>本质是已知 $\{Y=y_j\}$ 发生的情况下，突然 $\{X=x_k\}$ 又发生了，这件事情所提供给观察者的信息量。</p>
+</li>
+<li><p>互信息</p>
+<p>概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 <strong>互信息</strong> 定义为</p>
+<script type="math/tex; mode=display">I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)</script><p>本质是事件 $\{Y=y_j\}$ 发生后对 $\{X=x_k\}$ 的不确定性的降低。</p>
 <p>互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。</p>
 </li>
 </ul>
 </li>
-<li>
-<p>多事件下的概念拓展</p>
+<li><p>多事件下的概念拓展</p>
 <ul>
-<li>
-<p>联合自信息</p>
-<p>概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 <strong>联合自信息</strong> 定义为</p>
-<p>$$I(x_k,y_j)= - \log p(x_k,y_j)$$</p>
-</li>
-<li>
-<p>条件互信息</p>
+<li><p>联合自信息</p>
+<p>概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 <strong>联合自信息</strong> 定义为</p>
+<script type="math/tex; mode=display">I(x_k,y_j)= - \log p(x_k,y_j)</script></li>
+<li><p>条件互信息</p>
 <p>给定 $Z=z$ 的条件下，$X=x$ 与 $Y=y$ 之间的条件互信息为（<code>,</code> 优先级大于 <code>|</code>）</p>
-<p>$$I(x;y|z)= - \log p(x|z) + \log p(x|y,z)$$</p>
-<p>其含义为 $Z=z$ 发生时，$X=x$ 和 $Y=y$ 相互之间提供的信息量。依然具有对称性。</p>
+<script type="math/tex; mode=display">I(x;y|z)= - \log p(x|z) + \log p(x|y,z)</script><p>其含义为 $Z=z$ 发生时，$X=x$ 和 $Y=y$ 相互之间提供的信息量。依然具有对称性。</p>
 </li>
-<li>
-<p>联合互信息</p>
-<p>联合事件 ${Y=y,Z=z}$ 和事件 ${X=x}$ 之间的互信息为</p>
-<p>$$I(x;y,z)= - \log p(x) + \log p(x|y,z)$$</p>
-<p>其含义为 ${Y=y,Z=z}$ 联合提供给 ${X=x}$ 的信息量。</p>
+<li><p>联合互信息</p>
+<p>联合事件 $\{Y=y,Z=z\}$ 和事件 $\{X=x\}$ 之间的互信息为</p>
+<script type="math/tex; mode=display">I(x;y,z)= - \log p(x) + \log p(x|y,z)</script><p>其含义为 $\{Y=y,Z=z\}$ 联合提供给 $\{X=x\}$ 的信息量。</p>
 </li>
-<li>
-<p>事件联合互信息的链式法则</p>
-<p>$$I(x;y,z)=I(x;y)+I(x;z|y)$$</p>
-<p>事件 ${Y=y,Z=z}$ 联合提供给 ${X=x}$ 的信息量等于【${Y=y}$ 提供给 ${X=x}$ 的信息量】加上【${Y=y}$ 已知情况下，${Z=z}$ 提供给 ${X=x}$ 的信息量】。</p>
-<p><img src="/resources/it-1.png" alt="it-1" width="80%"></p>
+<li><p>事件联合互信息的链式法则</p>
+<script type="math/tex; mode=display">I(x;y,z)=I(x;y)+I(x;z|y)</script><p>事件 $\{Y=y,Z=z\}$ 联合提供给 $\{X=x\}$ 的信息量等于【$\{Y=y\}$ 提供给 $\{X=x\}$ 的信息量】加上【$\{Y=y\}$ 已知情况下，$\{Z=z\}$ 提供给 $\{X=x\}$ 的信息量】。</p>
+<p><img src="../resources/it-1.png" alt="it-1"></p>
 </li>
 </ul>
 </li>
-<li>
-<p>随机变量的熵</p>
+<li><p>随机变量的熵</p>
 <p>熵的定义即为平均自信息（自信息的期望值）。</p>
-<p>$$<br>
-H(X)=E[I(X)]=\sum_{x \in \mathcal{X}} p(x) I(x)=-\sum_{x \in \mathcal{X}} p(x) \log p(x)<br>
-$$</p>
-<p>【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 ${X=x}$。</p>
+<script type="math/tex; mode=display">
+H(X)=E[I(X)]=\sum_{x \in \mathcal{X}} p(x) I(x)=-\sum_{x \in \mathcal{X}} p(x) \log p(x)</script><p>【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 $\{X=x\}$。</p>
 <p>【例子】对于伯努利分布 $X \sim B(p)$，$H(X) = -p \log p - (1-p) \log (1-p)$。当 $p=0 / 1$ 时，熵为 $0$；当 $p=0.5$ 时，熵取到最大值。</p>
 <p>【理解】熵是随机变量不确定性的度量。</p>
 </li>
-<li>
-<p>关于熵的衍生概念</p>
+<li><p>关于熵的衍生概念</p>
 <ul>
-<li>
-<p>联合熵</p>
-<p>$$<br>
-H(X,Y)=E[I(X,Y)]=-\sum_{x \in \mathcal{X}, y \in \mathcal{Y}} p(x,y) \log p(x,y)<br>
-$$</p>
-<p>表达了两个变量的不确定度。</p>
+<li><p>联合熵</p>
+<script type="math/tex; mode=display">
+H(X,Y)=E[I(X,Y)]=-\sum_{x \in \mathcal{X}, y \in \mathcal{Y}} p(x,y) \log p(x,y)</script><p>表达了两个变量的不确定度。</p>
 </li>
-<li>
-<p>条件熵</p>
+<li><p>条件熵</p>
 <p><strong>定义 1</strong>：给定 $Y=y$ 条件下，$X$ 的条件熵为</p>
-<p>$$H(X|y)=-\sum_{x \in \mathcal{X}} p(x|y) \log p(x|y)$$</p>
-<p>注意 $Y=y$ 是已然发生的。</p>
+<script type="math/tex; mode=display">H(X|y)=-\sum_{x \in \mathcal{X}} p(x|y) \log p(x|y)</script><p>注意 $Y=y$ 是已然发生的。</p>
 <p><strong>定义 2</strong>：随机变量 $X$ 相对于随机变量 $Y$ 的条件熵为</p>
-<p>$$H(X|Y) = E[H(X|y)] = -\sum_{y \in \mathcal{Y}} p(y) \sum_{x \in \mathcal{X}} p(x|y) \log p(x|y) = -\sum_{y \in \mathcal{Y}}\sum_{x \in \mathcal{X}} p(x,y) \log p(x|y)$$</p>
-<p>当 $X,Y$ 统计独立时，有 $H(X|Y)=H(X)$。</p>
+<script type="math/tex; mode=display">H(X|Y) = E[H(X|y)] = -\sum_{y \in \mathcal{Y}} p(y) \sum_{x \in \mathcal{X}} p(x|y) \log p(x|y) = -\sum_{y \in \mathcal{Y}}\sum_{x \in \mathcal{X}} p(x,y) \log p(x|y)</script><p>当 $X,Y$ 统计独立时，有 $H(X|Y)=H(X)$。</p>
 </li>
-<li>
-<p>随机变量联合熵的链式法则【HD】</p>
-<p>$$H(X,Y)=H(X)+H(Y|X)=H(Y)+H(X|Y)$$</p>
-<p>Proof:</p>
-<p><img src="/resources/it-2.png" alt="it-2" width="80%"></p>
+<li><p>随机变量联合熵的链式法则【HD】</p>
+<script type="math/tex; mode=display">H(X,Y)=H(X)+H(Y|X)=H(Y)+H(X|Y)</script><p>Proof:</p>
+<p><img src="../resources/it-2.png" alt="it-2"></p>
 <p>注意到当 $X,Y$ 统计独立时，有 $H(X|Y)=H(X)$。所以当 $X,Y$ 统计独立时，有 $H(X,Y)=H(X)+H(Y)$。</p>
 </li>
 </ul>
 </li>
-<li>
-<p>熵的性质</p>
+<li><p>熵的性质</p>
 <ul>
-<li>
-<p>基本性质</p>
-<p><img src="/resources/it-3.png" alt="it-3" width="80%"></p>
+<li><p>基本性质</p>
+<p><img src="../resources/it-3.png" alt="it-3"></p>
 </li>
-<li>
-<p>可加性（分步观察）</p>
+<li><p>可加性（分步观察）</p>
 <p>考虑如下的决策树情景：</p>
-<p><img src="/resources/it-4.png" alt="it-4" width="80%"></p>
+<p><img src="../resources/it-4.png" alt="it-4"></p>
 <p>对于变量 $X$（注意本质上只有一个变量）可以进行 <strong>多步观察</strong>，每一步的观察可以从上一步的观察得到更细致的结果。变量 $X$ <strong>在最后的观察结果集合中的不确定性</strong> 等于【第一次观察结果的不确定性】加上【其后每次观察结果在前一次观察结果已知的前提下的前提不确定性】。</p>
 <p><em>和链式法则记得区分！</em></p>
 <p>可加性的证明：</p>
-<p><img src="/resources/it-5.png" alt="it-5" width="80%"></p>
-<p>在如此的分步观察下，有</p>
-<p>$$H(X_1,X_2)=H(X_2)+H(X_1|X_2)=H(X_2)$$</p>
-<p>$$H(X_1,X_2)=H(X_1)+H(X_2|X_1)=H(X_2)$$</p>
-<p>注意这个式子只有在上上图所示的决策树情形才适用。</p>
+<p><img src="../resources/it-5.png" alt="it-5"></p>
+<p>在如此的分步观察下，有 </p>
+<script type="math/tex; mode=display">H(X_1,X_2)=H(X_2)+H(X_1|X_2)=H(X_2)</script><script type="math/tex; mode=display">H(X_1,X_2)=H(X_1)+H(X_2|X_1)=H(X_2)</script><p>注意这个式子只有在上上图所示的决策树情形才适用。</p>
 <p>注意第一个式子意味着 $H(X_1|X_2)=0$。回顾上上图，这是因为当 $X_2$ 确定时（例如 $A_2$），$X_1$ 也随之确定（例如 $A$）。所以条件熵为零。反之则没有这个性质。</p>
 </li>
-<li>
-<p>极值性</p>
-<p>$$H_K(p_1,p_2,\cdots,p_K) \leq H_K(\frac{1}{K},\frac{1}{K},\cdots,\frac{1}{K}) = \log K$$</p>
-<p>极值性的证明：</p>
-<p><img src="/resources/it-6.png" alt="it-6" width="80%"></p>
+<li><p>极值性</p>
+<script type="math/tex; mode=display">H_K(p_1,p_2,\cdots,p_K) \leq H_K(\frac{1}{K},\frac{1}{K},\cdots,\frac{1}{K}) = \log K</script><p>极值性的证明：</p>
+<p><img src="../resources/it-6.png" alt="it-6"></p>
 </li>
-<li>
-<p>条件熵 $\leq$ 熵：增加条件使熵减小</p>
-<p>$$H(X|Y) \leq H(X)$$</p>
-<p>注意 $Y$ 不是已知的。当 ${Y=y}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。</p>
-<p><img src="/resources/it-7.png" alt="it-7" width="80%"></p>
+<li><p>条件熵 $\leq$ 熵：增加条件使熵减小</p>
+<script type="math/tex; mode=display">H(X|Y) \leq H(X)</script><p>注意 $Y$ 不是已知的。当 $\{Y=y\}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。</p>
+<p><img src="../resources/it-7.png" alt="it-7"></p>
 </li>
 </ul>
 </li>
+</ol>
+<pre><code>+ 凸性
+
+  熵具有一个很优美的性质，它是凸的。
+
+  ![it-10](../resources/it-10.png)
+
+  相比于一般的凸函数，概率空间上的函数还要求 $\sum\limits_&#123;i=1&#125;^np_i=1$。根据拉格朗日乘数法，对于概率空间上的上凸函数 $\alpha$，要使 $f(\alpha)$ 取得最大值，则 $f(\alpha)-\lambda(\sum\alpha_i-1)$ 取得最大值。
+
+  ![it-11](../resources/it-11.png)
+</code></pre><ol>
+<li><p>平均互信息和熵</p>
+<p> 回顾互信息的概念</p>
+<script type="math/tex; mode=display">I(x;y)=I(x)-I(x|y)= - \log p(x) + \log p(x|y) = \log \frac{p(x|y)}{p(x)}</script><p> 平均互信息定义为其期望，即 $I(X;Y)=\sum\limits_x\sum\limits_y p(x,y)\log \frac{p(x|y)}{p(x)}$。</p>
+<ul>
+<li><p>平均互信息和熵的关联</p>
+<p>注意到</p>
+<script type="math/tex; mode=display">I(X;Y)=\sum\limits_x\sum\limits_y p(x,y) \log \frac{p(x|y)}{p(x)}</script><script type="math/tex; mode=display">I(X;Y)=\sum\limits_x\sum\limits_y p(x,y) \log {p(x|y)} - \sum\limits_x\sum\limits_y p(x,y){p(x)}</script><script type="math/tex; mode=display">I(X;Y)=H(X)-H(X|Y) \ (I)</script><p>显然平均互信息具有对称性</p>
+<script type="math/tex; mode=display">I(X;Y)=H(Y)-H(Y|X) \ (II)</script><p>代入联合熵的链式法则，还有</p>
+<script type="math/tex; mode=display">I(X;Y)=H(X)+H(Y)-H(X,Y) \ (III)</script><p>I, II, III 整理一下即可得到下图【IMPORTANT】：</p>
+<p><img src="../resources/it-8.png" alt="it-8"></p>
+<p>可以证明，平均互信息是 <strong>非负的</strong>。给定额外的信息，至少不会让熵增加。</p>
+<p><img src="../resources/it-9.png" alt="it-9"></p>
+</li>
 </ul>
+</li>
+<li><p>相对熵（散度）</p>
+<p> <img src="../resources/it-12.png" alt="it-12"></p>
+<p> <img src="../resources/it-13.png" alt="it-13"></p>
+</li>
+<li><p>关于疑义度的 Fano 不等式</p>
+<p> 定义在相同字符表 $\{0,1,\cdots,K\}$ 上的两个随机变量 $X$ 和 $\hat{X}$，其中 $\hat{X}$ 是对 $X$ 的某种估计。估计错误概率定义为</p>
+<script type="math/tex; mode=display">P_E=\sum\limits_{i=0}^{K-1}\sum\limits_{j=0,j \neq i}^{K-1} P \{X=i,\hat{X}=j\}</script><p> 则 $\hat{X}$ 已知条件下 $X$ 的 <strong>疑义度</strong> 满足表达式</p>
+<script type="math/tex; mode=display">H(X|\hat{X})\le H(P_E,1-P_E)+P_E \log (K-1)</script><p> 证明如下：</p>
+<p> <img src="../resources/it-14.png" alt="it-14"></p>
+<p> 注意其中的 $H(P_E)$ 实际上从定义上就是 $H(E)$ ($E=1$ when $X \neq \hat{X}$)。感觉直接写成 $H(P_E)$ 不是很严谨。</p>
+<p> 它的物理意义是，如果建立了关于 $X$ 的某种估计 $\hat{X}$，并且已知其错误率 $P_E$，那么我们可以知道这中估计有多可靠（根据 $H(X|\hat{X})$ 判断）。例如，假设 $K=2,P_E=1$，你会发现这个疑义度为 $0$。</p>
+</li>
+<li><p>互信息的凸性</p>
+<p>smjb，后面再补</p>
+</li>
+</ol>
+<h3 id="Lec-2-连续随机变量的互信息、微分熵"><a href="#Lec-2-连续随机变量的互信息、微分熵" class="headerlink" title="Lec 2 连续随机变量的互信息、微分熵"></a>Lec 2 连续随机变量的互信息、微分熵</h3><ol>
+<li><p>定义：连续随机变量的互信息</p>
+<p> <img src="../resources/it-15.png" alt="it-15"></p>
+</li>
+<li><p>定义：微分熵</p>
+<ul>
+<li><p>基本定义</p>
+<p><img src="../resources/it-16.png" alt="it-16"></p>
+<p>如果按照离散的方法对微分熵进行定义，会发现直接飙到正无穷。</p>
+<p>所以采取了上图中下面的那个定义方法，即</p>
+<script type="math/tex; mode=display">H_C(X)=h(X) \triangleq-\int p_X(x) \log p_X(x) dx</script></li>
+<li><p>条件微分熵、联合微分熵</p>
+<p><img src="../resources/it-17.png" alt="it-17"></p>
+</li>
+<li><p>一个关于微分熵的例子</p>
+<blockquote>
+<p>已知某线段的长度在 $[0,L]$ 之间均匀分布，现用精度为 $\Delta$ 的尺子去量它，问量得的结果对于线段的真实长度提供多少信息？</p>
+</blockquote>
+<p>令：$X=$ 线段的长度，$Y=$ 测量的结果。</p>
+<p>测量前 $H_C(X)=\log L$，测量后 $H_C(X|Y)=\log \Delta$</p>
+<p>故而 $I(X;Y)=H_C(X)-H_C(X|Y)=\log\frac{L}{\Delta}$。</p>
+</li>
+</ul>
+</li>
+<li><p>微分熵的性质</p>
+<ul>
+<li><p>线性变化下不具有不变性</p>
+<p>对于离散随机变量，若存在一一映射 $X \to Y$，则有 $H(X)=H(Y)$。</p>
+<p>但对于连续随机变量，即使有一一映射，甚至即使是线性的，这种关系也不存在。</p>
+</li>
+<li><p>均匀分布的微分熵</p>
+<p>设 $p(x)=\frac{1}{b-a}, x \in [a,b]$。$H_C(X)=\int_a^b \frac{1}{b-a} \ln (b-a) d x=\ln (b-a)$。</p>
+</li>
+<li><p>微分熵的极大化：峰值受限</p>
+<p>设 $X$ 取值于 $(-M,M)$，即 $\int_{-M}^{M}p(x)dx=1$，这时微分熵 $H_C(X) \le \ln 2M$，等号在 <strong>均匀分布</strong> 时取到。</p>
+<p>使用拉格朗日乘数法证明。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& J(p(x)) \triangleq H_C(X)-\lambda \int_{-M}^{+M} p(x) d x \newline
+& =-\int_{-M}^{+M} p(x) \ln p(x) d x-\lambda \int_{-M}^{+M} p(x) d x \newline
+& =-\int_{-M}^{+M} p(x) \ln \left(e^\lambda p(x)\right) d x \newline
+& \leq-\int_{-M}^{+M} p(x)\left(1-\frac{1}{e^\lambda p(x)}\right) d x \newline
+& =\frac{2 M}{e^\lambda}-1=\text { const. }
+\end{aligned}</script><p>等号成立的条件为 $p(x)=e^{-\lambda}=\text{const}$，亦即均匀分布。</p>
+<p>根据约束条件 $\int_{-M}^{M}p(x)dx=1$ 知 $p(x)=\frac{1}{2M}$，所以 $H_C(X) \le \ln 2M$。</p>
+</li>
+<li><p>微分熵的极大化：平均功率受限</p>
+<p>在方差 $\sigma^2$ 一定的条件下，当 $X$ 服从 <strong>正态分布</strong> 时微分熵最大。即 $H_C(X) \le \ln (\sqrt{2\pi e}\sigma)$。</p>
+</li>
+</ul>
+</li>
+</ol>
 
         
       </div>
@@ -451,10 +515,15 @@ $$</p>
   
     
 <nav id="article-nav">
-  <a class="article-nav-btn left  disabled "
+  <a class="article-nav-btn left "
+    
+      href="/2024/03/19/notes_cod_p2/"
+      title="【笔记】计算机组成 (Part II)"
      >
     <i class="fa-solid fa-angle-left"></i>
     <p class="title-text">
+      
+        【笔记】计算机组成 (Part II)
         
     </p>
   </a>

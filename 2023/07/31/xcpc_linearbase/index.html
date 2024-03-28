@@ -13,12 +13,12 @@
   
   <title>【算法竞赛】线性基 | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="问题导入 给定一个图。求一条回路使得该路径的异或和最大。 线性基 线性基的构造 对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。 123456789101112for(int i &#x3D; 1; i &lt;&#x3D; cnt; ++i) &amp;#123;        LL cur &#x3D; S[i];        for(int k &#x3D; 59; k &gt;&#x3D; 0; --k) &amp;#123;">
+  <meta name="description" content="问题导入给定一个图。求一条回路使得该路径的异或和最大。 线性基线性基的构造 对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。 123456789101112for(int i &#x3D; 1; i &lt;&#x3D; cnt; ++i) &amp;#123;        LL cur &#x3D; S[i];        for(int k &#x3D; 59; k &gt;&#x3D; 0; --k) &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法竞赛】线性基">
 <meta property="og:url" content="http://example.com/2023/07/31/xcpc_linearbase/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="问题导入 给定一个图。求一条回路使得该路径的异或和最大。 线性基 线性基的构造 对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。 123456789101112for(int i &#x3D; 1; i &lt;&#x3D; cnt; ++i) &amp;#123;        LL cur &#x3D; S[i];        for(int k &#x3D; 59; k &gt;&#x3D; 0; --k) &amp;#123;">
+<meta property="og:description" content="问题导入给定一个图。求一条回路使得该路径的异或和最大。 线性基线性基的构造 对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。 123456789101112for(int i &#x3D; 1; i &lt;&#x3D; cnt; ++i) &amp;#123;        LL cur &#x3D; S[i];        for(int k &#x3D; 59; k &gt;&#x3D; 0; --k) &amp;#123;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-31T06:31:23.790Z">
 <meta property="article:modified_time" content="2024-03-14T08:07:36.348Z">
@@ -158,7 +158,7 @@
       <div class="category-box">
             <a class="category-link" href="/categories/Notes/">
                 Notes
-                <div class="category-count">12</div>
+                <div class="category-count">13</div>
             </a>
         
             <a class="category-link" href="/categories/Others/">
@@ -194,7 +194,7 @@
       
         <a class="archive-link" href="/archives/2024/03 ">
           March 2024 
-          <div class="archive-count">3 </div>
+          <div class="archive-count">4 </div>
         </a>
       
         <a class="archive-link" href="/archives/2024/02 ">
@@ -224,6 +224,10 @@
       <ul>
         
           <li>
+            <a href="/2024/03/19/notes_cod_p2/">【笔记】计算机组成 (Part II)</a>
+          </li>
+        
+          <li>
             <a href="/2024/03/10/notes_it/">【笔记】信息理论</a>
           </li>
         
@@ -232,15 +236,11 @@
           </li>
         
           <li>
-            <a href="/2024/03/05/notes_cod/">【笔记】计算机组成</a>
+            <a href="/2024/03/05/notes_cod_p1/">【笔记】计算机组成 (Part I)</a>
           </li>
         
           <li>
             <a href="/2024/02/26/notes_crypto/">【笔记】Crypto</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/26/notes_ads/">【笔记】ADS</a>
           </li>
         
       </ul>
@@ -293,30 +293,22 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="问题导入">问题导入</h3>
-<p>给定一个图。求一条回路使得该路径的异或和最大。</p>
-<h3 id="线性基">线性基</h3>
-<p><strong>线性基的构造</strong></p>
+          <h3 id="问题导入"><a href="#问题导入" class="headerlink" title="问题导入"></a>问题导入</h3><p>给定一个图。求一条回路使得该路径的异或和最大。</p>
+<h3 id="线性基"><a href="#线性基" class="headerlink" title="线性基"></a>线性基</h3><p><strong>线性基的构造</strong></p>
 <p>对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= cnt; ++i) &#123;</span><br><span class="line">        LL cur = S[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">59</span>; k &gt;= <span class="number">0</span>; --k) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cur &amp; (<span class="number">1ll</span> &lt;&lt; k)) &#123;</span><br><span class="line">                <span class="keyword">if</span>(d[k]) cur ^= d[k];</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    d[k] = cur;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>线性基的性质及略证</strong></p>
 <p>如此构建后，线性基中的所有数满足如下性质。</p>
-<ol start="0">
-<li>
-<p>若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的最高位。这也意味着：对于所有比它小的 $d_j$，其第 $i$ 位必为零。<br>
-若 $d_i$ 为零：………… 那它就是零呗。</p>
+<ol>
+<li><p>若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的最高位。这也意味着：对于所有比它小的 $d_j$，其第 $i$ 位必为零。<br>若 $d_i$ 为零：………… 那它就是零呗。</p>
 </li>
-<li>
-<p>数集 $S$ 中的任意数将可以被 $D$ 中的若干数唯一异或表示。</p>
+<li><p>数集 $S$ 中的任意数将可以被 $D$ 中的若干数唯一异或表示。</p>
 </li>
-<li>
-<p>$D$ 中的任意数将可以被 $S$ 中的若干数异或表示。</p>
+<li><p>$D$ 中的任意数将可以被 $S$ 中的若干数异或表示。</p>
 </li>
-<li>
-<p>选择 $D$ 中的若干数进行异或和，结果不可能为 $0$。</p>
+<li><p>选择 $D$ 中的若干数进行异或和，结果不可能为 $0$。</p>
 </li>
-<li>
-<p>不存在一个长度更小的数集 $D$，满足上述性质。</p>
+<li><p>不存在一个长度更小的数集 $D$，满足上述性质。</p>
 </li>
 </ol>
 <p>性质 1 的证明提示：由上述代码可见，一个数要么在经过若干次异或后进入线性基，要么经过若干次异或后变为 $0$。“唯一”可由性质 3 推导而来。</p>
@@ -327,8 +319,7 @@
 <p>由于性质 0，我们可以直接贪心地找最大异或和。</p>
 <p>从高位往低位扫描，时刻记录一个 ans。若 ans 的第 $i$ 位为 $0$，则异或上一个 $d_i$。否则不异或 $d_i$。</p>
 <p>你可能会觉得——这样最大异或和不总是 11111…11 吗？事实上，不是所有的 $d_i$ 都非零哦。</p>
-<h3 id="引入问题的解">引入问题的解</h3>
-<p>随便找一棵 dfs 树，通过返祖边或者横插边构成若干个基本环。可以证明，所有的环均可以由基本环异或表示。</p>
+<h3 id="引入问题的解"><a href="#引入问题的解" class="headerlink" title="引入问题的解"></a>引入问题的解</h3><p>随便找一棵 dfs 树，通过返祖边或者横插边构成若干个基本环。可以证明，所有的环均可以由基本环异或表示。</p>
 <p>将基本环的异或和丢进线性基，找最大异或和即可。</p>
 
         
