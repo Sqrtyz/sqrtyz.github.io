@@ -13,39 +13,39 @@
   
   <title>【笔记】计算机组成 (Part II) | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Part II 施工中。  Chapter 2. Instructions: Language of the MachineIntroduction Process of Compiling   编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。   例如，A + B $\to$ add A, B $\to$ 1000110010100000。  Instruction   指">
+  <meta name="description" content="Part II 施工中。  Chapter 2. Instructions: Language of the Machine Introduction   Process of Compiling 编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。 例如，A + B $\to$ add A, B $\to$ 1000110010100000。   Instruction 指令是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【笔记】计算机组成 (Part II)">
 <meta property="og:url" content="http://example.com/2024/03/19/notes_cod_p2/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="Part II 施工中。  Chapter 2. Instructions: Language of the MachineIntroduction Process of Compiling   编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。   例如，A + B $\to$ add A, B $\to$ 1000110010100000。  Instruction   指">
+<meta property="og:description" content="Part II 施工中。  Chapter 2. Instructions: Language of the Machine Introduction   Process of Compiling 编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。 例如，A + B $\to$ add A, B $\to$ 1000110010100000。   Instruction 指令是">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-31.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-32.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-33.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-34.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-35.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-36.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-37.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-38.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-39.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-40.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-41.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-42.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-43.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-44.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-45.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-46.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-47.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-48.png">
+<meta property="og:image" content="http://example.com/resources/cod-31.png">
+<meta property="og:image" content="http://example.com/resources/cod-32.png">
+<meta property="og:image" content="http://example.com/resources/cod-33.png">
+<meta property="og:image" content="http://example.com/resources/cod-34.png">
+<meta property="og:image" content="http://example.com/resources/cod-35.png">
+<meta property="og:image" content="http://example.com/resources/cod-36.png">
+<meta property="og:image" content="http://example.com/resources/cod-37.png">
+<meta property="og:image" content="http://example.com/resources/cod-38.png">
+<meta property="og:image" content="http://example.com/resources/cod-39.png">
+<meta property="og:image" content="http://example.com/resources/cod-40.png">
+<meta property="og:image" content="http://example.com/resources/cod-41.png">
+<meta property="og:image" content="http://example.com/resources/cod-42.png">
+<meta property="og:image" content="http://example.com/resources/cod-43.png">
+<meta property="og:image" content="http://example.com/resources/cod-44.png">
+<meta property="og:image" content="http://example.com/resources/cod-45.png">
+<meta property="og:image" content="http://example.com/resources/cod-46.png">
+<meta property="og:image" content="http://example.com/resources/cod-47.png">
+<meta property="og:image" content="http://example.com/resources/cod-48.png">
 <meta property="og:image" content="http://example.com/2024/03/19/notes_cod_p2/image.png">
-<meta property="og:image" content="http://example.com/2024/03/19/resources/cod-36.png">
+<meta property="og:image" content="http://example.com/resources/cod-36.png">
 <meta property="article:published_time" content="2024-03-19T08:21:41.436Z">
 <meta property="article:modified_time" content="2024-03-27T16:34:26.624Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/03/19/resources/cod-31.png">
+<meta name="twitter:image" content="http://example.com/resources/cod-31.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -320,115 +320,218 @@
           <blockquote>
 <p>Part II 施工中。</p>
 </blockquote>
-<h2 id="Chapter-2-Instructions-Language-of-the-Machine"><a href="#Chapter-2-Instructions-Language-of-the-Machine" class="headerlink" title="Chapter 2. Instructions: Language of the Machine"></a>Chapter 2. Instructions: Language of the Machine</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
-<li><p>Process of Compiling</p>
-<p>  编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。</p>
-<p>  例如，<code>A + B</code> $\to$ <code>add A, B</code> $\to$ <code>1000110010100000</code>。</p>
+<h2 id="Chapter-2-Instructions-Language-of-the-Machine">Chapter 2. Instructions: Language of the Machine</h2>
+<h3 id="Introduction">Introduction</h3>
+<ul>
+<li>
+<p>Process of Compiling</p>
+<p>编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。</p>
+<p>例如，<code>A + B</code> $\to$ <code>add A, B</code> $\to$ <code>1000110010100000</code>。</p>
 </li>
-<li><p>Instruction</p>
-<p>  指令是「机器的语言」。如果说 Instruction 是 Word，那么 Instruction set 则是 Vocabulary。</p>
-<p>  本课程采取的指令集为 RISC-V。这是一种精简指令集。</p>
-<p>  关于汇编语言和指令集的关系，摘取两条知乎回答：</p>
+<li>
+<p>Instruction</p>
+<p>指令是「机器的语言」。如果说 Instruction 是 Word，那么 Instruction set 则是 Vocabulary。</p>
+<p>本课程采取的指令集为 RISC-V。这是一种精简指令集。</p>
+<p>关于汇编语言和指令集的关系，摘取两条知乎回答：</p>
 <blockquote>
 <p>汇编语言是用人类看得懂的语言来描述指令集。否则指令集的机器码都是一堆二进制数字，人类读起来非常麻烦，但汇编是用类似人类语言的方式描述指令集，读起来方便多了。</p>
+</blockquote>
+<blockquote>
 <p>汇编指令是让人看得懂的，只是指令集的另外一种表示形式。</p>
 </blockquote>
 </li>
-<li><p>RISC vs. CISC</p>
-<p>  <img src="../resources/cod-31.png" alt="cod-31"></p>
+<li>
+<p>RISC vs. CISC</p>
+<p><img src="/resources/cod-31.png" alt="cod-31" width="90%"></p>
 </li>
 </ul>
-<h3 id="Arithmetic-Operations"><a href="#Arithmetic-Operations" class="headerlink" title="Arithmetic Operations"></a>Arithmetic Operations</h3><ul>
-<li><p>Instruction Formats</p>
-<p>  <img src="../resources/cod-32.png" alt="cod-32"></p>
-<p>  前者是可以理解为操作类型，后者可以理解为操作参数。</p>
+<h3 id="Arithmetic-Operations">Arithmetic Operations</h3>
+<ul>
+<li>
+<p>Instruction Formats</p>
+<p><img src="/resources/cod-32.png" alt="cod-32" width="90%"></p>
+<p>前者是可以理解为操作类型，后者可以理解为操作参数。</p>
 </li>
-<li><p>Add and Subtraction</p>
-<p>  | Category | Instruction | Example | Meaning | Comments |Type|<br>  |—-|—-|—-|—-|—-|—-|<br>  |Arithmetic|add|<code>add a,b,c</code>|$a \gets b+c$|Always 3 operand|R|<br>  |Arithmetic|subtract|<code>sub a,b,c</code>|$a \gets b-c$|Always 3 operand|R|</p>
-<p>  例如，对于一段 C 代码 <code>f = (g + h) - (i + j);</code>，可以写成如下的 RISC-V 指令：</p>
+<li>
+<p>Add and Subtraction</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Instruction</th>
+<th>Example</th>
+<th>Meaning</th>
+<th>Comments</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arithmetic</td>
+<td>add</td>
+<td><code>add a,b,c</code></td>
+<td>$a \gets b+c$</td>
+<td>Always 3 operand</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Arithmetic</td>
+<td>subtract</td>
+<td><code>sub a,b,c</code></td>
+<td>$a \gets b-c$</td>
+<td>Always 3 operand</td>
+<td>R</td>
+</tr>
+</tbody>
+</table>
+<p>例如，对于一段 C 代码 <code>f = (g + h) - (i + j);</code>，可以写成如下的 RISC-V 指令：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add t0, g, h</span><br><span class="line">add t1, i, j</span><br><span class="line">sub f, t0, t1</span><br></pre></td></tr></table></figure>
-<p>  不过，实际上这些变量并不能「写成」t0, g, h 这种。这一点我们马上就会提及。</p>
+<p>不过，实际上这些变量并不能「写成」t0, g, h 这种。这一点我们马上就会提及。</p>
 </li>
 </ul>
-<h3 id="Operands"><a href="#Operands" class="headerlink" title="Operands"></a>Operands</h3><ul>
-<li><p>Register Operands</p>
-<p>  对于 RISC-V 指令集，其使用的寄存器类型为 $32\times 64\text{-bit}$。可以想象成一个寄存器有 32 行，每一行有一个变量，其长度为 64 bits（等于 8 bytes，是一个 double / long long 的大小，也被称为 dword）。</p>
-<p>  这些寄存器的「各行」各司其职。其职能如下表所示。</p>
-<p>  <img src="../resources/cod-33.png" alt="cod-33"></p>
-<p>  还是用之前的例子，<code>f = (g + h) - (i + j);</code>，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。</p>
-<p>  那么我们应该这样描述 RISC-V 指令：</p>
+<h3 id="Operands">Operands</h3>
+<ul>
+<li>
+<p>Register Operands</p>
+<p>对于 RISC-V 指令集，其使用的寄存器类型为 $32\times 64\text{-bit}$。可以想象成一个寄存器有 32 行，每一行有一个变量，其长度为 64 bits（等于 8 bytes，是一个 double / long long 的大小，也被称为 dword）。</p>
+<p>这些寄存器的「各行」各司其职。其职能如下表所示。</p>
+<p><img src="/resources/cod-33.png" alt="cod-33" width="90%"></p>
+<p>还是用之前的例子，<code>f = (g + h) - (i + j);</code>，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。</p>
+<p>那么我们应该这样描述 RISC-V 指令：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add x5, x20, x21</span><br><span class="line">add x6, x22, x23</span><br><span class="line">sub x19, x5, x6</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Memory Operands</p>
+<li>
+<p>Memory Operands</p>
 <ul>
-<li><p>Basics</p>
+<li>
+<p>Basics</p>
 <ol>
 <li>执行算术操作：先从 memory 中读到 reg，在 reg 中进行运算，最后输回到 reg。</li>
 <li>Memory 的地址是 <strong>按 byte 定义的</strong>。</li>
 <li>RISC-V 采取小端。</li>
 </ol>
 </li>
-<li><p>Example</p>
-<p>  考虑 C 代码：</p>
+<li>
+<p>Example</p>
+<p>考虑 C 代码：</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A[<span class="number">12</span>] = h + A[<span class="number">8</span>]; <span class="comment">// here A is a double</span></span><br></pre></td></tr></table></figure>
-<p>  假设 h 在 reg 中的值位于 x21，A 在 memory 中的地址值保存在 reg 中的 x22。</p>
-<p>  用 RISC-V 表示：</p>
+<p>假设 h 在 reg 中的值位于 x21，A 在 memory 中的地址值保存在 reg 中的 x22。</p>
+<p>用 RISC-V 表示：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld x9, 64(x22)</span><br><span class="line">add x9, x21, x9</span><br><span class="line">sd x9, 96(x22)</span><br></pre></td></tr></table></figure>
 <ol>
 <li>第一行：由于 A 是 double 类型，所以 A[8] 相对于 A 的偏移为 64。<code>ld</code> 用于从 mem 读到 reg，使用 <code>ld x9, 64(x22)</code> 将 A 地址向后偏移 64 bytes 处的值读入到 reg 的 x9 中。</li>
 <li>第二行：执行加法。</li>
-<li><p>第三行：将 reg 的 x9 中的值输出到 mem 中。具体位置是 x22 所存地址向后偏移 96。</p>
-<p>| Category | Instruction | Example | Meaning | Comments |Type|<br>|—-|—-|—-|—-|—-|—-|<br>|Data Transfer|load dword|<code>ld x5, 40(x6)</code>|x5 = Memory[x6+40]|dword from mem to reg|I|<br>|Data Transfer|store dword|<code>sd x5, 40(x6)</code>|Memory[x6+40] = x5|dword from reg to mem|S|</p>
-</li>
+<li>第三行：将 reg 的 x9 中的值输出到 mem 中。具体位置是 x22 所存地址向后偏移 96。</li>
 </ol>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Instruction</th>
+<th>Example</th>
+<th>Meaning</th>
+<th>Comments</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Transfer</td>
+<td>load dword</td>
+<td><code>ld x5, 40(x6)</code></td>
+<td>x5 = Memory[x6+40]</td>
+<td>dword from mem to reg</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Data Transfer</td>
+<td>store dword</td>
+<td><code>sd x5, 40(x6)</code></td>
+<td>Memory[x6+40] = x5</td>
+<td>dword from reg to mem</td>
+<td>S</td>
+</tr>
+</tbody>
+</table>
 </li>
-<li><p>Add immediate</p>
-<p>  | Category | Instruction | Example | Meaning | Comments |Type|<br>  |—-|—-|—-|—-|—-|—-|<br>  |Arithmetic|addi immediate|<code>addi a,b,c</code>|$a \gets b+c$|$c$ is a constant|I|</p>
+<li>
+<p>Add immediate</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Instruction</th>
+<th>Example</th>
+<th>Meaning</th>
+<th>Comments</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arithmetic</td>
+<td>addi immediate</td>
+<td><code>addi a,b,c</code></td>
+<td>$a \gets b+c$</td>
+<td>$c$ is a constant</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="Signed-amp-Unsigned-Numbers"><a href="#Signed-amp-Unsigned-Numbers" class="headerlink" title="Signed &amp; Unsigned Numbers"></a>Signed &amp; Unsigned Numbers</h3><ul>
-<li><p>Sign Extension</p>
-<p>  Example: 8-bit to 16-bit</p>
-<p>  +2: 0000 0010 =&gt; 0000 0000 0000 0010</p>
-<p>  -2: 1111 1110 =&gt; 1111 1111 1111 1110 </p>
-<p>  在 RISC-V 中，<code>lb</code> 操作用于执行「同符号位拓展」，<code>lbu</code> 操作用于执行「补 0 位拓展」。</p>
-</li>
-</ul>
-<h3 id="Representing-Instructions"><a href="#Representing-Instructions" class="headerlink" title="Representing Instructions"></a>Representing Instructions</h3><ul>
-<li><p>汇编码 $\to$ 机器码</p>
-<p>  一个例子如下：</p>
-<p>  <img src="../resources/cod-34.png" alt="cod-34"></p>
-<p>  可以看到，汇编码向机器码的转换已经很好理解了。更具体一点，它的规则如下：</p>
-<p>  <img src="../resources/cod-35.png" alt="cod-35"></p>
-<p>  一条指令的长度恒为 32 位。注意构成 operator 的不止有 opcode，还有 funct7 和 funct3。例如，<code>add</code> 和 <code>sub</code> 的 opcode 实际上是相同的。</p>
-<p>  实际上，这种机器码指令为 R 型指令，他只是众多机器码指令类型中的一种。</p>
-<p>  <img src="../resources/cod-36.png" alt="cod-36"></p>
+<h3 id="Signed-Unsigned-Numbers">Signed &amp; Unsigned Numbers</h3>
 <ul>
-<li><p>R-Format Instructions</p>
-<p>  主要包含 arithmetic。格式和意义如上所示。</p>
+<li>
+<p>Sign Extension</p>
+<p>Example: 8-bit to 16-bit</p>
+<p>+2: 0000 0010 =&gt; 0000 0000 0000 0010</p>
+<p>-2: 1111 1110 =&gt; 1111 1111 1111 1110</p>
+<p>在 RISC-V 中，<code>lb</code> 操作用于执行「同符号位拓展」，<code>lbu</code> 操作用于执行「补 0 位拓展」。</p>
 </li>
-<li><p>I-Format Instructions</p>
-<p>  主要包含 immediate arithmetic 和 load instructions。</p>
-<p>  <img src="../resources/cod-37.png" alt="cod-37"></p>
+</ul>
+<h3 id="Representing-Instructions">Representing Instructions</h3>
+<ul>
+<li>
+<p>汇编码 $\to$ 机器码</p>
+<p>一个例子如下：</p>
+<p><img src="/resources/cod-34.png" alt="cod-34" width="90%"></p>
+<p>可以看到，汇编码向机器码的转换已经很好理解了。更具体一点，它的规则如下：</p>
+<p><img src="/resources/cod-35.png" alt="cod-35" width="90%"></p>
+<p>一条指令的长度恒为 32 位。注意构成 operator 的不止有 opcode，还有 funct7 和 funct3。例如，<code>add</code> 和 <code>sub</code> 的 opcode 实际上是相同的。</p>
+<p>实际上，这种机器码指令为 R 型指令，他只是众多机器码指令类型中的一种。</p>
+<p><img src="/resources/cod-36.png" alt="cod-36" width="90%"></p>
+<ul>
+<li>
+<p>R-Format Instructions</p>
+<p>主要包含 arithmetic。格式和意义如上所示。</p>
 </li>
-<li><p>S-Format Instructions</p>
-<p>  主要包含 store instructions。</p>
-<p>  <img src="../resources/cod-38.png" alt="cod-38"></p>
+<li>
+<p>I-Format Instructions</p>
+<p>主要包含 immediate arithmetic 和 load instructions。</p>
+<p><img src="/resources/cod-37.png" alt="cod-37" width="90%"></p>
+</li>
+<li>
+<p>S-Format Instructions</p>
+<p>主要包含 store instructions。</p>
+<p><img src="/resources/cod-38.png" alt="cod-38" width="90%"></p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="Logical-Operations"><a href="#Logical-Operations" class="headerlink" title="Logical Operations"></a>Logical Operations</h3><ul>
-<li><p>基本逻辑运算符及其 RISC-V</p>
-<p>  <img src="../resources/cod-39.png" alt="cod-39"></p>
-<p>  <img src="../resources/cod-40.png" alt="cod-40"></p>
-<p>  （懒得敲表格了，直接截图）</p>
+<h3 id="Logical-Operations">Logical Operations</h3>
+<ul>
+<li>
+<p>基本逻辑运算符及其 RISC-V</p>
+<p><img src="/resources/cod-39.png" alt="cod-39" width="90%"></p>
+<p><img src="/resources/cod-40.png" alt="cod-40" width="90%"></p>
+<p>（懒得敲表格了，直接截图）</p>
 </li>
 </ul>
-<h3 id="Decision-Instructions"><a href="#Decision-Instructions" class="headerlink" title="Decision Instructions"></a>Decision Instructions</h3><p>基本 RISC-V 语句：beq &amp; bne</p>
-<div class="table-container">
+<h3 id="Decision-Instructions">Decision Instructions</h3>
+<p>基本 RISC-V 语句：beq &amp; bne</p>
 <table>
 <thead>
 <tr>
@@ -470,43 +573,47 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>Unsigned comparison: <code>bltu</code>, <code>bgeu</code>（在后面加 u 变成无符号）</p>
 <ul>
-<li><p>单 if 情况</p>
-<p>  考虑 C 代码：</p>
+<li>
+<p>单 if 情况</p>
+<p>考虑 C 代码：</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i == j) <span class="keyword">goto</span> L1;</span><br><span class="line">f = g + h;</span><br><span class="line">L1: f = f - i;</span><br></pre></td></tr></table></figure>
-<p>  对应的 RISC-V 汇编代码：</p>
+<p>对应的 RISC-V 汇编代码：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">beq x21, x22, L1      # go to L1 if i equals j</span><br><span class="line">add x19, x20, x21     # f = g + h ( skipped if i equals j )</span><br><span class="line">L1: sub x19, x19, x22 # f = f - i ( always executed )</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>if-else 情况</p>
-<p>  考虑 C 代码：</p>
+<li>
+<p>if-else 情况</p>
+<p>考虑 C 代码：</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i == j) f = g + h;</span><br><span class="line"><span class="keyword">else</span> f = g - h;</span><br></pre></td></tr></table></figure>
-<p>  对应的 RISC-V 汇编代码（Assume that f~j are located at x19~x23）： </p>
+<p>对应的 RISC-V 汇编代码（Assume that f~j are located at x19~x23）：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bne x22, x23, Else  # go to Else if i != j</span><br><span class="line">add x19, x20, x21  # f = g + h ( Executed if i == j )</span><br><span class="line">beq x0, x0, EXIT  # always go to Exit</span><br><span class="line">Else: sub x19, x20, x21  # f = g - h ( Executed if i ≠ j ) </span><br><span class="line">Exit:  # the first instruction of the next C </span><br></pre></td></tr></table></figure>
 </li>
-<li><p>LOOPs 情况</p>
-<p>  考虑 C 代码：</p>
+<li>
+<p>LOOPs 情况</p>
+<p>考虑 C 代码：</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Loop: g = g + A[i]; <span class="comment">// A is an array of 100 words</span></span><br><span class="line">i = i + j;</span><br><span class="line"><span class="keyword">if</span> ( i != h ) <span class="keyword">goto</span> Loop;</span><br></pre></td></tr></table></figure>
-<p>  对应的 RISC-V 汇编代码（Assume that f~j are located at x19~x23, base of A is stored in x25）： </p>
+<p>对应的 RISC-V 汇编代码（Assume that f~j are located at x19~x23, base of A is stored in x25）：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Loop: slli x10, x22, 3 # temp reg x10 = 8 * i</span><br><span class="line">add x10, x10, x25      # x10 = address of A[i]</span><br><span class="line">ld x19, 0(x10)         # temp reg x19 = A[i]</span><br><span class="line">add x20, x20, x19      # g = g + A[i]</span><br><span class="line">add x22, x22, x23      # i = i + j</span><br><span class="line">bne x22, x21, Loop     # go to Loop if i != h</span><br></pre></td></tr></table></figure>
-<p>  第一行 <code>x22</code> 乘以 $8$ 之后放入 <code>x10</code>，和第二行共同计算出了 $A_i$ 的内存地址，置于 x10。</p>
-<p>  第三行将 $A_i$ 的值读入到 <code>x19</code>。注意此处 <code>0(x10)</code> 中 <code>0</code> 只能是常量，因而不能用之前的那种寻址方式。</p>
+<p>第一行 <code>x22</code> 乘以 $8$ 之后放入 <code>x10</code>，和第二行共同计算出了 $A_i$ 的内存地址，置于 x10。</p>
+<p>第三行将 $A_i$ 的值读入到 <code>x19</code>。注意此处 <code>0(x10)</code> 中 <code>0</code> 只能是常量，因而不能用之前的那种寻址方式。</p>
 </li>
-<li><p>while 情况</p>
-<p>  考虑 C 代码：</p>
+<li>
+<p>while 情况</p>
+<p>考虑 C 代码：</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (save[i] == k)</span><br><span class="line">    i += <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>  对应的 RISC-V 汇编代码（Assume i~k are located at x22~x24, base of save is stored in x25）：</p>
+<p>对应的 RISC-V 汇编代码（Assume i~k are located at x22~x24, base of save is stored in x25）：</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Loop: slli x10, x22, 3 # temp reg $t1 = 8 * i</span><br><span class="line">add x10, x10, x25      # x10 = address of save[i]</span><br><span class="line">ld x9, 0(x10)          # x9 gets save[i]</span><br><span class="line">bne x9, x24, Exit      # go to Exit if save[i] != k</span><br><span class="line">addi x22, x22, 1       # i += 1</span><br><span class="line">beq x0, x0, Loop       # go to Loop </span><br><span class="line">Exit:</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>比较</p>
-<p>  使用 <code>blt</code>, <code>bge</code> 表示变量比较形式的选择。例如 <code>blt rs1, rs2, L1</code> 表示如果 rs1 &lt; rs2 则跳到 L1 标签处的指令。</p>
-<p>  注意 <code>bltu</code>, <code>bgeu</code> 表示无符号比较。使用这种比较方式可能会导致比较结果不同。</p>
-<p>  <img src="../resources/cod-41.png" alt="cod-41"></p>
+<li>
+<p>比较</p>
+<p>使用 <code>blt</code>, <code>bge</code> 表示变量比较形式的选择。例如 <code>blt rs1, rs2, L1</code> 表示如果 rs1 &lt; rs2 则跳到 L1 标签处的指令。</p>
+<p>注意 <code>bltu</code>, <code>bgeu</code> 表示无符号比较。使用这种比较方式可能会导致比较结果不同。</p>
+<p><img src="/resources/cod-41.png" alt="cod-41" width="90%"></p>
 </li>
 </ul>
-<h3 id="Jump-Register"><a href="#Jump-Register" class="headerlink" title="Jump Register"></a>Jump Register</h3><p>RISC-V 中的无条件跳转主要包含两种指令：<code>jal</code> 和 <code>jalr</code>。</p>
-<div class="table-container">
+<h3 id="Jump-Register">Jump Register</h3>
+<p>RISC-V 中的无条件跳转主要包含两种指令：<code>jal</code> 和 <code>jalr</code>。</p>
 <table>
 <thead>
 <tr>
@@ -534,24 +641,26 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>这之中 PC 的意思是当前指令的地址。实际上，所有指令都存储在内存之中（后面会再讲）。这里跳实际上也是一种「在内存里跳」。注意每个指令的长度为 32 bits。</p>
 <p><code>jal</code> 可以理解为绝对位置跳转，<code>jalr</code> 可以理解为相对位置跳转。</p>
 <ul>
-<li><p>使用 Jump address table 来指导跳转</p>
-<p>  考虑这样的 C 代码，其中 $f\sim k$ 存储在 x20 ~ x25 中。</p>
+<li>
+<p>使用 Jump address table 来指导跳转</p>
+<p>考虑这样的 C 代码，其中 $f\sim k$ 存储在 x20 ~ x25 中。</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> ( k ) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span> : f = i + j ; <span class="keyword">break</span> ; <span class="comment">/* k = 0 */</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span> : f = g + h ; <span class="keyword">break</span> ; <span class="comment">/* k = 1 */</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span> : f = g - h ; <span class="keyword">break</span> ; <span class="comment">/* k = 2 */</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span> : f = i - j ; <span class="keyword">break</span> ; <span class="comment">/* k = 3 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  其 RISC-V 指令如下：</p>
-<p>  <img src="../resources/cod-42.png" alt="cod-42"></p>
-<p>  从内存中的 x6 开始一段，存储着我们用来辅助跳转的 Jump address table。第四行根据 $k$ 的值，将目标的精确 address 在内存中的存放位置赋给 x7。第五行执行后则 x7 获得了目标指令的 address（其实就是在内存 text 段的 address）。最后通过第六行跳转到对应指令。</p>
+<p>其 RISC-V 指令如下：</p>
+<p><img src="/resources/cod-42.png" alt="cod-42" width="90%"></p>
+<p>从内存中的 x6 开始一段，存储着我们用来辅助跳转的 Jump address table。第四行根据 $k$ 的值，将目标的精确 address 在内存中的存放位置赋给 x7。第五行执行后则 x7 获得了目标指令的 address（其实就是在内存 text 段的 address）。最后通过第六行跳转到对应指令。</p>
 </li>
 </ul>
-<h3 id="Supporting-Procedures"><a href="#Supporting-Procedures" class="headerlink" title="Supporting Procedures"></a>Supporting Procedures</h3><p>本部分进一步讲解 jal, jalr, bne, beq 这类能搞跳转的指令。</p>
+<h3 id="Supporting-Procedures">Supporting Procedures</h3>
+<p>本部分进一步讲解 jal, jalr, bne, beq 这类能搞跳转的指令。</p>
 <ul>
-<li><p>指令的存储</p>
-<p>  在将指令的存储前，首先讲内存的架构。</p>
-<p>  <img src="../resources/cod-43.png" alt="cod-43"></p>
-<p>  从下到上依次为：</p>
+<li>
+<p>指令的存储</p>
+<p>在将指令的存储前，首先讲内存的架构。</p>
+<p><img src="/resources/cod-43.png" alt="cod-43" width="90%"></p>
+<p>从下到上依次为：</p>
 <ol>
 <li>Reserved 此部分保留。</li>
 <li>Text 此部分 <strong>用于存储指令</strong>。之前看到指令的跳转也是以 byte 为单位的，这是因为它在内存之中，而内存的寻址亦为 byte 单位。</li>
@@ -560,98 +669,160 @@
 <li>Stack 堆栈。这部分后面会讲，通常用于暂存一些 reg 中需要用到的量。</li>
 </ol>
 </li>
-</ul>
-<ul>
-<li><p>常见的 Procedure Call 流程</p>
-<p>  首先是 <strong>Caller</strong>。其指令一般为 <code>jal x1, ProcedureAddress</code>。注意此语句后， x1 中会 <strong>自动存放下一段指令的地址（即 PC + 4）</strong>。</p>
-<p>  然后是 <strong>Callee</strong>。其指令一般为 <code>jalr x0, 0(x1)</code>。可以看到我们直接跳到 <code>(x1)</code>，因为在跳之前 <code>x1</code> 已被赋好了值；此外第一个 operand 为 <code>x0</code> 是因为我们不关心 callee 的地址，只用返回去即可（即没有必要存储 callee 的地址）。</p>
+<li>
+<p>常见的 Procedure Call 流程</p>
+<p>首先是 <strong>Caller</strong>。其指令一般为 <code>jal x1, ProcedureAddress</code>。注意此语句后， x1 中会 <strong>自动存放下一段指令的地址（即 PC + 4）</strong>。</p>
+<p>然后是 <strong>Callee</strong>。其指令一般为 <code>jalr x0, 0(x1)</code>。可以看到我们直接跳到 <code>(x1)</code>，因为在跳之前 <code>x1</code> 已被赋好了值；此外第一个 operand 为 <code>x0</code> 是因为我们不关心 callee 的地址，只用返回去即可（即没有必要存储 callee 的地址）。</p>
 </li>
-</ul>
-<ul>
-<li><p>堆栈</p>
-<p>  在指令跳转的途中，有可能我们后面希望跳回来，但同时也希望跳之前 Caller 使用的部分 reg 得以保留。通常这是很难做到的，所以我们使用堆栈来先将 Caller 使用的寄存器的值保存下来，Callee 使用寄存器后再复原，以便接下来 Caller 再使用。</p>
-<p>  首先再次明确 RISC-V 寄存器的变量区域划分，同时我们也重新做一些记号：</p>
-<p>  |Category|Notation|Register|<br>  |—-|—-|—-|<br>  |Arguments|a0 ~ a7|x10 ~ x17|<br>  |Saved|s0 ~ 11|x8 ~ x9, x18 ~ x27|<br>  |Temporary|t0 ~ t6|x5 ~ x7, x28 ~ x31|</p>
-<p>  可以这样理解各类变量：比如在调用一个递归的 C 函数 <code>f(k)</code> 时，$k$ 和 $f(k)$ 的返回值都可以视作 Argument；而其中运算的中间值，递归完回来还要用的可视作 Saved；其中运算的中间值，递归完回来不用，仅仅作为中间运算结果的，可以视作 Temporary。</p>
-<p>  之前讲到堆栈是地址最高的。同时，堆栈的 top 也是地址更低的。如下图所示。</p>
-<p>  <img src="../resources/cod-44.png" alt="cod-44"></p>
-<p>  考虑这样一个例子：C 代码实现递归阶乘</p>
+<li>
+<p>堆栈</p>
+<p>在指令跳转的途中，有可能我们后面希望跳回来，但同时也希望跳之前 Caller 使用的部分 reg 得以保留。通常这是很难做到的，所以我们使用堆栈来先将 Caller 使用的寄存器的值保存下来，Callee 使用寄存器后再复原，以便接下来 Caller 再使用。</p>
+<p>首先再次明确 RISC-V 寄存器的变量区域划分，同时我们也重新做一些记号：</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Notation</th>
+<th>Register</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arguments</td>
+<td>a0 ~ a7</td>
+<td>x10 ~ x17</td>
+</tr>
+<tr>
+<td>Saved</td>
+<td>s0 ~ 11</td>
+<td>x8 ~ x9, x18 ~ x27</td>
+</tr>
+<tr>
+<td>Temporary</td>
+<td>t0 ~ t6</td>
+<td>x5 ~ x7, x28 ~ x31</td>
+</tr>
+</tbody>
+</table>
+<p>可以这样理解各类变量：比如在调用一个递归的 C 函数 <code>f(k)</code> 时，$k$ 和 $f(k)$ 的返回值都可以视作 Argument；而其中运算的中间值，递归完回来还要用的可视作 Saved；其中运算的中间值，递归完回来不用，仅仅作为中间运算结果的，可以视作 Temporary。</p>
+<p>之前讲到堆栈是地址最高的。同时，堆栈的 top 也是地址更低的。如下图所示。</p>
+<p><img src="/resources/cod-44.png" alt="cod-44" width="90%"></p>
+<p>考虑这样一个例子：C 代码实现递归阶乘</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fact</span> <span class="params">( <span class="type">int</span> n )</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ( n &lt; <span class="number">1</span> ) <span class="keyword">return</span> ( <span class="number">1</span> ) ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> ( n * fact ( n - <span class="number">1</span> ) ) ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>  其 RISC-V 汇编代码如下：</p>
-<p>  <img src="../resources/cod-45.png" alt="cod-45"></p>
-<p>  Line 1-3 开了两个栈空间，并把 <code>ra</code> 和 <code>a0</code>（对应 x10，一般用于存储输入参数和输出结果）存入堆栈。</p>
-<p>  Line 4-5 在比较 $n$ 和 $1$ 的关系。</p>
+<p>其 RISC-V 汇编代码如下：</p>
+<p><img src="/resources/cod-45.png" alt="cod-45" width="90%"></p>
+<p>Line 1-3 开了两个栈空间，并把 <code>ra</code> 和 <code>a0</code>（对应 x10，一般用于存储输入参数和输出结果）存入堆栈。</p>
+<p>Line 4-5 在比较 $n$ 和 $1$ 的关系。</p>
 <ul>
-<li><p>如果 $ n \leq 1$，进入 <code>L1</code> (Line 9)。注意到 Line 9 首先将 <code>a0</code> 减了一以便开始下一层递归（这也是为什么开始要把 <code>a0</code> 存进堆栈）；Line 10 则跳转到 <code>fact</code> (Line 1)，此行指令也会把 <code>ra</code> 的值改变（这也是为什么开始要把 <code>ra</code> 存进堆栈）。</p>
+<li>
+<p>如果 $ n \leq 1$，进入 <code>L1</code> (Line 9)。注意到 Line 9 首先将 <code>a0</code> 减了一以便开始下一层递归（这也是为什么开始要把 <code>a0</code> 存进堆栈）；Line 10 则跳转到 <code>fact</code> (Line 1)，此行指令也会把 <code>ra</code> 的值改变（这也是为什么开始要把 <code>ra</code> 存进堆栈）。</p>
 </li>
-<li><p>执行完 $fact(n-1)$ 后，回到 Line 11。此时 <code>a0</code> 已然是递归后 $fact(n-1)$ 的结果，先把它转入 <code>t1</code> 临时变量中。随后读取之前存好的 <code>a0</code> 和 <code>ra</code>，读取之后 <code>a0</code> 就是当前进程的 argument（即 $n$），<code>ra</code> 就是要回去的 Caller 地址。</p>
+<li>
+<p>执行完 $fact(n-1)$ 后，回到 Line 11。此时 <code>a0</code> 已然是递归后 $fact(n-1)$ 的结果，先把它转入 <code>t1</code> 临时变量中。随后读取之前存好的 <code>a0</code> 和 <code>ra</code>，读取之后 <code>a0</code> 就是当前进程的 argument（即 $n$），<code>ra</code> 就是要回去的 Caller 地址。</p>
 <p>Line 15 使得 <code>a0</code> 变身 result 为一会儿返回的 caller 服务。Line 16 跳回 Caller。</p>
 </li>
 </ul>
+<p><strong>SUMMARY</strong></p>
+<p>一般而言，caller 要对 temporary / argument 寄存器负责。即根据自己的情况决定这两类数据是否要存储到堆栈中。</p>
+<p>而 callee 则对 saved 寄存器和 ra 负责。按照约定，在使用 saved 寄存器前，callee 必须先将 saved 中的变量存入堆栈；此外，callee 在执行指令前必须先将 ra 存入寄存器来确保待会儿能重返 caller。</p>
 </li>
 </ul>
-<pre><code>**SUMMARY**
-
-一般而言，caller 要对 temporary / argument 寄存器负责。即根据自己的情况决定这两类数据是否要存储到堆栈中。
-
-而 callee 则对 saved 寄存器和 ra 负责。按照约定，在使用 saved 寄存器前，callee 必须先将 saved 中的变量存入堆栈；此外，callee 在执行指令前必须先将 ra 存入寄存器来确保待会儿能重返 caller。
-</code></pre><h3 id="Other-Width"><a href="#Other-Width" class="headerlink" title="Other Width"></a>Other Width</h3><p>之前说的 load / store 都是以 dword 为单位的（指令为 <code>ld</code> 和 <code>sd</code>）。实际上也可以读写 byte / halfword / word。例如，要 load byte / halfword / word 的格式则为</p>
+<h3 id="Other-Width">Other Width</h3>
+<p>之前说的 load / store 都是以 dword 为单位的（指令为 <code>ld</code> 和 <code>sd</code>）。实际上也可以读写 byte / halfword / word。例如，要 load byte / halfword / word 的格式则为</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lb rd, offset(rs1)</span><br><span class="line">lh rd, offset(rs1)</span><br><span class="line">lw rd, offset(rs1)</span><br></pre></td></tr></table></figure>
-<h3 id="Addressing-for-32-Bit-Immediate-and-Addresses"><a href="#Addressing-for-32-Bit-Immediate-and-Addresses" class="headerlink" title="Addressing for 32-Bit Immediate and Addresses"></a>Addressing for 32-Bit Immediate and Addresses</h3><p>这部分对 32 位立即数赋值 / 32 位寻址的具体实现进行讲解。</p>
+<h3 id="Addressing-for-32-Bit-Immediate-and-Addresses">Addressing for 32-Bit Immediate and Addresses</h3>
+<p>这部分对 32 位立即数赋值 / 32 位寻址的具体实现进行讲解。</p>
 <ul>
-<li><p>32-Bit Immediate Addressing (U-Type)</p>
-<p>  指令 <code>lui</code>：将一个 register 的高 20 位设为常值。</p>
-<p>  | Category | Instruction | Example | Meaning | Type|<br>  |—-|—-|—-|—-|—-|<br>  |Data transfer|Load upper immediate|<code>lui x5, 0x12345</code>|x5 = 0x12345000, Loads 20-bits constant shifted |U|</p>
-<p>  <img src="../resources/cod-46.png" alt="cod-46"></p>
-<p>  实际上的 RISC-V reg 是 64 位的。在这里我们对低 32 位赋予立即数。之所以要分两次赋予常值是因为一次的大小不够。</p>
+<li>
+<p>32-Bit Immediate Addressing (U-Type)</p>
+<p>指令 <code>lui</code>：将一个 register 的高 20 位设为常值。</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Instruction</th>
+<th>Example</th>
+<th>Meaning</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data transfer</td>
+<td>Load upper immediate</td>
+<td><code>lui x5, 0x12345</code></td>
+<td>x5 = 0x12345000, Loads 20-bits constant shifted</td>
+<td>U</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/resources/cod-46.png" alt="cod-46" width="90%"></p>
+<p>实际上的 RISC-V reg 是 64 位的。在这里我们对低 32 位赋予立即数。之所以要分两次赋予常值是因为一次的大小不够。</p>
 </li>
-<li><p>Branch Addressing (SB-Type)</p>
-<p>  上回说到 bne 的格式是 <code>bne rs1, rs2, L1</code> 其中 <code>L1</code> 是某个标签，表示了某处的指令。然而实际上机器肯定无法识别 <code>L1</code>，所以实际上这里 L1 翻译成机器码是一个 offset。</p>
-<p>  举例：<code>bne x10, x11, 2000</code>（2000 = 0111 1101 0000）</p>
-<p>  <img src="../resources/cod-47.png" alt="cod-47"></p>
-<p>  注意，由于所有的 RISC-V 指令都是 32 位的（本课程不讨论 16 位），所以指令的地址（byte 单位）一定满足末两位为 0。所以 RISC-V 的设计者决定在实际机器编码时，省略 offset 的最后一位，只将 offset 中的非 LSB 部分写入机器码（这样可以使 offset 支持更远的距离）。</p>
+<li>
+<p>Branch Addressing (SB-Type)</p>
+<p>上回说到 bne 的格式是 <code>bne rs1, rs2, L1</code> 其中 <code>L1</code> 是某个标签，表示了某处的指令。然而实际上机器肯定无法识别 <code>L1</code>，所以实际上这里 L1 翻译成机器码是一个 offset。</p>
+<p>举例：<code>bne x10, x11, 2000</code>（2000 = 0111 1101 0000）</p>
+<p><img src="/resources/cod-47.png" alt="cod-47" width="90%"></p>
+<p>注意，由于所有的 RISC-V 指令都是 32 位的（本课程不讨论 16 位），所以指令的地址（byte 单位）一定满足末两位为 0。所以 RISC-V 的设计者决定在实际机器编码时，省略 offset 的最后一位，只将 offset 中的非 LSB 部分写入机器码（这样可以使 offset 支持更远的距离）。</p>
 </li>
-<li><p>Jump Addressing (UJ-Type)</p>
-<p>  考虑 <code>jal</code> 指令，其指令格式为 UJ 型。</p>
-<p>  举例：<code>jal x0 2000</code>，表示跳转到 $\text{offset} = 2000_{(10)}$ 的位置，没有向 <code>ra</code> 中存入内容。</p>
-<p>  <img src="../resources/cod-48.png" alt="cod-48"></p>
-<p>  其中 2000 (offset) 存储在 imm 部分；x0 存储在 rd 部分，表示的是某个寄存器地址。</p>
-<p>  注意其中 <code>imm[20] (inst[31])</code> 表示的是 <strong>符号位</strong>。当其为 $1$ 实际上是往之前的指令跳。</p>
-<p>  此外，和 Branch Addressing 一样，offset 的最后一位不再反映到机器码中，默认 offset 的最后一位一定为零。</p>
+<li>
+<p>Jump Addressing (UJ-Type)</p>
+<p>考虑 <code>jal</code> 指令，其指令格式为 UJ 型。</p>
+<p>举例：<code>jal x0 2000</code>，表示跳转到 $\text{offset} = 2000_{(10)}$ 的位置，没有向 <code>ra</code> 中存入内容。</p>
+<p><img src="/resources/cod-48.png" alt="cod-48" width="90%"></p>
+<p>其中 2000 (offset) 存储在 imm 部分；x0 存储在 rd 部分，表示的是某个寄存器地址。</p>
+<p>注意其中 <code>imm[20] (inst[31])</code> 表示的是 <strong>符号位</strong>。当其为 $1$ 实际上是往之前的指令跳。</p>
+<p>此外，和 Branch Addressing 一样，offset 的最后一位不再反映到机器码中，默认 offset 的最后一位一定为零。</p>
 </li>
-<li><p>An Example: C $\to$ Assembly $\to$ Machine</p>
-<p>  <img src="image.png" alt="alt text"></p>
-<p>  解读 bne 那一行：rs1 表示的是 x9，rs2 表示的是 x24。对于 SB-Type 指令，funct7 和 rd 列共同组成了 immediate。可以看到本指令的立即数为 <code>000000000110(0)</code> （最后一个 0 在机器码中被省去），对应的就是 +12。而我们看到 bne 和 Exit 差 3 条指令，即为 12 Bytes。</p>
+<li>
+<p>An Example: C $\to$ Assembly $\to$ Machine</p>
+<p><img src="image.png" alt="alt text" width="90%"></p>
+<p>解读 bne 那一行：rs1 表示的是 x9，rs2 表示的是 x24。对于 SB-Type 指令，funct7 和 rd 列共同组成了 immediate。可以看到本指令的立即数为 <code>000000000110(0)</code> （最后一个 0 在机器码中被省去），对应的就是 +12。而我们看到 bne 和 Exit 差 3 条指令，即为 12 Bytes。</p>
 </li>
-<li><p>回头来看所有的指令类型…… <strong>SUMMARY</strong></p>
-<p>  <img src="../resources/cod-36.png" alt="cod-36"></p>
-<p>  个人感觉指令基本上是按「格式」分类，而不是「作用」分类。</p>
+<li>
+<p>回头来看所有的指令类型…… <strong>SUMMARY</strong></p>
+<p><img src="/resources/cod-36.png" alt="cod-36" width="90%"></p>
+<p>个人感觉指令基本上是按「格式」分类，而不是「作用」分类。</p>
 <ul>
-<li><p>R 型：主要用于「算术操作」。rd 表示被赋值寄存器，rs1 和 rs2 表示操作数。</p>
+<li>
+<p>R 型：主要用于「算术操作」。rd 表示被赋值寄存器，rs1 和 rs2 表示操作数。</p>
 </li>
-<li><p>I 型：目前可用于「load」「立即数算术」「jalr」。load 和 jalr 的共同点是都有一个基地址 rs1，同时有一个偏移量 imm。随后它们的 rd 都会改变，load 会把内存中读到的值放进 rd，jalr 会把 PC+4 放进 rd。</p>
+<li>
+<p>I 型：目前可用于「load」「立即数算术」「jalr」。load 和 jalr 的共同点是都有一个基地址 rs1，同时有一个偏移量 imm。随后它们的 rd 都会改变，load 会把内存中读到的值放进 rd，jalr 会把 PC+4 放进 rd。</p>
 </li>
-<li><p>SB 型：目前可用于「选择型跳转」。rs1 和 rs2 执行某种比较运算，跳转的偏移量存储在 imm 中。</p>
+<li>
+<p>SB 型：目前可用于「选择型跳转」。rs1 和 rs2 执行某种比较运算，跳转的偏移量存储在 imm 中。</p>
 </li>
-<li><p>UJ 型：目前可用于「jal」。jal 只有一个偏移量 offset，同时也会把 PC+4 放进 rd。</p>
+<li>
+<p>UJ 型：目前可用于「jal」。jal 只有一个偏移量 offset，同时也会把 PC+4 放进 rd。</p>
 </li>
-<li><p>U 型：目前可用于「立即数赋值」。把 imm 放进 rd（取低 32 位）的高 20 位。</p>
+<li>
+<p>U 型：目前可用于「立即数赋值」。把 imm 放进 rd（取低 32 位）的高 20 位。</p>
 </li>
-<li><p>S 型：目前可用于「store」。store 会把 rs2 寄存器中的内容写入基地址 rs1，偏移量 imm 的位置。</p>
+<li>
+<p>S 型：目前可用于「store」。store 会把 rs2 寄存器中的内容写入基地址 rs1，偏移量 imm 的位置。</p>
+</li>
+</ul>
 <p>可以看到，rs1 / rs2 / rd / imm 都是有其意义的。</p>
+<ul>
+<li>
+<p>imm 通常表示常量，所以也经常表示 offset。注意 imm 的「上下界」（比如 <code>imm[31:12]</code>）有其意义。大概是，如果 imm 用于表示某指令的 X 部分，则 <code>imm[a:b]</code> 表示 imm 部分表示的是 <code>X[a:b]</code>。</p>
 </li>
-<li><p>imm 通常表示常量，所以也经常表示 offset。注意 imm 的「上下界」（比如 <code>imm[31:12]</code>）有其意义。大概是，如果 imm 用于表示某指令的 X 部分，则 <code>imm[a:b]</code> 表示 imm 部分表示的是 <code>X[a:b]</code>。</p>
+<li>
+<p>rs1 通常表示基地址。也有的时候表示第一个操作数。</p>
 </li>
-<li><p>rs1 通常表示基地址。也有的时候表示第一个操作数。</p>
+<li>
+<p>rd 通常是一个会被写入新内容的寄存器地址。</p>
 </li>
-<li><p>rd 通常是一个会被写入新内容的寄存器地址。</p>
-</li>
-<li><p>rs2 则通常表示第二个操作数。</p>
+<li>
+<p>rs2 则通常表示第二个操作数。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="Some-Extensions-of-CH2"><a href="#Some-Extensions-of-CH2" class="headerlink" title="Some Extensions of CH2"></a>Some Extensions of CH2</h3>
+<h3 id="Some-Extensions-of-CH2">Some Extensions of CH2</h3>
+
         
       </div>
 

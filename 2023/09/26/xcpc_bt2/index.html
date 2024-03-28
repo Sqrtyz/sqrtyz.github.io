@@ -13,19 +13,19 @@
   
   <title>【算法竞赛】补题 II | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="CF1746E1 Joking 这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。  感觉是一道好题。不过听说和 IMO2012 的 idea 重了。 首先，我们发现如果确定范围里有两个数">
+  <meta name="description" content="CF1746E1 Joking  这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。  感觉是一道好题。不过听说和 IMO2012 的 idea 重了。 首先，我们发现如果确定范围里有两个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法竞赛】补题 II">
 <meta property="og:url" content="http://example.com/2023/09/26/xcpc_bt2/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="CF1746E1 Joking 这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。  感觉是一道好题。不过听说和 IMO2012 的 idea 重了。 首先，我们发现如果确定范围里有两个数">
+<meta property="og:description" content="CF1746E1 Joking  这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。  感觉是一道好题。不过听说和 IMO2012 的 idea 重了。 首先，我们发现如果确定范围里有两个">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/09/26/resources/cf_pic_1.png">
+<meta property="og:image" content="http://example.com/resources/cf_pic_1.png">
 <meta property="article:published_time" content="2023-09-26T06:42:24.008Z">
 <meta property="article:modified_time" content="2024-03-14T17:53:05.392Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/09/26/resources/cf_pic_1.png">
+<meta name="twitter:image" content="http://example.com/resources/cf_pic_1.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -295,29 +295,33 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="CF1746E1-Joking"><a href="#CF1746E1-Joking" class="headerlink" title="CF1746E1 Joking"></a>CF1746E1 Joking</h3><ul>
+          <h3 id="CF1746E1-Joking">CF1746E1 Joking</h3>
+<ul>
 <li>这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。</li>
 </ul>
 <p>感觉是一道好题。不过听说和 IMO2012 的 idea 重了。</p>
 <p>首先，我们发现如果确定范围里有两个数，那肯定是解决不掉了。交互库可以恶心你，让你始终找不到这两个数哪个是对的（自证）。</p>
 <p>不过这道题给了我们 2 次回答的机会。因而这道题还是可做的。这道题最关键的部分，在于找到三个数的解法。如何将三个数确定到两个数。假设这三个数分别为 $A,B,C$。</p>
-<p>我们问两次是否 $x \in \{A\}$。如果两次均为否，那么 $A$ 排除。</p>
+<p>我们问两次是否 $x \in {A}$。如果两次均为否，那么 $A$ 排除。</p>
 <p>如果回答了一次是，我们问 $B$。<strong>若回答为是，那么 $C$ 排除</strong>。若回答为否，那么就是 $A$。</p>
 <p>当剩余范围超过三个时，把它分为三组照上做就可以了。通过不超过三次询问，我们可以至少缩小 $1/3$ 的范围。</p>
 <p>不得不说非常巧妙。尤其是加粗的部分。</p>
 <p>赛时只在想二分，一直没弄出来。根本原因是没有注意到，$n=2$ 时是根本无法确定的。（脑子糊了）</p>
-<p>其实也想过三分，不过没有深入想，可惜了。 </p>
-<h3 id="CF1746F-Kazaee"><a href="#CF1746F-Kazaee" class="headerlink" title="CF1746F Kazaee"></a>CF1746F Kazaee</h3><ul>
+<p>其实也想过三分，不过没有深入想，可惜了。</p>
+<h3 id="CF1746F-Kazaee">CF1746F Kazaee</h3>
+<ul>
 <li>一个数列，两种操作。修改：单点修改。查询：查询 $[l,r]$ 内所有数出现的次数是否都是 $k$ 的倍数。</li>
 </ul>
 <p>注意到如果查询是 YES 的话，那么 $[l,r]$ 内的和一定整除 $k$。故而我们可以深挖这一性质。</p>
 <p>随机选择 30 个 subset，关注 $[l,r]$ 内的所有在这个 subset 里面的数，若它们的和是 $k$ 的倍数，我们就输出 YES。</p>
-<h3 id="CF1870E-Another-Mex-Problem"><a href="#CF1870E-Another-Mex-Problem" class="headerlink" title="CF1870E Another Mex Problem"></a>CF1870E Another Mex Problem</h3><ul>
+<h3 id="CF1870E-Another-Mex-Problem">CF1870E Another Mex Problem</h3>
+<ul>
 <li>一个数列，选择若干个互不相交的连续子区间，求这些子区间的 mex 的异或和的最大值。$n \leq 5000$。</li>
 </ul>
 <p>朴素的一种 dp：$f_{i,x}$ 表示只考虑 $[1,i]$ 这个前缀能否达到 $x$。（f 的值为 0 or 1）这个 dp 可以在 $\Theta(n^3)$ 内完成。</p>
 <p>考虑优化。我们可以证明「有用」的 mex 区间至多只有 $2n$ 个。（当一个大区间包含了一个小区间且它们 mex 值相同，我们认为这个大区间是无用的）。于是 dp 可以优化到 $n^2$。</p>
-<h3 id="CF1879E-Interactive-Game-with-Coloring"><a href="#CF1879E-Interactive-Game-with-Coloring" class="headerlink" title="CF1879E Interactive Game with Coloring"></a>CF1879E Interactive Game with Coloring</h3><ul>
+<h3 id="CF1879E-Interactive-Game-with-Coloring">CF1879E Interactive Game with Coloring</h3>
+<ul>
 <li>题意略。</li>
 </ul>
 <p>最暴力的染色方式：把 $(p_i, i)$ 这条边染成 $depth_i$ 的颜色。然后可以很简单地往上跳。</p>
@@ -327,11 +331,12 @@
 <p>似乎这样很简单就可以实现？事实上，问题出在 $m=1$ 的情况。在这种情况下，我们无法确定是在往上走，还是在往下走。</p>
 <p>唯一的结局方案是进行某种「统一」，也就是说对于所有度数为 $2$ 的非根点 $u$，把 $(f,u)$ 强制设为颜色 1，把 $(u,v)$ 强制设为颜色 2。</p>
 <p>我们事先把这些度数为 2 的点全部处理好，然后按照规则（*）对其他的边进行染色。如果最后有一个不冲突的方案，那么答案为 2，否则答案依然为 3。</p>
-<h3 id="CF1882E1-Two-Permutations-Easy-Ver"><a href="#CF1882E1-Two-Permutations-Easy-Ver" class="headerlink" title="CF1882E1 Two Permutations (Easy Ver)"></a>CF1882E1 Two Permutations (Easy Ver)</h3><ul>
+<h3 id="CF1882E1-Two-Permutations-Easy-Ver">CF1882E1 Two Permutations (Easy Ver)</h3>
+<ul>
 <li>两个排列 $p$ 和 $q$，长度分别为 $n$ 和 $m$。每次可以进行一种操作 $(i,j)$，把 $p$ 和 $q$ 分别以下标 $i$ 和 $j$ 为翻转中心进行一种翻转。例如，$p$ 会从 $p_1, …,p_{i-1},p_i,p_{i+1},…,n$ 变为 $p_{i+1},…,n,p_i,p_1, …,p_{i-1}$。$q$ 同理。构造一种长度不超过 $10^4$ 的操作序列使得两个序列分别变为 $1,2,…,n$ 和 $1,2,…,m$。$n, m \leq 2500$。</li>
 </ul>
 <p>只考虑单个排列的话，我们有如下的策略。</p>
-<p><img src="../resources/cf_pic_1.png" alt="cf_pic_1"></p>
+<p><img src="/resources/cf_pic_1.png" alt="cf_pic_1" width="90%"></p>
 <p>也就是说我们可以在两步内完成一个数字的排位。分开来看，我们分别至多只用 $2n$ 和 $2m$ 个步骤就可以完成两个排列的排序。</p>
 <p>假设实际使用的步数分别为 $tot_p$ 和 $tot_q$。不妨设 $tot_p&gt;tot_q$，如果 $tot_p-tot_q$ 是偶数的话，我们可以通过 $[1,m,1,m,…,1,m]$ 来对排列 $q$ 进行周期为 2 的「不动」操作。</p>
 <p>若 $tot_p-tot_q$ 是奇数，上述操作无法进行。考虑如果 $n$ 和 $m$ 中有一个为奇数（不妨设为 $n$），我们可以通过对排列 $p$ 进行 $[1,2,…,n]$ 进行「不动」操作，同时使得 $tot_p-tot_q$ 变为偶数，于是又可以用上面的步骤完成对齐。</p>

@@ -13,20 +13,20 @@
   
   <title>【笔记】Crypto | Dormant Echoes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="24&#x2F;2&#x2F;26 Introduction Brief Intro  DES AES 对称密码学算法（加密的密钥和解密的密钥一致）  RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）     24&#x2F;3&#x2F;4 Enigma Enigma 加密  密钥：五选三齿轮、齿轮初始状态、接线板  加密：  首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)$，得到 $c_">
+  <meta name="description" content="24&#x2F;2&#x2F;26 Introduction   Brief Intro   DES AES 对称密码学算法（加密的密钥和解密的密钥一致）   RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）     24&#x2F;3&#x2F;4 Enigma   Enigma 加密   密钥：五选三齿轮、齿轮初始状态、接线板   加密：  首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【笔记】Crypto">
 <meta property="og:url" content="http://example.com/2024/02/26/notes_crypto/index.html">
 <meta property="og:site_name" content="Dormant Echoes">
-<meta property="og:description" content="24&#x2F;2&#x2F;26 Introduction Brief Intro  DES AES 对称密码学算法（加密的密钥和解密的密钥一致）  RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）     24&#x2F;3&#x2F;4 Enigma Enigma 加密  密钥：五选三齿轮、齿轮初始状态、接线板  加密：  首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)$，得到 $c_">
+<meta property="og:description" content="24&#x2F;2&#x2F;26 Introduction   Brief Intro   DES AES 对称密码学算法（加密的密钥和解密的密钥一致）   RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）     24&#x2F;3&#x2F;4 Enigma   Enigma 加密   密钥：五选三齿轮、齿轮初始状态、接线板   加密：  首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/02/26/resources/crypto-1.png">
+<meta property="og:image" content="http://example.com/resources/crypto-1.png">
 <meta property="article:published_time" content="2024-02-26T10:52:11.343Z">
 <meta property="article:modified_time" content="2024-03-18T18:21:29.762Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Unfinished">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/02/26/resources/crypto-1.png">
+<meta name="twitter:image" content="http://example.com/resources/crypto-1.png">
   
     <link rel="alternate" href="/atom.xml" title="Dormant Echoes" type="application/atom+xml">
   
@@ -298,84 +298,106 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h3 id="24-2-26-Introduction"><a href="#24-2-26-Introduction" class="headerlink" title="24/2/26 Introduction"></a>24/2/26 Introduction</h3><ul>
-<li><p>Brief Intro</p>
+          <h3 id="24-2-26-Introduction">24/2/26 Introduction</h3>
 <ul>
-<li><p>DES AES 对称密码学算法（加密的密钥和解密的密钥一致）</p>
+<li>
+<p>Brief Intro</p>
+<ul>
+<li>
+<p>DES AES 对称密码学算法（加密的密钥和解密的密钥一致）</p>
 </li>
-<li><p>RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）</p>
+<li>
+<p>RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="24-3-4-Enigma"><a href="#24-3-4-Enigma" class="headerlink" title="24/3/4 Enigma"></a>24/3/4 Enigma</h3><ul>
-<li><p>Enigma 加密</p>
+<h3 id="24-3-4-Enigma">24/3/4 Enigma</h3>
 <ul>
-<li><p>密钥：五选三齿轮、齿轮初始状态、接线板</p>
+<li>
+<p>Enigma 加密</p>
+<ul>
+<li>
+<p>密钥：五选三齿轮、齿轮初始状态、接线板</p>
 </li>
-<li><p>加密：</p>
+<li>
+<p>加密：</p>
 <ol>
 <li>首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)$，得到 $c_0$（若不存在则依然为 $c$）；</li>
 <li>分别通过三张齿轮对应的表 Rotor I, II, III, 得到 $c_0 \to c_1 \to c_2 \to c_3$；</li>
-<li>$c_3$ 通过反射板 Reflector 得到 $c_3’$； </li>
+<li>$c_3$ 通过反射板 Reflector 得到 $c_3’$；</li>
 <li>逆序通过三张齿轮对应的表 Rotor III, II, I, 得到 $c_3’ \to c_2’ \to c_1’ \to c_0’$；</li>
 <li>$c_0’$ 通过接线板进行字母对换，得到 $c’$。$c’$ 即为加密结果。</li>
 </ol>
 </li>
-<li><p>Rotor 和 Reflector 均可视为一一对应的字母表，例如 “ABCDE ~ EBCAD” 这种。</p>
+<li>
+<p>Rotor 和 Reflector 均可视为一一对应的字母表，例如 “ABCDE ~ EBCAD” 这种。</p>
 </li>
-<li><p>关于齿轮</p>
-<p>  每个齿轮具有两个参数：Message Key / Ring Setting。Ring Setting 可视作齿轮的固有性质且在某次密码箱的使用过程中不发生改变；Message Key 则在一次加密 / 解密时具有一个初始状态，且 <strong>每输入一个字母</strong> 后会发生一次转动（Message Key 自增 1）。</p>
-<p>  这两个参数使得加密关系更为复杂，且整个系统不再是简单的单表对应关系。例如，在 $c_0$ 进入 Rotor I 之前，需要先计算 $\Delta= \text{Message Key} - \text{Ring Setting}$，并将 $c_0 + \Delta$ 放进 Rotor I 的单表中进行查询，将查询结果再减去 $\Delta$，得到 $c_1$。</p>
-<p>  加密中反向的时候，依然是进齿轮前加 $\Delta$，查表，减去 $\Delta$。Rotor II 和 Rotor III 同理进行修改。</p>
-<p>  注意：每次加密时，Message Key 采取的是转动后的结果。假如某刻齿轮为 <code>ABC</code>，此时输入字母 $c$ 时，$c$ 实际上是被 Message Key = “ABD” 加密。</p>
+<li>
+<p>关于齿轮</p>
+<p>每个齿轮具有两个参数：Message Key / Ring Setting。Ring Setting 可视作齿轮的固有性质且在某次密码箱的使用过程中不发生改变；Message Key 则在一次加密 / 解密时具有一个初始状态，且 <strong>每输入一个字母</strong> 后会发生一次转动（Message Key 自增 1）。</p>
+<p>这两个参数使得加密关系更为复杂，且整个系统不再是简单的单表对应关系。例如，在 $c_0$ 进入 Rotor I 之前，需要先计算 $\Delta= \text{Message Key} - \text{Ring Setting}$，并将 $c_0 + \Delta$ 放进 Rotor I 的单表中进行查询，将查询结果再减去 $\Delta$，得到 $c_1$。</p>
+<p>加密中反向的时候，依然是进齿轮前加 $\Delta$，查表，减去 $\Delta$。Rotor II 和 Rotor III 同理进行修改。</p>
+<p>注意：每次加密时，Message Key 采取的是转动后的结果。假如某刻齿轮为 <code>ABC</code>，此时输入字母 $c$ 时，$c$ 实际上是被 Message Key = “ABD” 加密。</p>
 <ul>
-<li><p>齿轮的进位：1~5 号齿轮的进位位置分别为 <code>QEVJZ</code>。当 Rotor X 到达进位位置时，再输入一次字母将导致 Rotor X+1 也自增 1（但是 Rotor X 也会自增 1，这和字面意思的进位不同）。例如，Rotor III/II/I 分别采取 3/2/1 号齿轮，某刻 Message Key 为 <code>AAQ</code>，那么输入一次字母后 Message Key 将变为 <code>ABR</code>。</p>
+<li>
+<p>齿轮的进位：1~5 号齿轮的进位位置分别为 <code>QEVJZ</code>。当 Rotor X 到达进位位置时，再输入一次字母将导致 Rotor X+1 也自增 1（但是 Rotor X 也会自增 1，这和字面意思的进位不同）。例如，Rotor III/II/I 分别采取 3/2/1 号齿轮，某刻 Message Key 为 <code>AAQ</code>，那么输入一次字母后 Message Key 将变为 <code>ABR</code>。</p>
 </li>
-<li><p>Double Stepping 现象：这个看起来像是由 Enigma 加密箱内部结构导致的一个 bug（feature）。依然假设 Rotor III/II/I 分别采取 3/2/1 号齿轮，某刻 Message Key 为 <code>ADQ</code>，输入一次字母后变为 <code>AER</code>，再输入一次后字母变为 <code>BFS</code>（即使此时 Rotor I 是 R，并不在进位位 Q 上）。</p>
-</li>
-</ul>
-</li>
-<li><p>可逆性</p>
-<p>  加密和解密是 <strong>完全可逆的</strong>。也就是说只要密码箱的初始配置相同，明文加密后为密文，密文加密后即可还原出明文。证明不难。</p>
+<li>
+<p>Double Stepping 现象：这个看起来像是由 Enigma 加密箱内部结构导致的一个 bug（feature）。依然假设 Rotor III/II/I 分别采取 3/2/1 号齿轮，某刻 Message Key 为 <code>ADQ</code>，输入一次字母后变为 <code>AER</code>，再输入一次后字母变为 <code>BFS</code>（即使此时 Rotor I 是 R，并不在进位位 Q 上）。</p>
 </li>
 </ul>
 </li>
+<li>
+<p>可逆性</p>
+<p>加密和解密是 <strong>完全可逆的</strong>。也就是说只要密码箱的初始配置相同，明文加密后为密文，密文加密后即可还原出明文。证明不难。</p>
+</li>
 </ul>
-<h3 id="24-3-11-Hash-Encryption"><a href="#24-3-11-Hash-Encryption" class="headerlink" title="24/3/11 Hash Encryption"></a>24/3/11 Hash Encryption</h3><ul>
-<li><p>MD5</p>
-<p>  MD5 加密实现了将任意长度的明文（message）加密为 16 bytes 的密文（digest）。其加密过程如下。</p>
+</li>
+</ul>
+<h3 id="24-3-11-Hash-Encryption">24/3/11 Hash Encryption</h3>
+<ul>
+<li>
+<p>MD5</p>
+<p>MD5 加密实现了将任意长度的明文（message）加密为 16 bytes 的密文（digest）。其加密过程如下。</p>
 <ol>
-<li><p>padding 填充</p>
-<p> 对于一个二进制文件 A，对其进行一系列填充使其大小为 64 bytes 整数倍。填充遵循以下规则：</p>
+<li>
+<p>padding 填充</p>
+<p>对于一个二进制文件 A，对其进行一系列填充使其大小为 64 bytes 整数倍。填充遵循以下规则：</p>
 <ul>
-<li><p>考虑最后一个 64 字节块 A。若 A 的长度小于 56 字节，在后面填充 <code>100...00</code> (0x80 0x00 0x00 … 0x00) 至 56 字节。若 A 的长度大于等于 56 字节，在后面填充 <code>100...00</code> (0x80 0x00 0x00 … 0x00) 至 <strong>下一个字节块</strong> 的第 56 字节。</p>
+<li>
+<p>考虑最后一个 64 字节块 A。若 A 的长度小于 56 字节，在后面填充 <code>100...00</code> (0x80 0x00 0x00 … 0x00) 至 56 字节。若 A 的长度大于等于 56 字节，在后面填充 <code>100...00</code> (0x80 0x00 0x00 … 0x00) 至 <strong>下一个字节块</strong> 的第 56 字节。</p>
 </li>
-<li><p>最后剩下的 8 个字节，填充 message 的位（bit）数。注意填写方式是小端的。例如 message 有一个字符，那么应当填充 0x08 0x00 0x00 0x00 0x00 0x00 0x00 0x00。</p>
+<li>
+<p>最后剩下的 8 个字节，填充 message 的位（bit）数。注意填写方式是小端的。例如 message 有一个字符，那么应当填充 0x08 0x00 0x00 0x00 0x00 0x00 0x00 0x00。</p>
 </li>
 </ul>
 </li>
-<li><p>块、子块</p>
-<p> <img src="../resources/crypto-1.png" alt="crypto-1"></p>
-<p> 考虑 64 个字节为一块。每个块下再分 16 个小块（每小块占 4 字节）。</p>
+<li>
+<p>块、子块</p>
+<p><img src="/resources/crypto-1.png" alt="crypto-1" width="90%"></p>
+<p>考虑 64 个字节为一块。每个块下再分 16 个小块（每小块占 4 字节）。</p>
 </li>
-<li><p>块内加密</p>
-<p> MD5 时刻维护四个 32 位变量 $A,B,C,D$，它们的初始值由上一个 64 字节块加密后的结果决定。如果这是第一个块，则</p>
+<li>
+<p>块内加密</p>
+<p>MD5 时刻维护四个 32 位变量 $A,B,C,D$，它们的初始值由上一个 64 字节块加密后的结果决定。如果这是第一个块，则</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = 0x67452301</span><br><span class="line">B = 0xefcdab89</span><br><span class="line">C = 0x98badcfe</span><br><span class="line">D = 0x10325476</span><br></pre></td></tr></table></figure>
-<p> 接下来块内的这 16 个小块去「处理」$A,B,C,D$。每个小块实际上都会恰好参与 4 次改变变量的运算。</p>
+<p>接下来块内的这 16 个小块去「处理」$A,B,C,D$。每个小块实际上都会恰好参与 4 次改变变量的运算。</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">a = FF(a, b, c, d, M0, 7, 0xd76aa478L);</span><br><span class="line">d = FF(d, a, b, c, M1, 12, 0xe8c7b756L);</span><br><span class="line">c = FF(c, d, a, b, M2, 17, 0x242070dbL);</span><br><span class="line">b = FF(b, c, d, a, M3, 22, 0xc1bdceeeL);</span><br><span class="line">a = FF(a, b, c, d, M4, 7, 0xf57c0fafL);</span><br><span class="line">d = FF(d, a, b, c, M5, 12, 0x4787c62aL);</span><br><span class="line">c = FF(c, d, a, b, M6, 17, 0xa8304613L);</span><br><span class="line">b = FF(b, c, d, a, M7, 22, 0xfd469501L);</span><br><span class="line">a = FF(a, b, c, d, M8, 7, 0x698098d8L); </span><br><span class="line">d = FF(d, a, b, c, M9, 12, 0x8b44f7afL);</span><br><span class="line">c = FF(c, d, a, b, M10, 17, 0xffff5bb1L);</span><br><span class="line">b = FF(b, c, d, a, M11, 22, 0x895cd7beL);</span><br><span class="line">a = FF(a, b, c, d, M12, 7, 0x6b901122L);</span><br><span class="line">d = FF(d, a, b, c, M13, 12, 0xfd987193L);</span><br><span class="line">c = FF(c, d, a, b, M14, 17, 0xa679438eL);</span><br><span class="line">b = FF(b, c, d, a, M15, 22, 0x49b40821L);</span><br><span class="line"></span><br><span class="line">// 第二轮运算GG</span><br><span class="line">a = GG(a, b, c, d, M1, 5, 0xf61e2562L);</span><br><span class="line">d = GG(d, a, b, c, M6, 9, 0xc040b340L);</span><br><span class="line">c = GG(c, d, a, b, M11, 14, 0x265e5a51L);</span><br><span class="line">b = GG(b, c, d, a, M0, 20, 0xe9b6c7aaL);</span><br><span class="line">a = GG(a, b, c, d, M5, 5, 0xd62f105dL);</span><br><span class="line">d = GG(d, a, b, c, M10, 9, 0x2441453L);</span><br><span class="line">c = GG(c, d, a, b, M15, 14, 0xd8a1e681L);</span><br><span class="line">b = GG(b, c, d, a, M4, 20, 0xe7d3fbc8L);</span><br><span class="line">a = GG(a, b, c, d, M9, 5, 0x21e1cde6L);</span><br><span class="line">d = GG(d, a, b, c, M14, 9, 0xc33707d6L);</span><br><span class="line">c = GG(c, d, a, b, M3, 14, 0xf4d50d87L);</span><br><span class="line">b = GG(b, c, d, a, M8, 20, 0x455a14edL);</span><br><span class="line">a = GG(a, b, c, d, M13, 5, 0xa9e3e905L);</span><br><span class="line">d = GG(d, a, b, c, M2, 9, 0xfcefa3f8L);</span><br><span class="line">c = GG(c, d, a, b, M7, 14, 0x676f02d9L);</span><br><span class="line">b = GG(b, c, d, a, M12, 20, 0x8d2a4c8aL);</span><br><span class="line"></span><br><span class="line">// 第三轮运算HH</span><br><span class="line">a = HH(a, b, c, d, M5, 4, 0xfffa3942L);</span><br><span class="line">d = HH(d, a, b, c, M8, 11, 0x8771f681L);</span><br><span class="line">c = HH(c, d, a, b, M11, 16, 0x6d9d6122L);</span><br><span class="line">b = HH(b, c, d, a, M14, 23, 0xfde5380cL);</span><br><span class="line">a = HH(a, b, c, d, M1, 4, 0xa4beea44L);</span><br><span class="line">d = HH(d, a, b, c, M4, 11, 0x4bdecfa9L);</span><br><span class="line">c = HH(c, d, a, b, M7, 16, 0xf6bb4b60L);</span><br><span class="line">b = HH(b, c, d, a, M10, 23, 0xbebfbc70L);</span><br><span class="line">a = HH(a, b, c, d, M13, 4, 0x289b7ec6L);</span><br><span class="line">d = HH(d, a, b, c, M0, 11, 0xeaa127faL);</span><br><span class="line">c = HH(c, d, a, b, M3, 16, 0xd4ef3085L);</span><br><span class="line">b = HH(b, c, d, a, M6, 23, 0x4881d05L);</span><br><span class="line">a = HH(a, b, c, d, M9, 4, 0xd9d4d039L);</span><br><span class="line">d = HH(d, a, b, c, M12, 11, 0xe6db99e5L);</span><br><span class="line">c = HH(c, d, a, b, M15, 16, 0x1fa27cf8L);</span><br><span class="line">b = HH(b, c, d, a, M2, 23, 0xc4ac5665L);</span><br><span class="line"></span><br><span class="line">// 第四轮运算II</span><br><span class="line">a = II(a, b, c, d, M0, 6, 0xf4292244L);</span><br><span class="line">d = II(d, a, b, c, M7, 10, 0x432aff97L);</span><br><span class="line">c = II(c, d, a, b, M14, 15, 0xab9423a7L);</span><br><span class="line">b = II(b, c, d, a, M5, 21, 0xfc93a039L);</span><br><span class="line">a = II(a, b, c, d, M12, 6, 0x655b59c3L);</span><br><span class="line">d = II(d, a, b, c, M3, 10, 0x8f0ccc92L);</span><br><span class="line">c = II(c, d, a, b, M10, 15, 0xffeff47dL);</span><br><span class="line">b = II(b, c, d, a, M1, 21, 0x85845dd1L);</span><br><span class="line">a = II(a, b, c, d, M8, 6, 0x6fa87e4fL);</span><br><span class="line">d = II(d, a, b, c, M15, 10, 0xfe2ce6e0L);</span><br><span class="line">c = II(c, d, a, b, M6, 15, 0xa3014314L);</span><br><span class="line">b = II(b, c, d, a, M13, 21, 0x4e0811a1L);</span><br><span class="line">a = II(a, b, c, d, M4, 6, 0xf7537e82L);</span><br><span class="line">d = II(d, a, b, c, M11, 10, 0xbd3af235L);</span><br><span class="line">c = II(c, d, a, b, M2, 15, 0x2ad7d2bbL);</span><br><span class="line">b = II(b, c, d, a, M9, 21, 0xeb86d391L);</span><br></pre></td></tr></table></figure>
-<p> 完成上述 64 条指令后，本块加密即结束。假设 $A,B,C,D$ 变成了 $A’,B’,C’,D’$。最后令</p>
+<p>完成上述 64 条指令后，本块加密即结束。假设 $A,B,C,D$ 变成了 $A’,B’,C’,D’$。最后令</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = A + A&#x27;</span><br><span class="line">B = B + B&#x27;</span><br><span class="line">C = C + C&#x27;</span><br><span class="line">D = D + D&#x27;</span><br></pre></td></tr></table></figure>
-<p> 即得到本块的输出 $A,B,C,D$。</p>
+<p>即得到本块的输出 $A,B,C,D$。</p>
 </li>
-<li><p>块间加密</p>
-<p> 显然源文件可能不止一个 64 字节块。多块的情况其实就像一个「流水线」运作：$A,B,C,D$ 首先取得他们的初始值（第 3 条中已叙述），接下来通过一个又一个的 64 字节块，进去一套 $A,B,C,D$，输出一套 $A,B,C,D$，随后又把这个 $A,B,C,D$ 作为下一个 64 字节块的加密初始值。循环往复。</p>
-<p> 最后一个 64 字节块输出的 $A,B,C,D$ 即为 md5 的加密最终结果。</p>
-<p>md5 目前已有碰撞方法。即有办法给出一组 $a,b$，使得 $md5(a)=md5(b)$。但给定 $a$ 找到一组 md5 结果相同的 $b$ 目前仍无法做到。</p>
+<li>
+<p>块间加密</p>
+<p>显然源文件可能不止一个 64 字节块。多块的情况其实就像一个「流水线」运作：$A,B,C,D$ 首先取得他们的初始值（第 3 条中已叙述），接下来通过一个又一个的 64 字节块，进去一套 $A,B,C,D$，输出一套 $A,B,C,D$，随后又把这个 $A,B,C,D$ 作为下一个 64 字节块的加密初始值。循环往复。</p>
+<p>最后一个 64 字节块输出的 $A,B,C,D$ 即为 md5 的加密最终结果。</p>
 </li>
 </ol>
+<p>md5 目前已有碰撞方法。即有办法给出一组 $a,b$，使得 $md5(a)=md5(b)$。但给定 $a$ 找到一组 md5 结果相同的 $b$ 目前仍无法做到。</p>
 </li>
-<li><p>SHA-256</p>
+<li>
+<p>SHA-256</p>
 </li>
 </ul>
 
