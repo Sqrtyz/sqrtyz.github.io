@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
+        async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【笔记】C 大程杂记 | Dormant Echoes</title>
+  <link rel = 'canonical' href = 'http://localhost:1313/posts/notes_largec/'>
+  <meta name="description" content="无关渴求，并非理想，这就是她的命运。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="【笔记】C 大程杂记" />
+<meta property="og:description" content="学习 C 大程过程中的一些零散笔记。
+多文件编程注意事项 头文件
+自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。
+编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。
+变量的关联
+我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许多次声明，但只能有一次定义。
+对于一个变量，定义的方法是 type var;。而声明则是在其之前加上一个 extern。
+对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 int foo(int x); 。
+sscanf() 函数 C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读取格式化输入。
+和 scanf 基本一致。唯一的区别是从输入流读入数据变为了从 str 读入数据。所以这个函数常常用于格式化一些字符串。
+特别地两个用法：%n 用于接收当前读入和开头相比的偏移量，%* 用于忽略某个数据，即不存储于对应的参数中。
+例子 1：
+1#include &lt;stdio.h&gt; 2 3int main() { 4 char s[] = &#34;wtfwtf 21&#34;, a[100]; 5 int b, p1, p2; 6 sscanf(s, &#34;%s%n %d%n&#34;, &amp;a, &amp;p1, &amp;b, &amp;p2); 7 printf(&#34;%s\n%d\n&#34;, a, b); 8 printf(&#34;%d %d\n&#34;, p1, p2); 9 return 0; 10} 这个程序输出：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/notes_largec/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-01T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【笔记】C 大程杂记"/>
+<meta name="twitter:description" content="学习 C 大程过程中的一些零散笔记。
+多文件编程注意事项 头文件
+自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。
+编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。
+变量的关联
+我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许多次声明，但只能有一次定义。
+对于一个变量，定义的方法是 type var;。而声明则是在其之前加上一个 extern。
+对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 int foo(int x); 。
+sscanf() 函数 C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读取格式化输入。
+和 scanf 基本一致。唯一的区别是从输入流读入数据变为了从 str 读入数据。所以这个函数常常用于格式化一些字符串。
+特别地两个用法：%n 用于接收当前读入和开头相比的偏移量，%* 用于忽略某个数据，即不存储于对应的参数中。
+例子 1：
+1#include &lt;stdio.h&gt; 2 3int main() { 4 char s[] = &#34;wtfwtf 21&#34;, a[100]; 5 int b, p1, p2; 6 sscanf(s, &#34;%s%n %d%n&#34;, &amp;a, &amp;p1, &amp;b, &amp;p2); 7 printf(&#34;%s\n%d\n&#34;, a, b); 8 printf(&#34;%d %d\n&#34;, p1, p2); 9 return 0; 10} 这个程序输出："/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.a1f268d4a2dc126cc173c87effbb726d4e19589aba7bcecf97f1e692128187ccf19266ae1b68e794b49a0eebeda406626510ccfb7f24d86d16167e7e4a69762e.css" integrity="sha512-ofJo1KLcEmzBc8h&#43;/7tybU4ZWJq6e87Pl/HmkhKBh8zxkmauG2jnlLSaDuvtpAZiZRDM&#43;38k2G0WFn5&#43;Sml2Lg=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://localhost:1313/posts/notes_littlec/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://localhost:1313/posts/notes_cod_p3/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&text=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&is_video=false&description=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0&description=%e5%ad%a6%e4%b9%a0%20C%20%e5%a4%a7%e7%a8%8b%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84%e4%b8%80%e4%ba%9b%e9%9b%b6%e6%95%a3%e7%ac%94%e8%ae%b0%e3%80%82%0a%e5%a4%9a%e6%96%87%e4%bb%b6%e7%bc%96%e7%a8%8b%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%20%e5%a4%b4%e6%96%87%e4%bb%b6%0a%e8%87%aa%e5%b7%b1%e7%bc%96%e5%86%99%e5%a4%b4%e6%96%87%e4%bb%b6%e6%97%b6%ef%bc%8c%e4%bd%bf%e7%94%a8%20%23ifndef%20%e5%92%8c%20%23endif%20%e6%9d%a5%e9%81%bf%e5%85%8d%e5%a4%b4%e6%96%87%e4%bb%b6%e7%9a%84%e9%87%8d%e5%a4%8d%e5%8c%85%e5%90%ab%e3%80%82%0a%e7%bc%96%e8%af%91%e5%99%a8%e8%87%aa%e5%b8%a6%e7%9a%84%e5%a4%b4%e6%96%87%e4%bb%b6%ef%bc%88%e4%be%8b%e5%a6%82%20stdio.h%ef%bc%89%e6%98%af%e8%87%aa%e5%b8%a6%e8%bf%99%e7%a7%8d%e7%b3%bb%e7%bb%9f%e7%9a%84%e3%80%82%e4%b9%9f%e5%b0%b1%e6%98%af%e8%af%b4%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%94%be%e5%bf%83%e5%9c%b0%e5%9c%a8%e5%a4%9a%e4%b8%aa%20c%20%e6%96%87%e4%bb%b6%e4%b8%ad%e9%87%8d%e5%a4%8d%e5%8c%85%e5%90%ab%e5%90%8c%e4%b8%80%e8%87%aa%e5%b8%a6%e7%9a%84%e5%a4%b4%e6%96%87%e4%bb%b6%e3%80%82%0a%e5%8f%98%e9%87%8f%e7%9a%84%e5%85%b3%e8%81%94%0a%e6%88%91%e4%bb%ac%e5%b0%86%e5%8f%98%e9%87%8f%e5%92%8c%e5%87%bd%e6%95%b0%e5%88%86%e4%b8%ba%20%e5%ae%9a%e4%b9%89%20%28define%29%20%e5%92%8c%20%e5%a3%b0%e6%98%8e%20%28declare%29%20%e4%b8%a4%e7%a7%8d%e6%83%85%e5%86%b5%e3%80%82%e8%bf%9e%e6%8e%a5%e5%90%8e%e7%9a%84%e7%a8%8b%e5%ba%8f%20%e5%85%81%e8%ae%b8%e5%a4%9a%e6%ac%a1%e5%a3%b0%e6%98%8e%ef%bc%8c%e4%bd%86%e5%8f%aa%e8%83%bd%e6%9c%89%e4%b8%80%e6%ac%a1%e5%ae%9a%e4%b9%89%e3%80%82%0a%e5%af%b9%e4%ba%8e%e4%b8%80%e4%b8%aa%e5%8f%98%e9%87%8f%ef%bc%8c%e5%ae%9a%e4%b9%89%e7%9a%84%e6%96%b9%e6%b3%95%e6%98%af%20type%20var%3b%e3%80%82%e8%80%8c%e5%a3%b0%e6%98%8e%e5%88%99%e6%98%af%e5%9c%a8%e5%85%b6%e4%b9%8b%e5%89%8d%e5%8a%a0%e4%b8%8a%e4%b8%80%e4%b8%aa%20extern%e3%80%82%0a%e5%af%b9%e4%ba%8e%e4%b8%80%e4%b8%aa%e5%87%bd%e6%95%b0%ef%bc%8c%e5%ae%9a%e4%b9%89%e7%9a%84%e6%96%b9%e6%b3%95%e6%98%af%e5%a1%ab%e5%85%85%e5%85%b6%e5%86%85%e5%ae%b9%ef%bc%88%e5%8d%b3%e6%9c%89%e4%b8%80%e5%af%b9%e5%a4%a7%e6%8b%ac%e5%8f%b7%ef%bc%89%ef%bc%9b%e8%80%8c%e5%a3%b0%e6%98%8e%e5%88%99%e6%98%af%e5%8f%aa%e5%86%99%e5%87%ba%e5%85%b6%e5%90%8d%e5%ad%97%e5%92%8c%e5%8f%82%e6%95%b0%e8%a1%a8%ef%bc%8c%e4%be%8b%e5%a6%82%20int%20foo%28int%20x%29%3b%20%e3%80%82%0asscanf%28%29%20%e5%87%bd%e6%95%b0%20C%20%e5%ba%93%e5%87%bd%e6%95%b0%20int%20sscanf%28const%20char%20%2astr%2c%20const%20char%20%2aformat%2c%20...%29%20%e4%bb%8e%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%af%bb%e5%8f%96%e6%a0%bc%e5%bc%8f%e5%8c%96%e8%be%93%e5%85%a5%e3%80%82%0a%e5%92%8c%20scanf%20%e5%9f%ba%e6%9c%ac%e4%b8%80%e8%87%b4%e3%80%82%e5%94%af%e4%b8%80%e7%9a%84%e5%8c%ba%e5%88%ab%e6%98%af%e4%bb%8e%e8%be%93%e5%85%a5%e6%b5%81%e8%af%bb%e5%85%a5%e6%95%b0%e6%8d%ae%e5%8f%98%e4%b8%ba%e4%ba%86%e4%bb%8e%20str%20%e8%af%bb%e5%85%a5%e6%95%b0%e6%8d%ae%e3%80%82%e6%89%80%e4%bb%a5%e8%bf%99%e4%b8%aa%e5%87%bd%e6%95%b0%e5%b8%b8%e5%b8%b8%e7%94%a8%e4%ba%8e%e6%a0%bc%e5%bc%8f%e5%8c%96%e4%b8%80%e4%ba%9b%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%82%0a%e7%89%b9%e5%88%ab%e5%9c%b0%e4%b8%a4%e4%b8%aa%e7%94%a8%e6%b3%95%ef%bc%9a%25n%20%e7%94%a8%e4%ba%8e%e6%8e%a5%e6%94%b6%e5%bd%93%e5%89%8d%e8%af%bb%e5%85%a5%e5%92%8c%e5%bc%80%e5%a4%b4%e7%9b%b8%e6%af%94%e7%9a%84%e5%81%8f%e7%a7%bb%e9%87%8f%ef%bc%8c%25%2a%20%e7%94%a8%e4%ba%8e%e5%bf%bd%e7%95%a5%e6%9f%90%e4%b8%aa%e6%95%b0%e6%8d%ae%ef%bc%8c%e5%8d%b3%e4%b8%8d%e5%ad%98%e5%82%a8%e4%ba%8e%e5%af%b9%e5%ba%94%e7%9a%84%e5%8f%82%e6%95%b0%e4%b8%ad%e3%80%82%0a%e4%be%8b%e5%ad%90%201%ef%bc%9a%0a1%23include%20%26lt%3bstdio.h%26gt%3b%202%203int%20main%28%29%20%7b%204%20char%20s%5b%5d%20%3d%20%26%2334%3bwtfwtf%2021%26%2334%3b%2c%20a%5b100%5d%3b%205%20int%20b%2c%20p1%2c%20p2%3b%206%20sscanf%28s%2c%20%26%2334%3b%25s%25n%20%25d%25n%26%2334%3b%2c%20%26amp%3ba%2c%20%26amp%3bp1%2c%20%26amp%3bb%2c%20%26amp%3bp2%29%3b%207%20printf%28%26%2334%3b%25s%5cn%25d%5cn%26%2334%3b%2c%20a%2c%20b%29%3b%208%20printf%28%26%2334%3b%25d%20%25d%5cn%26%2334%3b%2c%20p1%2c%20p2%29%3b%209%20return%200%3b%2010%7d%20%e8%bf%99%e4%b8%aa%e7%a8%8b%e5%ba%8f%e8%be%93%e5%87%ba%ef%bc%9a" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&t=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#多文件编程注意事项">多文件编程注意事项</a></li>
+        <li><a href="#sscanf-函数">sscanf() 函数</a></li>
+        <li><a href="#函数指针与回调函数">函数指针与回调函数</a></li>
+        <li><a href="#typedef">typedef</a></li>
+        <li><a href="#文件操作">文件操作</a></li>
+        <li><a href="#大小端">大小端</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【笔记】C 大程杂记
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2023-09-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-09-01</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          6 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <p>学习 C 大程过程中的一些零散笔记。</p>
+<h3 id="多文件编程注意事项">多文件编程注意事项</h3>
+<ul>
+<li>
+<p>头文件</p>
+<p>自己编写头文件时，使用 <code>#ifndef</code> 和 <code>#endif</code> 来避免头文件的重复包含。</p>
+<p>编译器自带的头文件（例如 <code>stdio.h</code>）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。</p>
+</li>
+<li>
+<p>变量的关联</p>
+<p>我们将变量和函数分为 <strong>定义 (define)</strong> 和 <strong>声明 (declare)</strong> 两种情况。连接后的程序 <strong>允许多次声明，但只能有一次定义</strong>。</p>
+<ul>
+<li>
+<p>对于一个变量，定义的方法是 <code>type var;</code>。而声明则是在其之前加上一个 <code>extern</code>。</p>
+</li>
+<li>
+<p>对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 <code>int foo(int x);</code> 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sscanf-函数">sscanf() 函数</h3>
+<ul>
+<li>
+<p>C 库函数 <code>int sscanf(const char *str, const char *format, ...)</code> 从字符串读取格式化输入。</p>
+</li>
+<li>
+<p>和 <code>scanf</code> 基本一致。唯一的区别是从输入流读入数据变为了从 <code>str</code> 读入数据。所以这个函数常常用于格式化一些字符串。</p>
+</li>
+<li>
+<p>特别地两个用法：<code>%n</code> 用于接收当前读入和开头相比的偏移量，<code>%*</code> 用于忽略某个数据，即不存储于对应的参数中。</p>
+</li>
+<li>
+<p>例子 1：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#8be9fd">char</span> s[] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;wtfwtf 21&#34;</span>, a[<span style="color:#bd93f9">100</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#8be9fd">int</span> b, p1, p2;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    sscanf(s, <span style="color:#f1fa8c">&#34;%s%n %d%n&#34;</span>, <span style="color:#ff79c6">&amp;</span>a, <span style="color:#ff79c6">&amp;</span>p1, <span style="color:#ff79c6">&amp;</span>b, <span style="color:#ff79c6">&amp;</span>p2);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    printf(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a, b);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    printf(<span style="color:#f1fa8c">&#34;%d %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, p1, p2);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>}
+</span></span></code></pre></div><p>这个程序输出：</p>
+<pre tabindex="0"><code>wtfwtf
+21
+6 9
+</code></pre><p>可以看到 sscanf 的基本工作原理。并且，<code>%n</code> 不会读入 <code>str</code> 中的任何数据，只是会获得一个偏移量而已。</p>
+</li>
+<li>
+<p>例子 2：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#8be9fd">char</span> s[] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;wtf 233 466&#34;</span>, a[<span style="color:#bd93f9">100</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    <span style="color:#8be9fd">int</span> b;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    sscanf(s, <span style="color:#f1fa8c">&#34;%s %*d %d&#34;</span>, <span style="color:#ff79c6">&amp;</span>a, <span style="color:#ff79c6">&amp;</span>b);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>    printf(<span style="color:#f1fa8c">&#34;%s</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">%d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a, b);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>}
+</span></span></code></pre></div><p>这个程序输出：</p>
+<pre tabindex="0"><code>wtf
+466
+</code></pre><p>可以看到中间的 <code>233</code> 被忽略了。</p>
+</li>
+</ul>
+<h3 id="函数指针与回调函数">函数指针与回调函数</h3>
+<ul>
+<li>
+<p>函数指针</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd">void</span> (<span style="color:#ff79c6">*</span>pFunc)(<span style="color:#8be9fd">int</span>, <span style="color:#8be9fd">int</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>pFunc <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">&amp;</span>add; <span style="color:#6272a4">// Interestingly, &amp; is optional
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>(<span style="color:#ff79c6">*</span>pFunc)(<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">5</span>); <span style="color:#6272a4">// Interestingly, * is also optional
+</span></span></span></code></pre></div><p>第一行：定义了一个类型为 <code>void(int, int)</code> 的函数指针 <code>pFunc</code> 。</p>
+<p>第二行：<code>pFunc</code> 指向 <code>add</code> 的地址。</p>
+<p>第三行：调用 <code>pFunc</code> 指向的函数，亦即执行 <code>add(3, 5)</code> 。</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;string.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">add</span>(<span style="color:#8be9fd">int</span> a, <span style="color:#8be9fd">int</span> b) {<span style="color:#ff79c6">return</span> a <span style="color:#ff79c6">+</span> b;}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">mul</span>(<span style="color:#8be9fd">int</span> a, <span style="color:#8be9fd">int</span> b) {<span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, a <span style="color:#ff79c6">*</span> b);}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#8be9fd">int</span> (<span style="color:#ff79c6">*</span>fuck)(<span style="color:#8be9fd">int</span>, <span style="color:#8be9fd">int</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#8be9fd">void</span> (<span style="color:#ff79c6">*</span>shit)(<span style="color:#8be9fd">int</span>, <span style="color:#8be9fd">int</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    fuck <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">&amp;</span>add;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, (<span style="color:#ff79c6">*</span>fuck)(<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">5</span>));
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    shit <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">&amp;</span>mul;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    (<span style="color:#ff79c6">*</span>shit)(<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">5</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>}
+</span></span></code></pre></div><p>输出 <code>8</code> 和 <code>15</code> 。</p>
+</li>
+<li>
+<p>函数回调</p>
+<p>简单理解就是把函数作为传递的参数。当然了，我们传的是函数指针。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">populate_array</span>(<span style="color:#8be9fd">int</span> <span style="color:#ff79c6">*</span>array, <span style="color:#8be9fd">size_t</span> arraySize, <span style="color:#8be9fd">int</span> (<span style="color:#ff79c6">*</span>GenerateMethod)()){
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    array[<span style="color:#bd93f9">0</span>] <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">size_t</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; i <span style="color:#ff79c6">&lt;</span> arraySize; <span style="color:#ff79c6">++</span>i)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>        array[i] <span style="color:#ff79c6">=</span> (<span style="color:#ff79c6">*</span>GenerateMethod)(array[i <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>]);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Double</span>(<span style="color:#8be9fd">int</span> x) {<span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">2</span>;}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">Triple</span>(<span style="color:#8be9fd">int</span> x) {<span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">*</span> <span style="color:#bd93f9">3</span>;}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(<span style="color:#8be9fd">void</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#8be9fd">int</span> myarray[<span style="color:#bd93f9">10</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    <span style="color:#50fa7b">populate_array</span>(myarray, <span style="color:#bd93f9">10</span>, <span style="color:#ff79c6">&amp;</span>Double);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span>; i<span style="color:#ff79c6">++</span>) <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%d &#34;</span>, myarray[i]);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#50fa7b">populate_array</span>(myarray, <span style="color:#bd93f9">10</span>, <span style="color:#ff79c6">&amp;</span>Triple);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">10</span>; i<span style="color:#ff79c6">++</span>) <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;%d &#34;</span>, myarray[i]);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>}
+</span></span></code></pre></div><p>这个程序生成了两个等比数列。分别是：</p>
+<pre tabindex="0"><code>1 2 4 8 16 32 64 128 256 512 
+1 3 9 27 81 243 729 2187 6561 19683
+</code></pre></li>
+</ul>
+<h3 id="typedef">typedef</h3>
+<p>作用和宏定义 <code>#define</code> 类似。</p>
+<ul>
+<li>
+<p>最简单的 typedef 用法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">typedef</span> <span style="color:#8be9fd">int</span> INTEGER; <span style="color:#6272a4">// typedef oldname newname
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4"></span>INTEGER a, b;
+</span></span></code></pre></div></li>
+<li>
+<p>数组的 typedef 用法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">typedef</span> <span style="color:#8be9fd">char</span> Line[<span style="color:#bd93f9">233</span>];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>Line text;
+</span></span></code></pre></div><p>第二行声明了一个长度为 233 的 text 数组。</p>
+</li>
+<li>
+<p>指针的 typedef 用法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">typedef</span> <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span> pstr; 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>pstr str <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;abc&#34;</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>函数指针 typedef 用法</p>
+<p>对于我们之前给出的例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd">void</span> (<span style="color:#ff79c6">*</span>pFunc)(<span style="color:#8be9fd">int</span>, <span style="color:#8be9fd">int</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>pFunc <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">&amp;</span>add;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>(<span style="color:#ff79c6">*</span>pFunc)(<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">5</span>);
+</span></span></code></pre></div><p>它又可以写作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">typedef</span> <span style="color:#50fa7b">void</span> (<span style="color:#ff79c6">*</span>FUNCPOINTER)(<span style="color:#8be9fd">int</span>, <span style="color:#8be9fd">int</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>FUNCPOINTER pFunc; <span style="color:#6272a4">// 声明函数指针 pFunc
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>pFunc <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">&amp;</span>add;
+</span></span></code></pre></div></li>
+<li>
+<p>归纳总结</p>
+<p>看起来 typedef 在进行不同类型的代替时写法也有很大区别。但是我们有一个比较简单的方法来进行记忆：</p>
+<ul>
+<li>注意到调用时采用的都是 <code>Type Var;</code> 的方式。</li>
+<li>用 <code>Var</code> 替代 typedef 语句中的 <code>Type</code>，即可得到原语句。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件操作">文件操作</h3>
+<ul>
+<li>
+<p>fopen() 函数</p>
+</li>
+<li>
+<p>feof() 函数</p>
+<p>当读取到 EOF 时，该函数返回一个非零值，否则返回零。</p>
+</li>
+<li>
+<p>读入</p>
+<p><code>fgetc(FILE* fo)</code> 从 fo 中读入一个字符。如果到达文件末尾或发生读错误，则返回 EOF。</p>
+</li>
+</ul>
+<h3 id="大小端">大小端</h3>
+<ul>
+<li>
+<p><strong>大端模式（Big-endian）</strong>：数据的高字节，保存在内存的低地址中；而数据的低字节，保存在内存的高地址中。这样的存储模式有点儿类似于把数据当作字符串顺序处理。</p>
+<p>e6 84 6c 4e</p>
+<p>在大端模式下，这 32 位应该读作  <code>e6 84 6c 4e</code>。</p>
+</li>
+<li>
+<p><strong>小端模式（Little-endian）</strong>：数据的高字节，保存在内存的高地址中；而数据的低字节，保存在内存的低地址中。这种存储模式将地址的高低和数据位权结合起来——高地址部分权值高，低地址部分权值低。</p>
+<p>e6 84 6c 4e</p>
+<p>在小端模式下，这 32 位应该读作 <code>4e 6c 84 e6</code>。</p>
+</li>
+<li>
+<p>注意在一个字节内部，大小端是 <strong>完全一致的</strong>。</p>
+</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#多文件编程注意事项">多文件编程注意事项</a></li>
+        <li><a href="#sscanf-函数">sscanf() 函数</a></li>
+        <li><a href="#函数指针与回调函数">函数指针与回调函数</a></li>
+        <li><a href="#typedef">typedef</a></li>
+        <li><a href="#文件操作">文件操作</a></li>
+        <li><a href="#大小端">大小端</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&text=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&is_video=false&description=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0&description=%e5%ad%a6%e4%b9%a0%20C%20%e5%a4%a7%e7%a8%8b%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84%e4%b8%80%e4%ba%9b%e9%9b%b6%e6%95%a3%e7%ac%94%e8%ae%b0%e3%80%82%0a%e5%a4%9a%e6%96%87%e4%bb%b6%e7%bc%96%e7%a8%8b%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9%20%e5%a4%b4%e6%96%87%e4%bb%b6%0a%e8%87%aa%e5%b7%b1%e7%bc%96%e5%86%99%e5%a4%b4%e6%96%87%e4%bb%b6%e6%97%b6%ef%bc%8c%e4%bd%bf%e7%94%a8%20%23ifndef%20%e5%92%8c%20%23endif%20%e6%9d%a5%e9%81%bf%e5%85%8d%e5%a4%b4%e6%96%87%e4%bb%b6%e7%9a%84%e9%87%8d%e5%a4%8d%e5%8c%85%e5%90%ab%e3%80%82%0a%e7%bc%96%e8%af%91%e5%99%a8%e8%87%aa%e5%b8%a6%e7%9a%84%e5%a4%b4%e6%96%87%e4%bb%b6%ef%bc%88%e4%be%8b%e5%a6%82%20stdio.h%ef%bc%89%e6%98%af%e8%87%aa%e5%b8%a6%e8%bf%99%e7%a7%8d%e7%b3%bb%e7%bb%9f%e7%9a%84%e3%80%82%e4%b9%9f%e5%b0%b1%e6%98%af%e8%af%b4%ef%bc%8c%e5%8f%af%e4%bb%a5%e6%94%be%e5%bf%83%e5%9c%b0%e5%9c%a8%e5%a4%9a%e4%b8%aa%20c%20%e6%96%87%e4%bb%b6%e4%b8%ad%e9%87%8d%e5%a4%8d%e5%8c%85%e5%90%ab%e5%90%8c%e4%b8%80%e8%87%aa%e5%b8%a6%e7%9a%84%e5%a4%b4%e6%96%87%e4%bb%b6%e3%80%82%0a%e5%8f%98%e9%87%8f%e7%9a%84%e5%85%b3%e8%81%94%0a%e6%88%91%e4%bb%ac%e5%b0%86%e5%8f%98%e9%87%8f%e5%92%8c%e5%87%bd%e6%95%b0%e5%88%86%e4%b8%ba%20%e5%ae%9a%e4%b9%89%20%28define%29%20%e5%92%8c%20%e5%a3%b0%e6%98%8e%20%28declare%29%20%e4%b8%a4%e7%a7%8d%e6%83%85%e5%86%b5%e3%80%82%e8%bf%9e%e6%8e%a5%e5%90%8e%e7%9a%84%e7%a8%8b%e5%ba%8f%20%e5%85%81%e8%ae%b8%e5%a4%9a%e6%ac%a1%e5%a3%b0%e6%98%8e%ef%bc%8c%e4%bd%86%e5%8f%aa%e8%83%bd%e6%9c%89%e4%b8%80%e6%ac%a1%e5%ae%9a%e4%b9%89%e3%80%82%0a%e5%af%b9%e4%ba%8e%e4%b8%80%e4%b8%aa%e5%8f%98%e9%87%8f%ef%bc%8c%e5%ae%9a%e4%b9%89%e7%9a%84%e6%96%b9%e6%b3%95%e6%98%af%20type%20var%3b%e3%80%82%e8%80%8c%e5%a3%b0%e6%98%8e%e5%88%99%e6%98%af%e5%9c%a8%e5%85%b6%e4%b9%8b%e5%89%8d%e5%8a%a0%e4%b8%8a%e4%b8%80%e4%b8%aa%20extern%e3%80%82%0a%e5%af%b9%e4%ba%8e%e4%b8%80%e4%b8%aa%e5%87%bd%e6%95%b0%ef%bc%8c%e5%ae%9a%e4%b9%89%e7%9a%84%e6%96%b9%e6%b3%95%e6%98%af%e5%a1%ab%e5%85%85%e5%85%b6%e5%86%85%e5%ae%b9%ef%bc%88%e5%8d%b3%e6%9c%89%e4%b8%80%e5%af%b9%e5%a4%a7%e6%8b%ac%e5%8f%b7%ef%bc%89%ef%bc%9b%e8%80%8c%e5%a3%b0%e6%98%8e%e5%88%99%e6%98%af%e5%8f%aa%e5%86%99%e5%87%ba%e5%85%b6%e5%90%8d%e5%ad%97%e5%92%8c%e5%8f%82%e6%95%b0%e8%a1%a8%ef%bc%8c%e4%be%8b%e5%a6%82%20int%20foo%28int%20x%29%3b%20%e3%80%82%0asscanf%28%29%20%e5%87%bd%e6%95%b0%20C%20%e5%ba%93%e5%87%bd%e6%95%b0%20int%20sscanf%28const%20char%20%2astr%2c%20const%20char%20%2aformat%2c%20...%29%20%e4%bb%8e%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%af%bb%e5%8f%96%e6%a0%bc%e5%bc%8f%e5%8c%96%e8%be%93%e5%85%a5%e3%80%82%0a%e5%92%8c%20scanf%20%e5%9f%ba%e6%9c%ac%e4%b8%80%e8%87%b4%e3%80%82%e5%94%af%e4%b8%80%e7%9a%84%e5%8c%ba%e5%88%ab%e6%98%af%e4%bb%8e%e8%be%93%e5%85%a5%e6%b5%81%e8%af%bb%e5%85%a5%e6%95%b0%e6%8d%ae%e5%8f%98%e4%b8%ba%e4%ba%86%e4%bb%8e%20str%20%e8%af%bb%e5%85%a5%e6%95%b0%e6%8d%ae%e3%80%82%e6%89%80%e4%bb%a5%e8%bf%99%e4%b8%aa%e5%87%bd%e6%95%b0%e5%b8%b8%e5%b8%b8%e7%94%a8%e4%ba%8e%e6%a0%bc%e5%bc%8f%e5%8c%96%e4%b8%80%e4%ba%9b%e5%ad%97%e7%ac%a6%e4%b8%b2%e3%80%82%0a%e7%89%b9%e5%88%ab%e5%9c%b0%e4%b8%a4%e4%b8%aa%e7%94%a8%e6%b3%95%ef%bc%9a%25n%20%e7%94%a8%e4%ba%8e%e6%8e%a5%e6%94%b6%e5%bd%93%e5%89%8d%e8%af%bb%e5%85%a5%e5%92%8c%e5%bc%80%e5%a4%b4%e7%9b%b8%e6%af%94%e7%9a%84%e5%81%8f%e7%a7%bb%e9%87%8f%ef%bc%8c%25%2a%20%e7%94%a8%e4%ba%8e%e5%bf%bd%e7%95%a5%e6%9f%90%e4%b8%aa%e6%95%b0%e6%8d%ae%ef%bc%8c%e5%8d%b3%e4%b8%8d%e5%ad%98%e5%82%a8%e4%ba%8e%e5%af%b9%e5%ba%94%e7%9a%84%e5%8f%82%e6%95%b0%e4%b8%ad%e3%80%82%0a%e4%be%8b%e5%ad%90%201%ef%bc%9a%0a1%23include%20%26lt%3bstdio.h%26gt%3b%202%203int%20main%28%29%20%7b%204%20char%20s%5b%5d%20%3d%20%26%2334%3bwtfwtf%2021%26%2334%3b%2c%20a%5b100%5d%3b%205%20int%20b%2c%20p1%2c%20p2%3b%206%20sscanf%28s%2c%20%26%2334%3b%25s%25n%20%25d%25n%26%2334%3b%2c%20%26amp%3ba%2c%20%26amp%3bp1%2c%20%26amp%3bb%2c%20%26amp%3bp2%29%3b%207%20printf%28%26%2334%3b%25s%5cn%25d%5cn%26%2334%3b%2c%20a%2c%20b%29%3b%208%20printf%28%26%2334%3b%25d%20%25d%5cn%26%2334%3b%2c%20p1%2c%20p2%29%3b%209%20return%200%3b%2010%7d%20%e8%bf%99%e4%b8%aa%e7%a8%8b%e5%ba%8f%e8%be%93%e5%87%ba%ef%bc%9a" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_largec%2f&t=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91C%20%e5%a4%a7%e7%a8%8b%e6%9d%82%e8%ae%b0" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Sqrtyz 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

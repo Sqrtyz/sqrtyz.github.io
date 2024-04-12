@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
+        async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【笔记】计算机组成 (Part III) | Dormant Echoes</title>
+  <link rel = 'canonical' href = 'http://localhost:1313/posts/notes_cod_p3/'>
+  <meta name="description" content="无关渴求，并非理想，这就是她的命运。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="【笔记】计算机组成 (Part III)" />
+<meta property="og:description" content="Chapter 4-1 Processor: Single Cycle Ver Introduction 基本的思路是，在之前我们学习了 C -&gt; Assembly Language -&gt; Machine Code 的过程。而 CPU 的工作就是执行机器码。例如，对于指令 add x10, x11, x12，我们要用 CPU 完成以下工作：
+读取 x11 和 x12
+计算两者的和
+把和写到 x10 中
+在本门课程中，我们主要关心以下指令：
+Inst Type Inst R-Type Arithmetic (add, sub, and, &hellip;) I-Type Load Register (ld) S-Type Store Register (sd) SB-Type Branch Jump (beq) UJ-Type Unconditional Jump (jal) The Entire Processor 其实整个一节的关键信息就这一幅图。其中的一些关键点：
+PC 表示当前的指令位置。
+Instruction Memory 存放的是系列指令，可以理解为内存中的 Text 段。
+Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/notes_cod_p3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【笔记】计算机组成 (Part III)"/>
+<meta name="twitter:description" content="Chapter 4-1 Processor: Single Cycle Ver Introduction 基本的思路是，在之前我们学习了 C -&gt; Assembly Language -&gt; Machine Code 的过程。而 CPU 的工作就是执行机器码。例如，对于指令 add x10, x11, x12，我们要用 CPU 完成以下工作：
+读取 x11 和 x12
+计算两者的和
+把和写到 x10 中
+在本门课程中，我们主要关心以下指令：
+Inst Type Inst R-Type Arithmetic (add, sub, and, &hellip;) I-Type Load Register (ld) S-Type Store Register (sd) SB-Type Branch Jump (beq) UJ-Type Unconditional Jump (jal) The Entire Processor 其实整个一节的关键信息就这一幅图。其中的一些关键点：
+PC 表示当前的指令位置。
+Instruction Memory 存放的是系列指令，可以理解为内存中的 Text 段。
+Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.a1f268d4a2dc126cc173c87effbb726d4e19589aba7bcecf97f1e692128187ccf19266ae1b68e794b49a0eebeda406626510ccfb7f24d86d16167e7e4a69762e.css" integrity="sha512-ofJo1KLcEmzBc8h&#43;/7tybU4ZWJq6e87Pl/HmkhKBh8zxkmauG2jnlLSaDuvtpAZiZRDM&#43;38k2G0WFn5&#43;Sml2Lg=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://localhost:1313/posts/notes_largec/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://localhost:1313/posts/notes_cod_p2/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&text=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&is_video=false&description=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29&description=Chapter%204-1%20Processor%3a%20Single%20Cycle%20Ver%20Introduction%20%e5%9f%ba%e6%9c%ac%e7%9a%84%e6%80%9d%e8%b7%af%e6%98%af%ef%bc%8c%e5%9c%a8%e4%b9%8b%e5%89%8d%e6%88%91%e4%bb%ac%e5%ad%a6%e4%b9%a0%e4%ba%86%20C%20-%26gt%3b%20Assembly%20Language%20-%26gt%3b%20Machine%20Code%20%e7%9a%84%e8%bf%87%e7%a8%8b%e3%80%82%e8%80%8c%20CPU%20%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%b0%b1%e6%98%af%e6%89%a7%e8%a1%8c%e6%9c%ba%e5%99%a8%e7%a0%81%e3%80%82%e4%be%8b%e5%a6%82%ef%bc%8c%e5%af%b9%e4%ba%8e%e6%8c%87%e4%bb%a4%20add%20x10%2c%20x11%2c%20x12%ef%bc%8c%e6%88%91%e4%bb%ac%e8%a6%81%e7%94%a8%20CPU%20%e5%ae%8c%e6%88%90%e4%bb%a5%e4%b8%8b%e5%b7%a5%e4%bd%9c%ef%bc%9a%0a%e8%af%bb%e5%8f%96%20x11%20%e5%92%8c%20x12%0a%e8%ae%a1%e7%ae%97%e4%b8%a4%e8%80%85%e7%9a%84%e5%92%8c%0a%e6%8a%8a%e5%92%8c%e5%86%99%e5%88%b0%20x10%20%e4%b8%ad%0a%e5%9c%a8%e6%9c%ac%e9%97%a8%e8%af%be%e7%a8%8b%e4%b8%ad%ef%bc%8c%e6%88%91%e4%bb%ac%e4%b8%bb%e8%a6%81%e5%85%b3%e5%bf%83%e4%bb%a5%e4%b8%8b%e6%8c%87%e4%bb%a4%ef%bc%9a%0aInst%20Type%20Inst%20R-Type%20Arithmetic%20%28add%2c%20sub%2c%20and%2c%20%26hellip%3b%29%20I-Type%20Load%20Register%20%28ld%29%20S-Type%20Store%20Register%20%28sd%29%20SB-Type%20Branch%20Jump%20%28beq%29%20UJ-Type%20Unconditional%20Jump%20%28jal%29%20The%20Entire%20Processor%20%e5%85%b6%e5%ae%9e%e6%95%b4%e4%b8%aa%e4%b8%80%e8%8a%82%e7%9a%84%e5%85%b3%e9%94%ae%e4%bf%a1%e6%81%af%e5%b0%b1%e8%bf%99%e4%b8%80%e5%b9%85%e5%9b%be%e3%80%82%e5%85%b6%e4%b8%ad%e7%9a%84%e4%b8%80%e4%ba%9b%e5%85%b3%e9%94%ae%e7%82%b9%ef%bc%9a%0aPC%20%e8%a1%a8%e7%a4%ba%e5%bd%93%e5%89%8d%e7%9a%84%e6%8c%87%e4%bb%a4%e4%bd%8d%e7%bd%ae%e3%80%82%0aInstruction%20Memory%20%e5%ad%98%e6%94%be%e7%9a%84%e6%98%af%e7%b3%bb%e5%88%97%e6%8c%87%e4%bb%a4%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84%20Text%20%e6%ae%b5%e3%80%82%0aRegisters%20%e5%af%84%e5%ad%98%e5%99%a8%e3%80%82RISC-V%20%e5%85%b7%e6%9c%89%2032%20%e4%b8%aa%e5%90%84%2064%20%e4%bd%8d%e7%9a%84%e5%af%84%e5%ad%98%e5%99%a8%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&t=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-4-1-processor-single-cycle-ver">Chapter 4-1 Processor: Single Cycle Ver</a>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#the-entire-processor">The Entire Processor</a></li>
+        <li><a href="#processor-datapath-details">Processor Datapath Details</a>
+          <ul>
+            <li><a href="#1-r-type">1. R-Type</a></li>
+            <li><a href="#2-i-type-ld">2. I-Type (ld)</a></li>
+            <li><a href="#3-s-type-sd">3. S-Type (sd)</a></li>
+            <li><a href="#4-sb-type-beq">4. SB-Type (beq)</a></li>
+            <li><a href="#5-uj-type-jal">5. UJ-Type (jal)</a></li>
+          </ul>
+        </li>
+        <li><a href="#controller">Controller</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【笔记】计算机组成 (Part III)
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-01-01</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          4 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="chapter-4-1-processor-single-cycle-ver">Chapter 4-1 Processor: Single Cycle Ver</h2>
+<h3 id="introduction">Introduction</h3>
+<p>基本的思路是，在之前我们学习了 C -&gt; Assembly Language -&gt; Machine Code 的过程。而 CPU 的工作就是执行机器码。例如，对于指令 <code>add x10, x11, x12</code>，我们要用 CPU 完成以下工作：</p>
+<ul>
+<li>
+<p>读取 <code>x11</code> 和 <code>x12</code></p>
+</li>
+<li>
+<p>计算两者的和</p>
+</li>
+<li>
+<p>把和写到 <code>x10</code> 中</p>
+</li>
+</ul>
+<p>在本门课程中，我们主要关心以下指令：</p>
+<table>
+<thead>
+<tr>
+<th>Inst Type</th>
+<th>Inst</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-Type</td>
+<td>Arithmetic (<code>add</code>, <code>sub</code>, <code>and</code>, &hellip;)</td>
+</tr>
+<tr>
+<td>I-Type</td>
+<td>Load Register (<code>ld</code>)</td>
+</tr>
+<tr>
+<td>S-Type</td>
+<td>Store Register (<code>sd</code>)</td>
+</tr>
+<tr>
+<td>SB-Type</td>
+<td>Branch Jump (<code>beq</code>)</td>
+</tr>
+<tr>
+<td>UJ-Type</td>
+<td>Unconditional Jump (<code>jal</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-entire-processor">The Entire Processor</h3>
+<p><img src="images/cod-54.png" alt="cod-54"></p>
+<p>其实整个一节的关键信息就这一幅图。其中的一些关键点：</p>
+<ul>
+<li>
+<p>PC 表示当前的指令位置。</p>
+</li>
+<li>
+<p>Instruction Memory 存放的是系列指令，可以理解为内存中的 Text 段。</p>
+</li>
+<li>
+<p>Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。</p>
+</li>
+<li>
+<p>Data Memory 存放的是各种数据，可理解为内存中的 Data 段。</p>
+</li>
+</ul>
+<p>黑色的部分对应 CPU 的 Data Path，蓝色的部分对应 CPU 的 Control Unit。可以看到，Control 部分由 Opcode 全权完成。</p>
+<p>接下来根据指令类型的不同，详细分析数据的走向。注意下面的图片仅作示意，不一定严谨。有的图片还有订正。</p>
+<h3 id="processor-datapath-details">Processor Datapath Details</h3>
+<h4 id="1-r-type">1. R-Type</h4>
+<p><img src="images/cod-55.png" alt="cod-55"></p>
+<h4 id="2-i-type-ld">2. I-Type (ld)</h4>
+<p><img src="images/cod-58.png" alt="cod-58"></p>
+<p><strong>[ATTENTION]</strong> 图片有点问题，指令中的 <code>rs1</code> 连到寄存器的 <code>rs2</code> 上了，应当连到 <code>rs1</code> 上。</p>
+<ul>
+<li>其中 <code>20{inst[31]}</code> 是在做符号位拓展，因为本来也支持立即数为负的情况。</li>
+</ul>
+<h4 id="3-s-type-sd">3. S-Type (sd)</h4>
+<p><img src="images/cod-57.png" alt="cod-57"></p>
+<h4 id="4-sb-type-beq">4. SB-Type (beq)</h4>
+<p><img src="images/cod-56.png" alt="cod-56"></p>
+<ul>
+<li>这里 ALU 执行的是 sub 运算，然后根据 <code>zero</code> 判断是否相等。如果 <code>zero</code> 为 1（beq 条件满足）且 <code>branch</code> 为 1（本条指令为 beq），那么就开跳。</li>
+</ul>
+<h4 id="5-uj-type-jal">5. UJ-Type (jal)</h4>
+<p><img src="images/cod-59.png" alt="cod-59"></p>
+<ul>
+<li>注意是 PC+4 进入到 <code>Write Data</code> 中。</li>
+</ul>
+<h3 id="controller">Controller</h3>
+<p>回顾一开始整个单周期 CPU 的图片，我们再贴一次：</p>
+<p><img src="images/cod-54.png" alt="cod-54"></p>
+<p>根据 Opcode，我们需要通过 Controller 给出以下 8 个具体信号：</p>
+<ul>
+<li>R/W - RegWrite (0/1): 控制是否向寄存器里面写入。</li>
+<li>R/W - MemRead (0/1): 控制是否从内存读取。</li>
+<li>R/W - MemWrite (0/1): 控制是否向内存中写入数据。</li>
+<li>MUX - ALUSrc (0/1): 控制 ALU 下侧的数据来源，0 表示 rs2，1 表示 ImmGen。</li>
+<li>MUX - Branch (0/1): 表示当前指令是否为 branch jumping，用于控制下一个 PC。0 表示不为 branch，1 表示为 branch。结合 Zero 进行食用。</li>
+<li>MUX - Jump (0/1): 控制 PC 是否进行无条件跳转。例如当前指令为 <code>jal</code> 时该值为 1。</li>
+<li>MUX - MemtoReg (2 bits): 控制返回到 write address 中的数据来源。分别表示 PC+4，内存读出数据，ALU 计算结果。</li>
+<li>ALU op (2 bits): 用于指导 ALU 进行的运算类型。后续会过一次 ALU Control。</li>
+</ul>
+<p><strong>接下来专门讲一下 ALU 的具体控制</strong>。可以看到，ALU 的控制可以视为「两级」：</p>
+<ul>
+<li>
+<p>第一级：根据 ALU op 将不同类别的指令进行基础区分。</p>
+</li>
+<li>
+<p>第二级：相同 ALU op 的基础上，再根据 funct3 和 funct7 对不同运算的指令进行区分（这部分 funct 从上图的 <code>inst[30,14:12]</code> 线钻进去）。</p>
+</li>
+</ul>
+<p><img src="images/cod-60.png" alt="cod-60"></p>
+<p>或许可以回顾一下 ALU：</p>
+<p><img src="images/cod-9.png" alt="cod-9"></p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-4-1-processor-single-cycle-ver">Chapter 4-1 Processor: Single Cycle Ver</a>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#the-entire-processor">The Entire Processor</a></li>
+        <li><a href="#processor-datapath-details">Processor Datapath Details</a>
+          <ul>
+            <li><a href="#1-r-type">1. R-Type</a></li>
+            <li><a href="#2-i-type-ld">2. I-Type (ld)</a></li>
+            <li><a href="#3-s-type-sd">3. S-Type (sd)</a></li>
+            <li><a href="#4-sb-type-beq">4. SB-Type (beq)</a></li>
+            <li><a href="#5-uj-type-jal">5. UJ-Type (jal)</a></li>
+          </ul>
+        </li>
+        <li><a href="#controller">Controller</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&text=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&is_video=false&description=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29&description=Chapter%204-1%20Processor%3a%20Single%20Cycle%20Ver%20Introduction%20%e5%9f%ba%e6%9c%ac%e7%9a%84%e6%80%9d%e8%b7%af%e6%98%af%ef%bc%8c%e5%9c%a8%e4%b9%8b%e5%89%8d%e6%88%91%e4%bb%ac%e5%ad%a6%e4%b9%a0%e4%ba%86%20C%20-%26gt%3b%20Assembly%20Language%20-%26gt%3b%20Machine%20Code%20%e7%9a%84%e8%bf%87%e7%a8%8b%e3%80%82%e8%80%8c%20CPU%20%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%b0%b1%e6%98%af%e6%89%a7%e8%a1%8c%e6%9c%ba%e5%99%a8%e7%a0%81%e3%80%82%e4%be%8b%e5%a6%82%ef%bc%8c%e5%af%b9%e4%ba%8e%e6%8c%87%e4%bb%a4%20add%20x10%2c%20x11%2c%20x12%ef%bc%8c%e6%88%91%e4%bb%ac%e8%a6%81%e7%94%a8%20CPU%20%e5%ae%8c%e6%88%90%e4%bb%a5%e4%b8%8b%e5%b7%a5%e4%bd%9c%ef%bc%9a%0a%e8%af%bb%e5%8f%96%20x11%20%e5%92%8c%20x12%0a%e8%ae%a1%e7%ae%97%e4%b8%a4%e8%80%85%e7%9a%84%e5%92%8c%0a%e6%8a%8a%e5%92%8c%e5%86%99%e5%88%b0%20x10%20%e4%b8%ad%0a%e5%9c%a8%e6%9c%ac%e9%97%a8%e8%af%be%e7%a8%8b%e4%b8%ad%ef%bc%8c%e6%88%91%e4%bb%ac%e4%b8%bb%e8%a6%81%e5%85%b3%e5%bf%83%e4%bb%a5%e4%b8%8b%e6%8c%87%e4%bb%a4%ef%bc%9a%0aInst%20Type%20Inst%20R-Type%20Arithmetic%20%28add%2c%20sub%2c%20and%2c%20%26hellip%3b%29%20I-Type%20Load%20Register%20%28ld%29%20S-Type%20Store%20Register%20%28sd%29%20SB-Type%20Branch%20Jump%20%28beq%29%20UJ-Type%20Unconditional%20Jump%20%28jal%29%20The%20Entire%20Processor%20%e5%85%b6%e5%ae%9e%e6%95%b4%e4%b8%aa%e4%b8%80%e8%8a%82%e7%9a%84%e5%85%b3%e9%94%ae%e4%bf%a1%e6%81%af%e5%b0%b1%e8%bf%99%e4%b8%80%e5%b9%85%e5%9b%be%e3%80%82%e5%85%b6%e4%b8%ad%e7%9a%84%e4%b8%80%e4%ba%9b%e5%85%b3%e9%94%ae%e7%82%b9%ef%bc%9a%0aPC%20%e8%a1%a8%e7%a4%ba%e5%bd%93%e5%89%8d%e7%9a%84%e6%8c%87%e4%bb%a4%e4%bd%8d%e7%bd%ae%e3%80%82%0aInstruction%20Memory%20%e5%ad%98%e6%94%be%e7%9a%84%e6%98%af%e7%b3%bb%e5%88%97%e6%8c%87%e4%bb%a4%ef%bc%8c%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e5%86%85%e5%ad%98%e4%b8%ad%e7%9a%84%20Text%20%e6%ae%b5%e3%80%82%0aRegisters%20%e5%af%84%e5%ad%98%e5%99%a8%e3%80%82RISC-V%20%e5%85%b7%e6%9c%89%2032%20%e4%b8%aa%e5%90%84%2064%20%e4%bd%8d%e7%9a%84%e5%af%84%e5%ad%98%e5%99%a8%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p3%2f&t=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20III%29" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Sqrtyz 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

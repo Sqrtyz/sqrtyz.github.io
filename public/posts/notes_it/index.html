@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
+        async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【笔记】信息理论 | Dormant Echoes</title>
+  <link rel = 'canonical' href = 'http://localhost:1313/posts/notes_it/'>
+  <meta name="description" content="无关渴求，并非理想，这就是她的命运。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="【笔记】信息理论" />
+<meta property="og:description" content="Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 自信息 定义为
+$$I(x_k)=-\log_ap(x_k)$$
+当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。
+自信息的理解
+事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。 例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。
+1.2 条件自信息、两事件的互信息 条件自信息
+对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 条件自信息 定义为
+$$I(x_k|y_j)=-\log p(x_k|y_j)$$
+本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。
+互信息
+概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 互信息 定义为
+$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
+本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。
+互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/notes_it/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【笔记】信息理论"/>
+<meta name="twitter:description" content="Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 自信息 定义为
+$$I(x_k)=-\log_ap(x_k)$$
+当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。
+自信息的理解
+事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。 例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。
+1.2 条件自信息、两事件的互信息 条件自信息
+对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 条件自信息 定义为
+$$I(x_k|y_j)=-\log p(x_k|y_j)$$
+本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。
+互信息
+概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 互信息 定义为
+$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
+本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。
+互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.a1f268d4a2dc126cc173c87effbb726d4e19589aba7bcecf97f1e692128187ccf19266ae1b68e794b49a0eebeda406626510ccfb7f24d86d16167e7e4a69762e.css" integrity="sha512-ofJo1KLcEmzBc8h&#43;/7tybU4ZWJq6e87Pl/HmkhKBh8zxkmauG2jnlLSaDuvtpAZiZRDM&#43;38k2G0WFn5&#43;Sml2Lg=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://localhost:1313/posts/notes_dbs_p1/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://localhost:1313/posts/notes_crypto/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&text=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&is_video=false&description=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&description=Chapter%201%20%e4%bf%a1%e6%81%af%e7%9a%84%e5%ba%a6%e9%87%8f%20Lec%201%20%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e7%9a%84%e7%86%b5%e5%92%8c%e4%ba%92%e4%bf%a1%e6%81%af%201.1%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%af%b9%e4%ba%8e%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7bX%2c%5cmathcal%7bX%7d%2cp%28x%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%29%3d-%5clog_ap%28x_k%29%24%24%0a%e5%bd%93%20%24a%3d2%24%ef%bc%8c%e4%b8%ba%e6%af%94%e7%89%b9%ef%bc%88bit%ef%bc%89%e3%80%82%e5%bd%93%20%24a%3de%24%ef%bc%8c%e4%b8%ba%e5%a5%88%e7%89%b9%ef%bc%88nat%ef%bc%89%e3%80%82%0a%e8%87%aa%e4%bf%a1%e6%81%af%e7%9a%84%e7%90%86%e8%a7%a3%0a%e4%ba%8b%e4%bb%b6%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%e8%a7%82%e5%af%9f%e8%80%85%e6%8f%90%e4%be%9b%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%ef%bc%9b%20%e8%a7%82%e5%af%9f%e8%80%85%e4%b8%ba%e7%a1%ae%e8%af%81%e8%af%a5%e4%ba%8b%e4%bb%b6%e6%89%80%e9%9c%80%e8%a6%81%e4%bb%98%e5%87%ba%e7%9a%84%e4%bb%a3%e4%bb%b7%ef%bc%88%e7%b1%bb%e6%af%94%e5%8a%9f%e4%b8%8e%e8%83%bd%e9%87%8f%ef%bc%89%ef%bc%9b%20%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%87%aa%e4%bf%a1%e6%81%af%e5%b9%b6%e4%b8%8d%e4%bb%a3%e8%a1%a8%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%ef%bc%8c%e4%ba%8b%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%8f%af%e8%a8%80%e3%80%82%20%e4%be%8b%e5%a6%82%ef%bc%8c%24p%28x_k%29%3d1%24%20%e6%97%b6%ef%bc%8c%24I%28x_k%29%3d0%24%ef%bc%9a%e3%80%8c%e6%98%8e%e5%a4%a9%e5%a4%aa%e9%98%b3%e4%bb%8e%e4%b8%9c%e8%be%b9%e5%8d%87%e8%b5%b7%e3%80%82%e3%80%8d%e8%bf%99%e5%8f%a5%e8%af%9d%e6%b2%a1%e6%9c%89%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a1.2%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%e3%80%81%e4%b8%a4%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%ba%92%e4%bf%a1%e6%81%af%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%0a%e5%af%b9%e4%ba%8e%e4%ba%8c%e7%bb%b4%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%9d%a1%e4%bb%b6%e4%b8%8b%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%7cy_j%29%3d-%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e5%b7%b2%e7%9f%a5%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%ef%bc%8c%e7%aa%81%e7%84%b6%20%24%7bX%3dx_k%7d%24%20%e5%8f%88%e5%8f%91%e7%94%9f%e4%ba%86%ef%bc%8c%e8%bf%99%e4%bb%b6%e4%ba%8b%e6%83%85%e6%89%80%e6%8f%90%e4%be%9b%e7%bb%99%e8%a7%82%e5%af%9f%e8%80%85%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%0a%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e4%b8%8e%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e4%ba%92%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%3by_j%29%3dI%28x_k%29-I%28x_k%7cy_j%29%3d%20-%20%5clog%20p%28x_k%29%20%2b%20%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e7%9a%84%e9%99%8d%e4%bd%8e%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%e5%85%b7%e6%9c%89%e5%af%b9%e7%a7%b0%e6%80%a7%ef%bc%81%24I%28x_k%3by_j%29%3dI%28y_j%3bx_k%29%24%ef%bc%8c%e4%bb%8e%e5%ae%9a%e4%b9%89%e5%87%ba%e5%8f%91%e5%8a%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86%e8%af%81%e6%98%8e%e5%8d%b3%e5%8f%af%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&t=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-1-信息的度量">Chapter 1 信息的度量</a>
+      <ul>
+        <li><a href="#lec-1-随机变量的熵和互信息">Lec 1 随机变量的熵和互信息</a>
+          <ul>
+            <li><a href="#11-自信息">1.1 自信息</a></li>
+            <li><a href="#12-条件自信息两事件的互信息">1.2 条件自信息、两事件的互信息</a></li>
+            <li><a href="#13-多事件下的概念拓展">1.3 多事件下的概念拓展</a></li>
+            <li><a href="#14-随机变量的熵">1.4 随机变量的熵</a></li>
+            <li><a href="#15-关于熵的衍生概念">1.5 关于熵的衍生概念</a></li>
+            <li><a href="#16-熵的性质">1.6 熵的性质</a></li>
+            <li><a href="#17-平均互信息和熵">1.7 平均互信息和熵</a></li>
+            <li><a href="#18-相对熵散度">1.8 相对熵（散度）</a></li>
+            <li><a href="#19-关于疑义度的-fano-不等式">1.9 关于疑义度的 Fano 不等式</a></li>
+            <li><a href="#110-互信息的凸性">1.10 互信息的凸性</a></li>
+          </ul>
+        </li>
+        <li><a href="#lec-2-连续随机变量的互信息微分熵">Lec 2 连续随机变量的互信息、微分熵</a>
+          <ul>
+            <li><a href="#21-定义连续随机变量的互信息">2.1 定义：连续随机变量的互信息</a></li>
+            <li><a href="#22-定义微分熵">2.2 定义：微分熵</a></li>
+            <li><a href="#23-微分熵的性质">2.3 微分熵的性质</a></li>
+          </ul>
+        </li>
+        <li><a href="#lec-3-平稳离散信源的熵">Lec 3 平稳离散信源的熵</a>
+          <ul>
+            <li><a href="#31-平稳随机过程">3.1 平稳随机过程</a></li>
+            <li><a href="#32-平稳信源">3.2 平稳信源</a></li>
+            <li><a href="#33-熵速率及其应用">3.3 熵速率及其应用</a></li>
+            <li><a href="#34-马尔可夫信源">3.4 马尔可夫信源</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#chapter-2-信息的无损压缩">Chapter 2 信息的无损压缩</a>
+      <ul>
+        <li><a href="#lec-4-等长编码">Lec 4 等长编码</a>
+          <ul>
+            <li><a href="#41-引入离散无记忆信源-dms-的编码">4.1 引入：离散无记忆信源 (DMS) 的编码</a></li>
+            <li><a href="#42-香农编码定理">4.2 香农编码定理</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【笔记】信息理论
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-01-01</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          24 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="chapter-1-信息的度量">Chapter 1 信息的度量</h2>
+<h3 id="lec-1-随机变量的熵和互信息">Lec 1 随机变量的熵和互信息</h3>
+<h4 id="11-自信息">1.1 自信息</h4>
+<p>对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 <strong>自信息</strong> 定义为</p>
+<p>$$I(x_k)=-\log_ap(x_k)$$</p>
+<p>当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。</p>
+<ul>
+<li>
+<p>自信息的理解</p>
+<ol>
+<li>事件发生后对观察者提供的信息量；</li>
+<li>观察者为确证该事件所需要付出的代价（类比功与能量）；</li>
+<li>事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。</li>
+</ol>
+</li>
+</ul>
+<p>例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。</p>
+<h4 id="12-条件自信息两事件的互信息">1.2 条件自信息、两事件的互信息</h4>
+<ul>
+<li>
+<p>条件自信息</p>
+<p>对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 <strong>条件自信息</strong> 定义为</p>
+<p>$$I(x_k|y_j)=-\log p(x_k|y_j)$$</p>
+<p>本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。</p>
+</li>
+<li>
+<p>互信息</p>
+<p>概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 <strong>互信息</strong> 定义为</p>
+<p>$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)$$</p>
+<p>本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。</p>
+<p>互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。</p>
+</li>
+</ul>
+<h4 id="13-多事件下的概念拓展">1.3 多事件下的概念拓展</h4>
+<ul>
+<li>
+<p>联合自信息</p>
+<p>概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 <strong>联合自信息</strong> 定义为</p>
+<p>$$I(x_k,y_j)= - \log p(x_k,y_j)$$</p>
+</li>
+<li>
+<p>条件互信息</p>
+<p>给定 $Z=z$ 的条件下，$X=x$ 与 $Y=y$ 之间的条件互信息为（<code>,</code> 优先级大于 <code>|</code>）</p>
+<p>$$I(x;y|z)= - \log p(x|z) + \log p(x|y,z)$$</p>
+<p>其含义为 $Z=z$ 发生时，$X=x$ 和 $Y=y$ 相互之间提供的信息量。依然具有对称性。</p>
+</li>
+<li>
+<p>联合互信息</p>
+<p>联合事件 ${Y=y,Z=z}$ 和事件 ${X=x}$ 之间的互信息为</p>
+<p>$$I(x;y,z)= - \log p(x) + \log p(x|y,z)$$</p>
+<p>其含义为 ${Y=y,Z=z}$ 联合提供给 ${X=x}$ 的信息量。</p>
+</li>
+<li>
+<p>事件联合互信息的链式法则</p>
+<p>$$I(x;y,z)=I(x;y)+I(x;z|y)$$</p>
+<p>事件 ${Y=y,Z=z}$ 联合提供给 ${X=x}$ 的信息量等于【${Y=y}$ 提供给 ${X=x}$ 的信息量】加上【${Y=y}$ 已知情况下，${Z=z}$ 提供给 ${X=x}$ 的信息量】。</p>
+<p><img src="images/it-1.png" alt="it-1"></p>
+</li>
+</ul>
+<h4 id="14-随机变量的熵">1.4 随机变量的熵</h4>
+<p>熵的定义即为平均自信息（自信息的期望值）。</p>
+<p>$$
+H(X)=E[I(X)]=\sum_{x \in \mathcal{X}} p(x) I(x)=-\sum_{x \in \mathcal{X}} p(x) \log p(x)
+$$</p>
+<p>【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 ${X=x}$。</p>
+<p>【例子】对于伯努利分布 $X \sim B(p)$，$H(X) = -p \log p - (1-p) \log (1-p)$。当 $p=0 / 1$ 时，熵为 $0$；当 $p=0.5$ 时，熵取到最大值。</p>
+<p>【理解】熵是随机变量不确定性的度量。</p>
+<h4 id="15-关于熵的衍生概念">1.5 关于熵的衍生概念</h4>
+<ul>
+<li>
+<p>联合熵</p>
+<p>$$
+H(X,Y)=E[I(X,Y)]=-\sum_{x \in \mathcal{X}, y \in \mathcal{Y}} p(x,y) \log p(x,y)
+$$</p>
+<p>表达了两个变量的不确定度。</p>
+</li>
+<li>
+<p>条件熵</p>
+<p><strong>定义 1</strong>：给定 $Y=y$ 条件下，$X$ 的条件熵为</p>
+<p>$$H(X|y)=-\sum_{x \in \mathcal{X}} p(x|y) \log p(x|y)$$</p>
+<p>注意 $Y=y$ 是已然发生的。</p>
+<p><strong>定义 2</strong>：随机变量 $X$ 相对于随机变量 $Y$ 的条件熵为</p>
+<p>$$H(X|Y) = E[H(X|y)] = -\sum_{y \in \mathcal{Y}} p(y) \sum_{x \in \mathcal{X}} p(x|y) \log p(x|y) = -\sum_{y \in \mathcal{Y}}\sum_{x \in \mathcal{X}} p(x,y) \log p(x|y)$$</p>
+<p>当 $X,Y$ 统计独立时，有 $H(X|Y)=H(X)$。</p>
+</li>
+<li>
+<p>随机变量联合熵的链式法则【HD】</p>
+<p>$$H(X,Y)=H(X)+H(Y|X)=H(Y)+H(X|Y)$$</p>
+<p>Proof:</p>
+<p><img src="images/it-2.png" alt="it-2"></p>
+<p>注意到当 $X,Y$ 统计独立时，有 $H(X|Y)=H(X)$。所以当 $X,Y$ 统计独立时，有 $H(X,Y)=H(X)+H(Y)$。</p>
+</li>
+</ul>
+<h4 id="16-熵的性质">1.6 熵的性质</h4>
+<ul>
+<li>
+<p>基本性质</p>
+<p><img src="images/it-3.png" alt="it-3"></p>
+</li>
+<li>
+<p>可加性（分步观察）</p>
+<p>考虑如下的决策树情景：</p>
+<p><img src="images/it-4.png" alt="it-4"></p>
+<p>对于变量 $X$（注意本质上只有一个变量）可以进行 <strong>多步观察</strong>，每一步的观察可以从上一步的观察得到更细致的结果。变量 $X$ <strong>在最后的观察结果集合中的不确定性</strong> 等于【第一次观察结果的不确定性】加上【其后每次观察结果在前一次观察结果已知的前提下的前提不确定性】。</p>
+<p><em>和链式法则记得区分！</em></p>
+<p>可加性的证明：</p>
+<p><img src="images/it-5.png" alt="it-5"></p>
+<p>在如此的分步观察下，有</p>
+<p>$$H(X_1,X_2)=H(X_2)+H(X_1|X_2)=H(X_2)$$</p>
+<p>$$H(X_1,X_2)=H(X_1)+H(X_2|X_1)=H(X_2)$$</p>
+<p>注意这个式子只有在上上图所示的决策树情形才适用。</p>
+<p>注意第一个式子意味着 $H(X_1|X_2)=0$。回顾上上图，这是因为当 $X_2$ 确定时（例如 $A_2$），$X_1$ 也随之确定（例如 $A$）。所以条件熵为零。反之则没有这个性质。</p>
+</li>
+<li>
+<p>极值性</p>
+<p>$$H_K(p_1,p_2,\cdots,p_K) \leq H_K(\frac{1}{K},\frac{1}{K},\cdots,\frac{1}{K}) = \log K$$</p>
+<p>极值性的证明：</p>
+<p><img src="images/it-6.png" alt="it-6"></p>
+</li>
+<li>
+<p>条件熵 $\leq$ 熵：增加条件使熵减小</p>
+<p>$$H(X|Y) \leq H(X)$$</p>
+<p>注意 $Y$ 不是已知的。当 ${Y=y}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。</p>
+<p><img src="images/it-7.png" alt="it-7"></p>
+</li>
+<li>
+<p>凸性</p>
+<p>熵具有一个很优美的性质，它是凸的。</p>
+<p><img src="images/it-10.png" alt="it-10"></p>
+<p>相比于一般的凸函数，概率空间上的函数还要求 $\sum\limits_{i=1}^np_i=1$。根据拉格朗日乘数法，对于概率空间上的上凸函数 $\alpha$，要使 $f(\alpha)$ 取得最大值，则 $f(\alpha)-\lambda(\sum\alpha_i-1)$ 取得最大值。</p>
+<p><img src="images/it-11.png" alt="it-11"></p>
+</li>
+</ul>
+<h4 id="17-平均互信息和熵">1.7 平均互信息和熵</h4>
+<p>回顾互信息的概念</p>
+<p>$$I(x;y)=I(x)-I(x|y)= - \log p(x) + \log p(x|y) = \log \frac{p(x|y)}{p(x)}$$</p>
+<p>平均互信息定义为其期望，即 $I(X;Y)=\sum\limits_x\sum\limits_y p(x,y)\log \frac{p(x|y)}{p(x)}$。</p>
+<ul>
+<li>
+<p>平均互信息和熵的关联</p>
+<p>注意到</p>
+<p>$$I(X;Y)=\sum\limits_x\sum\limits_y p(x,y) \log \frac{p(x|y)}{p(x)}$$</p>
+<p>$$I(X;Y)=\sum\limits_x\sum\limits_y p(x,y) \log {p(x|y)} - \sum\limits_x\sum\limits_y p(x,y){p(x)}$$</p>
+<p>$$I(X;Y)=H(X)-H(X|Y) \ (I)$$</p>
+<p>显然平均互信息具有对称性</p>
+<p>$$I(X;Y)=H(Y)-H(Y|X) \ (II)$$</p>
+<p>代入联合熵的链式法则，还有</p>
+<p>$$I(X;Y)=H(X)+H(Y)-H(X,Y) \ (III)$$</p>
+<p>I, II, III 整理一下即可得到下图【IMPORTANT】：</p>
+<p><img src="images/it-8.png" alt="it-8"></p>
+<p>可以证明，平均互信息是 <strong>非负的</strong>。给定额外的信息，至少不会让熵增加。</p>
+<p><img src="images/it-9.png" alt="it-9"></p>
+</li>
+</ul>
+<h4 id="18-相对熵散度">1.8 相对熵（散度）</h4>
+<p><img src="images/it-12.png" alt="it-12"></p>
+<p><img src="images/it-13.png" alt="it-13"></p>
+<h4 id="19-关于疑义度的-fano-不等式">1.9 关于疑义度的 Fano 不等式</h4>
+<p>定义在相同字符表 ${0,1,\cdots,K}$ 上的两个随机变量 $X$ 和 $\hat{X}$，其中 $\hat{X}$ 是对 $X$ 的某种估计。估计错误概率定义为</p>
+<p>$$P_E=\sum\limits_{i=0}^{K-1}\sum\limits_{j=0,j \neq i}^{K-1} P {X=i,\hat{X}=j}$$</p>
+<p>则 $\hat{X}$ 已知条件下 $X$ 的 <strong>疑义度</strong> 满足表达式</p>
+<p>$$H(X|\hat{X})\le H(P_E,1-P_E)+P_E \log (K-1)$$</p>
+<p>证明如下：</p>
+<p><img src="images/it-14.png" alt="it-14"></p>
+<p>注意其中的 $H(P_E)$ 实际上从定义上就是 $H(E)$ ($E=1$ when $X \neq \hat{X}$)。感觉直接写成 $H(P_E)$ 不是很严谨。</p>
+<p>它的物理意义是，如果建立了关于 $X$ 的某种估计 $\hat{X}$，并且已知其错误率 $P_E$，那么我们可以知道这中估计有多可靠（根据 $H(X|\hat{X})$ 判断）。例如，假设 $K=2,P_E=1$，你会发现这个疑义度为 $0$。</p>
+<h4 id="110-互信息的凸性">1.10 互信息的凸性</h4>
+<pre><code>smjb，后面再补
+</code></pre>
+<h3 id="lec-2-连续随机变量的互信息微分熵">Lec 2 连续随机变量的互信息、微分熵</h3>
+<h4 id="21-定义连续随机变量的互信息">2.1 定义：连续随机变量的互信息</h4>
+<p><img src="images/it-15.png" alt="it-15"></p>
+<h4 id="22-定义微分熵">2.2 定义：微分熵</h4>
+<ul>
+<li>
+<p>基本定义</p>
+<p><img src="images/it-16.png" alt="it-16"></p>
+<p>如果按照离散的方法对微分熵进行定义，会发现直接飙到正无穷。</p>
+<p>所以采取了上图中下面的那个定义方法，即</p>
+<p>$$H_C(X)=h(X) \triangleq-\int p_X(x) \log p_X(x) dx$$</p>
+</li>
+<li>
+<p>条件微分熵、联合微分熵</p>
+<p><img src="images/it-17.png" alt="it-17"></p>
+</li>
+<li>
+<p>一个关于微分熵的例子</p>
+<blockquote>
+<p>已知某线段的长度在 $[0,L]$ 之间均匀分布，现用精度为 $\Delta$ 的尺子去量它，问量得的结果对于线段的真实长度提供多少信息？</p>
+</blockquote>
+<p>令：$X=$ 线段的长度，$Y=$ 测量的结果。</p>
+<p>测量前 $H_C(X)=\log L$，测量后 $H_C(X|Y)=\log \Delta$</p>
+<p>故而 $I(X;Y)=H_C(X)-H_C(X|Y)=\log\frac{L}{\Delta}$。</p>
+</li>
+</ul>
+<h4 id="23-微分熵的性质">2.3 微分熵的性质</h4>
+<ul>
+<li>
+<p>线性变化下不具有不变性</p>
+<p>对于离散随机变量，若存在一一映射 $X \to Y$，则有 $H(X)=H(Y)$。</p>
+<p>但对于连续随机变量，即使有一一映射，甚至即使是线性的，这种关系也不存在。</p>
+</li>
+<li>
+<p>均匀分布的微分熵</p>
+<p>设 $p(x)=\frac{1}{b-a}, x \in [a,b]$。$H_C(X)=\int_a^b \frac{1}{b-a} \ln (b-a) d x=\ln (b-a)$。</p>
+</li>
+<li>
+<p>微分熵的极大化：峰值受限</p>
+<p>设 $X$ 取值于 $(-M,M)$，即 $\int_{-M}^{M}p(x)dx=1$，这时微分熵 $H_C(X) \le \ln 2M$，等号在 <strong>均匀分布</strong> 时取到。</p>
+<p>使用拉格朗日乘数法证明。</p>
+<p>$$
+\begin{aligned}
+&amp; J(p(x)) \triangleq H_C(X)-\lambda \int_{-M}^{+M} p(x) d x \newline
+&amp; =-\int_{-M}^{+M} p(x) \ln p(x) d x-\lambda \int_{-M}^{+M} p(x) d x \newline
+&amp; =-\int_{-M}^{+M} p(x) \ln \left(e^\lambda p(x)\right) d x \newline
+&amp; \leq-\int_{-M}^{+M} p(x)\left(1-\frac{1}{e^\lambda p(x)}\right) d x \newline
+&amp; =\frac{2 M}{e^\lambda}-1=\text { const. }
+\end{aligned}
+$$</p>
+<p>等号成立的条件为 $p(x)=e^{-\lambda}=\text{const}$，亦即均匀分布。</p>
+<p>根据约束条件 $\int_{-M}^{M}p(x)dx=1$ 知 $p(x)=\frac{1}{2M}$，所以 $H_C(X) \le \ln 2M$。</p>
+</li>
+<li>
+<p>微分熵的极大化：平均功率受限</p>
+<p>在方差 $\sigma^2$ 一定的条件下，当 $X$ 服从 <strong>正态分布</strong> 时微分熵最大。即 $H_C(X) \le \ln (\sqrt{2\pi e}\sigma)$。</p>
+</li>
+</ul>
+<h3 id="lec-3-平稳离散信源的熵">Lec 3 平稳离散信源的熵</h3>
+<h4 id="31-平稳随机过程">3.1 平稳随机过程</h4>
+<p>对于 <strong>任意</strong> 的 $n$，任意的 $t_1, t_2, \cdots, t_n \in T$ 和 $h$，</p>
+<p>若 $(X(t_1),X(t_2),\cdots,X(t_n))$ 与 $(X(t_1+h),X(t_2+h),\cdots,X(t_n+h))$ 具有同样的分布，则称随机过程 ${X(t)}$ 是平稳随机过程。</p>
+<ul>
+<li>
+<p>平稳随机过程的性质</p>
+<p>$E(X(t_n))=E(X(t_n+h))=E(X(0))=Const$</p>
+<p>对于所有 $t$，$X(t)$ 的均值和方差一致。</p>
+<p>值得指出的是，平稳随机并不意味着 $X(t_i)$ 和 $X(t_j)$ 分布是独立的。</p>
+</li>
+</ul>
+<h4 id="32-平稳信源">3.2 平稳信源</h4>
+<ul>
+<li>
+<p>平稳信源的定义</p>
+<p>类比平稳随机过程，平稳信源意味着任意长度片段的联合概率分布和时间起点无关。即</p>
+<p>$$P(X_1,X_2,\cdots,X_L)=P(X_{1+n},X_{2+n},\cdots,X_{L+n})$$</p>
+<p>在平稳信源的基础上，有两种条件更为苛刻的信源：</p>
+<ol>
+<li>
+<p>$m$ 阶马尔可夫信源</p>
+<p>$$P(X_l|X_{l-1},X_{l-2},\cdots,X_0)=P(X_l|X_{l-1},X_{l-2},\cdots,X_{l-m})$$</p>
+<p>即，$X_l$ 的分布只会受到 $X_{l-1} \sim X_{l-m}$ 的影响。</p>
+<p>当 $m=1$ 时，又称马尔可夫信源。</p>
+</li>
+<li>
+<p>简单无记忆信源</p>
+<p>不同时间的随机变量无关。即 $P(X_1,X_2,\cdots,X_L)=\prod_{i=1}^L P(X_i)$。</p>
+<p>似乎可以看成 $m=0$ 的马尔可夫信源？</p>
+</li>
+</ol>
+</li>
+<li>
+<p>平稳信源的熵</p>
+<p>如果一个平稳信源发出长度为 $n$ 的序列 $X_1,X_2,\cdots,X_n$，记 $n$ 维随机矢量 $X=(X_1,X_2,\cdots,X_n)$，则定义</p>
+<p>$$H(X)=H(X_1,X_2,\cdots,X_n)=-\sum p(x_1,x_2,\cdots,x_n) \log p(x_1,x_2,\cdots,x_n)$$</p>
+<p>其实就是把熵的定义给搬到了很多元的矢量情况，不过矢量各分量之间有所关联。显然 $H(X)$ 随着 $n$ 的增大而增长，趋向无穷大。</p>
+<p>定义以下子概念：</p>
+<ol>
+<li>
+<p>平均每符号熵（平均值）：$H_n(X) = \frac{1}{n}H(X) = \frac{1}{n}H(X_1,X_2,\cdots,X_n)$</p>
+</li>
+<li>
+<p>熵速率：$H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)$</p>
+</li>
+<li>
+<p>平均条件熵：$H(X_n|X_{n-1},X_{n-2}, \cdots, X_1)$</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>平稳信源熵的性质</strong></p>
+<p><img src="images/it-18.png" alt="it-18"></p>
+<ol>
+<li>
+<p>平均条件熵 $H(X_n|X_{n-1},X_{n-2}, \cdots, X_1)$ 非严格递减</p>
+</li>
+<li>
+<p>平均每符号熵 $H_n(X)$ 非严格递减</p>
+</li>
+<li>
+<p>$H_n(X) \ge H(X_n|X_{n-1},X_{n-2}, \cdots, X_1)$</p>
+</li>
+<li>
+<p>$H_\infty(X) = \lim\limits_{n \to \infty} H_n(X) = \lim\limits_{n \to \infty} H(X_n|X_{n-1},X_{n-2}, \cdots, X_1)$</p>
+</li>
+</ol>
+<p>考虑证明 1, 2, 3。</p>
+<p><img src="images/it-19.png" alt="it-19"></p>
+</li>
+</ul>
+<h4 id="33-熵速率及其应用">3.3 熵速率及其应用</h4>
+<p>回顾熵速率的定义，</p>
+<p>$$H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)= \lim\limits_{n \to \infty} H(X_n|X_{n-1},X_{n-2}, \cdots, X_1) \newline</p>
+<p>\leq H\left(X_N \mid X_{N-1} X_{N-2} \cdots X_2 X_1\right) \newline</p>
+<p>\leq \cdots \leq H\left(X_2 \mid X_1\right) \leq H\left(X_2\right) \leq \log K$$</p>
+<p>可以看到，熵速率 $H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)$ 基本是小于单字符的熵值 $\log K$ 的。据此，我们定义</p>
+<ul>
+<li>
+<p>熵的相对率 $\eta=\frac{H_\infty(X)}{\log K}$，显然 $\eta \leq 1$。</p>
+</li>
+<li>
+<p>信源冗余度 $R = 1 - \eta$。</p>
+</li>
+</ul>
+<p><strong>熵速率的例子：</strong></p>
+<p><img src="images/it-20.png" alt="it-20"></p>
+<h4 id="34-马尔可夫信源">3.4 马尔可夫信源</h4>
+<p>回顾定义：$m$ 阶的马尔可夫信源：$P(X_l|X_{l-1},X_{l-2},\cdots,X_0)=P(X_l|X_{l-1},X_{l-2},\cdots,X_{l-m})$。</p>
+<p>马尔可夫信源具有一个有限的状态空间，可表示为 $x^m = x_{i_{l-1}}x_{i_{l-2}} \cdots x_{i_{l-m}} \in \mathcal{X}^m$，而其大小 $|\mathcal{X}^m|=K^m$。</p>
+<ul>
+<li>
+<p>马尔可夫信源计算熵速率</p>
+<p>熵速率是趋于无限时的平均熵，而这个无限一般是很难处理的。</p>
+<p>不过当信源满足马尔科夫的性质时，我们可以只关心那 $K^m$ 个状态来模拟无穷时的情况。</p>
+<p>例如，考虑这样一个二元一阶马尔可夫平稳信源的场景：</p>
+<p><img src="images/it-21.png" alt="it-21"></p>
+<p>我们可以这样地计算其熵速率 $H_\infty$：</p>
+<p><img src="images/it-22.png" alt="it-22"></p>
+<p>其中 $\mu_1$ 和 $\mu_2$ 可以利用马尔科夫链的稳态来算出。</p>
+</li>
+</ul>
+<hr>
+<h2 id="chapter-2-信息的无损压缩">Chapter 2 信息的无损压缩</h2>
+<p>接下来进入编码部分。</p>
+<ul>
+<li>
+<p>信息传输模型</p>
+<p><img src="images/it-23.png" alt="it-23"></p>
+</li>
+<li>
+<p>我们关心的编码问题是</p>
+<ol>
+<li>
+<p>构成描述信源的模型：随机变量序列或随机过程；</p>
+</li>
+<li>
+<p>计算信源输出的信息量，或者说信源的熵。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>信源编码的目标：在代价最小的意义上来最有效地表示一个信源</p>
+<p><img src="images/it-24.png" alt="it-24"></p>
+</li>
+</ul>
+<h3 id="lec-4-等长编码">Lec 4 等长编码</h3>
+<h4 id="41-引入离散无记忆信源-dms-的编码">4.1 引入：离散无记忆信源 (DMS) 的编码</h4>
+<p>考虑字符表 $\mathcal{A} = {a_1,a_2,\cdots,a_K}$，其概率分布 $\mathcal{P} = {p_1,p_2,\cdots,p_K}$。现在输出长度为 $L$ 的消息序列 $u^L={u_1,u_2,\cdots,u_L}$，而我们需要对其进行编码。</p>
+<p>考虑这样一种编码：编码字符表 $\mathcal{B} = {b_1,b_2,\cdots,b_D}$，编码长度为 $N$。显然，要实现无损编码，必须有（若无说明，接下来默认底数为 2）</p>
+<p>$$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$</p>
+<p>举例：$\mathcal{A} = {0,1,2,3,\cdots,9}, L=2$。等概。若编码字符表 $\mathcal{B}={0,1}$，则 $N \ge 2 \log 10 \ge 7$。每个字符平均要 3.5 bit。</p>
+<h4 id="42-香农编码定理">4.2 香农编码定理</h4>
+<p>仍旧考虑 <strong>离散无记忆信源</strong>。</p>
+<p>我们回顾上式 $N \ge \frac{L \log K}{\log D}$。回忆熵的概念，记 $H(U)$ 是消息序列中单元素的熵，有 $H(U) \le \log K$。</p>
+<p>一个自然的想法是：我们是否能做到 $N = \frac{LH(U)}{\log D}$ 呢？</p>
+<ul>
+<li>
+<p>香农编码定理</p>
+<p>当 $N &gt; \frac{L(H(U)+\epsilon_L)}{\log D}$ 时，可以实现无损编码；</p>
+<p>当 $N &lt; \frac{L(H(U)-\epsilon_L)}{\log D}$ 时，不存在无损编码。</p>
+</li>
+<li>
+<p>香农编码定理的理解</p>
+<p>此处的「无损编码」指的是信源编码的错误概率可以 <strong>任意小</strong>，但不一定等于零。当 $L \to + \infty$ 时，上述定理才能得以体现，也才能实现香农编码。</p>
+<p>我们可以追加定义 <strong>编码速率</strong>：$R=\frac{N}{L} \log D$。香农编码定理指出，当消息序列长度 $L \to + \infty$ 时，存在某种编码，使得 $R \to H(U)$。</p>
+</li>
+<li>
+<p>香农编码定理的证明</p>
+<ol>
+<li>
+<p>渐进等分性质</p>
+<p>对于某个长度为 $L$ 的输出序列 $u^L={u_1,u_2,\cdots,u_L}$，其发生概率 $p(u^L)=\Pi_{i=1}^L p(u_i)$。</p>
+<p>同时，这个已知序列带来的 <strong>自信息</strong> 为 $I(u^L)=-\log p(u^L) = \sum_{i=1}^L I(u_i)$。</p>
+<p>定义随机变量 $I_L=\frac{1}{L}\sum_{i=1}^L I(u_i)$，其意义为输出序列的自信息对于单个元素的均值。</p>
+<p>根据概统相关知识，我们有</p>
+<p>$$E(I_L)=E{I(u)}=H(U)$$</p>
+<p>$$D(I_L)=\frac{1}{L}D{I(u)}=\frac{\sigma_I^2}{L}$$</p>
+<p>这里 $\sigma_I^2$ 是人为定义的，表示单个元素信息量的方差。再次强调，$H(U)$ 表示单元素的熵。</p>
+<p>根据 <strong>切比雪夫不等式</strong>，$P{|\xi-E(\xi)|&gt;\epsilon} \leq \frac{\operatorname{Var}(\xi)}{\epsilon^2}$。这里 $\epsilon$ 是人为指定的。</p>
+<p>代入得到 $P{|I_L-H(U)|&gt;\epsilon} \leq \frac{\sigma_I^2}{L\epsilon^2}$。</p>
+<p>给定 $\epsilon$，当 $L$ 充分大，有 $\frac{\sigma_I^2}{L\epsilon^2} &lt; \epsilon$。</p>
+<p>所以，当 $L$ 足够大时，我们有</p>
+<p>$$P{|I_L-H(U)|&gt;\epsilon} \leq \epsilon$$</p>
+<p>或</p>
+<p>$$P{|I_L-H(U)|&lt;\epsilon} \geq 1 - \epsilon$$</p>
+<p>直观的理解是，当 $L$ 充分大时，$I_L$ 会逼近 $H(U)$。</p>
+</li>
+<li>
+<p>典型列</p>
+<p>令 $H(U)$ 为一个 DMS ${ U,p(\cdot) }$ 的熵，$\epsilon$ 为任意正数。称</p>
+<p>$$A_\epsilon^{(L)}(U)= \left {u^L: \left | -\frac{1}{L} \log p \left(u^L \right) - H(U) \right| &lt; \epsilon \right } = \left { u^L : \left |I_L-H(U) \right | &lt; \epsilon \right }$$</p>
+<p>为给定 DMS 输出长度为 $L$ 的 $\epsilon$ 典型列集合。其中 $u^L\in U^L$。</p>
+<p>典型列具有以下性质：</p>
+<p><strong>【A - 渐进等分】</strong></p>
+<p>当 $L$ 足够大时，$P{ u^L \in A_\epsilon^{(L)}(U) } \geq 1 - \epsilon$。</p>
+<p><strong>【B - 数目计算】</strong></p>
+<p>前提结论，根据 $A_\epsilon^{(L)}(U)$ 的定义可以得出：</p>
+<p>$$2^{-L(H(U)+\epsilon)} \leq p\left(u^L\right) \leq 2^{-L(H(U)-\epsilon)}, \text { if } u^L \in A_\epsilon^{(L)}(U)$$</p>
+<p>进而可以推得：</p>
+<p>$$(1-\epsilon) 2^{L(H(U)-\epsilon)} \leq\left|A_\epsilon^{(L)}(U)\right| \leq 2^{L(H(U)+\epsilon)}$$</p>
+<p>左侧是因为
+$$
+1  \geq \sum_{u^L \in A_\epsilon^{(L)}(U)} p\left(u^L\right) \geq \sum_{u^L \in A_\epsilon^{(L)}(U)} 2^{-L(H(U)+\epsilon)} =\left|A_\epsilon^{(L)}(U)\right| \cdot 2^{-L(H(U)+\epsilon)}$$</p>
+<p>所以
+$$\left|A_\epsilon^{(L)}(U)\right| \leq 2^{L(H(U)+\epsilon)}$$</p>
+<p>右侧因为</p>
+<p>$$
+1-\epsilon \leq \sum_{u^L \in A_\epsilon^{(L)}(U)} p\left(u^L\right) \leq \sum_{u^L \in A_\epsilon^{(L)}(U)} 2^{-L(H(U)-\epsilon)} =\left|A_\epsilon^{(L)}(U)\right| \cdot 2^{-L(H(U)-\epsilon)}
+$$</p>
+<p>所以
+$$\left|A_\epsilon^{(L)}(U)\right| \geq(1-\epsilon) 2^{L(H(U)-\epsilon)}
+$$</p>
+</li>
+<li>
+<p>最终推导</p>
+<p>回到我们的香农编码定理。其基本思想其实就是证明，当 $L \to +\infty$ 时，典型列基本占领了全部的 DMS，所以我们只需要对典型列进行编码（丢弃少数保大多数）。具体地：</p>
+<p>由于典型列的数目 $\left|A_\epsilon^{(L)}(U)\right| \leq 2^{L(H(U)+\epsilon)}$，所以当 $N &gt; \frac{L(H(U)+\epsilon_L)}{\log D}$ 时，我们一定有方法对所有典型列进行编码（像 $D^N \ge K^L$ 那样），而对所有的非典型列用统一的一个序列编码（例如全 D），当接收端接收到全 D 时，直接认为编码错误。</p>
+<p>此时错误概率即为 $p_e=p\left{\hat{u}^L \neq u^L\right}=p\left{u^L \notin A_\epsilon^{(L)}(U)\right}&lt;\epsilon$。由于当 $L \to +\infty$ 时，$\epsilon$ 也可以取得更小（见渐进等分）。所以我们有 $p_e = \epsilon \to 0 \ (L \to +\infty)$ —— 也就是先前所说的「渐进无差错编码」。</p>
+<p>逆定理的证明略去，基本思路就是使用 2B 中的另一侧结论。</p>
+</li>
+</ol>
+</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#chapter-1-信息的度量">Chapter 1 信息的度量</a>
+      <ul>
+        <li><a href="#lec-1-随机变量的熵和互信息">Lec 1 随机变量的熵和互信息</a>
+          <ul>
+            <li><a href="#11-自信息">1.1 自信息</a></li>
+            <li><a href="#12-条件自信息两事件的互信息">1.2 条件自信息、两事件的互信息</a></li>
+            <li><a href="#13-多事件下的概念拓展">1.3 多事件下的概念拓展</a></li>
+            <li><a href="#14-随机变量的熵">1.4 随机变量的熵</a></li>
+            <li><a href="#15-关于熵的衍生概念">1.5 关于熵的衍生概念</a></li>
+            <li><a href="#16-熵的性质">1.6 熵的性质</a></li>
+            <li><a href="#17-平均互信息和熵">1.7 平均互信息和熵</a></li>
+            <li><a href="#18-相对熵散度">1.8 相对熵（散度）</a></li>
+            <li><a href="#19-关于疑义度的-fano-不等式">1.9 关于疑义度的 Fano 不等式</a></li>
+            <li><a href="#110-互信息的凸性">1.10 互信息的凸性</a></li>
+          </ul>
+        </li>
+        <li><a href="#lec-2-连续随机变量的互信息微分熵">Lec 2 连续随机变量的互信息、微分熵</a>
+          <ul>
+            <li><a href="#21-定义连续随机变量的互信息">2.1 定义：连续随机变量的互信息</a></li>
+            <li><a href="#22-定义微分熵">2.2 定义：微分熵</a></li>
+            <li><a href="#23-微分熵的性质">2.3 微分熵的性质</a></li>
+          </ul>
+        </li>
+        <li><a href="#lec-3-平稳离散信源的熵">Lec 3 平稳离散信源的熵</a>
+          <ul>
+            <li><a href="#31-平稳随机过程">3.1 平稳随机过程</a></li>
+            <li><a href="#32-平稳信源">3.2 平稳信源</a></li>
+            <li><a href="#33-熵速率及其应用">3.3 熵速率及其应用</a></li>
+            <li><a href="#34-马尔可夫信源">3.4 马尔可夫信源</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#chapter-2-信息的无损压缩">Chapter 2 信息的无损压缩</a>
+      <ul>
+        <li><a href="#lec-4-等长编码">Lec 4 等长编码</a>
+          <ul>
+            <li><a href="#41-引入离散无记忆信源-dms-的编码">4.1 引入：离散无记忆信源 (DMS) 的编码</a></li>
+            <li><a href="#42-香农编码定理">4.2 香农编码定理</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&text=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&is_video=false&description=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&title=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&description=Chapter%201%20%e4%bf%a1%e6%81%af%e7%9a%84%e5%ba%a6%e9%87%8f%20Lec%201%20%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e7%9a%84%e7%86%b5%e5%92%8c%e4%ba%92%e4%bf%a1%e6%81%af%201.1%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%af%b9%e4%ba%8e%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7bX%2c%5cmathcal%7bX%7d%2cp%28x%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%29%3d-%5clog_ap%28x_k%29%24%24%0a%e5%bd%93%20%24a%3d2%24%ef%bc%8c%e4%b8%ba%e6%af%94%e7%89%b9%ef%bc%88bit%ef%bc%89%e3%80%82%e5%bd%93%20%24a%3de%24%ef%bc%8c%e4%b8%ba%e5%a5%88%e7%89%b9%ef%bc%88nat%ef%bc%89%e3%80%82%0a%e8%87%aa%e4%bf%a1%e6%81%af%e7%9a%84%e7%90%86%e8%a7%a3%0a%e4%ba%8b%e4%bb%b6%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%e8%a7%82%e5%af%9f%e8%80%85%e6%8f%90%e4%be%9b%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%ef%bc%9b%20%e8%a7%82%e5%af%9f%e8%80%85%e4%b8%ba%e7%a1%ae%e8%af%81%e8%af%a5%e4%ba%8b%e4%bb%b6%e6%89%80%e9%9c%80%e8%a6%81%e4%bb%98%e5%87%ba%e7%9a%84%e4%bb%a3%e4%bb%b7%ef%bc%88%e7%b1%bb%e6%af%94%e5%8a%9f%e4%b8%8e%e8%83%bd%e9%87%8f%ef%bc%89%ef%bc%9b%20%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%87%aa%e4%bf%a1%e6%81%af%e5%b9%b6%e4%b8%8d%e4%bb%a3%e8%a1%a8%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%ef%bc%8c%e4%ba%8b%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%8f%af%e8%a8%80%e3%80%82%20%e4%be%8b%e5%a6%82%ef%bc%8c%24p%28x_k%29%3d1%24%20%e6%97%b6%ef%bc%8c%24I%28x_k%29%3d0%24%ef%bc%9a%e3%80%8c%e6%98%8e%e5%a4%a9%e5%a4%aa%e9%98%b3%e4%bb%8e%e4%b8%9c%e8%be%b9%e5%8d%87%e8%b5%b7%e3%80%82%e3%80%8d%e8%bf%99%e5%8f%a5%e8%af%9d%e6%b2%a1%e6%9c%89%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a1.2%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%e3%80%81%e4%b8%a4%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%ba%92%e4%bf%a1%e6%81%af%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%0a%e5%af%b9%e4%ba%8e%e4%ba%8c%e7%bb%b4%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%9d%a1%e4%bb%b6%e4%b8%8b%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%7cy_j%29%3d-%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e5%b7%b2%e7%9f%a5%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%ef%bc%8c%e7%aa%81%e7%84%b6%20%24%7bX%3dx_k%7d%24%20%e5%8f%88%e5%8f%91%e7%94%9f%e4%ba%86%ef%bc%8c%e8%bf%99%e4%bb%b6%e4%ba%8b%e6%83%85%e6%89%80%e6%8f%90%e4%be%9b%e7%bb%99%e8%a7%82%e5%af%9f%e8%80%85%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%0a%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e4%b8%8e%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e4%ba%92%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%3by_j%29%3dI%28x_k%29-I%28x_k%7cy_j%29%3d%20-%20%5clog%20p%28x_k%29%20%2b%20%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e7%9a%84%e9%99%8d%e4%bd%8e%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%e5%85%b7%e6%9c%89%e5%af%b9%e7%a7%b0%e6%80%a7%ef%bc%81%24I%28x_k%3by_j%29%3dI%28y_j%3bx_k%29%24%ef%bc%8c%e4%bb%8e%e5%ae%9a%e4%b9%89%e5%87%ba%e5%8f%91%e5%8a%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86%e8%af%81%e6%98%8e%e5%8d%b3%e5%8f%af%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&t=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Sqrtyz 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

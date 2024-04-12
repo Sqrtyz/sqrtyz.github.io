@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
+        async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【杂记】Git | Dormant Echoes</title>
+  <link rel = 'canonical' href = 'http://localhost:1313/posts/bydnotes_git/'>
+  <meta name="description" content="无关渴求，并非理想，这就是她的命运。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="【杂记】Git" />
+<meta property="og:description" content="常用命令查表 Linux 相关命令 命令 用途 vim a.txt 在 vim 中打开 a.txt cat a.txt 显示 a.txt 文件内容 ls 列出当前目录所有文件 ll 等价于 ls -l，列出当前目录所有文件并显示详细信息 Git 的四大区域 工作区（workspace）
+暂存区（staging area）
+本地库（local repository）
+远程库（remote repository）
+详细内容 初始化相关 git init 初始化仓库。 git clone [url] 从远程下载一个仓库。 暂存区相关 git add 添加文件到暂存区。
+添加一个或多个文件到暂存区：git add [file1] [file2] ...
+添加指定目录到暂存区，包括子目录：git add [dir]
+添加当前目录下的所有文件到暂存区：git add .
+git rm --cached [file] 删除 暂存区 中的 file。
+git status 查看在你上次提交之后是否有对文件进行再次修改。
+使用 git status -s 获得更简短的报告。 git diff [file] 获取 file 文件在 工作区 和 暂存区 的差异。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/bydnotes_git/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【杂记】Git"/>
+<meta name="twitter:description" content="常用命令查表 Linux 相关命令 命令 用途 vim a.txt 在 vim 中打开 a.txt cat a.txt 显示 a.txt 文件内容 ls 列出当前目录所有文件 ll 等价于 ls -l，列出当前目录所有文件并显示详细信息 Git 的四大区域 工作区（workspace）
+暂存区（staging area）
+本地库（local repository）
+远程库（remote repository）
+详细内容 初始化相关 git init 初始化仓库。 git clone [url] 从远程下载一个仓库。 暂存区相关 git add 添加文件到暂存区。
+添加一个或多个文件到暂存区：git add [file1] [file2] ...
+添加指定目录到暂存区，包括子目录：git add [dir]
+添加当前目录下的所有文件到暂存区：git add .
+git rm --cached [file] 删除 暂存区 中的 file。
+git status 查看在你上次提交之后是否有对文件进行再次修改。
+使用 git status -s 获得更简短的报告。 git diff [file] 获取 file 文件在 工作区 和 暂存区 的差异。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.a1f268d4a2dc126cc173c87effbb726d4e19589aba7bcecf97f1e692128187ccf19266ae1b68e794b49a0eebeda406626510ccfb7f24d86d16167e7e4a69762e.css" integrity="sha512-ofJo1KLcEmzBc8h&#43;/7tybU4ZWJq6e87Pl/HmkhKBh8zxkmauG2jnlLSaDuvtpAZiZRDM&#43;38k2G0WFn5&#43;Sml2Lg=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://localhost:1313/posts/bydnotes_python/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://localhost:1313/posts/notes_dbs_p2/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&text=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&is_video=false&description=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&name=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git&description=%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e6%9f%a5%e8%a1%a8%20Linux%20%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4%20%e5%91%bd%e4%bb%a4%20%e7%94%a8%e9%80%94%20vim%20a.txt%20%e5%9c%a8%20vim%20%e4%b8%ad%e6%89%93%e5%bc%80%20a.txt%20cat%20a.txt%20%e6%98%be%e7%a4%ba%20a.txt%20%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9%20ls%20%e5%88%97%e5%87%ba%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e6%89%80%e6%9c%89%e6%96%87%e4%bb%b6%20ll%20%e7%ad%89%e4%bb%b7%e4%ba%8e%20ls%20-l%ef%bc%8c%e5%88%97%e5%87%ba%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e6%89%80%e6%9c%89%e6%96%87%e4%bb%b6%e5%b9%b6%e6%98%be%e7%a4%ba%e8%af%a6%e7%bb%86%e4%bf%a1%e6%81%af%20Git%20%e7%9a%84%e5%9b%9b%e5%a4%a7%e5%8c%ba%e5%9f%9f%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%ef%bc%88workspace%ef%bc%89%0a%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%88staging%20area%ef%bc%89%0a%e6%9c%ac%e5%9c%b0%e5%ba%93%ef%bc%88local%20repository%ef%bc%89%0a%e8%bf%9c%e7%a8%8b%e5%ba%93%ef%bc%88remote%20repository%ef%bc%89%0a%e8%af%a6%e7%bb%86%e5%86%85%e5%ae%b9%20%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9b%b8%e5%85%b3%20git%20init%20%e5%88%9d%e5%a7%8b%e5%8c%96%e4%bb%93%e5%ba%93%e3%80%82%20git%20clone%20%5burl%5d%20%e4%bb%8e%e8%bf%9c%e7%a8%8b%e4%b8%8b%e8%bd%bd%e4%b8%80%e4%b8%aa%e4%bb%93%e5%ba%93%e3%80%82%20%e6%9a%82%e5%ad%98%e5%8c%ba%e7%9b%b8%e5%85%b3%20git%20add%20%e6%b7%bb%e5%8a%a0%e6%96%87%e4%bb%b6%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%e3%80%82%0a%e6%b7%bb%e5%8a%a0%e4%b8%80%e4%b8%aa%e6%88%96%e5%a4%9a%e4%b8%aa%e6%96%87%e4%bb%b6%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%9agit%20add%20%5bfile1%5d%20%5bfile2%5d%20...%0a%e6%b7%bb%e5%8a%a0%e6%8c%87%e5%ae%9a%e7%9b%ae%e5%bd%95%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%8c%e5%8c%85%e6%8b%ac%e5%ad%90%e7%9b%ae%e5%bd%95%ef%bc%9agit%20add%20%5bdir%5d%0a%e6%b7%bb%e5%8a%a0%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e4%b8%8b%e7%9a%84%e6%89%80%e6%9c%89%e6%96%87%e4%bb%b6%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%9agit%20add%20.%0agit%20rm%20--cached%20%5bfile%5d%20%e5%88%a0%e9%99%a4%20%e6%9a%82%e5%ad%98%e5%8c%ba%20%e4%b8%ad%e7%9a%84%20file%e3%80%82%0agit%20status%20%e6%9f%a5%e7%9c%8b%e5%9c%a8%e4%bd%a0%e4%b8%8a%e6%ac%a1%e6%8f%90%e4%ba%a4%e4%b9%8b%e5%90%8e%e6%98%af%e5%90%a6%e6%9c%89%e5%af%b9%e6%96%87%e4%bb%b6%e8%bf%9b%e8%a1%8c%e5%86%8d%e6%ac%a1%e4%bf%ae%e6%94%b9%e3%80%82%0a%e4%bd%bf%e7%94%a8%20git%20status%20-s%20%e8%8e%b7%e5%be%97%e6%9b%b4%e7%ae%80%e7%9f%ad%e7%9a%84%e6%8a%a5%e5%91%8a%e3%80%82%20git%20diff%20%5bfile%5d%20%e8%8e%b7%e5%8f%96%20file%20%e6%96%87%e4%bb%b6%e5%9c%a8%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%20%e5%92%8c%20%e6%9a%82%e5%ad%98%e5%8c%ba%20%e7%9a%84%e5%b7%ae%e5%bc%82%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&t=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#常用命令查表">常用命令查表</a></li>
+        <li><a href="#git-的四大区域">Git 的四大区域</a></li>
+        <li><a href="#详细内容">详细内容</a>
+          <ul>
+            <li><a href="#初始化相关">初始化相关</a></li>
+            <li><a href="#暂存区相关">暂存区相关</a></li>
+            <li><a href="#本地库相关">本地库相关</a></li>
+            <li><a href="#版本回退">版本回退</a></li>
+            <li><a href="#branch">Branch</a></li>
+            <li><a href="#提交到-github">提交到 Github</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【杂记】Git
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-01-01</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          4 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h3 id="常用命令查表">常用命令查表</h3>
+<ul>
+<li>Linux 相关命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vim a.txt</code></td>
+<td>在 vim 中打开 a.txt</td>
+</tr>
+<tr>
+<td><code>cat a.txt</code></td>
+<td>显示 a.txt 文件内容</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出当前目录所有文件</td>
+</tr>
+<tr>
+<td><code>ll</code></td>
+<td>等价于 <code>ls -l</code>，列出当前目录所有文件并显示详细信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="git-的四大区域">Git 的四大区域</h3>
+<ul>
+<li>
+<p>工作区（workspace）</p>
+</li>
+<li>
+<p>暂存区（staging area）</p>
+</li>
+<li>
+<p>本地库（local repository）</p>
+</li>
+<li>
+<p>远程库（remote repository）</p>
+</li>
+</ul>
+<h3 id="详细内容">详细内容</h3>
+<h4 id="初始化相关">初始化相关</h4>
+<ul>
+<li><code>git init</code> 初始化仓库。</li>
+<li><code>git clone [url]</code> 从远程下载一个仓库。</li>
+</ul>
+<h4 id="暂存区相关">暂存区相关</h4>
+<ul>
+<li>
+<p><code>git add</code> 添加文件到暂存区。</p>
+<ul>
+<li>
+<p>添加一个或多个文件到暂存区：<code>git add [file1] [file2] ...</code></p>
+</li>
+<li>
+<p>添加指定目录到暂存区，包括子目录：<code>git add [dir]</code></p>
+</li>
+<li>
+<p>添加当前目录下的所有文件到暂存区：<code>git add .</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>git rm --cached [file]</code> 删除 <strong>暂存区</strong> 中的 file。</p>
+</li>
+<li>
+<p><code>git status</code> 查看在你上次提交之后是否有对文件进行再次修改。</p>
+<ul>
+<li>使用 <code>git status -s</code> 获得更简短的报告。</li>
+</ul>
+</li>
+<li>
+<p><code>git diff [file]</code> 获取 file 文件在 <strong>工作区</strong> 和 <strong>暂存区</strong> 的差异。</p>
+</li>
+</ul>
+<h4 id="本地库相关">本地库相关</h4>
+<ul>
+<li>
+<p><code>git commit -m [message]</code> 提交本地库。其中 [message] 是本次提交的备注信息。</p>
+<ul>
+<li>使用 <code>git commit [file1] [file2] ... -m [message]</code> 来提交暂存区中的指定几个文件。</li>
+</ul>
+</li>
+<li>
+<p><code>git reflog</code> 查看 commit 简略日志。</p>
+</li>
+<li>
+<p><code>git log</code> 查看 commit 详细日志。</p>
+</li>
+</ul>
+<h4 id="版本回退">版本回退</h4>
+<ul>
+<li><code>git reset --hard [versionID]</code> 穿越回到 [versionID] 对应的版本。<strong>这会将暂存区与工作区都回退到上一次版本!</strong></li>
+</ul>
+<h4 id="branch">Branch</h4>
+<ul>
+<li>
+<p><code>git branch</code> 显示当前所有的分支。</p>
+<ul>
+<li>使用 <code>git branch -v</code> 显示更为详细的信息。</li>
+</ul>
+</li>
+<li>
+<p><code>git branch [branchname]</code> 创建一个名为 branchname 的分支。</p>
+</li>
+<li>
+<p><code>git checkout [branchname]</code> 切换到名为 branchname 的分支。</p>
+<ul>
+<li>在切换分支之前，<strong>请保证目前工作区的修改已被 commit</strong>。否则将无法进行分支切换。</li>
+</ul>
+</li>
+<li>
+<p><code>git merge</code> 合并分支。</p>
+<ul>
+<li>
+<p>在切换分支之前，<strong>请保证目前工作区的修改已被 commit</strong>。否则将无法进行分支切换。</p>
+</li>
+<li>
+<p>假设当前在分支 A 下，<code>get merge B</code> 将会把 B 中的修改合并到 A 中。这一操作不会对分支 B 产生任何影响。</p>
+</li>
+<li>
+<p>如果合并产生冲突（conflict），则需要人为地决定新内容。**冲突合并完成后，需要重新 add 和 commit。**此时的 commit 后面不能携带 [file] 参数。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="提交到-github">提交到 Github</h4>
+<ul>
+<li>
+<p><code>git remote</code> 查看当前的别名（alias）库。</p>
+<ul>
+<li>使用 <code>git remote -v</code> 查看更详细的信息。</li>
+</ul>
+</li>
+<li>
+<p><code>git remote add [alias] [url]</code> 把 url 的别名设置为 alias。</p>
+</li>
+<li>
+<p><code>git push [alias] [branch]</code> 将本地库的 branch 分支推送到 alias 对应的远程库。</p>
+</li>
+<li>
+<p><code>git pull [alias] [branch]</code> 将别名为 alias 的远端的 branch 分支拉取下来。假设目前在分支 A，拉去下来的内容也会被保存在分支 A。</p>
+<ul>
+<li>如果本地仓库和远程仓库没有关联，可能产生 refusing to merge unrelated histories 错误。解决方案是：在 pull 后紧根 <code>--allow-unrelated-histories</code> 选项。</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#常用命令查表">常用命令查表</a></li>
+        <li><a href="#git-的四大区域">Git 的四大区域</a></li>
+        <li><a href="#详细内容">详细内容</a>
+          <ul>
+            <li><a href="#初始化相关">初始化相关</a></li>
+            <li><a href="#暂存区相关">暂存区相关</a></li>
+            <li><a href="#本地库相关">本地库相关</a></li>
+            <li><a href="#版本回退">版本回退</a></li>
+            <li><a href="#branch">Branch</a></li>
+            <li><a href="#提交到-github">提交到 Github</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&text=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&is_video=false&description=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&name=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git&description=%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e6%9f%a5%e8%a1%a8%20Linux%20%e7%9b%b8%e5%85%b3%e5%91%bd%e4%bb%a4%20%e5%91%bd%e4%bb%a4%20%e7%94%a8%e9%80%94%20vim%20a.txt%20%e5%9c%a8%20vim%20%e4%b8%ad%e6%89%93%e5%bc%80%20a.txt%20cat%20a.txt%20%e6%98%be%e7%a4%ba%20a.txt%20%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9%20ls%20%e5%88%97%e5%87%ba%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e6%89%80%e6%9c%89%e6%96%87%e4%bb%b6%20ll%20%e7%ad%89%e4%bb%b7%e4%ba%8e%20ls%20-l%ef%bc%8c%e5%88%97%e5%87%ba%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e6%89%80%e6%9c%89%e6%96%87%e4%bb%b6%e5%b9%b6%e6%98%be%e7%a4%ba%e8%af%a6%e7%bb%86%e4%bf%a1%e6%81%af%20Git%20%e7%9a%84%e5%9b%9b%e5%a4%a7%e5%8c%ba%e5%9f%9f%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%ef%bc%88workspace%ef%bc%89%0a%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%88staging%20area%ef%bc%89%0a%e6%9c%ac%e5%9c%b0%e5%ba%93%ef%bc%88local%20repository%ef%bc%89%0a%e8%bf%9c%e7%a8%8b%e5%ba%93%ef%bc%88remote%20repository%ef%bc%89%0a%e8%af%a6%e7%bb%86%e5%86%85%e5%ae%b9%20%e5%88%9d%e5%a7%8b%e5%8c%96%e7%9b%b8%e5%85%b3%20git%20init%20%e5%88%9d%e5%a7%8b%e5%8c%96%e4%bb%93%e5%ba%93%e3%80%82%20git%20clone%20%5burl%5d%20%e4%bb%8e%e8%bf%9c%e7%a8%8b%e4%b8%8b%e8%bd%bd%e4%b8%80%e4%b8%aa%e4%bb%93%e5%ba%93%e3%80%82%20%e6%9a%82%e5%ad%98%e5%8c%ba%e7%9b%b8%e5%85%b3%20git%20add%20%e6%b7%bb%e5%8a%a0%e6%96%87%e4%bb%b6%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%e3%80%82%0a%e6%b7%bb%e5%8a%a0%e4%b8%80%e4%b8%aa%e6%88%96%e5%a4%9a%e4%b8%aa%e6%96%87%e4%bb%b6%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%9agit%20add%20%5bfile1%5d%20%5bfile2%5d%20...%0a%e6%b7%bb%e5%8a%a0%e6%8c%87%e5%ae%9a%e7%9b%ae%e5%bd%95%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%8c%e5%8c%85%e6%8b%ac%e5%ad%90%e7%9b%ae%e5%bd%95%ef%bc%9agit%20add%20%5bdir%5d%0a%e6%b7%bb%e5%8a%a0%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e4%b8%8b%e7%9a%84%e6%89%80%e6%9c%89%e6%96%87%e4%bb%b6%e5%88%b0%e6%9a%82%e5%ad%98%e5%8c%ba%ef%bc%9agit%20add%20.%0agit%20rm%20--cached%20%5bfile%5d%20%e5%88%a0%e9%99%a4%20%e6%9a%82%e5%ad%98%e5%8c%ba%20%e4%b8%ad%e7%9a%84%20file%e3%80%82%0agit%20status%20%e6%9f%a5%e7%9c%8b%e5%9c%a8%e4%bd%a0%e4%b8%8a%e6%ac%a1%e6%8f%90%e4%ba%a4%e4%b9%8b%e5%90%8e%e6%98%af%e5%90%a6%e6%9c%89%e5%af%b9%e6%96%87%e4%bb%b6%e8%bf%9b%e8%a1%8c%e5%86%8d%e6%ac%a1%e4%bf%ae%e6%94%b9%e3%80%82%0a%e4%bd%bf%e7%94%a8%20git%20status%20-s%20%e8%8e%b7%e5%be%97%e6%9b%b4%e7%ae%80%e7%9f%ad%e7%9a%84%e6%8a%a5%e5%91%8a%e3%80%82%20git%20diff%20%5bfile%5d%20%e8%8e%b7%e5%8f%96%20file%20%e6%96%87%e4%bb%b6%e5%9c%a8%20%e5%b7%a5%e4%bd%9c%e5%8c%ba%20%e5%92%8c%20%e6%9a%82%e5%ad%98%e5%8c%ba%20%e7%9a%84%e5%b7%ae%e5%bc%82%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_git%2f&t=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91Git" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Sqrtyz 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

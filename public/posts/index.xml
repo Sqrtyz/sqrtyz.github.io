@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Dormant Echoes</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Dormant Echoes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Sqrtyz</copyright>
+    <lastBuildDate>Mon, 01 Jan 2024 07:07:07 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【笔记】数据库系统 (Part II)</title>
+      <link>http://localhost:1313/posts/notes_dbs_p2/</link>
+      <pubDate>Mon, 01 Jan 2024 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/posts/notes_dbs_p2/</guid>
+      <description>Lecture 4. Advanced SQL SQL Data Types and Schemas 之前提到 SQL 的关系模式（表头）schemas $R=(A_1, A_2, \cdots, A_n)$。其中属性 $A_i$ 具有定义域 $D_i$。&#xA;自定义 domain&#xA;1CREATE new domain 2CREATE domain Dollars AS numeric(12, 2) NOT NULL; 3CREATE domain Pounds AS numeric(12,2); 4CREATE TABLE employee 5(eno char(10) primary key, 6ename varchar(15), 7job varchar(10), 8salary Dollars, 9comm Pounds); Object types as domain&#xA;blob: binary large object &amp;ndash; object is a large collection of uninterpreted binary data (whose interpretation is left to an application outside of the database system)</description>
+    </item>
+    <item>
+      <title>【杂记】Git</title>
+      <link>http://localhost:1313/posts/bydnotes_git/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bydnotes_git/</guid>
+      <description>常用命令查表 Linux 相关命令 命令 用途 vim a.txt 在 vim 中打开 a.txt cat a.txt 显示 a.txt 文件内容 ls 列出当前目录所有文件 ll 等价于 ls -l，列出当前目录所有文件并显示详细信息 Git 的四大区域 工作区（workspace）&#xA;暂存区（staging area）&#xA;本地库（local repository）&#xA;远程库（remote repository）&#xA;详细内容 初始化相关 git init 初始化仓库。 git clone [url] 从远程下载一个仓库。 暂存区相关 git add 添加文件到暂存区。&#xA;添加一个或多个文件到暂存区：git add [file1] [file2] ...&#xA;添加指定目录到暂存区，包括子目录：git add [dir]&#xA;添加当前目录下的所有文件到暂存区：git add .&#xA;git rm --cached [file] 删除 暂存区 中的 file。&#xA;git status 查看在你上次提交之后是否有对文件进行再次修改。&#xA;使用 git status -s 获得更简短的报告。 git diff [file] 获取 file 文件在 工作区 和 暂存区 的差异。</description>
+    </item>
+    <item>
+      <title>【杂记】Python 3 Getting Started</title>
+      <link>http://localhost:1313/posts/bydnotes_python/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bydnotes_python/</guid>
+      <description>强推菜鸟教程。本文由其整理而来。&#xA;§ 1 最基础语法 § 1.1 注释与输入输出 基本样例&#xA;1a = input(&amp;#34;Input an interger, fucking kids!\n&amp;#34;) # input 2 3print(&amp;#34;The integer you just inputed is&amp;#34;, a, &amp;#34;!&amp;#34;) # output 4 5&amp;#39;&amp;#39;&amp;#39; 6在这里写多行注释。 7&amp;#39;&amp;#39;&amp;#39; 8 9&amp;#34;&amp;#34;&amp;#34; 10在这里写多行注释。 11&amp;#34;&amp;#34;&amp;#34; 输出相关&#xA;如果想在输出中加入变量，或者「一块一块」地输出，我们可以使用逗号进行分隔。例如：&#xA;1a = &amp;#34;apples&amp;#34; 2b = 23 3print(&amp;#34;There are&amp;#34;, b, a, &amp;#34;on the table.&amp;#34;) 这个程序段将输出 There are 23 apples on the table.。&#xA;此外，在 python 3.x 中，我们可以在 print() 函数中添加 end = &amp;quot;???&amp;quot; 参数，使得输出的末尾为 ?</description>
+    </item>
+    <item>
+      <title>【杂记】前端初探：CSS</title>
+      <link>http://localhost:1313/posts/bydnotes_css/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bydnotes_css/</guid>
+      <description>前端三部曲之一。CSS 描述了网页的布局。整理自「菜鸟教程」。&#xA;2.0 什么是 CSS CSS（Cascading Style Sheets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的计算机语言，CSS 文件扩展名为 .css 。&#xA;通过使用 CSS 可以大大提升网页开发的工作效率。&#xA;2.1 CSS 选择器 如果要在 HTML 元素中设置 CSS 样式，需要在元素中设置一些选择器——告诉网页在什么地方运用什么样的样式。&#xA;权重 1000：内联样式表&#xA;在标签内部加上 style=&amp;quot;&amp;quot; 属性即可。属性内部的条目以分号分隔。&#xA;推荐在比较特殊的个别元素身上使用。&#xA;1&amp;lt;h3 style=&amp;#34;color:red;&amp;#34;&amp;gt; Redemption &amp;lt;/h3&amp;gt; 权重 100：ID 选择器&#xA;如果我们想让 body 里面的代码看起来更紧凑一些…… 为何不在 head 中事先声明某个 ID 的样式呢？&#xA;1&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; 2 &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; 3 &amp;lt;style&amp;gt; 4 #para1 5 { 6 text-align:center; 7 color:red; 8 } 9 &amp;lt;/style&amp;gt; 10&amp;lt;/head&amp;gt; 11&amp;lt;body&amp;gt; 12 &amp;lt;p id=&amp;#34;para1&amp;#34;&amp;gt;Hello World!</description>
+    </item>
+    <item>
+      <title>【杂记】前端初探：HTML</title>
+      <link>http://localhost:1313/posts/bydnotes_html/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bydnotes_html/</guid>
+      <description>前端三部曲之一。HTML 定义了网页的内容。整理自「菜鸟教程」。&#xA;1.0 什么是 HTML HTML（HyperText Markup Language）是用来描述网页的一种语言。它不是一种编程语言，而是一种 标记语言。&#xA;标记语言是一套使用 标记标签（markup tag） 来描述网页的语言。&#xA;值得一提的是，HTML 语言可以使用在 Markdown 文档中。&#xA;1.1 HTML 的基本构成是标签 下面是一个可视化的 HTML 结构（请在 Light Mode 下查看）：&#xA;&amp;lt;html&amp;gt;&#xD;&amp;lt;head&amp;gt;&#xD;&amp;lt;title&amp;gt;页面标题&amp;lt;/title&amp;gt;&#xD;&amp;lt;/head&amp;gt;&#xD;&amp;lt;body&amp;gt;&#xD;&amp;lt;h1&amp;gt;这是一个标题&amp;lt;/h1&amp;gt;&#xD;&amp;lt;p&amp;gt;这是一个段落。&amp;lt;/p&amp;gt;&#xD;&amp;lt;p&amp;gt;这是另外一个段落。&amp;lt;/p&amp;gt;&#xD;&amp;lt;/body&amp;gt;&#xD;&amp;lt;/html&amp;gt;&#xD;HTML 标签是由尖括号包围的关键词，比如 &amp;lt;html&amp;gt;。它通常是成对出现的，比如 &amp;lt;b&amp;gt; 和 &amp;lt;/b&amp;gt;。标签对中的第一个标签称为 开始标签，第二个标签称为 结束标签。 「HTML 标签」 和 「HTML 元素」通常都是描述同样的意思。 没有内容的 HTML 元素被称为空元素，例如 &amp;lt;br&amp;gt;（表示换行）。在开始标签中添加斜杠，比如 &amp;lt;br /&amp;gt;，是关闭空元素的正确方法。 1.2 常见的那些标签 1) 大框架 Tags Functions &amp;lt;html&amp;gt;&amp;lt;/html&amp;gt; 定义了整个 HTML 文档，它们位于最外围 &amp;lt;head&amp;gt;&amp;lt;/head&amp;gt; 包含了所有的头部标签元素；这之中可以插入脚本（JS）, 样式文件（CSS），及各种 meta 信息 &amp;lt;body&amp;gt;&amp;lt;/body&amp;gt; 定义了文档的主体 2) Header Tags Functions &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt; 定义了文档的标题，就是选项卡上的玩意儿 &amp;lt;style&amp;gt;&amp;lt;/style&amp;gt; 定义了 HTML 文档的样式引用 &amp;lt;meta&amp;gt;&amp;lt;/meta&amp;gt; 定义了文档的一些基本的元数据 &amp;lt;script&amp;gt;&amp;lt;/script&amp;gt; 用于加载脚本文件（如 JavaScript） &amp;lt;link&amp;gt;&amp;lt;/link&amp;gt; 定义了文档与外部资源之间的关系 meta 示例：</description>
+    </item>
+    <item>
+      <title>【笔记】ADS</title>
+      <link>http://localhost:1313/posts/notes_ads/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_ads/</guid>
+      <description>Topic 1. Splay 复杂度分析 用到了势能分析的方法。&#xA;$$ \hat{c_i}=c_i+\varphi(D_i)-\varphi(D_{i-1}) $$&#xA;定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)=\sum\limits_{i \in T} R(i)=\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。&#xA;考虑 单个 节点的 Splay 到根的过程，会经历若干次如下过程（其中 zig 至多经过一次）：&#xA;引理（对数均值不等式）&#xA;若有 $a+b \le c$，那么 $\log a + \log b \le 2 \log c - 2$。&#xA;证明：等价形式 $4ab \le c^2$，这是显然的。&#xA;zig&#xA;$$ \begin{aligned} \hat{c_i} &amp;amp; = c_i+\varphi(D_i)-\varphi(D_{i-1}) \newline &amp;amp; = 1 - R(P) - R(X) + R(P&amp;rsquo;) + R(X&amp;rsquo;) \newline &amp;amp; = 1 + R(P&amp;rsquo;) - R(X) \newline &amp;amp; \le 1 + R(X&amp;rsquo;) - R(X) \newline &amp;amp; \le 1 + 3(R(X&amp;rsquo;)-R(X)) \end{aligned} $$</description>
+    </item>
+    <item>
+      <title>【笔记】Crypto</title>
+      <link>http://localhost:1313/posts/notes_crypto/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_crypto/</guid>
+      <description>Introduction Brief Intro&#xA;DES AES 对称密码学算法（加密的密钥和解密的密钥一致）&#xA;RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）&#xA;Enigma Enigma 加密&#xA;密钥：五选三齿轮、齿轮初始状态、接线板&#xA;加密：&#xA;首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)$，得到 $c_0$（若不存在则依然为 $c$）； 分别通过三张齿轮对应的表 Rotor I, II, III, 得到 $c_0 \to c_1 \to c_2 \to c_3$； $c_3$ 通过反射板 Reflector 得到 $c_3&amp;rsquo;$； 逆序通过三张齿轮对应的表 Rotor III, II, I, 得到 $c_3&amp;rsquo; \to c_2&amp;rsquo; \to c_1&amp;rsquo; \to c_0&amp;rsquo;$； $c_0&amp;rsquo;$ 通过接线板进行字母对换，得到 $c&amp;rsquo;$。$c&amp;rsquo;$ 即为加密结果。 Rotor 和 Reflector 均可视为一一对应的字母表，例如 &amp;ldquo;ABCDE ~ EBCAD&amp;rdquo; 这种。&#xA;关于齿轮&#xA;每个齿轮具有两个参数：Message Key / Ring Setting。Ring Setting 可视作齿轮的固有性质且在某次密码箱的使用过程中不发生改变；Message Key 则在一次加密 / 解密时具有一个初始状态，且 每输入一个字母 后会发生一次转动（Message Key 自增 1）。</description>
+    </item>
+    <item>
+      <title>【笔记】信息理论</title>
+      <link>http://localhost:1313/posts/notes_it/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_it/</guid>
+      <description>Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 自信息 定义为&#xA;$$I(x_k)=-\log_ap(x_k)$$&#xA;当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。&#xA;自信息的理解&#xA;事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。 例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。&#xA;1.2 条件自信息、两事件的互信息 条件自信息&#xA;对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 条件自信息 定义为&#xA;$$I(x_k|y_j)=-\log p(x_k|y_j)$$&#xA;本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。&#xA;互信息&#xA;概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 互信息 定义为&#xA;$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)$$&#xA;本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。&#xA;互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。</description>
+    </item>
+    <item>
+      <title>【笔记】数据库系统 (Part I)</title>
+      <link>http://localhost:1313/posts/notes_dbs_p1/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_dbs_p1/</guid>
+      <description>Lecture 2. Relation Model Definition of Relation&#xA;设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。&#xA;例如，$r={(Bob,17),(Alice,18),(Gino,21)}$，其中 $D_1={Alice,Bob,Gino}, D_2 = {1,2,\cdots,100}$。&#xA;注意这里的「关系」和离散数学中的「关系」没有关系。&#xA;Relation Schema &amp;amp; Relation Instance&#xA;Relation Schema 可理解为表头，是所有 attributes 的集合。&#xA;Relation Instance 可理解为实例，包含了某个时刻的实际表数据。&#xA;设 $A_1, A_2, \cdots, A_n$ 是所有的 attributes，那么记 Relation Schema $R=(A_1, A_2, \cdots, A_n)$，记 Relation $r = r(R) = r(A_1, A_2, \cdots, A_n)$。&#xA;Relation Schema 和 Relation 一般是大小写对应的，例如关系 $s = s(S)$。&#xA;关系的直观表示方法：Table&#xA;Key&#xA;Let $K \subset R$.</description>
+    </item>
+    <item>
+      <title>【笔记】计算机组成 (Part I)</title>
+      <link>http://localhost:1313/posts/notes_cod_p1/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_cod_p1/</guid>
+      <description>Part I 包含第一、三章，涉及导论内容和计算机运算问题。&#xA;Chapter 1. Computer Abstractions and Technology History &amp;amp; Development 第一代：电子管 / 真空管 第二代：晶体管 第三代：集成电路 第四代：微处理器 Computer Organization Hardware&#xA;Datapath 可以理解为一条「流水线」。&#xA;Software&#xA;指令集（ISA） ISA: The interface between hardware and lowest-level software.&#xA;指令集筑起了「硬件」与「软件」之间的桥梁。硬件生产厂商只需要支持指令集中的特定操作，而软件厂商只需要借助这些基本指令集来开发软件。&#xA;CPU Time Calculation Basic Concepts&#xA;[CONCEPT] Response Time (Execution Time)：响应时间，how long it takes to do a task.&#xA;[CONCEPT] Throughput (Bandwidth)：吞吐率，total work done per unit time.&#xA;Performance Measurement&#xA;假设 X 比 Y 快 $n$ 倍，那么 $\frac{\text{Execution Time}_Y}{\text{Execution Time}_X}=n$。</description>
+    </item>
+    <item>
+      <title>【笔记】计算机组成 (Part II)</title>
+      <link>http://localhost:1313/posts/notes_cod_p2/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_cod_p2/</guid>
+      <description>Chapter 2. Instructions: Language of the Machine Introduction Process of Compiling&#xA;编译过程：高级编程语言 $\to$ 汇编语言 $\to$ 机器语言。&#xA;例如，A + B $\to$ add A, B $\to$ 1000110010100000。&#xA;Instruction&#xA;指令是「机器的语言」。如果说 Instruction 是 Word，那么 Instruction set 则是 Vocabulary。&#xA;本课程采取的指令集为 RISC-V。这是一种精简指令集。&#xA;关于汇编语言和指令集的关系，摘取两条知乎回答：&#xA;汇编语言是用人类看得懂的语言来描述指令集。否则指令集的机器码都是一堆二进制数字，人类读起来非常麻烦，但汇编是用类似人类语言的方式描述指令集，读起来方便多了。&#xA;汇编指令是让人看得懂的，只是指令集的另外一种表示形式。&#xA;RISC vs. CISC&#xA;Arithmetic Operations Instruction Formats&#xA;前者是可以理解为操作类型，后者可以理解为操作参数。&#xA;Add and Subtraction&#xA;Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \gets b+c$ Always 3 operand R Arithmetic subtract sub a,b,c $a \gets b-c$ Always 3 operand R 例如，对于一段 C 代码 f = (g + h) - (i + j);，可以写成如下的 RISC-V 指令：</description>
+    </item>
+    <item>
+      <title>【笔记】计算机组成 (Part III)</title>
+      <link>http://localhost:1313/posts/notes_cod_p3/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_cod_p3/</guid>
+      <description>Chapter 4-1 Processor: Single Cycle Ver Introduction 基本的思路是，在之前我们学习了 C -&amp;gt; Assembly Language -&amp;gt; Machine Code 的过程。而 CPU 的工作就是执行机器码。例如，对于指令 add x10, x11, x12，我们要用 CPU 完成以下工作：&#xA;读取 x11 和 x12&#xA;计算两者的和&#xA;把和写到 x10 中&#xA;在本门课程中，我们主要关心以下指令：&#xA;Inst Type Inst R-Type Arithmetic (add, sub, and, &amp;hellip;) I-Type Load Register (ld) S-Type Store Register (sd) SB-Type Branch Jump (beq) UJ-Type Unconditional Jump (jal) The Entire Processor 其实整个一节的关键信息就这一幅图。其中的一些关键点：&#xA;PC 表示当前的指令位置。&#xA;Instruction Memory 存放的是系列指令，可以理解为内存中的 Text 段。&#xA;Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。</description>
+    </item>
+    <item>
+      <title>【笔记】C 大程杂记</title>
+      <link>http://localhost:1313/posts/notes_largec/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_largec/</guid>
+      <description>学习 C 大程过程中的一些零散笔记。&#xA;多文件编程注意事项 头文件&#xA;自己编写头文件时，使用 #ifndef 和 #endif 来避免头文件的重复包含。&#xA;编译器自带的头文件（例如 stdio.h）是自带这种系统的。也就是说，可以放心地在多个 c 文件中重复包含同一自带的头文件。&#xA;变量的关联&#xA;我们将变量和函数分为 定义 (define) 和 声明 (declare) 两种情况。连接后的程序 允许多次声明，但只能有一次定义。&#xA;对于一个变量，定义的方法是 type var;。而声明则是在其之前加上一个 extern。&#xA;对于一个函数，定义的方法是填充其内容（即有一对大括号）；而声明则是只写出其名字和参数表，例如 int foo(int x); 。&#xA;sscanf() 函数 C 库函数 int sscanf(const char *str, const char *format, ...) 从字符串读取格式化输入。&#xA;和 scanf 基本一致。唯一的区别是从输入流读入数据变为了从 str 读入数据。所以这个函数常常用于格式化一些字符串。&#xA;特别地两个用法：%n 用于接收当前读入和开头相比的偏移量，%* 用于忽略某个数据，即不存储于对应的参数中。&#xA;例子 1：&#xA;1#include &amp;lt;stdio.h&amp;gt; 2 3int main() { 4 char s[] = &amp;#34;wtfwtf 21&amp;#34;, a[100]; 5 int b, p1, p2; 6 sscanf(s, &amp;#34;%s%n %d%n&amp;#34;, &amp;amp;a, &amp;amp;p1, &amp;amp;b, &amp;amp;p2); 7 printf(&amp;#34;%s\n%d\n&amp;#34;, a, b); 8 printf(&amp;#34;%d %d\n&amp;#34;, p1, p2); 9 return 0; 10} 这个程序输出：</description>
+    </item>
+    <item>
+      <title>【笔记】C 小程杂记</title>
+      <link>http://localhost:1313/posts/notes_littlec/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_littlec/</guid>
+      <description>八进制与十六进制&#xA;0 开头表示八进制。0x 开头表示 16 进制。 07 vaild 08 invalid 0xf vaild 0xg invaild&#xA;%o 以八进制格式输出 / %x 以十六进制格式输出 （输出不带 0 和 0x ）&#xA;%#o 以八进制格式输出 / %#x 以十六进制格式输出 （输出带 0 和 0x ）&#xA;设置输出宽度，可以在输出格式前加代表宽度的数字，比如 %14d，表示输出宽度为14个字符；设置输出宽度后，默认为右对齐，要设置左对齐，需要加-号，即 %-14d。&#xA;scanf(&amp;quot;%3d%2d&amp;quot;,&amp;amp;i,&amp;amp;j); 输入 1234567， i = 123, j = 45.&#xA;原码反码补码&#xA;正数 - 原反补相同。&#xA;负数 - 原码：符号位为1 / 反码：除了符号位，全部取反 / 补码：反码+1. e.g. char (-10): (10: 00001010) 原 10001010 反 11110101 补 11110110&#xA;在计算机中，所有的整数使用补码计算与存储。</description>
+    </item>
+    <item>
+      <title>VSC 设置</title>
+      <link>http://localhost:1313/posts/others_vscset/</link>
+      <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/others_vscset/</guid>
+      <description>CMake 的使用 CMakelist.txt 相关&#xA;CMake 带命令行参数 build&#xA;在 .vscode 下创建 setting.json，并填充以下内容：&#xA;1{ 2 &amp;#34;cmake.debugConfig&amp;#34;: { 3 &amp;#34;args&amp;#34;: [ 4 &amp;#34;arg1&amp;#34;, 5 &amp;#34;arg2&amp;#34; 6 ] 7 } 8} 这会使得 run 时将 arg1 和 arg2 作为命令行参数运行。&#xA;tasks.json 和 launch.json 个人目前的理解是，tasks.json 可用于配置运行脚本和启动进程，launch.json 可以用于配置调试选项。&#xA;使用 Ctrl + Space 显示光标位置处可以使用的属性或参数。鼠标放在属性上可以显示属性的意义。&#xA;可能有用的 VSCode 官方文档：&#xA;预定义的变量 Predefined Variables&#xA;launch.json 的配置&#xA;tasks.json 的配置&#xA;默认生成的 tasks.json 1{ 2 &amp;#34;tasks&amp;#34;: [ 3 { 4 &amp;#34;type&amp;#34;: &amp;#34;cppbuild&amp;#34;, 5 &amp;#34;label&amp;#34;: &amp;#34;C/C++: gcc.exe build active file&amp;#34;, 6 &amp;#34;command&amp;#34;: &amp;#34;C:\\mingw64\\bin\\gcc.</description>
+    </item>
+    <item>
+      <title>【算法竞赛】ICPC 2022 Regional Dairy</title>
+      <link>http://localhost:1313/posts/xcpc_icpc2022rd/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/xcpc_icpc2022rd/</guid>
+      <description>流水账 进入大学以来的第一场 ICPC。前一天两点钟才睡觉，因为在捣鼓这个博客。&#xA;开局发现一分钟内 D 题过了快有一百来个，顿时人都麻了。我寻思题面第一页不是写了 Do not open before the contest has started 吗？&#xA;签掉之后看了下榜，发现 C 和 F 有过。于是先想了下 C，感觉 $n \leq 5000$ 怎么乱搞都行，然后就过了。&#xA;这个时候队友说 A 有思路了，于是乎上位敲 A。然后我去看 F。&#xA;F 是一道构造题，想了一下转化成一维的就很简单了，但是队友这个时候还在锤 A。于是去看了下有一两个人过的 E 题（埋下祸根）&#xA;E 题想到缩点后就不怎么会了。开始以为是在叶子节点之间建生成树然后生成树计数，我寻思这玩意儿可做吗？&#xA;这个时候队友过了 A 样例了，好家伙交上去格式错误？&#xA;去了个结尾换行再交，还是格式错误。&#xA;这个时候我突然意识到多半是傻逼 PTA 把 SPJ 给的错误反馈认为是格式错误了，于是让队友看一下精度问题。队友手玩了几个数据感觉没啥问题。中途我发现一堆人过了炉石题，看了下题鉴定为大爆搜。&#xA;于是我先上机把 F 过了（这个时候 penalty 已经爆了），然后继续写炉石题，结果居然爆搜挂了？&#xA;调了半天没调出来，当时人已经有点不好了。这个时候队友提出要测一组 A 的手造样例，好家伙输出 0。&#xA;然后让队友来调 A，我同时手玩一下炉石题的样例。&#xA;然后队友调了半天终于不输出 0 了，但是好像输出的答案误差有点大（精度爆了），大概到了 1e-3 的级别，但题目是 1e-9。&#xA;于是队友专门把代码长度翻了三倍特判，最后大概在 180 分钟的时候把 A 过了。&#xA;这个时候我也发现炉石题的问题——概率不能最后再来统计，然后大概过了 10 分钟把 L 过了。</description>
+    </item>
+    <item>
+      <title>【算法竞赛】线性基</title>
+      <link>http://localhost:1313/posts/xcpc_linearbase/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/xcpc_linearbase/</guid>
+      <description>问题导入 给定一个图。求一条回路使得该路径的异或和最大。&#xA;线性基 线性基的构造&#xA;对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。&#xA;1for(int i = 1; i &amp;lt;= cnt; ++i) { 2 LL cur = S[i]; 3 for(int k = 59; k &amp;gt;= 0; --k) { 4 if(cur &amp;amp; (1ll &amp;lt;&amp;lt; k)) { 5 if(d[k]) cur ^= d[k]; 6 else { 7 d[k] = cur; 8 break; 9 } 10 } 11 } 12 } 线性基的性质及略证&#xA;如此构建后，线性基中的所有数满足如下性质。&#xA;若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的最高位。这也意味着：对于所有比它小的 $d_j$，其第 $i$ 位必为零。 若 $d_i$ 为零：………… 那它就是零呗。</description>
+    </item>
+    <item>
+      <title>【算法竞赛】补题 I</title>
+      <link>http://localhost:1313/posts/xcpc_bt1/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/xcpc_bt1/</guid>
+      <description>ARC163D - Sum of DCC 题意：给定 $n$，$m$，求所有满足以下条件的图 $G$ 的强连通分量数目之和。$n \leq 30, \ m \leq n(n+1)/2$。&#xA;1）$G$ 是 $n$ 个点的竞赛图。&#xA;2）$G$ 中低编号点指向高编号点的边恰有 $m$ 条。&#xA;题解：&#xA;考虑一个引理：对于一个确定的竞赛图 $G$，设其 SCC 数目为 $P$；把 $G$ 分为两个点集 $A,B$，使得所有存在于 $A,B$ 之间的边都是 $A$ 指向 $B$ 的方案数为 $Q$。则 $P=Q-1$。&#xA;引理证明不难。考虑所有缩点之后的 SCC 为 $s_1,s_2,&amp;hellip;,s_k$。这几个 SCC 作为新点之后，它们依然组成一个竞赛图，并且这个图还是一张 DAG。对于一个兼有这两种性质的图，我们只能安排出唯一的一种拓扑序（考虑每次找到入度为 0 的点然后删去，可以证明每轮入度为 0 的点都是唯一的）。假设我们以这种拓扑序重排 $s_1,s_2,&amp;hellip;,s_k$，那么唯一的点划分方法就是按照 $A={s_1&amp;hellip;s_t}, \ B={s_{t+1}&amp;hellip;s_{n}}$ 的形式划分。可以看到，这样的划分方法有 $k+1$ 种，而 $G$ 的 SCC 数目为 $k$，故而引理得证。&#xA;接下来我们考虑 dp。首先我们忘掉 SCC 这个东西——记 $f[n][i][j]$ 为：考虑所有【低编号点指向高编号点的边恰有 $j$ 条】的【$n$ 个点的竞赛图】，按照上述规则【划分为大小为 $i$ 的点集 $A$，大小为 $n-i$ 的点集 $B$】的方案数之和。</description>
+    </item>
+    <item>
+      <title>【算法竞赛】补题 II</title>
+      <link>http://localhost:1313/posts/xcpc_bt2/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/xcpc_bt2/</guid>
+      <description>CF1746E1 Joking 这是一道交互题。交互库有一个不超过 $10^5$ 的数 $x$。你可以询问一个数集 $S$，交互库会给出是否有 $x \in S$。然而，这个傻逼交互库可能会说谎。但它不会连续两次说谎。你有不超过 82 次询问机会和 2 次回答机会。2 次回答正确一次即为成功。 感觉是一道好题。不过听说和 IMO2012 的 idea 重了。&#xA;首先，我们发现如果确定范围里有两个数，那肯定是解决不掉了。交互库可以恶心你，让你始终找不到这两个数哪个是对的（自证）。&#xA;不过这道题给了我们 2 次回答的机会。因而这道题还是可做的。这道题最关键的部分，在于找到三个数的解法。如何将三个数确定到两个数。假设这三个数分别为 $A,B,C$。&#xA;我们问两次是否 $x \in {A}$。如果两次均为否，那么 $A$ 排除。&#xA;如果回答了一次是，我们问 $B$。若回答为是，那么 $C$ 排除。若回答为否，那么就是 $A$。&#xA;当剩余范围超过三个时，把它分为三组照上做就可以了。通过不超过三次询问，我们可以至少缩小 $1/3$ 的范围。&#xA;不得不说非常巧妙。尤其是加粗的部分。&#xA;赛时只在想二分，一直没弄出来。根本原因是没有注意到，$n=2$ 时是根本无法确定的。（脑子糊了）&#xA;其实也想过三分，不过没有深入想，可惜了。&#xA;CF1746F Kazaee 一个数列，两种操作。修改：单点修改。查询：查询 $[l,r]$ 内所有数出现的次数是否都是 $k$ 的倍数。 注意到如果查询是 YES 的话，那么 $[l,r]$ 内的和一定整除 $k$。故而我们可以深挖这一性质。&#xA;随机选择 30 个 subset，关注 $[l,r]$ 内的所有在这个 subset 里面的数，若它们的和是 $k$ 的倍数，我们就输出 YES。&#xA;CF1870E Another Mex Problem 一个数列，选择若干个互不相交的连续子区间，求这些子区间的 mex 的异或和的最大值。$n \leq 5000$。 朴素的一种 dp：$f_{i,x}$ 表示只考虑 $[1,i]$ 这个前缀能否达到 $x$。（f 的值为 0 or 1）这个 dp 可以在 $\Theta(n^3)$ 内完成。</description>
+    </item>
+    <item>
+      <title>Dream Goes On</title>
+      <link>http://localhost:1313/posts/qxmx/</link>
+      <pubDate>Fri, 01 Jan 1999 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/qxmx/</guid>
+      <description>谨以此文 纪念远去的一切&#xA;序 曾经作为《情系母校》的阅读者，我一度也幻想着等我毕业后也要在那上面写些什么。但当真正变为执笔人的那一刻，那双落在键盘上的手却又停了下来。我感觉到有情感即将喷涌而出，但当我细细反省时似乎又没有。我开始害怕自己是不是已经失去了些什么——也是因为这个原因，我便立下决心，尽早把我的回忆保存下来。&#xA;第四幕 2022 年 6 月 8 日，石室天府中学。&#xA;下午五点，英语考试的终场铃声准时响起。我呆滞地望着眼前的试卷，是的——我的三年学习，或者说前面的所有 12 年学习，似乎已经被包括眼前这张在内的四张答题卡概括。陌生的老师收走我的试卷，我起身走出教室，拿走放在外面的书包，任脚步将我带向大门。在那里，我们的老师正在等候。&#xA;由于考场位置和座位号的原因，我几乎每场考试都是第一个到达校门。我到现在都记得语文考试结束后，班主任（R 老师）见我第一个出来说，「这个是第一名！」。紧接全场第二、三个出来的同学恰好都是我们班的，R 老师兴奋了——「前三名都是我们班的！」。我们三个都笑 R 老师的迷信，但谁又不希望他的预言成真。高考成绩出来后，我只能说 R 老师的预测还是相当准确——不过七高的理科状元不是我，而是那位第二个出来的同学。&#xA;返校的车上，和预期的一样，所有人有说有笑。不过由于数学爆炸的原因，我的情绪依然处于低谷。我知道这很情绪用事，但我开始讨厌周围的吵闹。可能是理解我，也可能是他也考的不咋地，旁边的 L 同学也显得很平静。&#xA;我开始和我旁边的 L 同学聊起了高考制度，谈起了以后的人生。「你说，有没有可能，我们从此就见不着面了？」 L 问我。我不知道该如何回应，事实上，我也不希望这种情况发生。但我同时深知，在命运的十字路口，所有人都是渺小的。我只是叹了口气，他知道我已经回答。&#xA;由于 9 号还要进行英语口语测试，当天晚上我在学校宿舍度过。如果我没记错的话，L 同学当晚也是住校。聊了一会儿后，我们各自睡觉。我在床上听了很久的歌，主要原因应该还是深陷数学失利的 emo 无法自拔。逐渐地，我开始回忆起高考前这几天发生的一切，进而是这三年…… 无数束想法转瞬即逝，在我脑海中打上懊悔或不甘的印记后随即消失。&#xA;我的大脑陷入混沌。嘈杂之中，我遁入回忆。&#xA;第一幕 2019 年 7 月 x 日，成都七中高新校区。&#xA;我来到这个学校应该比同级的绝大多数同学要早。夏令营开始前，我和 D 同学因为有信竞基础提前到学校进行训练。印象很深的是当时我和 D 与两位生竞的学长同住一间寝室。一天下午其中一个学长开始感慨七林和七高竞赛水平的差距，还对我们说「你们要为七高的竞赛争光啊」。我承认我当时挺受这句话触动，在后面的竞赛生涯中这句话也常常在我的脑海中响起并激励着我前行。可惜的是最终我并没有实现学长的期望（其实更是我自己的期望），当然这都是后话了。这个夏令营前阶段可能只持续了不到两周，接着正式的夏令营就开始了。不得不说那真的是很美好的一段时光。大概有一个月时间都可以徜徉在自己喜欢的竞赛中，学习节奏也比较舒缓，还认识了很多新朋友。偶尔还可以去楼下买零食带回机房吃，然后在机房里面摸鱼（generals.io?）。那种纯粹和充实非常让人怀念。&#xA;时间来到 9 月份，文化课之旅正式开始。刚进校时，班主任 R 老师给我们的印象是非常严格的那种。我记得当时 Z 同学还调侃说以后得「夹着尾巴做人了」。不过大概过了一个学期大家就摸清楚了 R 老师可能是雷声大雨点小那种。但这也是好事，我感觉那段时间随着大家对 R 老师的认识加深，班级气氛明显要活跃了好多 233。&#xA;高一进校时我的成绩还是不错。印象最深的是大概 11 月份停课去西安参加了为期一周的信息学竞赛培训。培训感觉没学到太多东西，不过回来第二天参加月考倒是从上次年级十几名升到了年级第八 (?)。那段时间又拿了一个 CSP-S 的一等奖（虽然很好拿），嗯感觉就挺高光时刻的。然后晃晃悠悠就来到了高一下学期，也就是我们熟知的 2020 年 1 月——新冠疫情的出现。</description>
+    </item>
+  </channel>
+</rss>

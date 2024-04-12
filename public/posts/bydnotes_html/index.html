@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
+        async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【杂记】前端初探：HTML | Dormant Echoes</title>
+  <link rel = 'canonical' href = 'http://localhost:1313/posts/bydnotes_html/'>
+  <meta name="description" content="无关渴求，并非理想，这就是她的命运。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="【杂记】前端初探：HTML" />
+<meta property="og:description" content="前端三部曲之一。HTML 定义了网页的内容。整理自「菜鸟教程」。
+1.0 什么是 HTML HTML（HyperText Markup Language）是用来描述网页的一种语言。它不是一种编程语言，而是一种 标记语言。
+标记语言是一套使用 标记标签（markup tag） 来描述网页的语言。
+值得一提的是，HTML 语言可以使用在 Markdown 文档中。
+1.1 HTML 的基本构成是标签 下面是一个可视化的 HTML 结构（请在 Light Mode 下查看）：
+&lt;html&gt;&lt;head&gt;&lt;title&gt;页面标题&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;这是一个标题&lt;/h1&gt;&lt;p&gt;这是一个段落。&lt;/p&gt;&lt;p&gt;这是另外一个段落。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;HTML 标签是由尖括号包围的关键词，比如 &lt;html&gt;。它通常是成对出现的，比如 &lt;b&gt; 和 &lt;/b&gt;。标签对中的第一个标签称为 开始标签，第二个标签称为 结束标签。 「HTML 标签」 和 「HTML 元素」通常都是描述同样的意思。 没有内容的 HTML 元素被称为空元素，例如 &lt;br&gt;（表示换行）。在开始标签中添加斜杠，比如 &lt;br /&gt;，是关闭空元素的正确方法。 1.2 常见的那些标签 1) 大框架 Tags Functions &lt;html&gt;&lt;/html&gt; 定义了整个 HTML 文档，它们位于最外围 &lt;head&gt;&lt;/head&gt; 包含了所有的头部标签元素；这之中可以插入脚本（JS）, 样式文件（CSS），及各种 meta 信息 &lt;body&gt;&lt;/body&gt; 定义了文档的主体 2) Header Tags Functions &lt;title&gt;&lt;/title&gt; 定义了文档的标题，就是选项卡上的玩意儿 &lt;style&gt;&lt;/style&gt; 定义了 HTML 文档的样式引用 &lt;meta&gt;&lt;/meta&gt; 定义了文档的一些基本的元数据 &lt;script&gt;&lt;/script&gt; 用于加载脚本文件（如 JavaScript） &lt;link&gt;&lt;/link&gt; 定义了文档与外部资源之间的关系 meta 示例：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/bydnotes_html/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【杂记】前端初探：HTML"/>
+<meta name="twitter:description" content="前端三部曲之一。HTML 定义了网页的内容。整理自「菜鸟教程」。
+1.0 什么是 HTML HTML（HyperText Markup Language）是用来描述网页的一种语言。它不是一种编程语言，而是一种 标记语言。
+标记语言是一套使用 标记标签（markup tag） 来描述网页的语言。
+值得一提的是，HTML 语言可以使用在 Markdown 文档中。
+1.1 HTML 的基本构成是标签 下面是一个可视化的 HTML 结构（请在 Light Mode 下查看）：
+&lt;html&gt;&lt;head&gt;&lt;title&gt;页面标题&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;这是一个标题&lt;/h1&gt;&lt;p&gt;这是一个段落。&lt;/p&gt;&lt;p&gt;这是另外一个段落。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;HTML 标签是由尖括号包围的关键词，比如 &lt;html&gt;。它通常是成对出现的，比如 &lt;b&gt; 和 &lt;/b&gt;。标签对中的第一个标签称为 开始标签，第二个标签称为 结束标签。 「HTML 标签」 和 「HTML 元素」通常都是描述同样的意思。 没有内容的 HTML 元素被称为空元素，例如 &lt;br&gt;（表示换行）。在开始标签中添加斜杠，比如 &lt;br /&gt;，是关闭空元素的正确方法。 1.2 常见的那些标签 1) 大框架 Tags Functions &lt;html&gt;&lt;/html&gt; 定义了整个 HTML 文档，它们位于最外围 &lt;head&gt;&lt;/head&gt; 包含了所有的头部标签元素；这之中可以插入脚本（JS）, 样式文件（CSS），及各种 meta 信息 &lt;body&gt;&lt;/body&gt; 定义了文档的主体 2) Header Tags Functions &lt;title&gt;&lt;/title&gt; 定义了文档的标题，就是选项卡上的玩意儿 &lt;style&gt;&lt;/style&gt; 定义了 HTML 文档的样式引用 &lt;meta&gt;&lt;/meta&gt; 定义了文档的一些基本的元数据 &lt;script&gt;&lt;/script&gt; 用于加载脚本文件（如 JavaScript） &lt;link&gt;&lt;/link&gt; 定义了文档与外部资源之间的关系 meta 示例："/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.a1f268d4a2dc126cc173c87effbb726d4e19589aba7bcecf97f1e692128187ccf19266ae1b68e794b49a0eebeda406626510ccfb7f24d86d16167e7e4a69762e.css" integrity="sha512-ofJo1KLcEmzBc8h&#43;/7tybU4ZWJq6e87Pl/HmkhKBh8zxkmauG2jnlLSaDuvtpAZiZRDM&#43;38k2G0WFn5&#43;Sml2Lg=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://localhost:1313/posts/notes_ads/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://localhost:1313/posts/bydnotes_css/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&text=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&is_video=false&description=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&name=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML&description=%e5%89%8d%e7%ab%af%e4%b8%89%e9%83%a8%e6%9b%b2%e4%b9%8b%e4%b8%80%e3%80%82HTML%20%e5%ae%9a%e4%b9%89%e4%ba%86%e7%bd%91%e9%a1%b5%e7%9a%84%e5%86%85%e5%ae%b9%e3%80%82%e6%95%b4%e7%90%86%e8%87%aa%e3%80%8c%e8%8f%9c%e9%b8%9f%e6%95%99%e7%a8%8b%e3%80%8d%e3%80%82%0a1.0%20%e4%bb%80%e4%b9%88%e6%98%af%20HTML%20HTML%ef%bc%88HyperText%20Markup%20Language%ef%bc%89%e6%98%af%e7%94%a8%e6%9d%a5%e6%8f%8f%e8%bf%b0%e7%bd%91%e9%a1%b5%e7%9a%84%e4%b8%80%e7%a7%8d%e8%af%ad%e8%a8%80%e3%80%82%e5%ae%83%e4%b8%8d%e6%98%af%e4%b8%80%e7%a7%8d%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%ef%bc%8c%e8%80%8c%e6%98%af%e4%b8%80%e7%a7%8d%20%e6%a0%87%e8%ae%b0%e8%af%ad%e8%a8%80%e3%80%82%0a%e6%a0%87%e8%ae%b0%e8%af%ad%e8%a8%80%e6%98%af%e4%b8%80%e5%a5%97%e4%bd%bf%e7%94%a8%20%e6%a0%87%e8%ae%b0%e6%a0%87%e7%ad%be%ef%bc%88markup%20tag%ef%bc%89%20%e6%9d%a5%e6%8f%8f%e8%bf%b0%e7%bd%91%e9%a1%b5%e7%9a%84%e8%af%ad%e8%a8%80%e3%80%82%0a%e5%80%bc%e5%be%97%e4%b8%80%e6%8f%90%e7%9a%84%e6%98%af%ef%bc%8cHTML%20%e8%af%ad%e8%a8%80%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e5%9c%a8%20Markdown%20%e6%96%87%e6%a1%a3%e4%b8%ad%e3%80%82%0a1.1%20HTML%20%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%9e%84%e6%88%90%e6%98%af%e6%a0%87%e7%ad%be%20%e4%b8%8b%e9%9d%a2%e6%98%af%e4%b8%80%e4%b8%aa%e5%8f%af%e8%a7%86%e5%8c%96%e7%9a%84%20HTML%20%e7%bb%93%e6%9e%84%ef%bc%88%e8%af%b7%e5%9c%a8%20Light%20Mode%20%e4%b8%8b%e6%9f%a5%e7%9c%8b%ef%bc%89%ef%bc%9a%0a%26lt%3bhtml%26gt%3b%0d%26lt%3bhead%26gt%3b%0d%26lt%3btitle%26gt%3b%e9%a1%b5%e9%9d%a2%e6%a0%87%e9%a2%98%26lt%3b%2ftitle%26gt%3b%0d%26lt%3b%2fhead%26gt%3b%0d%26lt%3bbody%26gt%3b%0d%26lt%3bh1%26gt%3b%e8%bf%99%e6%98%af%e4%b8%80%e4%b8%aa%e6%a0%87%e9%a2%98%26lt%3b%2fh1%26gt%3b%0d%26lt%3bp%26gt%3b%e8%bf%99%e6%98%af%e4%b8%80%e4%b8%aa%e6%ae%b5%e8%90%bd%e3%80%82%26lt%3b%2fp%26gt%3b%0d%26lt%3bp%26gt%3b%e8%bf%99%e6%98%af%e5%8f%a6%e5%a4%96%e4%b8%80%e4%b8%aa%e6%ae%b5%e8%90%bd%e3%80%82%26lt%3b%2fp%26gt%3b%0d%26lt%3b%2fbody%26gt%3b%0d%26lt%3b%2fhtml%26gt%3b%0dHTML%20%e6%a0%87%e7%ad%be%e6%98%af%e7%94%b1%e5%b0%96%e6%8b%ac%e5%8f%b7%e5%8c%85%e5%9b%b4%e7%9a%84%e5%85%b3%e9%94%ae%e8%af%8d%ef%bc%8c%e6%af%94%e5%a6%82%20%26lt%3bhtml%26gt%3b%e3%80%82%e5%ae%83%e9%80%9a%e5%b8%b8%e6%98%af%e6%88%90%e5%af%b9%e5%87%ba%e7%8e%b0%e7%9a%84%ef%bc%8c%e6%af%94%e5%a6%82%20%26lt%3bb%26gt%3b%20%e5%92%8c%20%26lt%3b%2fb%26gt%3b%e3%80%82%e6%a0%87%e7%ad%be%e5%af%b9%e4%b8%ad%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e6%a0%87%e7%ad%be%e7%a7%b0%e4%b8%ba%20%e5%bc%80%e5%a7%8b%e6%a0%87%e7%ad%be%ef%bc%8c%e7%ac%ac%e4%ba%8c%e4%b8%aa%e6%a0%87%e7%ad%be%e7%a7%b0%e4%b8%ba%20%e7%bb%93%e6%9d%9f%e6%a0%87%e7%ad%be%e3%80%82%20%e3%80%8cHTML%20%e6%a0%87%e7%ad%be%e3%80%8d%20%e5%92%8c%20%e3%80%8cHTML%20%e5%85%83%e7%b4%a0%e3%80%8d%e9%80%9a%e5%b8%b8%e9%83%bd%e6%98%af%e6%8f%8f%e8%bf%b0%e5%90%8c%e6%a0%b7%e7%9a%84%e6%84%8f%e6%80%9d%e3%80%82%20%e6%b2%a1%e6%9c%89%e5%86%85%e5%ae%b9%e7%9a%84%20HTML%20%e5%85%83%e7%b4%a0%e8%a2%ab%e7%a7%b0%e4%b8%ba%e7%a9%ba%e5%85%83%e7%b4%a0%ef%bc%8c%e4%be%8b%e5%a6%82%20%26lt%3bbr%26gt%3b%ef%bc%88%e8%a1%a8%e7%a4%ba%e6%8d%a2%e8%a1%8c%ef%bc%89%e3%80%82%e5%9c%a8%e5%bc%80%e5%a7%8b%e6%a0%87%e7%ad%be%e4%b8%ad%e6%b7%bb%e5%8a%a0%e6%96%9c%e6%9d%a0%ef%bc%8c%e6%af%94%e5%a6%82%20%26lt%3bbr%20%2f%26gt%3b%ef%bc%8c%e6%98%af%e5%85%b3%e9%97%ad%e7%a9%ba%e5%85%83%e7%b4%a0%e7%9a%84%e6%ad%a3%e7%a1%ae%e6%96%b9%e6%b3%95%e3%80%82%201.2%20%e5%b8%b8%e8%a7%81%e7%9a%84%e9%82%a3%e4%ba%9b%e6%a0%87%e7%ad%be%201%29%20%e5%a4%a7%e6%a1%86%e6%9e%b6%20Tags%20Functions%20%26lt%3bhtml%26gt%3b%26lt%3b%2fhtml%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%95%b4%e4%b8%aa%20HTML%20%e6%96%87%e6%a1%a3%ef%bc%8c%e5%ae%83%e4%bb%ac%e4%bd%8d%e4%ba%8e%e6%9c%80%e5%a4%96%e5%9b%b4%20%26lt%3bhead%26gt%3b%26lt%3b%2fhead%26gt%3b%20%e5%8c%85%e5%90%ab%e4%ba%86%e6%89%80%e6%9c%89%e7%9a%84%e5%a4%b4%e9%83%a8%e6%a0%87%e7%ad%be%e5%85%83%e7%b4%a0%ef%bc%9b%e8%bf%99%e4%b9%8b%e4%b8%ad%e5%8f%af%e4%bb%a5%e6%8f%92%e5%85%a5%e8%84%9a%e6%9c%ac%ef%bc%88JS%ef%bc%89%2c%20%e6%a0%b7%e5%bc%8f%e6%96%87%e4%bb%b6%ef%bc%88CSS%ef%bc%89%ef%bc%8c%e5%8f%8a%e5%90%84%e7%a7%8d%20meta%20%e4%bf%a1%e6%81%af%20%26lt%3bbody%26gt%3b%26lt%3b%2fbody%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e7%9a%84%e4%b8%bb%e4%bd%93%202%29%20Header%20Tags%20Functions%20%26lt%3btitle%26gt%3b%26lt%3b%2ftitle%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e7%9a%84%e6%a0%87%e9%a2%98%ef%bc%8c%e5%b0%b1%e6%98%af%e9%80%89%e9%a1%b9%e5%8d%a1%e4%b8%8a%e7%9a%84%e7%8e%a9%e6%84%8f%e5%84%bf%20%26lt%3bstyle%26gt%3b%26lt%3b%2fstyle%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%20HTML%20%e6%96%87%e6%a1%a3%e7%9a%84%e6%a0%b7%e5%bc%8f%e5%bc%95%e7%94%a8%20%26lt%3bmeta%26gt%3b%26lt%3b%2fmeta%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e7%9a%84%e4%b8%80%e4%ba%9b%e5%9f%ba%e6%9c%ac%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%20%26lt%3bscript%26gt%3b%26lt%3b%2fscript%26gt%3b%20%e7%94%a8%e4%ba%8e%e5%8a%a0%e8%bd%bd%e8%84%9a%e6%9c%ac%e6%96%87%e4%bb%b6%ef%bc%88%e5%a6%82%20JavaScript%ef%bc%89%20%26lt%3blink%26gt%3b%26lt%3b%2flink%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e4%b8%8e%e5%a4%96%e9%83%a8%e8%b5%84%e6%ba%90%e4%b9%8b%e9%97%b4%e7%9a%84%e5%85%b3%e7%b3%bb%20meta%20%e7%a4%ba%e4%be%8b%ef%bc%9a" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&t=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#10-什么是-html">1.0 什么是 HTML</a></li>
+        <li><a href="#11-html-的基本构成是标签">1.1 HTML 的基本构成是标签</a></li>
+        <li><a href="#12-常见的那些标签">1.2 常见的那些标签</a>
+          <ul>
+            <li><a href="#1-大框架">1) 大框架</a></li>
+            <li><a href="#2-header">2) Header</a></li>
+            <li><a href="#3-body">3) Body</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【杂记】前端初探：HTML
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2024-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2024-01-01</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          5 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <blockquote>
+<p>前端三部曲之一。HTML 定义了网页的内容。整理自「菜鸟教程」。</p>
+</blockquote>
+<h3 id="10-什么是-html">1.0 什么是 HTML</h3>
+<p>HTML（HyperText Markup Language）是用来描述网页的一种语言。它不是一种编程语言，而是一种 <strong>标记语言</strong>。</p>
+<p>标记语言是一套使用 <strong>标记标签（markup tag）</strong> 来描述网页的语言。</p>
+<p>值得一提的是，HTML 语言可以使用在 Markdown 文档中。</p>
+<h3 id="11-html-的基本构成是标签">1.1 HTML 的基本构成是标签</h3>
+<p>下面是一个可视化的 HTML 结构（请在 Light Mode 下查看）：</p>
+<div style="width:99%;border:1px solid grey;padding:3px;margin:0;background-color:#ddd">&lt;html&gt;
+<div style="width:90%;border:1px solid grey;padding:3px;margin:20px">&lt;head&gt;
+<div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;title&gt;页面标题&lt;/title&gt;
+</div>
+&lt;/head&gt;
+</div>
+<div style="width:90%;border:1px solid grey;padding:3px;margin:20px;background-color:#fff">&lt;body&gt;
+<div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;h1&gt;这是一个标题&lt;/h1&gt;</div>
+<div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;p&gt;这是一个段落。&lt;/p&gt;</div>
+<div style="width:90%;border:1px solid grey;padding:5px;margin:20px">&lt;p&gt;这是另外一个段落。&lt;/p&gt;</div>
+&lt;/body&gt;
+</div>
+&lt;/html&gt;
+</div>
+<ul>
+<li>HTML 标签是由尖括号包围的关键词，比如 <code>&lt;html&gt;</code>。它通常是成对出现的，比如 <code>&lt;b&gt;</code> 和 <code>&lt;/b&gt;</code>。标签对中的第一个标签称为 <strong>开始标签</strong>，第二个标签称为 <strong>结束标签</strong>。</li>
+<li>「HTML 标签」 和 「HTML 元素」通常都是描述同样的意思。</li>
+<li>没有内容的 HTML 元素被称为空元素，例如 <code>&lt;br&gt;</code>（表示换行）。在开始标签中添加斜杠，比如 <code>&lt;br /&gt;</code>，是关闭空元素的正确方法。</li>
+</ul>
+<h3 id="12-常见的那些标签">1.2 常见的那些标签</h3>
+<h4 id="1-大框架">1) 大框架</h4>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;html&gt;&lt;/html&gt;</code></td>
+<td>定义了整个 HTML 文档，它们位于最外围</td>
+</tr>
+<tr>
+<td><code>&lt;head&gt;&lt;/head&gt;</code></td>
+<td>包含了所有的头部标签元素；这之中可以插入脚本（JS）, 样式文件（CSS），及各种 meta 信息</td>
+</tr>
+<tr>
+<td><code>&lt;body&gt;&lt;/body&gt;</code></td>
+<td>定义了文档的主体</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-header">2) Header</h4>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;title&gt;&lt;/title&gt;</code></td>
+<td>定义了文档的标题，就是选项卡上的玩意儿</td>
+</tr>
+<tr>
+<td><code>&lt;style&gt;&lt;/style&gt;</code></td>
+<td>定义了 HTML 文档的样式引用</td>
+</tr>
+<tr>
+<td><code>&lt;meta&gt;&lt;/meta&gt;</code></td>
+<td>定义了文档的一些基本的元数据</td>
+</tr>
+<tr>
+<td><code>&lt;script&gt;&lt;/script&gt;</code></td>
+<td>用于加载脚本文件（如 JavaScript）</td>
+</tr>
+<tr>
+<td><code>&lt;link&gt;&lt;/link&gt;</code></td>
+<td>定义了文档与外部资源之间的关系</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>meta 示例：</p>
+<ul>
+<li>定义网站作者：<code>&lt;meta name=&quot;author&quot; content=&quot;mihoyo&quot;&gt;</code>；</li>
+<li>每 30s 刷新当前页面：<code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;30&quot;&gt;</code>；</li>
+<li>为搜索引擎定义关键词：<code>&lt;meta name=&quot;keywords&quot; content=&quot;HTML, CSS, XML, XHTML, JavaScript&quot;&gt;</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>&lt;link&gt;&lt;/link&gt;</code> 标签常用于链接到样式表，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>&lt;<span style="color:#ff79c6">head</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>&lt;<span style="color:#ff79c6">link</span> <span style="color:#50fa7b">rel</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;stylesheet&#34;</span> <span style="color:#50fa7b">type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;text/css&#34;</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;mystyle.css&#34;</span>&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>&lt;/<span style="color:#ff79c6">head</span>&gt;
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="3-body">3) Body</h4>
+<p>Attributes 一栏显示了和标签相关的除 style 外的常用属性。</p>
+<ul>
+<li>
+<p>常用的基础标签</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Functions</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;h1&gt;&lt;/h1&gt;</code></td>
+<td>HTML 标题，对应 Markdown 中的 <code>#</code>；此外还有 h2~h6</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;&lt;/p&gt;</code></td>
+<td>定义 HTML 段落</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;a&gt;&lt;/a&gt;</code></td>
+<td>定义 HTML 链接</td>
+<td><code>href=&quot;&quot;</code> 表示链接内容；<code>target=&quot;_blank&quot;</code> 表示在新标签页打开</td>
+</tr>
+<tr>
+<td><code>&lt;img /&gt;</code></td>
+<td>定义 HTML 图像（注意是空元素）</td>
+<td><code>src</code> 表示地址；<code>alt</code> 表示替代文本（加载失败显示）；<code>height</code> &amp; <code>width</code> 表示规模</td>
+</tr>
+<tr>
+<td><code>&lt;br /&gt;</code></td>
+<td>换行</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>文本格式化</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Functions</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;b&gt;&lt;/b&gt;</code> / <code>&lt;strong&gt;&lt;/strong&gt;</code></td>
+<td>加粗段落</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;i&gt;&lt;/i&gt;</code> / <code>&lt;em&gt;&lt;/em&gt;</code></td>
+<td>斜体段落</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;sub&gt;&lt;/sub&gt;</code></td>
+<td>下标</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;&lt;/sup&gt;</code></td>
+<td>上标</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>关于「文本格式化」的更多标签，参见 <a href="https://www.runoob.com/html/html-formatting.html">这里</a>。</p>
+<ul>
+<li>
+<p>HTML 列表</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Functions</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;ul&gt;&lt;/ul&gt;</code></td>
+<td>定义无序列表</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;ol&gt;&lt;/ol&gt;</code></td>
+<td>定义有序列表</td>
+<td>/</td>
+</tr>
+<tr>
+<td><code>&lt;li&gt;&lt;/li&gt;</code></td>
+<td>定义有（无）序列表中的每一项</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>HTML 表格</p>
+</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#10-什么是-html">1.0 什么是 HTML</a></li>
+        <li><a href="#11-html-的基本构成是标签">1.1 HTML 的基本构成是标签</a></li>
+        <li><a href="#12-常见的那些标签">1.2 常见的那些标签</a>
+          <ul>
+            <li><a href="#1-大框架">1) 大框架</a></li>
+            <li><a href="#2-header">2) Header</a></li>
+            <li><a href="#3-body">3) Body</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&text=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&is_video=false&description=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&title=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&name=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML&description=%e5%89%8d%e7%ab%af%e4%b8%89%e9%83%a8%e6%9b%b2%e4%b9%8b%e4%b8%80%e3%80%82HTML%20%e5%ae%9a%e4%b9%89%e4%ba%86%e7%bd%91%e9%a1%b5%e7%9a%84%e5%86%85%e5%ae%b9%e3%80%82%e6%95%b4%e7%90%86%e8%87%aa%e3%80%8c%e8%8f%9c%e9%b8%9f%e6%95%99%e7%a8%8b%e3%80%8d%e3%80%82%0a1.0%20%e4%bb%80%e4%b9%88%e6%98%af%20HTML%20HTML%ef%bc%88HyperText%20Markup%20Language%ef%bc%89%e6%98%af%e7%94%a8%e6%9d%a5%e6%8f%8f%e8%bf%b0%e7%bd%91%e9%a1%b5%e7%9a%84%e4%b8%80%e7%a7%8d%e8%af%ad%e8%a8%80%e3%80%82%e5%ae%83%e4%b8%8d%e6%98%af%e4%b8%80%e7%a7%8d%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%ef%bc%8c%e8%80%8c%e6%98%af%e4%b8%80%e7%a7%8d%20%e6%a0%87%e8%ae%b0%e8%af%ad%e8%a8%80%e3%80%82%0a%e6%a0%87%e8%ae%b0%e8%af%ad%e8%a8%80%e6%98%af%e4%b8%80%e5%a5%97%e4%bd%bf%e7%94%a8%20%e6%a0%87%e8%ae%b0%e6%a0%87%e7%ad%be%ef%bc%88markup%20tag%ef%bc%89%20%e6%9d%a5%e6%8f%8f%e8%bf%b0%e7%bd%91%e9%a1%b5%e7%9a%84%e8%af%ad%e8%a8%80%e3%80%82%0a%e5%80%bc%e5%be%97%e4%b8%80%e6%8f%90%e7%9a%84%e6%98%af%ef%bc%8cHTML%20%e8%af%ad%e8%a8%80%e5%8f%af%e4%bb%a5%e4%bd%bf%e7%94%a8%e5%9c%a8%20Markdown%20%e6%96%87%e6%a1%a3%e4%b8%ad%e3%80%82%0a1.1%20HTML%20%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%9e%84%e6%88%90%e6%98%af%e6%a0%87%e7%ad%be%20%e4%b8%8b%e9%9d%a2%e6%98%af%e4%b8%80%e4%b8%aa%e5%8f%af%e8%a7%86%e5%8c%96%e7%9a%84%20HTML%20%e7%bb%93%e6%9e%84%ef%bc%88%e8%af%b7%e5%9c%a8%20Light%20Mode%20%e4%b8%8b%e6%9f%a5%e7%9c%8b%ef%bc%89%ef%bc%9a%0a%26lt%3bhtml%26gt%3b%0d%26lt%3bhead%26gt%3b%0d%26lt%3btitle%26gt%3b%e9%a1%b5%e9%9d%a2%e6%a0%87%e9%a2%98%26lt%3b%2ftitle%26gt%3b%0d%26lt%3b%2fhead%26gt%3b%0d%26lt%3bbody%26gt%3b%0d%26lt%3bh1%26gt%3b%e8%bf%99%e6%98%af%e4%b8%80%e4%b8%aa%e6%a0%87%e9%a2%98%26lt%3b%2fh1%26gt%3b%0d%26lt%3bp%26gt%3b%e8%bf%99%e6%98%af%e4%b8%80%e4%b8%aa%e6%ae%b5%e8%90%bd%e3%80%82%26lt%3b%2fp%26gt%3b%0d%26lt%3bp%26gt%3b%e8%bf%99%e6%98%af%e5%8f%a6%e5%a4%96%e4%b8%80%e4%b8%aa%e6%ae%b5%e8%90%bd%e3%80%82%26lt%3b%2fp%26gt%3b%0d%26lt%3b%2fbody%26gt%3b%0d%26lt%3b%2fhtml%26gt%3b%0dHTML%20%e6%a0%87%e7%ad%be%e6%98%af%e7%94%b1%e5%b0%96%e6%8b%ac%e5%8f%b7%e5%8c%85%e5%9b%b4%e7%9a%84%e5%85%b3%e9%94%ae%e8%af%8d%ef%bc%8c%e6%af%94%e5%a6%82%20%26lt%3bhtml%26gt%3b%e3%80%82%e5%ae%83%e9%80%9a%e5%b8%b8%e6%98%af%e6%88%90%e5%af%b9%e5%87%ba%e7%8e%b0%e7%9a%84%ef%bc%8c%e6%af%94%e5%a6%82%20%26lt%3bb%26gt%3b%20%e5%92%8c%20%26lt%3b%2fb%26gt%3b%e3%80%82%e6%a0%87%e7%ad%be%e5%af%b9%e4%b8%ad%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e6%a0%87%e7%ad%be%e7%a7%b0%e4%b8%ba%20%e5%bc%80%e5%a7%8b%e6%a0%87%e7%ad%be%ef%bc%8c%e7%ac%ac%e4%ba%8c%e4%b8%aa%e6%a0%87%e7%ad%be%e7%a7%b0%e4%b8%ba%20%e7%bb%93%e6%9d%9f%e6%a0%87%e7%ad%be%e3%80%82%20%e3%80%8cHTML%20%e6%a0%87%e7%ad%be%e3%80%8d%20%e5%92%8c%20%e3%80%8cHTML%20%e5%85%83%e7%b4%a0%e3%80%8d%e9%80%9a%e5%b8%b8%e9%83%bd%e6%98%af%e6%8f%8f%e8%bf%b0%e5%90%8c%e6%a0%b7%e7%9a%84%e6%84%8f%e6%80%9d%e3%80%82%20%e6%b2%a1%e6%9c%89%e5%86%85%e5%ae%b9%e7%9a%84%20HTML%20%e5%85%83%e7%b4%a0%e8%a2%ab%e7%a7%b0%e4%b8%ba%e7%a9%ba%e5%85%83%e7%b4%a0%ef%bc%8c%e4%be%8b%e5%a6%82%20%26lt%3bbr%26gt%3b%ef%bc%88%e8%a1%a8%e7%a4%ba%e6%8d%a2%e8%a1%8c%ef%bc%89%e3%80%82%e5%9c%a8%e5%bc%80%e5%a7%8b%e6%a0%87%e7%ad%be%e4%b8%ad%e6%b7%bb%e5%8a%a0%e6%96%9c%e6%9d%a0%ef%bc%8c%e6%af%94%e5%a6%82%20%26lt%3bbr%20%2f%26gt%3b%ef%bc%8c%e6%98%af%e5%85%b3%e9%97%ad%e7%a9%ba%e5%85%83%e7%b4%a0%e7%9a%84%e6%ad%a3%e7%a1%ae%e6%96%b9%e6%b3%95%e3%80%82%201.2%20%e5%b8%b8%e8%a7%81%e7%9a%84%e9%82%a3%e4%ba%9b%e6%a0%87%e7%ad%be%201%29%20%e5%a4%a7%e6%a1%86%e6%9e%b6%20Tags%20Functions%20%26lt%3bhtml%26gt%3b%26lt%3b%2fhtml%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%95%b4%e4%b8%aa%20HTML%20%e6%96%87%e6%a1%a3%ef%bc%8c%e5%ae%83%e4%bb%ac%e4%bd%8d%e4%ba%8e%e6%9c%80%e5%a4%96%e5%9b%b4%20%26lt%3bhead%26gt%3b%26lt%3b%2fhead%26gt%3b%20%e5%8c%85%e5%90%ab%e4%ba%86%e6%89%80%e6%9c%89%e7%9a%84%e5%a4%b4%e9%83%a8%e6%a0%87%e7%ad%be%e5%85%83%e7%b4%a0%ef%bc%9b%e8%bf%99%e4%b9%8b%e4%b8%ad%e5%8f%af%e4%bb%a5%e6%8f%92%e5%85%a5%e8%84%9a%e6%9c%ac%ef%bc%88JS%ef%bc%89%2c%20%e6%a0%b7%e5%bc%8f%e6%96%87%e4%bb%b6%ef%bc%88CSS%ef%bc%89%ef%bc%8c%e5%8f%8a%e5%90%84%e7%a7%8d%20meta%20%e4%bf%a1%e6%81%af%20%26lt%3bbody%26gt%3b%26lt%3b%2fbody%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e7%9a%84%e4%b8%bb%e4%bd%93%202%29%20Header%20Tags%20Functions%20%26lt%3btitle%26gt%3b%26lt%3b%2ftitle%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e7%9a%84%e6%a0%87%e9%a2%98%ef%bc%8c%e5%b0%b1%e6%98%af%e9%80%89%e9%a1%b9%e5%8d%a1%e4%b8%8a%e7%9a%84%e7%8e%a9%e6%84%8f%e5%84%bf%20%26lt%3bstyle%26gt%3b%26lt%3b%2fstyle%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%20HTML%20%e6%96%87%e6%a1%a3%e7%9a%84%e6%a0%b7%e5%bc%8f%e5%bc%95%e7%94%a8%20%26lt%3bmeta%26gt%3b%26lt%3b%2fmeta%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e7%9a%84%e4%b8%80%e4%ba%9b%e5%9f%ba%e6%9c%ac%e7%9a%84%e5%85%83%e6%95%b0%e6%8d%ae%20%26lt%3bscript%26gt%3b%26lt%3b%2fscript%26gt%3b%20%e7%94%a8%e4%ba%8e%e5%8a%a0%e8%bd%bd%e8%84%9a%e6%9c%ac%e6%96%87%e4%bb%b6%ef%bc%88%e5%a6%82%20JavaScript%ef%bc%89%20%26lt%3blink%26gt%3b%26lt%3b%2flink%26gt%3b%20%e5%ae%9a%e4%b9%89%e4%ba%86%e6%96%87%e6%a1%a3%e4%b8%8e%e5%a4%96%e9%83%a8%e8%b5%84%e6%ba%90%e4%b9%8b%e9%97%b4%e7%9a%84%e5%85%b3%e7%b3%bb%20meta%20%e7%a4%ba%e4%be%8b%ef%bc%9a" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fbydnotes_html%2f&t=%e3%80%90%e6%9d%82%e8%ae%b0%e3%80%91%e5%89%8d%e7%ab%af%e5%88%9d%e6%8e%a2%ef%bc%9aHTML" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Sqrtyz 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

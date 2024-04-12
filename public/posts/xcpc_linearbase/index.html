@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
+        async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【算法竞赛】线性基 | Dormant Echoes</title>
+  <link rel = 'canonical' href = 'http://localhost:1313/posts/xcpc_linearbase/'>
+  <meta name="description" content="无关渴求，并非理想，这就是她的命运。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="【算法竞赛】线性基" />
+<meta property="og:description" content="问题导入 给定一个图。求一条回路使得该路径的异或和最大。
+线性基 线性基的构造
+对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。
+1for(int i = 1; i &lt;= cnt; &#43;&#43;i) { 2 LL cur = S[i]; 3 for(int k = 59; k &gt;= 0; --k) { 4 if(cur &amp; (1ll &lt;&lt; k)) { 5 if(d[k]) cur ^= d[k]; 6 else { 7 d[k] = cur; 8 break; 9 } 10 } 11 } 12 } 线性基的性质及略证
+如此构建后，线性基中的所有数满足如下性质。
+若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的最高位。这也意味着：对于所有比它小的 $d_j$，其第 $i$ 位必为零。 若 $d_i$ 为零：………… 那它就是零呗。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/xcpc_linearbase/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-01T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【算法竞赛】线性基"/>
+<meta name="twitter:description" content="问题导入 给定一个图。求一条回路使得该路径的异或和最大。
+线性基 线性基的构造
+对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。
+1for(int i = 1; i &lt;= cnt; &#43;&#43;i) { 2 LL cur = S[i]; 3 for(int k = 59; k &gt;= 0; --k) { 4 if(cur &amp; (1ll &lt;&lt; k)) { 5 if(d[k]) cur ^= d[k]; 6 else { 7 d[k] = cur; 8 break; 9 } 10 } 11 } 12 } 线性基的性质及略证
+如此构建后，线性基中的所有数满足如下性质。
+若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的最高位。这也意味着：对于所有比它小的 $d_j$，其第 $i$ 位必为零。 若 $d_i$ 为零：………… 那它就是零呗。"/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.a1f268d4a2dc126cc173c87effbb726d4e19589aba7bcecf97f1e692128187ccf19266ae1b68e794b49a0eebeda406626510ccfb7f24d86d16167e7e4a69762e.css" integrity="sha512-ofJo1KLcEmzBc8h&#43;/7tybU4ZWJq6e87Pl/HmkhKBh8zxkmauG2jnlLSaDuvtpAZiZRDM&#43;38k2G0WFn5&#43;Sml2Lg=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://localhost:1313/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://localhost:1313/posts/xcpc_bt1/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://localhost:1313/posts/xcpc_icpc2022rd/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&text=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&title=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&is_video=false&description=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&title=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&title=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&name=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba&description=%e9%97%ae%e9%a2%98%e5%af%bc%e5%85%a5%20%e7%bb%99%e5%ae%9a%e4%b8%80%e4%b8%aa%e5%9b%be%e3%80%82%e6%b1%82%e4%b8%80%e6%9d%a1%e5%9b%9e%e8%b7%af%e4%bd%bf%e5%be%97%e8%af%a5%e8%b7%af%e5%be%84%e7%9a%84%e5%bc%82%e6%88%96%e5%92%8c%e6%9c%80%e5%a4%a7%e3%80%82%0a%e7%ba%bf%e6%80%a7%e5%9f%ba%20%e7%ba%bf%e6%80%a7%e5%9f%ba%e7%9a%84%e6%9e%84%e9%80%a0%0a%e5%af%b9%e4%ba%8e%e4%b8%80%e4%b8%aa%e6%95%b0%e9%9b%86%20%24S%24%ef%bc%8c%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e7%94%a8%e4%bb%a5%e4%b8%8b%e4%bb%a3%e7%a0%81%e6%9e%84%e9%80%a0%e4%b8%80%e7%bb%84%e7%ba%bf%e6%80%a7%e5%9f%ba%20%24D%24%e3%80%82%0a1for%28int%20i%20%3d%201%3b%20i%20%26lt%3b%3d%20cnt%3b%20%2b%2bi%29%20%7b%202%20LL%20cur%20%3d%20S%5bi%5d%3b%203%20for%28int%20k%20%3d%2059%3b%20k%20%26gt%3b%3d%200%3b%20--k%29%20%7b%204%20if%28cur%20%26amp%3b%20%281ll%20%26lt%3b%26lt%3b%20k%29%29%20%7b%205%20if%28d%5bk%5d%29%20cur%20%5e%3d%20d%5bk%5d%3b%206%20else%20%7b%207%20d%5bk%5d%20%3d%20cur%3b%208%20break%3b%209%20%7d%2010%20%7d%2011%20%7d%2012%20%7d%20%e7%ba%bf%e6%80%a7%e5%9f%ba%e7%9a%84%e6%80%a7%e8%b4%a8%e5%8f%8a%e7%95%a5%e8%af%81%0a%e5%a6%82%e6%ad%a4%e6%9e%84%e5%bb%ba%e5%90%8e%ef%bc%8c%e7%ba%bf%e6%80%a7%e5%9f%ba%e4%b8%ad%e7%9a%84%e6%89%80%e6%9c%89%e6%95%b0%e6%bb%a1%e8%b6%b3%e5%a6%82%e4%b8%8b%e6%80%a7%e8%b4%a8%e3%80%82%0a%e8%8b%a5%20%24d_i%24%20%e9%9d%9e%e9%9b%b6%ef%bc%9a%24d_i%24%20%e5%9c%a8%e7%ac%ac%20%24i%24%20%e4%bd%8d%e6%98%af%20%241%24%ef%bc%8c%e8%bf%99%e4%b9%9f%e6%98%af%e5%ae%83%e7%9a%84%e6%9c%80%e9%ab%98%e4%bd%8d%e3%80%82%e8%bf%99%e4%b9%9f%e6%84%8f%e5%91%b3%e7%9d%80%ef%bc%9a%e5%af%b9%e4%ba%8e%e6%89%80%e6%9c%89%e6%af%94%e5%ae%83%e5%b0%8f%e7%9a%84%20%24d_j%24%ef%bc%8c%e5%85%b6%e7%ac%ac%20%24i%24%20%e4%bd%8d%e5%bf%85%e4%b8%ba%e9%9b%b6%e3%80%82%20%e8%8b%a5%20%24d_i%24%20%e4%b8%ba%e9%9b%b6%ef%bc%9a%e2%80%a6%e2%80%a6%e2%80%a6%e2%80%a6%20%e9%82%a3%e5%ae%83%e5%b0%b1%e6%98%af%e9%9b%b6%e5%91%97%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&t=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#问题导入">问题导入</a></li>
+        <li><a href="#线性基">线性基</a></li>
+        <li><a href="#引入问题的解">引入问题的解</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【算法竞赛】线性基
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2023-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">2023-01-01</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          4 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h3 id="问题导入">问题导入</h3>
+<p>给定一个图。求一条回路使得该路径的异或和最大。</p>
+<h3 id="线性基">线性基</h3>
+<p><strong>线性基的构造</strong></p>
+<p>对于一个数集 $S$，我们可以用以下代码构造一组线性基 $D$。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>; i <span style="color:#ff79c6">&lt;=</span> cnt; <span style="color:#ff79c6">++</span>i) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>        LL cur <span style="color:#ff79c6">=</span> S[i];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> k <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">59</span>; k <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">0</span>; <span style="color:#ff79c6">--</span>k) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>            <span style="color:#ff79c6">if</span>(cur <span style="color:#ff79c6">&amp;</span> (<span style="color:#bd93f9">1ll</span> <span style="color:#ff79c6">&lt;&lt;</span> k)) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>                <span style="color:#ff79c6">if</span>(d[k]) cur <span style="color:#ff79c6">^=</span> d[k];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>                <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>                    d[k] <span style="color:#ff79c6">=</span> cur;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>                    <span style="color:#ff79c6">break</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>                }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>            }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    }
+</span></span></code></pre></div><p><strong>线性基的性质及略证</strong></p>
+<p>如此构建后，线性基中的所有数满足如下性质。</p>
+<ol start="0">
+<li>
+<p>若 $d_i$ 非零：$d_i$ 在第 $i$ 位是 $1$，这也是它的最高位。这也意味着：对于所有比它小的 $d_j$，其第 $i$ 位必为零。
+若 $d_i$ 为零：………… 那它就是零呗。</p>
+</li>
+<li>
+<p>数集 $S$ 中的任意数将可以被 $D$ 中的若干数唯一异或表示。</p>
+</li>
+<li>
+<p>$D$ 中的任意数将可以被 $S$ 中的若干数异或表示。</p>
+</li>
+<li>
+<p>选择 $D$ 中的若干数进行异或和，结果不可能为 $0$。</p>
+</li>
+<li>
+<p>不存在一个长度更小的数集 $D$，满足上述性质。</p>
+</li>
+</ol>
+<p>性质 1 的证明提示：由上述代码可见，一个数要么在经过若干次异或后进入线性基，要么经过若干次异或后变为 $0$。“唯一”可由性质 3 推导而来。</p>
+<p>性质 2 的证明提示：考虑数学归纳。线性基中最大的数一定属于 $S$；次大的数要么属于 $S$，要么由某个属于 $S$ 中的数和最大的数经过一次异或后得来……</p>
+<p>性质 3 的证明提示：选择出的数一定有一个最大的数。这个最大的数的最高二进制位可以证明只有它自己为 $1$，其他的选择出的数该位全为 $0$。</p>
+<p>性质 4 的证明提示：考虑削减一个 $D$ 中的数 $x$。假设 $x$ 由 $S$ 中的数 $v$ 经过若干次异或插入进线性基，这意味着 $v$ 可以由 <strong>包括 $x$ 在内的</strong> 若干 $D$ 中的数异或表示。若存在一个长度更小的数集 $D$，满足上述性质，那么意味着 $v$ 可以由 <strong>不包括 $x$ 在内的</strong> 若干 $D$ 中的数异或表示。这与性质 1 矛盾。假设不成立，性质 4 成立。</p>
+<p><strong>解最大异或和</strong></p>
+<p>由于性质 0，我们可以直接贪心地找最大异或和。</p>
+<p>从高位往低位扫描，时刻记录一个 ans。若 ans 的第 $i$ 位为 $0$，则异或上一个 $d_i$。否则不异或 $d_i$。</p>
+<p>你可能会觉得——这样最大异或和不总是 11111&hellip;11 吗？事实上，不是所有的 $d_i$ 都非零哦。</p>
+<h3 id="引入问题的解">引入问题的解</h3>
+<p>随便找一棵 dfs 树，通过返祖边或者横插边构成若干个基本环。可以证明，所有的环均可以由基本环异或表示。</p>
+<p>将基本环的异或和丢进线性基，找最大异或和即可。</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writings</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#问题导入">问题导入</a></li>
+        <li><a href="#线性基">线性基</a></li>
+        <li><a href="#引入问题的解">引入问题的解</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&text=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&title=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&is_video=false&description=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba&body=Check out this article: http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&title=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&title=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&name=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba&description=%e9%97%ae%e9%a2%98%e5%af%bc%e5%85%a5%20%e7%bb%99%e5%ae%9a%e4%b8%80%e4%b8%aa%e5%9b%be%e3%80%82%e6%b1%82%e4%b8%80%e6%9d%a1%e5%9b%9e%e8%b7%af%e4%bd%bf%e5%be%97%e8%af%a5%e8%b7%af%e5%be%84%e7%9a%84%e5%bc%82%e6%88%96%e5%92%8c%e6%9c%80%e5%a4%a7%e3%80%82%0a%e7%ba%bf%e6%80%a7%e5%9f%ba%20%e7%ba%bf%e6%80%a7%e5%9f%ba%e7%9a%84%e6%9e%84%e9%80%a0%0a%e5%af%b9%e4%ba%8e%e4%b8%80%e4%b8%aa%e6%95%b0%e9%9b%86%20%24S%24%ef%bc%8c%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e7%94%a8%e4%bb%a5%e4%b8%8b%e4%bb%a3%e7%a0%81%e6%9e%84%e9%80%a0%e4%b8%80%e7%bb%84%e7%ba%bf%e6%80%a7%e5%9f%ba%20%24D%24%e3%80%82%0a1for%28int%20i%20%3d%201%3b%20i%20%26lt%3b%3d%20cnt%3b%20%2b%2bi%29%20%7b%202%20LL%20cur%20%3d%20S%5bi%5d%3b%203%20for%28int%20k%20%3d%2059%3b%20k%20%26gt%3b%3d%200%3b%20--k%29%20%7b%204%20if%28cur%20%26amp%3b%20%281ll%20%26lt%3b%26lt%3b%20k%29%29%20%7b%205%20if%28d%5bk%5d%29%20cur%20%5e%3d%20d%5bk%5d%3b%206%20else%20%7b%207%20d%5bk%5d%20%3d%20cur%3b%208%20break%3b%209%20%7d%2010%20%7d%2011%20%7d%2012%20%7d%20%e7%ba%bf%e6%80%a7%e5%9f%ba%e7%9a%84%e6%80%a7%e8%b4%a8%e5%8f%8a%e7%95%a5%e8%af%81%0a%e5%a6%82%e6%ad%a4%e6%9e%84%e5%bb%ba%e5%90%8e%ef%bc%8c%e7%ba%bf%e6%80%a7%e5%9f%ba%e4%b8%ad%e7%9a%84%e6%89%80%e6%9c%89%e6%95%b0%e6%bb%a1%e8%b6%b3%e5%a6%82%e4%b8%8b%e6%80%a7%e8%b4%a8%e3%80%82%0a%e8%8b%a5%20%24d_i%24%20%e9%9d%9e%e9%9b%b6%ef%bc%9a%24d_i%24%20%e5%9c%a8%e7%ac%ac%20%24i%24%20%e4%bd%8d%e6%98%af%20%241%24%ef%bc%8c%e8%bf%99%e4%b9%9f%e6%98%af%e5%ae%83%e7%9a%84%e6%9c%80%e9%ab%98%e4%bd%8d%e3%80%82%e8%bf%99%e4%b9%9f%e6%84%8f%e5%91%b3%e7%9d%80%ef%bc%9a%e5%af%b9%e4%ba%8e%e6%89%80%e6%9c%89%e6%af%94%e5%ae%83%e5%b0%8f%e7%9a%84%20%24d_j%24%ef%bc%8c%e5%85%b6%e7%ac%ac%20%24i%24%20%e4%bd%8d%e5%bf%85%e4%b8%ba%e9%9b%b6%e3%80%82%20%e8%8b%a5%20%24d_i%24%20%e4%b8%ba%e9%9b%b6%ef%bc%9a%e2%80%a6%e2%80%a6%e2%80%a6%e2%80%a6%20%e9%82%a3%e5%ae%83%e5%b0%b1%e6%98%af%e9%9b%b6%e5%91%97%e3%80%82" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fxcpc_linearbase%2f&t=%e3%80%90%e7%ae%97%e6%b3%95%e7%ab%9e%e8%b5%9b%e3%80%91%e7%ba%bf%e6%80%a7%e5%9f%ba" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Sqrtyz 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writings</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>
