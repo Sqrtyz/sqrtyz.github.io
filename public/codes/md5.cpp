@@ -11,7 +11,7 @@ typedef unsigned int ulong32; /* here we force ulong32 to be 32-bit. */
 
 typedef struct _MD5_CTX
 {
-   ulong32  state[4]; /* 128位摘要? */
+   ulong32  state[4]; /* 128位摘要 */
    ulong32  count[2]; /* 已处理的报文的二进制位数,最大值=2^64-1 */
    unsigned char  data[64]; /* 64字节message块 */
 } MD5_CTX;
