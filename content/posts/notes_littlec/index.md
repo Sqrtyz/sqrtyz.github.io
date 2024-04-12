@@ -233,7 +233,7 @@ date: 2023-09-01
         int x, y;
     };
     int main() {
-        struct A a[2] = {{1, 2}, {3, 4}};
+        struct A a[2] = { {1, 2}, {3, 4} };
         printf("%d %d %d %d\n", a[0].x, a[0].y, a[1].x, a[1].y);
         // Output: 1 2 3 4
     }
