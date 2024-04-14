@@ -171,7 +171,7 @@ $m$ 次操作累加，得 $\sum\limits_{l=1}^m F(l) + \varphi(D_m) - \varphi(D_0
 
 + 基本存放方法
 
-    ![ads-invfile-1](images/ads-invfile-1.png)
+    ![adsinvfile-1](images/adsinvfile-1.png)
 
     查找时，例如想找 silver truck，只需要将 10 和 11 号的 Posting List 取并。图中取并后剩下 `<1,3>`，说明检索结果为 1, 3 两篇文章。
 
