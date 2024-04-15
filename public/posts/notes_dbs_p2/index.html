@@ -2,7 +2,7 @@
 
 <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
         async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], ['\\(','\\)']],
@@ -209,10 +209,14 @@ blob: binary large object &ndash; object is a large collection of uninterpreted 
         <li><a href="#embedded-sql嵌入式-sql">Embedded SQL（嵌入式 SQL）</a></li>
       </ul>
     </li>
-    <li><a href="#lec-5-e-r-model">Lec 5. E-R Model</a>
+    <li><a href="#lecture-5-e-r-model">Lecture 5. E-R Model</a>
       <ul>
         <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#e-r-example">E-R Example</a></li>
+        <li><a href="#e-r-diagram">E-R Diagram</a></li>
+        <li><a href="#weak-entity-sets">Weak Entity Sets</a></li>
+        <li><a href="#an-e-r-example">An E-R Example</a></li>
+        <li><a href="#扩展-e-r-模型性质">扩展 E-R 模型性质</a></li>
+        <li><a href="#将-e-r-模型转化为表格">将 E-R 模型转化为表格</a></li>
       </ul>
     </li>
   </ul>
@@ -240,7 +244,7 @@ blob: binary large object &ndash; object is a large collection of uninterpreted 
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          11 minute read
+          18 minute read
         </div>
         
         
@@ -543,7 +547,7 @@ existing data.</li>
 </li>
 </ul>
 <hr>
-<h2 id="lec-5-e-r-model">Lec 5. E-R Model</h2>
+<h2 id="lecture-5-e-r-model">Lecture 5. E-R Model</h2>
 <h3 id="introduction">Introduction</h3>
 <ul>
 <li>
@@ -551,10 +555,143 @@ existing data.</li>
 <p>顾名思义，E-R Model 引入了「实体」的概念，将部分表格归入「描述实体」的范畴。回顾之前一张 Relation Model 用过的图：</p>
 <p><img src="images/dbs-3.png" alt="dbs-3"></p>
 <p>比如对于 borrower 表格，在 Relation Model 中它对应一个关系，在 E-R Model 中它也对应一个关系；但对于 customer 表格，在 Relation Model 中它对应一个关系，在 E-R Model 中它则对应一个实体。</p>
-<p>E-R Model 更为符合语义上的直觉。</p>
+<p>E-R Model 更为符合语义上的直觉。<del>其实感觉都挺迷惑的。</del></p>
+</li>
+<li>
+<p>Entities 实体</p>
+<p>一个实体具有一些 Attributes，而 Attributes 可以如下分类：</p>
+<ul>
+<li>
+<p>Simple Attributes vs. Composite Attributes (简单和复合属性)</p>
+  <p><img src="images/dbs-23.png" alt="dbs-23" width="70%"></p>
+<p>如上图，复合属性可以被拆成若干个子属性。例如 sex 是简单属性，而 name 是复合属性。</p>
+</li>
+<li>
+<p>Single-valued vs. multi-valued attributes (单值和多值属性)</p>
+<p>例如，phone-numbers 可以是多值属性。</p>
+</li>
+<li>
+<p>Derived Attributes (派生属性)</p>
+<p>派生属性指的是一个属性可以被其他 <strong>已存在的属性计算得出</strong>。例如，当 birth date 已知，则 age 为派生属性。</p>
 </li>
 </ul>
-<h3 id="e-r-example">E-R Example</h3>
+</li>
+<li>
+<p>Relationship Set 联系集</p>
+<p>一个联系集表示二个或多个实体集之间的关联。</p>
+<p>正式定义：对于超过 $n \ge 2$ 个实体集，我们定义一个它们之间的一个联系集为</p>
+<p>$$rs = \{(e_1,e_2,\cdots,e_n) \text{ where } e_1 \in E_1, e_2 \in E_2, \cdots, e_n \in E_n \}$$</p>
+<p>其中 $(e_1, e_2, \cdots, e_n)$ 称作一个 relationship, $E_i$ 是实体集。</p>
+<p>定义一个联系集的度数 (degree) 为其链接的实体集数目。</p>
+</li>
+</ul>
+<h3 id="e-r-diagram">E-R Diagram</h3>
+<p>接下来通过 E-R Diagram 来更深刻地认识 E-R 模型。</p>
+<ol start="0">
+<li>
+<p>基本表示方法</p>
+<p>椭圆表示属性、矩形表示实体、菱形表示关系。</p>
+</li>
+<li>
+<p>E-R Diagram and Attributes</p>
+<p>对于一个实体，我们通过下图来列举其属性。下划线表示主键。</p>
+ <p><img src="images/dbs-24.png" alt="dbs-24" width="70%"></p>
+<p>对于一个关系，有的时候它会牵一个属性。我们使用下图方式表示：</p>
+ <p><img src="images/dbs-25.png" alt="dbs-25" width="80%"></p>
+</li>
+<li>
+<p>E-R Diagram and Relationship Set</p>
+<ul>
+<li>
+<p>自环联系集：</p>
+<p>在具有特殊意义时，一个实体集可以和自身产生关系。</p>
+  <p><img src="images/dbs-26.png" alt="dbs-26" width="70%"></p>
+</li>
+<li>
+<p>考虑映射数目（一对一 / 一对多 / 多对多）：</p>
+  <p><img src="images/dbs-27.png" alt="dbs-27" width="90%"></p>
+</li>
+<li>
+<p>全参与和部分参与：</p>
+<p>全参与说明对应的那一侧都在 Relationship Set 中至少出现过一次。部分参与则无此限制。</p>
+  <p><img src="images/dbs-28.png" alt="dbs-28" width="90%"></p>
+</li>
+<li>
+<p>Tips | Converting Non-Binary Relationships to Binary Form</p>
+<p>有的时候，非三连接联系集可以拆成若干个双连接联系集。当然大多数时候没有对错之分。</p>
+  <p><img src="images/dbs-29.png" alt="dbs-29" width="70%"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="weak-entity-sets">Weak Entity Sets</h3>
+<p>基本定义：没有主键的实体集称作 <strong>弱实体集</strong>。它需要依赖于其它实体集存在。</p>
+<p>例如，下图中 section 是一个弱实体集。其中画下划虚线的称作 Discriminator (or Partial Key)，当 Discriminator 和其所依赖的实体集的 Primary Key 发生组合时，将可以在弱实体集中进行唯一的区分（发挥主键作用）。同时，弱实体集和其依赖的实体集之间的关系菱形需要用双实线包围。</p>
+<p><img src="images/dbs-30.png" alt="dbs-30" width="70%"></p>
+<p>section 被作为弱实体是因为它可能重复。例如，COD 课和 DBS 课都在 2024 春学期开课，同时分别具有 2 / 3 个 Section。那么在 section 中就会同时具有如下实体：</p>
+<pre tabindex="0"><code>(1, spring, 2024)
+(2, spring, 2024)
+(1, spring, 2024)
+(2, spring, 2024)
+(3, spring, 2024)
+</code></pre><p>必须要和 <code>course_id</code> 发生组合后，才能唯一区分：</p>
+<pre tabindex="0"><code>(COD, 1, spring, 2024)
+(COD, 2, spring, 2024)
+(DBS, 1, spring, 2024)
+(DBS, 2, spring, 2024)
+(DBS, 3, spring, 2024)
+</code></pre><p>可能的疑惑 1：为什么 section 中不直接存 <code>(1, spring, 2024)</code>，<code>(2, spring, 2024)</code> 和 <code>(3, spring, 2024)</code>？这是因为 section 中的实体有其 <strong>意义</strong>（品一下，结合 <code>course_id + section</code>），如果删去重复部分的话则会失去对应的意义，也难以恢复和 course 实体的组合（比如就不确定 COD 有几个 section 了）。</p>
+<p>可能的疑惑 2：为什么不直接把 section 存在 course 里面？这是因为 course 表格也有其意义，比如我只希望调用课程信息，两实体合在一起会产生很多的信息冗余。</p>
+<h3 id="an-e-r-example">An E-R Example</h3>
+<p><img src="images/dbs-31.png" alt="dbs-31"></p>
+<h3 id="扩展-e-r-模型性质">扩展 E-R 模型性质</h3>
+<ol>
+<li>
+<p>Specialization</p>
+<p>类似父类和子类。</p>
+ <p><img src="images/dbs-32.png" alt="dbs-32" width="40%"></p>
+<p>注意右上那种箭头表示一个人可以同时是 employee &amp; student；左下那种箭头表示一个 employee 不能同时作为 instructor / secretary 存在。</p>
+<p>此外还有完全泛化 / 部分泛化的定义。字面意思很好理解。</p>
+ <p><img src="images/dbs-33.png" alt="dbs-33" width="50%"></p>
+</li>
+<li>
+<p>Aggregation</p>
+<p>左边 manager 同时 manages 三个，太麻烦了。所以搞成右边的格式——</p>
+ <p><img src="images/dbs-34.png" alt="dbs-34" width="100%"></p>
+</li>
+</ol>
+<h3 id="将-e-r-模型转化为表格">将 E-R 模型转化为表格</h3>
+<ul>
+<li>
+<p>基本方法</p>
+<p>实体转表格，联系集转表格。</p>
+<p>实体的属性有的是复合 / 多值的，这些都需要展开。不过，另外一种处理方法是用多个表格描述一个实体。</p>
+<p>联系集则只需要把 attrs 设置成所联系的实体集的主键。此外还要记得带上那些绑定在联系集上面的属性。</p>
+</li>
+<li>
+<p>处理弱实体</p>
+<p>弱实体也需要出一张表格，将其所依赖的强实体的 Primary Key 和弱实体的 Discriminator 联合一下作为 attrs 即可。</p>
+</li>
+<li>
+<p>缩表</p>
+<ol>
+<li>
+<p>对 1-n 联系，可将联系所对应的表，合并到对应「多」端实体的表中。</p>
+ <p><img src="images/dbs-35.png" alt="dbs-35" width="100%"></p>
+<p>当然，对 1-1 联系，合并到哪一侧都是可以的。</p>
+</li>
+<li>
+<p>联系弱实体集及其标识性实体集的联系集对应的表是冗余的，即对应 identifying relationship 的表是多余的。</p>
+ <p><img src="images/dbs-36.png" alt="dbs-36" width="100%"></p>
+</li>
+</ol>
+</li>
+<li>
+<p>处理泛化</p>
+  <p><img src="images/dbs-37.png" alt="dbs-37" width="50%"></p>
+<p>两种处理方式都是允许的。上面的信息更简洁，下面的话在特定情况查询更方便。</p>
+</li>
+</ul>
 
     </div>
   </article>
@@ -596,10 +733,14 @@ existing data.</li>
         <li><a href="#embedded-sql嵌入式-sql">Embedded SQL（嵌入式 SQL）</a></li>
       </ul>
     </li>
-    <li><a href="#lec-5-e-r-model">Lec 5. E-R Model</a>
+    <li><a href="#lecture-5-e-r-model">Lecture 5. E-R Model</a>
       <ul>
         <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#e-r-example">E-R Example</a></li>
+        <li><a href="#e-r-diagram">E-R Diagram</a></li>
+        <li><a href="#weak-entity-sets">Weak Entity Sets</a></li>
+        <li><a href="#an-e-r-example">An E-R Example</a></li>
+        <li><a href="#扩展-e-r-模型性质">扩展 E-R 模型性质</a></li>
+        <li><a href="#将-e-r-模型转化为表格">将 E-R 模型转化为表格</a></li>
       </ul>
     </li>
   </ul>

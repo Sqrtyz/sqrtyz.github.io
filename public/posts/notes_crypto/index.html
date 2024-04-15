@@ -2,7 +2,7 @@
 
 <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
         async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-mml-chtml.js">
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], ['\\(','\\)']],
@@ -437,8 +437,8 @@ D = D + D&#39;
 <ul>
 <li>
 <p>Rainbow Table 碰撞 MD5</p>
-<p>咕咕</p>
-</li>
+<pre tabindex="0"><code>TODO
+</code></pre></li>
 </ul>
 <h3 id="sha-1">SHA-1</h3>
 <p>咕咕咕</p>
@@ -454,7 +454,7 @@ D = D + D&#39;
 <li>
 <p>CBC（密码块链接模式）</p>
 <p><img src="images/crypto-3.png" alt="crypto-3"></p>
-<p><img src="images/crypto-4.png" alt="crypto-4"></p>
+ <p><img src="images/crypto-4.png" alt="crypto-4" width="60%"></p>
 <p>CBC 加密过程：$C_j = E_k(P_j \oplus C_{j-1})$；</p>
 <p>CBC 解密过程：$P_j = D_k(C_j) \oplus C_{j-1}$。</p>
 <p>CBC 模式的特点是：当前块的密文与前一块的密文有关、加密过程只能串行处理、解密过程可以并行处理。</p>
@@ -480,8 +480,9 @@ D = D + D&#39;
 </li>
 </ol>
 <h3 id="流密码-rc4">流密码 (RC4)</h3>
-<p>咕咕咕</p>
-<h3 id="des">DES</h3>
+<pre tabindex="0"><code>TODO
+</code></pre><h3 id="des">DES</h3>
+<p><img src="images/crypto-6.png" alt="crypto-6" width="80%"></p>
 <p>DES 全称 Data Encryption Standard。<a href="https://www.ruanx.net/des/">这篇文章</a> 写的非常好。下面补充一些文章中没有详细说明的问题：</p>
 <ol>
 <li>
@@ -491,10 +492,22 @@ D = D + D&#39;
 </li>
 <li>
 <p>差分密码破解</p>
-</li>
+<p>差分密码分析最初是针对 DES 提出的一种攻击方法。它的目标是 <strong>已知明文和对应密文的情况下破解密钥</strong>。它虽然未能破译 16 轮的 DES，但是破译轮数低的 DES 是很成功的。接下来将以三轮为例。</p>
+<p>考虑三轮 DES，假定最后一轮不换（回顾上图）。</p>
+<pre tabindex="0"><code>TODO
+</code></pre></li>
+<li>
+<p>三重 DES</p>
+<p>普通的 DES 可以使用 Meet in Middle 攻击：</p>
+<pre tabindex="0"><code>TODO
+</code></pre><p>所以引出三重 DES：$p$ 表示明文，$c$ 表示密文。</p>
+<pre tabindex="0"><code>c = E(D(E(p, k1), k2), k3); 
+p = D(E(D(c, k3), k2), k1); 
+</code></pre></li>
 <li>
 <p>代码细节分析</p>
-</li>
+<pre tabindex="0"><code>TODO
+</code></pre></li>
 </ol>
 <h3 id="aes">AES</h3>
 

@@ -10,7 +10,9 @@ date: 2024-01-01
 
     设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。
 
-    例如，$r=\{(Bob,17),(Alice,18),(Gino,21)\}$，其中 $D_1=\{Alice,Bob,Gino\}, D_2 = \{1,2,\cdots,100\}$。
+    例如，$r=\\{(Bob,17),(Alice,18),(Gino,21)\\}$。
+    
+    其中 $D_1=\\{Alice,Bob,Gino\\}, D_2 = \\{1,2,\cdots,100\\}$。
 
     注意这里的「关系」和离散数学中的「关系」没有关系。
 
@@ -70,7 +72,7 @@ date: 2024-01-01
 
     + Cartesian-Product 笛卡尔积
 
-      $r \times s = \{ \{tq \} \ | \ t \in r \land  q \in s \}$
+      $r \times s = \\{ \\{tq \\} \ | \ t \in r \land  q \in s \\}$
 
     + Rename 改名
 

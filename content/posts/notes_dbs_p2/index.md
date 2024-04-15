@@ -347,7 +347,7 @@ A language in which SQL queries are embedded is referred to as a **Host language
 ---
 
 
-## Lec 5. E-R Model
+## Lecture 5. E-R Model
 
 ### Introduction
 
@@ -359,7 +359,167 @@ A language in which SQL queries are embedded is referred to as a **Host language
 
     比如对于 borrower 表格，在 Relation Model 中它对应一个关系，在 E-R Model 中它也对应一个关系；但对于 customer 表格，在 Relation Model 中它对应一个关系，在 E-R Model 中它则对应一个实体。
 
-    E-R Model 更为符合语义上的直觉。
+    E-R Model 更为符合语义上的直觉。~~其实感觉都挺迷惑的。~~
 
-### E-R Example
++ Entities 实体
 
+    一个实体具有一些 Attributes，而 Attributes 可以如下分类：
+
+    + Simple Attributes vs. Composite Attributes (简单和复合属性)
+
+        <p><img src="images/dbs-23.png" alt="dbs-23" width="70%"></p>
+
+       如上图，复合属性可以被拆成若干个子属性。例如 sex 是简单属性，而 name 是复合属性。
+ 
+    + Single-valued vs. multi-valued attributes (单值和多值属性)
+    
+        例如，phone-numbers 可以是多值属性。
+
+    + Derived Attributes (派生属性)
+
+        派生属性指的是一个属性可以被其他 **已存在的属性计算得出**。例如，当 birth date 已知，则 age 为派生属性。
+
++ Relationship Set 联系集
+
+    一个联系集表示二个或多个实体集之间的关联。
+    
+    正式定义：对于超过 $n \ge 2$ 个实体集，我们定义一个它们之间的一个联系集为
+
+    $$rs = \\{(e_1,e_2,\cdots,e_n) \text{ where } e_1 \in E_1, e_2 \in E_2, \cdots, e_n \in E_n \\}$$
+
+    其中 $(e_1, e_2, \cdots, e_n)$ 称作一个 relationship, $E_i$ 是实体集。
+
+    定义一个联系集的度数 (degree) 为其链接的实体集数目。
+
+### E-R Diagram
+
+接下来通过 E-R Diagram 来更深刻地认识 E-R 模型。
+
+0. 基本表示方法
+
+    椭圆表示属性、矩形表示实体、菱形表示关系。
+
+1. E-R Diagram and Attributes
+
+    对于一个实体，我们通过下图来列举其属性。下划线表示主键。
+
+    <p><img src="images/dbs-24.png" alt="dbs-24" width="70%"></p>
+
+    对于一个关系，有的时候它会牵一个属性。我们使用下图方式表示：
+
+    <p><img src="images/dbs-25.png" alt="dbs-25" width="80%"></p>
+
+2. E-R Diagram and Relationship Set
+
+    + 自环联系集：
+
+        在具有特殊意义时，一个实体集可以和自身产生关系。
+
+        <p><img src="images/dbs-26.png" alt="dbs-26" width="70%"></p>
+
+    + 考虑映射数目（一对一 / 一对多 / 多对多）：
+
+        <p><img src="images/dbs-27.png" alt="dbs-27" width="90%"></p>
+
+    + 全参与和部分参与：
+
+        全参与说明对应的那一侧都在 Relationship Set 中至少出现过一次。部分参与则无此限制。
+
+        <p><img src="images/dbs-28.png" alt="dbs-28" width="90%"></p>
+
+    + Tips | Converting Non-Binary Relationships to Binary Form
+
+        有的时候，非三连接联系集可以拆成若干个双连接联系集。当然大多数时候没有对错之分。
+
+        <p><img src="images/dbs-29.png" alt="dbs-29" width="70%"></p>
+
+### Weak Entity Sets
+
+基本定义：没有主键的实体集称作 **弱实体集**。它需要依赖于其它实体集存在。
+
+例如，下图中 section 是一个弱实体集。其中画下划虚线的称作 Discriminator (or Partial Key)，当 Discriminator 和其所依赖的实体集的 Primary Key 发生组合时，将可以在弱实体集中进行唯一的区分（发挥主键作用）。同时，弱实体集和其依赖的实体集之间的关系菱形需要用双实线包围。
+
+<p><img src="images/dbs-30.png" alt="dbs-30" width="70%"></p>
+
+section 被作为弱实体是因为它可能重复。例如，COD 课和 DBS 课都在 2024 春学期开课，同时分别具有 2 / 3 个 Section。那么在 section 中就会同时具有如下实体：
+
+```
+(1, spring, 2024)
+(2, spring, 2024)
+(1, spring, 2024)
+(2, spring, 2024)
+(3, spring, 2024)
+```
+
+必须要和 `course_id` 发生组合后，才能唯一区分：
+
+```
+(COD, 1, spring, 2024)
+(COD, 2, spring, 2024)
+(DBS, 1, spring, 2024)
+(DBS, 2, spring, 2024)
+(DBS, 3, spring, 2024)
+```
+
+可能的疑惑 1：为什么 section 中不直接存 `(1, spring, 2024)`，`(2, spring, 2024)` 和 `(3, spring, 2024)`？这是因为 section 中的实体有其 **意义**（品一下，结合 `course_id + section`），如果删去重复部分的话则会失去对应的意义，也难以恢复和 course 实体的组合（比如就不确定 COD 有几个 section 了）。
+
+可能的疑惑 2：为什么不直接把 section 存在 course 里面？这是因为 course 表格也有其意义，比如我只希望调用课程信息，两实体合在一起会产生很多的信息冗余。
+
+
+### An E-R Example
+
+<p><img src="images/dbs-31.png" alt="dbs-31"></p>
+
+### 扩展 E-R 模型性质
+
+1. Specialization
+
+    类似父类和子类。
+
+    <p><img src="images/dbs-32.png" alt="dbs-32" width="40%"></p>
+
+    注意右上那种箭头表示一个人可以同时是 employee & student；左下那种箭头表示一个 employee 不能同时作为 instructor / secretary 存在。
+
+    此外还有完全泛化 / 部分泛化的定义。字面意思很好理解。
+
+    <p><img src="images/dbs-33.png" alt="dbs-33" width="50%"></p>
+
+2. Aggregation
+
+    左边 manager 同时 manages 三个，太麻烦了。所以搞成右边的格式——
+
+    <p><img src="images/dbs-34.png" alt="dbs-34" width="100%"></p>
+
+
+
+### 将 E-R 模型转化为表格
+
++ 基本方法
+
+    实体转表格，联系集转表格。
+
+    实体的属性有的是复合 / 多值的，这些都需要展开。不过，另外一种处理方法是用多个表格描述一个实体。
+
+    联系集则只需要把 attrs 设置成所联系的实体集的主键。此外还要记得带上那些绑定在联系集上面的属性。
+
++ 处理弱实体
+
+    弱实体也需要出一张表格，将其所依赖的强实体的 Primary Key 和弱实体的 Discriminator 联合一下作为 attrs 即可。
+
++ 缩表
+
+    1. 对 1-n 联系，可将联系所对应的表，合并到对应「多」端实体的表中。
+
+        <p><img src="images/dbs-35.png" alt="dbs-35" width="100%"></p>
+
+        当然，对 1-1 联系，合并到哪一侧都是可以的。
+
+    2. 联系弱实体集及其标识性实体集的联系集对应的表是冗余的，即对应 identifying relationship 的表是多余的。
+
+        <p><img src="images/dbs-36.png" alt="dbs-36" width="100%"></p>
+
++ 处理泛化
+
+    <p><img src="images/dbs-37.png" alt="dbs-37" width="50%"></p>
+
+    两种处理方式都是允许的。上面的信息更简洁，下面的话在特定情况查询更方便。

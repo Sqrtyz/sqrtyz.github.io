@@ -174,7 +174,10 @@ md5 目前已有碰撞方法。即有办法给出一组 $a,b$，使得 $md5(a)=m
 
 + Rainbow Table 碰撞 MD5
 
-    咕咕
+    
+    ```
+    TODO
+    ```  
 
 ### SHA-1
 
@@ -196,7 +199,7 @@ md5 目前已有碰撞方法。即有办法给出一组 $a,b$，使得 $md5(a)=m
 
     ![crypto-3](images/crypto-3.png)
 
-    ![crypto-4](images/crypto-4.png)
+    <p><img src="images/crypto-4.png" alt="crypto-4" width="60%"></p>
 
     CBC 加密过程：$C_j = E_k(P_j \oplus C_{j-1})$；
     
@@ -229,9 +232,14 @@ md5 目前已有碰撞方法。即有办法给出一组 $a,b$，使得 $md5(a)=m
 
 ### 流密码 (RC4)
 
-咕咕咕
+
+```
+TODO
+```  
 
 ### DES
+
+<p><img src="images/crypto-6.png" alt="crypto-6" width="80%"></p>
 
 DES 全称 Data Encryption Standard。[这篇文章](https://www.ruanx.net/des/) 写的非常好。下面补充一些文章中没有详细说明的问题：
 
@@ -243,8 +251,36 @@ DES 全称 Data Encryption Standard。[这篇文章](https://www.ruanx.net/des/)
 
 2. 差分密码破解
 
-3. 代码细节分析
+    差分密码分析最初是针对 DES 提出的一种攻击方法。它的目标是 **已知明文和对应密文的情况下破解密钥**。它虽然未能破译 16 轮的 DES，但是破译轮数低的 DES 是很成功的。接下来将以三轮为例。
 
+    考虑三轮 DES，假定最后一轮不换（回顾上图）。
+
+    
+
+    ```
+    TODO
+    ```   
+
+3. 三重 DES
+
+    普通的 DES 可以使用 Meet in Middle 攻击：
+
+    ```
+    TODO
+    ```   
+
+    所以引出三重 DES：$p$ 表示明文，$c$ 表示密文。
+    
+    ```
+    c = E(D(E(p, k1), k2), k3); 
+    p = D(E(D(c, k3), k2), k1); 
+    ```
+
+4. 代码细节分析
+    
+    ```
+    TODO
+    ```  
 
 
 ### AES
