@@ -11,7 +11,7 @@ date: 2024-01-01
 
 #### 1.1 自信息
 
-对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X=x_k\}$ 的 **自信息** 定义为 
+对于概率空间 $\\{X,\mathcal{X},p(x)\\}$，事件 $\\{X=x_k\\}$ 的 **自信息** 定义为 
 
 $$I(x_k)=-\log_ap(x_k)$$
 
@@ -29,19 +29,19 @@ $$I(x_k)=-\log_ap(x_k)$$
 
 + 条件自信息
 
-  对于二维随机变量概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 发生的条件下事件 $\{X=x_k\}$ 的 **条件自信息** 定义为
+  对于二维随机变量概率空间 $\\{(X,Y),\mathcal{X \times Y}, p(x,y)\\}$，事件 $\\{Y=y_j\\}$ 发生的条件下事件 $\\{X=x_k\\}$ 的 **条件自信息** 定义为
 
   $$I(x_k|y_j)=-\log p(x_k|y_j)$$
 
-  本质是已知 $\{Y=y_j\}$ 发生的情况下，突然 $\{X=x_k\}$ 又发生了，这件事情所提供给观察者的信息量。
+  本质是已知 $\\{Y=y_j\\}$ 发生的情况下，突然 $\\{X=x_k\\}$ 又发生了，这件事情所提供给观察者的信息量。
 
 + 互信息
 
-  概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 **互信息** 定义为
+  概率空间 $\\{(X,Y),\mathcal{X \times Y}, p(x,y)\\}$，事件 $\\{Y=y_j\\}$ 与事件 $\\{X=x_k\\}$ 的 **互信息** 定义为
 
   $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)$$
 
-  本质是事件 $\{Y=y_j\}$ 发生后对 $\{X=x_k\}$ 的不确定性的降低。
+  本质是事件 $\\{Y=y_j\\}$ 发生后对 $\\{X=x_k\\}$ 的不确定性的降低。
 
   互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。
 
@@ -49,7 +49,7 @@ $$I(x_k)=-\log_ap(x_k)$$
 
 + 联合自信息
 
-  概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 **联合自信息** 定义为
+  概率空间 $\\{(X,Y),\mathcal{X \times Y}, p(x,y)\\}$，事件 $\\{Y=y_j\\}$ 与事件 $\\{X=x_k\\}$ 的 **联合自信息** 定义为
 
   $$I(x_k,y_j)= - \log p(x_k,y_j)$$
 
@@ -63,17 +63,17 @@ $$I(x_k)=-\log_ap(x_k)$$
 
 + 联合互信息
 
-  联合事件 $\{Y=y,Z=z\}$ 和事件 $\{X=x\}$ 之间的互信息为
+  联合事件 $\\{Y=y,Z=z\\}$ 和事件 $\\{X=x\\}$ 之间的互信息为
 
   $$I(x;y,z)= - \log p(x) + \log p(x|y,z)$$
 
-  其含义为 $\{Y=y,Z=z\}$ 联合提供给 $\{X=x\}$ 的信息量。
+  其含义为 $\\{Y=y,Z=z\\}$ 联合提供给 $\\{X=x\\}$ 的信息量。
 
 + 事件联合互信息的链式法则
 
   $$I(x;y,z)=I(x;y)+I(x;z|y)$$
 
-  事件 $\{Y=y,Z=z\}$ 联合提供给 $\{X=x\}$ 的信息量等于【$\{Y=y\}$ 提供给 $\{X=x\}$ 的信息量】加上【$\{Y=y\}$ 已知情况下，$\{Z=z\}$ 提供给 $\{X=x\}$ 的信息量】。
+  事件 $\\{Y=y,Z=z\\}$ 联合提供给 $\\{X=x\\}$ 的信息量等于【$\\{Y=y\\}$ 提供给 $\\{X=x\\}$ 的信息量】加上【$\\{Y=y\\}$ 已知情况下，$\\{Z=z\\}$ 提供给 $\\{X=x\\}$ 的信息量】。
 
   ![it-1](images/it-1.png)
 
@@ -85,7 +85,7 @@ $$
 H(X)=E[I(X)]=\sum_{x \in \mathcal{X}} p(x) I(x)=-\sum_{x \in \mathcal{X}} p(x) \log p(x)
 $$
 
-【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 $\{X=x\}$。
+【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 $\\{X=x\\}$。
 
 【例子】对于伯努利分布 $X \sim B(p)$，$H(X) = -p \log p - (1-p) \log (1-p)$。当 $p=0 / 1$ 时，熵为 $0$；当 $p=0.5$ 时，熵取到最大值。
 
@@ -167,7 +167,7 @@ $$
 
   $$H(X|Y) \leq H(X)$$
 
-  注意 $Y$ 不是已知的。当 $\{Y=y\}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。
+  注意 $Y$ 不是已知的。当 $\\{Y=y\\}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。
 
   ![it-7](images/it-7.png)
 
@@ -225,9 +225,9 @@ $$I(x;y)=I(x)-I(x|y)= - \log p(x) + \log p(x|y) = \log \frac{p(x|y)}{p(x)}$$
 
 #### 1.9 关于疑义度的 Fano 不等式
 
-定义在相同字符表 $\{0,1,\cdots,K\}$ 上的两个随机变量 $X$ 和 $\hat{X}$，其中 $\hat{X}$ 是对 $X$ 的某种估计。估计错误概率定义为
+定义在相同字符表 $\\{0,1,\cdots,K\\}$ 上的两个随机变量 $X$ 和 $\hat{X}$，其中 $\hat{X}$ 是对 $X$ 的某种估计。估计错误概率定义为
 
-$$P_E=\sum\limits_{i=0}^{K-1}\sum\limits_{j=0,j \neq i}^{K-1} P \{X=i,\hat{X}=j\}$$
+$$P_E=\sum\limits_{i=0}^{K-1}\sum\limits_{j=0,j \neq i}^{K-1} P \\{X=i,\hat{X}=j\\}$$
 
 则 $\hat{X}$ 已知条件下 $X$ 的 **疑义度** 满足表达式
 
@@ -320,7 +320,7 @@ $$H(X|\hat{X})\le H(P_E,1-P_E)+P_E \log (K-1)$$
 
 对于 **任意** 的 $n$，任意的 $t_1, t_2, \cdots, t_n \in T$ 和 $h$，
 
-若 $(X(t_1),X(t_2),\cdots,X(t_n))$ 与 $(X(t_1+h),X(t_2+h),\cdots,X(t_n+h))$ 具有同样的分布，则称随机过程 $\{X(t)\}$ 是平稳随机过程。
+若 $(X(t_1),X(t_2),\cdots,X(t_n))$ 与 $(X(t_1+h),X(t_2+h),\cdots,X(t_n+h))$ 具有同样的分布，则称随机过程 $\\{X(t)\\}$ 是平稳随机过程。
 
 + 平稳随机过程的性质
 
@@ -390,13 +390,13 @@ $$H(X|\hat{X})\le H(P_E,1-P_E)+P_E \log (K-1)$$
 #### 3.3 熵速率及其应用
 
 回顾熵速率的定义，
-
-$$H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)= \lim\limits_{n \to \infty} H(X_n|X_{n-1},X_{n-2}, \cdots, X_1) \newline
-
-\leq H\left(X_N \mid X_{N-1} X_{N-2} \cdots X_2 X_1\right) \newline
-
-\leq \cdots \leq H\left(X_2 \mid X_1\right) \leq H\left(X_2\right) \leq \log K$$
-
+$$
+  \begin{aligned}
+  H_\infty(X) & = \lim\limits_{n \to \infty} H_n(X)= \lim\limits_{n \to \infty} H(X_n|X_{n-1},X_{n-2}, \cdots, X_1) \newline
+  & \leq H(X_N \mid X_{N-1} X_{N-2} \cdots X_2 X_1) \newline
+  & \leq \cdots \leq H(X_2 \mid X_1) \leq H(X_2) \leq \log K
+  \end{aligned}
+  $$
 
 可以看到，熵速率 $H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)$ 基本是小于单字符的熵值 $\log K$ 的。据此，我们定义
 
@@ -456,13 +456,13 @@ $$H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)= \lim\limits_{n \to \infty} H(
 
 #### 4.1 引入：离散无记忆信源 (DMS) 的编码
 
-考虑字符表 $\mathcal{A} = \{a_1,a_2,\cdots,a_K\}$，其概率分布 $\mathcal{P} = \{p_1,p_2,\cdots,p_K\}$。现在输出长度为 $L$ 的消息序列 $u^L=\{u_1,u_2,\cdots,u_L\}$，而我们需要对其进行编码。
+考虑字符表 $\mathcal{A} = \\{a_1,a_2,\cdots,a_K\\}$，其概率分布 $\mathcal{P} = \\{p_1,p_2,\cdots,p_K\\}$。现在输出长度为 $L$ 的消息序列 $u^L=\\{u_1,u_2,\cdots,u_L\\}$，而我们需要对其进行编码。
 
-考虑这样一种编码：编码字符表 $\mathcal{B} = \{b_1,b_2,\cdots,b_D\}$，编码长度为 $N$。显然，要实现无损编码，必须有（若无说明，接下来默认底数为 2）
+考虑这样一种编码：编码字符表 $\mathcal{B} = \\{b_1,b_2,\cdots,b_D\\}$，编码长度为 $N$。显然，要实现无损编码，必须有（若无说明，接下来默认底数为 2）
 
 $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
-举例：$\mathcal{A} = \{0,1,2,3,\cdots,9\}, L=2$。等概。若编码字符表 $\mathcal{B}=\{0,1\}$，则 $N \ge 2 \log 10 \ge 7$。每个字符平均要 3.5 bit。
+举例：$\mathcal{A} = \\{0,1,2,3,\cdots,9\\}, L=2$。等概。若编码字符表 $\mathcal{B}=\\{0,1\\}$，则 $N \ge 2 \log 10 \ge 7$。每个字符平均要 3.5 bit。
 
 #### 4.2 香农编码定理
 
@@ -488,7 +488,7 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
   1. 渐进等分性质
 
-      对于某个长度为 $L$ 的输出序列 $u^L=\{u_1,u_2,\cdots,u_L\}$，其发生概率 $p(u^L)=\Pi_{i=1}^L p(u_i)$。
+      对于某个长度为 $L$ 的输出序列 $u^L=\\{u_1,u_2,\cdots,u_L\\}$，其发生概率 $p(u^L)=\Pi_{i=1}^L p(u_i)$。
 
       同时，这个已知序列带来的 **自信息** 为 $I(u^L)=-\log p(u^L) = \sum_{i=1}^L I(u_i)$。
 
@@ -496,33 +496,33 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
       根据概统相关知识，我们有
 
-      $$E(I_L)=E\{I(u)\}=H(U)$$
+      $$E(I_L)=E\\{I(u)\\}=H(U)$$
 
-      $$D(I_L)=\frac{1}{L}D\{I(u)\}=\frac{\sigma_I^2}{L}$$
+      $$D(I_L)=\frac{1}{L}D\\{I(u)\\}=\frac{\sigma_I^2}{L}$$
 
       这里 $\sigma_I^2$ 是人为定义的，表示单个元素信息量的方差。再次强调，$H(U)$ 表示单元素的熵。
 
-      根据 **切比雪夫不等式**，$P\{|\xi-E(\xi)|>\epsilon\} \leq \frac{\operatorname{Var}(\xi)}{\epsilon^2}$。这里 $\epsilon$ 是人为指定的。
+      根据 **切比雪夫不等式**，$P\\{|\xi-E(\xi)|>\epsilon\\} \leq \frac{\operatorname{Var}(\xi)}{\epsilon^2}$。这里 $\epsilon$ 是人为指定的。
 
-      代入得到 $P\{|I_L-H(U)|>\epsilon\} \leq \frac{\sigma_I^2}{L\epsilon^2}$。
+      代入得到 $P\\{|I_L-H(U)|>\epsilon\\} \leq \frac{\sigma_I^2}{L\epsilon^2}$。
 
       给定 $\epsilon$，当 $L$ 充分大，有 $\frac{\sigma_I^2}{L\epsilon^2} < \epsilon$。
 
       所以，当 $L$ 足够大时，我们有
 
-      $$P\{|I_L-H(U)|>\epsilon\} \leq \epsilon$$
+      $$P\\{|I_L-H(U)|>\epsilon\\} \leq \epsilon$$
 
       或
 
-      $$P\{|I_L-H(U)|<\epsilon\} \geq 1 - \epsilon$$
+      $$P\\{|I_L-H(U)|<\epsilon\\} \geq 1 - \epsilon$$
 
       直观的理解是，当 $L$ 充分大时，$I_L$ 会逼近 $H(U)$。
 
   2. 典型列
 
-      令 $H(U)$ 为一个 DMS $\{ U,p(\cdot) \}$ 的熵，$\epsilon$ 为任意正数。称
+      令 $H(U)$ 为一个 DMS $\\{ U,p(\cdot) \\}$ 的熵，$\epsilon$ 为任意正数。称
 
-      $$A_\epsilon^{(L)}(U)= \left \{u^L: \left | -\frac{1}{L} \log p \left(u^L \right) - H(U) \right| < \epsilon \right \} = \left \{ u^L : \left |I_L-H(U) \right | < \epsilon \right \}$$
+      $$A_\epsilon^{(L)}(U)= \left \\{u^L: \left | -\frac{1}{L} \log p \left(u^L \right) - H(U) \right| < \epsilon \right \\} = \left \\{ u^L : \left |I_L-H(U) \right | < \epsilon \right \\}$$
 
       为给定 DMS 输出长度为 $L$ 的 $\epsilon$ 典型列集合。其中 $u^L\in U^L$。
 
@@ -530,7 +530,7 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
       **【A - 渐进等分】** 
       
-        当 $L$ 足够大时，$P\{ u^L \in A_\epsilon^{(L)}(U) \} \geq 1 - \epsilon$。
+        当 $L$ 足够大时，$P\\{ u^L \in A_\epsilon^{(L)}(U) \\} \geq 1 - \epsilon$。
 
       **【B - 数目计算】** 
 
@@ -566,7 +566,7 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
       由于典型列的数目 $\left|A_\epsilon^{(L)}(U)\right| \leq 2^{L(H(U)+\epsilon)}$，所以当 $N > \frac{L(H(U)+\epsilon_L)}{\log D}$ 时，我们一定有方法对所有典型列进行等长编码（像 $D^N \ge K^L$ 那样），而对所有的非典型列用统一的一个序列编码（例如全 D），当接收端接收到全 D 时，直接认为编码错误。
 
-      此时错误概率即为 $p_e=p\left\{\hat{u}^L \neq u^L\right\}=p\left\{u^L \notin A_\epsilon^{(L)}(U)\right\}<\epsilon$。由于当 $L \to +\infty$ 时，$\epsilon$ 也可以取得更小（见渐进等分）。所以我们有 $p_e = \epsilon \to 0 \ (L \to +\infty)$ —— 也就是先前所说的「渐进无差错编码」。
+      此时错误概率即为 $p_e=p\left\\{\hat{u}^L \neq u^L\right\\}=p\left\\{u^L \notin A_\epsilon^{(L)}(U)\right\\}<\epsilon$。由于当 $L \to +\infty$ 时，$\epsilon$ 也可以取得更小（见渐进等分）。所以我们有 $p_e = \epsilon \to 0 \ (L \to +\infty)$ —— 也就是先前所说的「渐进无差错编码」。
 
       逆定理的证明略去，基本思路就是使用 2B 中的另一侧结论。
 
@@ -574,27 +574,31 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
 #### 5.1 引入：不等长编码的优势
 
-考虑 DMS $\{a_1,a_2,a_3\}$，概率密度为 $\{0.5,0.25,0.25\}$，$H(U)=1.5$。
+考虑 DMS $\\{a_1,a_2,a_3\\}$，概率密度为 $\\{0.5,0.25,0.25\\}$，$H(U)=1.5$。
 
 + 若用等长编码，在 $L \to \infty$ 时才能达到最佳编码的效率（香农编码定理）。
 
-+ 若用不等长编码，用 $\{1,00,01\}$ 分别编码 $\{a_1,a_2,a_3\}$，编码速率 $1.5$ bit。和 $L$ 的长度无关。
++ 若用不等长编码，用 $ \\{ 1,00,01\\}$ 分别编码 $\\{a_1,a_2,a_3\\}$，编码速率 $1.5$ bit。和 $L$ 的长度无关。
 
 *不等长编码依然符合香农编码定理。*
 
 #### 5.2 Intro: 不等长编码
 
-![it-25](images/it-25.png)
+若无说明，$K$：消息集（字符集）大小；$L$：消息长度；$D$：编码集大小（一般为 2）；$n_1 \sim n_K$：单个字符编码后的长度，注意不是总长度。
 
-**唯一可译**：由于长度不确定，各字符之间没有「分隔符」。所以我们需要关注某段信息是否具有二义性。例如，假设有一个不唯一可译的编码 $\mathcal{B}$，其消息 $\{1001010\}$ 可能被译为 $\{100,1010\}$ 或 $\{1001,010\}$。
+<p><img src="images/it-25.png" alt="it-25" width="70%"></p>
 
-形式化地讲，需要满足 **非奇异性** 和 **可拓展性**。假设编码方法可以视作函数 $\phi(x)$，其中 $x$ 是一个原始字符。非奇异性要求 $\phi(x) \neq \phi(y) \ (x \neq y)$；可扩展性要求 $\phi(x^n) \neq \phi(y^m)$。
+**【唯一可译】** 由于长度不确定，各字符之间没有「分隔符」。所以我们需要关注某段信息是否具有二义性。例如，假设有一个不唯一可译的编码 $\mathcal{B}$，其消息 $\\{1001010\\}$ 可能被译为 $\\{100,1010\\}$ 或 $\\{1001,010\\}$。
 
-**即时可译**：接收端接收到一段消息时的中途，可能暂时还无法确定这个前缀的意义。这会产生「译码延时」。
+形式化地讲，需要满足 **非奇异性** 和 **可拓展性**。假设编码方法可以视作函数 $\phi(x)$，其中 $x$ 是一个原始字符。非奇异性要求 $\phi(x) \neq \phi(y) \ (x \neq y)$；可扩展性要求 $\phi(x^{L_1}) \neq \phi(y^{L_2})$。
+
+**【即时可译】** 接收端接收到一段消息时的中途，可能暂时还无法确定这个前缀的意义。这会产生「译码延时」。
+
+注意：「即时可译」是建立在「唯一可译」的基础上的。
 
 + 唯一可译的判据：Sardinas & Petterson 判据
 
-  考虑如下的算法：设码字集为 $c$（在 5.1 中 $c=\{1,00,01\}$）。
+  考虑如下的算法：设编码集为 $c$（在 5.1 中 $c=\\{1,00,01\\}$）。
 
     1. 初始化：令 $S_0=c$。
 
@@ -616,24 +620,50 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
   <p><img src="images/it-28.png" alt="it-28"></p>
 
-+ 即时可译的存在性判据：Kraft 不等式
++ 即时可译的 **存在性** 判据：Kraft 不等式
 
   Kraft 不等式：存在长度为 $n_1,n_2,\cdots,n_K$ 的 $D$ 元异字头码的充要条件是
 
   $$\sum\limits_{k=1}^KD^{-n_k}\le 1$$
 
+  注意这里只给定了长度，没有给定具体的编码方式。
+
   首先，对于异字头码，若将其用树形表示，那么所有码字只出现在叶子上（一个码中没有码字是其它码字的前缀）。
 
   <p><img src="images/it-29.png" alt="it-29"></p>
+  
+  不等式证明如下（注意证明里砍的是叶节点而不是全部子树节点）：
 
-  必要性证明：
-
-  充分性证明：
+  <p><img src="images/it-30.png" alt="it-30"></p>
 
 + 唯一可译码一定满足 Kraft 不等式
 
-  证明：
+  证明：假设一个唯一可译码共对一共 $K$ 种消息进行译码，$x_i$ 被译为 $C(x_i) (1 \le i \le K)$。
 
-  根据这一性质，对于任意的「唯一可译码」，一定存在一个同样长度的「异字头码」。这说明，如果一种码字方法唯一可译但是不即时可译，它总能够被优化。
+  考虑 
+  
+  $$\begin{aligned}
+  \left(\sum_{k=1}^K D^{-n_k}\right)^r 
+  & =\left(\sum_{k_1=1}^K D^{-n_{k_1}}\right)\left(\sum_{k_2=1}^K D^{-n_{k_2}}\right) \cdots\left(\sum_{k_r=1}^K D^{-n_{k_r}}\right) \newline
+  & =\sum_{k_1=1}^K \sum_{k_2=1}^K \cdots \sum_{k_r=1}^K D^{-\left(n_{k_1}+n_{k_2}+\cdots+n_{k_r}\right)} \newline
+  & =\sum_{i=1}^{rn_{\max}} A_i D^{-i}
+  \end{aligned}
+  $$
+
+  其中 $A_i$ 是一种抽象的系数表示。细品上面的式子，会发现等式左侧的数学意义恰为【所有长度为 $r$ 的可能的原始消息】的多项式展开；那么对应地，$A_i$ 的意义则是所有长度为 $i$ 的【编码后消息】数目。由于唯一可译码的「可拓展性」，所以一定有 $A_i \le D^i$（若 $A_i > D^i$，根据抽屉原理，一定存在两个不同的原始消息，它们映射到了同一个编码后消息上）。
+
+  所以
+
+  $$
+  \sum_{k=1}^K D^{-n_k} \leq \left ( \sum_{i=1}^{rn_{\max}} 1 \right)^{\frac{1}{r}} = (rn_{\max})^{\frac{1}{r}}=e^{\frac{1}{r}\ln (rn_{\max})}
+  $$
+
+  当 $r \to \infty$，有 $\frac{1}{r}\ln r \to 0$，即上式在 $r \to \infty$ 时小于等于 $1$。
+
+  **根据这一性质，对于任意的「唯一可译码」，一定存在一个同样编码长度的「异字头码」。这说明，如果一种码字方法唯一可译但是不即时可译，它总能够被优化！**
 
 + 不等长编码定理
+
+  任何一个唯一可译码的平均码字长度必须满足 $\overline{n} \ge \frac{H(U)}{\log D}$，同时一定存在一个 $D$ 元唯一可译码，其平均长度满足 $\overline{n} \le \frac{H(U)}{\log D} + 1$。
+
+  <p><img src="images/it-31.png" alt="it-31"></p>

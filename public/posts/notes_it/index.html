@@ -2,7 +2,7 @@
 
 <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script type="text/javascript"
         async
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [['$','$'], ['\\(','\\)']],
@@ -52,19 +52,19 @@ MathJax.Hub.Queue(function() {
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="【笔记】信息理论" />
-<meta property="og:description" content="Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 自信息 定义为
+<meta property="og:description" content="Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X=x_k\}$ 的 自信息 定义为
 $$I(x_k)=-\log_ap(x_k)$$
 当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。
 自信息的理解
 事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。 例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。
 1.2 条件自信息、两事件的互信息 条件自信息
-对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 条件自信息 定义为
+对于二维随机变量概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 发生的条件下事件 $\{X=x_k\}$ 的 条件自信息 定义为
 $$I(x_k|y_j)=-\log p(x_k|y_j)$$
-本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。
+本质是已知 $\{Y=y_j\}$ 发生的情况下，突然 $\{X=x_k\}$ 又发生了，这件事情所提供给观察者的信息量。
 互信息
-概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 互信息 定义为
+概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 互信息 定义为
 $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
-本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。
+本质是事件 $\{Y=y_j\}$ 发生后对 $\{X=x_k\}$ 的不确定性的降低。
 互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/notes_it/" /><meta property="article:section" content="posts" />
@@ -72,19 +72,19 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
 <meta property="article:modified_time" content="2024-01-01T00:00:00+00:00" />
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="【笔记】信息理论"/>
-<meta name="twitter:description" content="Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 自信息 定义为
+<meta name="twitter:description" content="Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X=x_k\}$ 的 自信息 定义为
 $$I(x_k)=-\log_ap(x_k)$$
 当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。
 自信息的理解
 事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。 例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。
 1.2 条件自信息、两事件的互信息 条件自信息
-对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 条件自信息 定义为
+对于二维随机变量概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 发生的条件下事件 $\{X=x_k\}$ 的 条件自信息 定义为
 $$I(x_k|y_j)=-\log p(x_k|y_j)$$
-本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。
+本质是已知 $\{Y=y_j\}$ 发生的情况下，突然 $\{X=x_k\}$ 又发生了，这件事情所提供给观察者的信息量。
 互信息
-概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 互信息 定义为
+概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 互信息 定义为
 $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
-本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。
+本质是事件 $\{Y=y_j\}$ 发生后对 $\{X=x_k\}$ 的不确定性的降低。
 互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。"/>
 
   
@@ -211,7 +211,7 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&description=Chapter%201%20%e4%bf%a1%e6%81%af%e7%9a%84%e5%ba%a6%e9%87%8f%20Lec%201%20%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e7%9a%84%e7%86%b5%e5%92%8c%e4%ba%92%e4%bf%a1%e6%81%af%201.1%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%af%b9%e4%ba%8e%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7bX%2c%5cmathcal%7bX%7d%2cp%28x%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%29%3d-%5clog_ap%28x_k%29%24%24%0a%e5%bd%93%20%24a%3d2%24%ef%bc%8c%e4%b8%ba%e6%af%94%e7%89%b9%ef%bc%88bit%ef%bc%89%e3%80%82%e5%bd%93%20%24a%3de%24%ef%bc%8c%e4%b8%ba%e5%a5%88%e7%89%b9%ef%bc%88nat%ef%bc%89%e3%80%82%0a%e8%87%aa%e4%bf%a1%e6%81%af%e7%9a%84%e7%90%86%e8%a7%a3%0a%e4%ba%8b%e4%bb%b6%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%e8%a7%82%e5%af%9f%e8%80%85%e6%8f%90%e4%be%9b%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%ef%bc%9b%20%e8%a7%82%e5%af%9f%e8%80%85%e4%b8%ba%e7%a1%ae%e8%af%81%e8%af%a5%e4%ba%8b%e4%bb%b6%e6%89%80%e9%9c%80%e8%a6%81%e4%bb%98%e5%87%ba%e7%9a%84%e4%bb%a3%e4%bb%b7%ef%bc%88%e7%b1%bb%e6%af%94%e5%8a%9f%e4%b8%8e%e8%83%bd%e9%87%8f%ef%bc%89%ef%bc%9b%20%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%87%aa%e4%bf%a1%e6%81%af%e5%b9%b6%e4%b8%8d%e4%bb%a3%e8%a1%a8%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%ef%bc%8c%e4%ba%8b%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%8f%af%e8%a8%80%e3%80%82%20%e4%be%8b%e5%a6%82%ef%bc%8c%24p%28x_k%29%3d1%24%20%e6%97%b6%ef%bc%8c%24I%28x_k%29%3d0%24%ef%bc%9a%e3%80%8c%e6%98%8e%e5%a4%a9%e5%a4%aa%e9%98%b3%e4%bb%8e%e4%b8%9c%e8%be%b9%e5%8d%87%e8%b5%b7%e3%80%82%e3%80%8d%e8%bf%99%e5%8f%a5%e8%af%9d%e6%b2%a1%e6%9c%89%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a1.2%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%e3%80%81%e4%b8%a4%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%ba%92%e4%bf%a1%e6%81%af%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%0a%e5%af%b9%e4%ba%8e%e4%ba%8c%e7%bb%b4%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%9d%a1%e4%bb%b6%e4%b8%8b%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%7cy_j%29%3d-%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e5%b7%b2%e7%9f%a5%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%ef%bc%8c%e7%aa%81%e7%84%b6%20%24%7bX%3dx_k%7d%24%20%e5%8f%88%e5%8f%91%e7%94%9f%e4%ba%86%ef%bc%8c%e8%bf%99%e4%bb%b6%e4%ba%8b%e6%83%85%e6%89%80%e6%8f%90%e4%be%9b%e7%bb%99%e8%a7%82%e5%af%9f%e8%80%85%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%0a%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e4%b8%8e%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e4%ba%92%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%3by_j%29%3dI%28x_k%29-I%28x_k%7cy_j%29%3d%20-%20%5clog%20p%28x_k%29%20%2b%20%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e7%9a%84%e9%99%8d%e4%bd%8e%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%e5%85%b7%e6%9c%89%e5%af%b9%e7%a7%b0%e6%80%a7%ef%bc%81%24I%28x_k%3by_j%29%3dI%28y_j%3bx_k%29%24%ef%bc%8c%e4%bb%8e%e5%ae%9a%e4%b9%89%e5%87%ba%e5%8f%91%e5%8a%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86%e8%af%81%e6%98%8e%e5%8d%b3%e5%8f%af%e3%80%82" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&description=Chapter%201%20%e4%bf%a1%e6%81%af%e7%9a%84%e5%ba%a6%e9%87%8f%20Lec%201%20%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e7%9a%84%e7%86%b5%e5%92%8c%e4%ba%92%e4%bf%a1%e6%81%af%201.1%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%af%b9%e4%ba%8e%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%5c%7bX%2c%5cmathcal%7bX%7d%2cp%28x%29%5c%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%29%3d-%5clog_ap%28x_k%29%24%24%0a%e5%bd%93%20%24a%3d2%24%ef%bc%8c%e4%b8%ba%e6%af%94%e7%89%b9%ef%bc%88bit%ef%bc%89%e3%80%82%e5%bd%93%20%24a%3de%24%ef%bc%8c%e4%b8%ba%e5%a5%88%e7%89%b9%ef%bc%88nat%ef%bc%89%e3%80%82%0a%e8%87%aa%e4%bf%a1%e6%81%af%e7%9a%84%e7%90%86%e8%a7%a3%0a%e4%ba%8b%e4%bb%b6%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%e8%a7%82%e5%af%9f%e8%80%85%e6%8f%90%e4%be%9b%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%ef%bc%9b%20%e8%a7%82%e5%af%9f%e8%80%85%e4%b8%ba%e7%a1%ae%e8%af%81%e8%af%a5%e4%ba%8b%e4%bb%b6%e6%89%80%e9%9c%80%e8%a6%81%e4%bb%98%e5%87%ba%e7%9a%84%e4%bb%a3%e4%bb%b7%ef%bc%88%e7%b1%bb%e6%af%94%e5%8a%9f%e4%b8%8e%e8%83%bd%e9%87%8f%ef%bc%89%ef%bc%9b%20%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%87%aa%e4%bf%a1%e6%81%af%e5%b9%b6%e4%b8%8d%e4%bb%a3%e8%a1%a8%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%ef%bc%8c%e4%ba%8b%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%8f%af%e8%a8%80%e3%80%82%20%e4%be%8b%e5%a6%82%ef%bc%8c%24p%28x_k%29%3d1%24%20%e6%97%b6%ef%bc%8c%24I%28x_k%29%3d0%24%ef%bc%9a%e3%80%8c%e6%98%8e%e5%a4%a9%e5%a4%aa%e9%98%b3%e4%bb%8e%e4%b8%9c%e8%be%b9%e5%8d%87%e8%b5%b7%e3%80%82%e3%80%8d%e8%bf%99%e5%8f%a5%e8%af%9d%e6%b2%a1%e6%9c%89%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a1.2%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%e3%80%81%e4%b8%a4%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%ba%92%e4%bf%a1%e6%81%af%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%0a%e5%af%b9%e4%ba%8e%e4%ba%8c%e7%bb%b4%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%5c%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%5c%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%5c%7bY%3dy_j%5c%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%9d%a1%e4%bb%b6%e4%b8%8b%e4%ba%8b%e4%bb%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%7cy_j%29%3d-%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e5%b7%b2%e7%9f%a5%20%24%5c%7bY%3dy_j%5c%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%ef%bc%8c%e7%aa%81%e7%84%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e5%8f%88%e5%8f%91%e7%94%9f%e4%ba%86%ef%bc%8c%e8%bf%99%e4%bb%b6%e4%ba%8b%e6%83%85%e6%89%80%e6%8f%90%e4%be%9b%e7%bb%99%e8%a7%82%e5%af%9f%e8%80%85%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%0a%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%5c%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%5c%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%5c%7bY%3dy_j%5c%7d%24%20%e4%b8%8e%e4%ba%8b%e4%bb%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%20%e4%ba%92%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%3by_j%29%3dI%28x_k%29-I%28x_k%7cy_j%29%3d%20-%20%5clog%20p%28x_k%29%20%2b%20%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e4%ba%8b%e4%bb%b6%20%24%5c%7bY%3dy_j%5c%7d%24%20%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e7%9a%84%e9%99%8d%e4%bd%8e%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%e5%85%b7%e6%9c%89%e5%af%b9%e7%a7%b0%e6%80%a7%ef%bc%81%24I%28x_k%3by_j%29%3dI%28y_j%3bx_k%29%24%ef%bc%8c%e4%bb%8e%e5%ae%9a%e4%b9%89%e5%87%ba%e5%8f%91%e5%8a%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86%e8%af%81%e6%98%8e%e5%8d%b3%e5%8f%af%e3%80%82" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -268,6 +268,12 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
             <li><a href="#42-香农编码定理">4.2 香农编码定理</a></li>
           </ul>
         </li>
+        <li><a href="#lec-5-不等长编码">Lec 5 不等长编码</a>
+          <ul>
+            <li><a href="#51-引入不等长编码的优势">5.1 引入：不等长编码的优势</a></li>
+            <li><a href="#52-intro-不等长编码">5.2 Intro: 不等长编码</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -295,7 +301,7 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          24 minute read
+          30 minute read
         </div>
         
         
@@ -309,7 +315,7 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
       <h2 id="chapter-1-信息的度量">Chapter 1 信息的度量</h2>
 <h3 id="lec-1-随机变量的熵和互信息">Lec 1 随机变量的熵和互信息</h3>
 <h4 id="11-自信息">1.1 自信息</h4>
-<p>对于概率空间 ${X,\mathcal{X},p(x)}$，事件 ${X=x_k}$ 的 <strong>自信息</strong> 定义为</p>
+<p>对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X=x_k\}$ 的 <strong>自信息</strong> 定义为</p>
 <p>$$I(x_k)=-\log_ap(x_k)$$</p>
 <p>当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。</p>
 <ul>
@@ -327,15 +333,15 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
 <ul>
 <li>
 <p>条件自信息</p>
-<p>对于二维随机变量概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 发生的条件下事件 ${X=x_k}$ 的 <strong>条件自信息</strong> 定义为</p>
+<p>对于二维随机变量概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 发生的条件下事件 $\{X=x_k\}$ 的 <strong>条件自信息</strong> 定义为</p>
 <p>$$I(x_k|y_j)=-\log p(x_k|y_j)$$</p>
-<p>本质是已知 ${Y=y_j}$ 发生的情况下，突然 ${X=x_k}$ 又发生了，这件事情所提供给观察者的信息量。</p>
+<p>本质是已知 $\{Y=y_j\}$ 发生的情况下，突然 $\{X=x_k\}$ 又发生了，这件事情所提供给观察者的信息量。</p>
 </li>
 <li>
 <p>互信息</p>
-<p>概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 <strong>互信息</strong> 定义为</p>
+<p>概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 <strong>互信息</strong> 定义为</p>
 <p>$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)$$</p>
-<p>本质是事件 ${Y=y_j}$ 发生后对 ${X=x_k}$ 的不确定性的降低。</p>
+<p>本质是事件 $\{Y=y_j\}$ 发生后对 $\{X=x_k\}$ 的不确定性的降低。</p>
 <p>互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。</p>
 </li>
 </ul>
@@ -343,7 +349,7 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
 <ul>
 <li>
 <p>联合自信息</p>
-<p>概率空间 ${(X,Y),\mathcal{X \times Y}, p(x,y)}$，事件 ${Y=y_j}$ 与事件 ${X=x_k}$ 的 <strong>联合自信息</strong> 定义为</p>
+<p>概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 <strong>联合自信息</strong> 定义为</p>
 <p>$$I(x_k,y_j)= - \log p(x_k,y_j)$$</p>
 </li>
 <li>
@@ -354,14 +360,14 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
 </li>
 <li>
 <p>联合互信息</p>
-<p>联合事件 ${Y=y,Z=z}$ 和事件 ${X=x}$ 之间的互信息为</p>
+<p>联合事件 $\{Y=y,Z=z\}$ 和事件 $\{X=x\}$ 之间的互信息为</p>
 <p>$$I(x;y,z)= - \log p(x) + \log p(x|y,z)$$</p>
-<p>其含义为 ${Y=y,Z=z}$ 联合提供给 ${X=x}$ 的信息量。</p>
+<p>其含义为 $\{Y=y,Z=z\}$ 联合提供给 $\{X=x\}$ 的信息量。</p>
 </li>
 <li>
 <p>事件联合互信息的链式法则</p>
 <p>$$I(x;y,z)=I(x;y)+I(x;z|y)$$</p>
-<p>事件 ${Y=y,Z=z}$ 联合提供给 ${X=x}$ 的信息量等于【${Y=y}$ 提供给 ${X=x}$ 的信息量】加上【${Y=y}$ 已知情况下，${Z=z}$ 提供给 ${X=x}$ 的信息量】。</p>
+<p>事件 $\{Y=y,Z=z\}$ 联合提供给 $\{X=x\}$ 的信息量等于【$\{Y=y\}$ 提供给 $\{X=x\}$ 的信息量】加上【$\{Y=y\}$ 已知情况下，$\{Z=z\}$ 提供给 $\{X=x\}$ 的信息量】。</p>
 <p><img src="images/it-1.png" alt="it-1"></p>
 </li>
 </ul>
@@ -370,7 +376,7 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
 <p>$$
 H(X)=E[I(X)]=\sum_{x \in \mathcal{X}} p(x) I(x)=-\sum_{x \in \mathcal{X}} p(x) \log p(x)
 $$</p>
-<p>【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 ${X=x}$。</p>
+<p>【熵与自信息的区别】熵针对的是随机变量 $X$，自信息针对的是具体事件 $\{X=x\}$。</p>
 <p>【例子】对于伯努利分布 $X \sim B(p)$，$H(X) = -p \log p - (1-p) \log (1-p)$。当 $p=0 / 1$ 时，熵为 $0$；当 $p=0.5$ 时，熵取到最大值。</p>
 <p>【理解】熵是随机变量不确定性的度量。</p>
 <h4 id="15-关于熵的衍生概念">1.5 关于熵的衍生概念</h4>
@@ -428,7 +434,7 @@ $$</p>
 <li>
 <p>条件熵 $\leq$ 熵：增加条件使熵减小</p>
 <p>$$H(X|Y) \leq H(X)$$</p>
-<p>注意 $Y$ 不是已知的。当 ${Y=y}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。</p>
+<p>注意 $Y$ 不是已知的。当 $\{Y=y\}$ 时两者的关系是不确定的。证明如下（第一行用了上一个证明的引理）。</p>
 <p><img src="images/it-7.png" alt="it-7"></p>
 </li>
 <li>
@@ -464,8 +470,8 @@ $$</p>
 <p><img src="images/it-12.png" alt="it-12"></p>
 <p><img src="images/it-13.png" alt="it-13"></p>
 <h4 id="19-关于疑义度的-fano-不等式">1.9 关于疑义度的 Fano 不等式</h4>
-<p>定义在相同字符表 ${0,1,\cdots,K}$ 上的两个随机变量 $X$ 和 $\hat{X}$，其中 $\hat{X}$ 是对 $X$ 的某种估计。估计错误概率定义为</p>
-<p>$$P_E=\sum\limits_{i=0}^{K-1}\sum\limits_{j=0,j \neq i}^{K-1} P {X=i,\hat{X}=j}$$</p>
+<p>定义在相同字符表 $\{0,1,\cdots,K\}$ 上的两个随机变量 $X$ 和 $\hat{X}$，其中 $\hat{X}$ 是对 $X$ 的某种估计。估计错误概率定义为</p>
+<p>$$P_E=\sum\limits_{i=0}^{K-1}\sum\limits_{j=0,j \neq i}^{K-1} P \{X=i,\hat{X}=j\}$$</p>
 <p>则 $\hat{X}$ 已知条件下 $X$ 的 <strong>疑义度</strong> 满足表达式</p>
 <p>$$H(X|\hat{X})\le H(P_E,1-P_E)+P_E \log (K-1)$$</p>
 <p>证明如下：</p>
@@ -536,7 +542,7 @@ $$</p>
 <h3 id="lec-3-平稳离散信源的熵">Lec 3 平稳离散信源的熵</h3>
 <h4 id="31-平稳随机过程">3.1 平稳随机过程</h4>
 <p>对于 <strong>任意</strong> 的 $n$，任意的 $t_1, t_2, \cdots, t_n \in T$ 和 $h$，</p>
-<p>若 $(X(t_1),X(t_2),\cdots,X(t_n))$ 与 $(X(t_1+h),X(t_2+h),\cdots,X(t_n+h))$ 具有同样的分布，则称随机过程 ${X(t)}$ 是平稳随机过程。</p>
+<p>若 $(X(t_1),X(t_2),\cdots,X(t_n))$ 与 $(X(t_1+h),X(t_2+h),\cdots,X(t_n+h))$ 具有同样的分布，则称随机过程 $\{X(t)\}$ 是平稳随机过程。</p>
 <ul>
 <li>
 <p>平稳随机过程的性质</p>
@@ -606,10 +612,14 @@ $$</p>
 </li>
 </ul>
 <h4 id="33-熵速率及其应用">3.3 熵速率及其应用</h4>
-<p>回顾熵速率的定义，</p>
-<p>$$H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)= \lim\limits_{n \to \infty} H(X_n|X_{n-1},X_{n-2}, \cdots, X_1) \newline</p>
-<p>\leq H\left(X_N \mid X_{N-1} X_{N-2} \cdots X_2 X_1\right) \newline</p>
-<p>\leq \cdots \leq H\left(X_2 \mid X_1\right) \leq H\left(X_2\right) \leq \log K$$</p>
+<p>回顾熵速率的定义，
+$$
+\begin{aligned}
+H_\infty(X) &amp; = \lim\limits_{n \to \infty} H_n(X)= \lim\limits_{n \to \infty} H(X_n|X_{n-1},X_{n-2}, \cdots, X_1) \newline
+&amp; \leq H(X_N \mid X_{N-1} X_{N-2} \cdots X_2 X_1) \newline
+&amp; \leq \cdots \leq H(X_2 \mid X_1) \leq H(X_2) \leq \log K
+\end{aligned}
+$$</p>
 <p>可以看到，熵速率 $H_\infty(X) = \lim\limits_{n \to \infty} H_n(X)$ 基本是小于单字符的熵值 $\log K$ 的。据此，我们定义</p>
 <ul>
 <li>
@@ -662,10 +672,10 @@ $$</p>
 </ul>
 <h3 id="lec-4-等长编码">Lec 4 等长编码</h3>
 <h4 id="41-引入离散无记忆信源-dms-的编码">4.1 引入：离散无记忆信源 (DMS) 的编码</h4>
-<p>考虑字符表 $\mathcal{A} = {a_1,a_2,\cdots,a_K}$，其概率分布 $\mathcal{P} = {p_1,p_2,\cdots,p_K}$。现在输出长度为 $L$ 的消息序列 $u^L={u_1,u_2,\cdots,u_L}$，而我们需要对其进行编码。</p>
-<p>考虑这样一种编码：编码字符表 $\mathcal{B} = {b_1,b_2,\cdots,b_D}$，编码长度为 $N$。显然，要实现无损编码，必须有（若无说明，接下来默认底数为 2）</p>
+<p>考虑字符表 $\mathcal{A} = \{a_1,a_2,\cdots,a_K\}$，其概率分布 $\mathcal{P} = \{p_1,p_2,\cdots,p_K\}$。现在输出长度为 $L$ 的消息序列 $u^L=\{u_1,u_2,\cdots,u_L\}$，而我们需要对其进行编码。</p>
+<p>考虑这样一种编码：编码字符表 $\mathcal{B} = \{b_1,b_2,\cdots,b_D\}$，编码长度为 $N$。显然，要实现无损编码，必须有（若无说明，接下来默认底数为 2）</p>
 <p>$$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$</p>
-<p>举例：$\mathcal{A} = {0,1,2,3,\cdots,9}, L=2$。等概。若编码字符表 $\mathcal{B}={0,1}$，则 $N \ge 2 \log 10 \ge 7$。每个字符平均要 3.5 bit。</p>
+<p>举例：$\mathcal{A} = \{0,1,2,3,\cdots,9\}, L=2$。等概。若编码字符表 $\mathcal{B}=\{0,1\}$，则 $N \ge 2 \log 10 \ge 7$。每个字符平均要 3.5 bit。</p>
 <h4 id="42-香农编码定理">4.2 香农编码定理</h4>
 <p>仍旧考虑 <strong>离散无记忆信源</strong>。</p>
 <p>我们回顾上式 $N \ge \frac{L \log K}{\log D}$。回忆熵的概念，记 $H(U)$ 是消息序列中单元素的熵，有 $H(U) \le \log K$。</p>
@@ -686,30 +696,30 @@ $$</p>
 <ol>
 <li>
 <p>渐进等分性质</p>
-<p>对于某个长度为 $L$ 的输出序列 $u^L={u_1,u_2,\cdots,u_L}$，其发生概率 $p(u^L)=\Pi_{i=1}^L p(u_i)$。</p>
+<p>对于某个长度为 $L$ 的输出序列 $u^L=\{u_1,u_2,\cdots,u_L\}$，其发生概率 $p(u^L)=\Pi_{i=1}^L p(u_i)$。</p>
 <p>同时，这个已知序列带来的 <strong>自信息</strong> 为 $I(u^L)=-\log p(u^L) = \sum_{i=1}^L I(u_i)$。</p>
 <p>定义随机变量 $I_L=\frac{1}{L}\sum_{i=1}^L I(u_i)$，其意义为输出序列的自信息对于单个元素的均值。</p>
 <p>根据概统相关知识，我们有</p>
-<p>$$E(I_L)=E{I(u)}=H(U)$$</p>
-<p>$$D(I_L)=\frac{1}{L}D{I(u)}=\frac{\sigma_I^2}{L}$$</p>
+<p>$$E(I_L)=E\{I(u)\}=H(U)$$</p>
+<p>$$D(I_L)=\frac{1}{L}D\{I(u)\}=\frac{\sigma_I^2}{L}$$</p>
 <p>这里 $\sigma_I^2$ 是人为定义的，表示单个元素信息量的方差。再次强调，$H(U)$ 表示单元素的熵。</p>
-<p>根据 <strong>切比雪夫不等式</strong>，$P{|\xi-E(\xi)|&gt;\epsilon} \leq \frac{\operatorname{Var}(\xi)}{\epsilon^2}$。这里 $\epsilon$ 是人为指定的。</p>
-<p>代入得到 $P{|I_L-H(U)|&gt;\epsilon} \leq \frac{\sigma_I^2}{L\epsilon^2}$。</p>
+<p>根据 <strong>切比雪夫不等式</strong>，$P\{|\xi-E(\xi)|&gt;\epsilon\} \leq \frac{\operatorname{Var}(\xi)}{\epsilon^2}$。这里 $\epsilon$ 是人为指定的。</p>
+<p>代入得到 $P\{|I_L-H(U)|&gt;\epsilon\} \leq \frac{\sigma_I^2}{L\epsilon^2}$。</p>
 <p>给定 $\epsilon$，当 $L$ 充分大，有 $\frac{\sigma_I^2}{L\epsilon^2} &lt; \epsilon$。</p>
 <p>所以，当 $L$ 足够大时，我们有</p>
-<p>$$P{|I_L-H(U)|&gt;\epsilon} \leq \epsilon$$</p>
+<p>$$P\{|I_L-H(U)|&gt;\epsilon\} \leq \epsilon$$</p>
 <p>或</p>
-<p>$$P{|I_L-H(U)|&lt;\epsilon} \geq 1 - \epsilon$$</p>
+<p>$$P\{|I_L-H(U)|&lt;\epsilon\} \geq 1 - \epsilon$$</p>
 <p>直观的理解是，当 $L$ 充分大时，$I_L$ 会逼近 $H(U)$。</p>
 </li>
 <li>
 <p>典型列</p>
-<p>令 $H(U)$ 为一个 DMS ${ U,p(\cdot) }$ 的熵，$\epsilon$ 为任意正数。称</p>
-<p>$$A_\epsilon^{(L)}(U)= \left {u^L: \left | -\frac{1}{L} \log p \left(u^L \right) - H(U) \right| &lt; \epsilon \right } = \left { u^L : \left |I_L-H(U) \right | &lt; \epsilon \right }$$</p>
+<p>令 $H(U)$ 为一个 DMS $\{ U,p(\cdot) \}$ 的熵，$\epsilon$ 为任意正数。称</p>
+<p>$$A_\epsilon^{(L)}(U)= \left \{u^L: \left | -\frac{1}{L} \log p \left(u^L \right) - H(U) \right| &lt; \epsilon \right \} = \left \{ u^L : \left |I_L-H(U) \right | &lt; \epsilon \right \}$$</p>
 <p>为给定 DMS 输出长度为 $L$ 的 $\epsilon$ 典型列集合。其中 $u^L\in U^L$。</p>
 <p>典型列具有以下性质：</p>
 <p><strong>【A - 渐进等分】</strong></p>
-<p>当 $L$ 足够大时，$P{ u^L \in A_\epsilon^{(L)}(U) } \geq 1 - \epsilon$。</p>
+<p>当 $L$ 足够大时，$P\{ u^L \in A_\epsilon^{(L)}(U) \} \geq 1 - \epsilon$。</p>
 <p><strong>【B - 数目计算】</strong></p>
 <p>前提结论，根据 $A_\epsilon^{(L)}(U)$ 的定义可以得出：</p>
 <p>$$2^{-L(H(U)+\epsilon)} \leq p\left(u^L\right) \leq 2^{-L(H(U)-\epsilon)}, \text { if } u^L \in A_\epsilon^{(L)}(U)$$</p>
@@ -731,12 +741,88 @@ $$</p>
 <li>
 <p>最终推导</p>
 <p>回到我们的香农编码定理。其基本思想其实就是证明，当 $L \to +\infty$ 时，典型列基本占领了全部的 DMS，所以我们只需要对典型列进行编码（丢弃少数保大多数）。具体地：</p>
-<p>由于典型列的数目 $\left|A_\epsilon^{(L)}(U)\right| \leq 2^{L(H(U)+\epsilon)}$，所以当 $N &gt; \frac{L(H(U)+\epsilon_L)}{\log D}$ 时，我们一定有方法对所有典型列进行编码（像 $D^N \ge K^L$ 那样），而对所有的非典型列用统一的一个序列编码（例如全 D），当接收端接收到全 D 时，直接认为编码错误。</p>
-<p>此时错误概率即为 $p_e=p\left{\hat{u}^L \neq u^L\right}=p\left{u^L \notin A_\epsilon^{(L)}(U)\right}&lt;\epsilon$。由于当 $L \to +\infty$ 时，$\epsilon$ 也可以取得更小（见渐进等分）。所以我们有 $p_e = \epsilon \to 0 \ (L \to +\infty)$ —— 也就是先前所说的「渐进无差错编码」。</p>
+<p>由于典型列的数目 $\left|A_\epsilon^{(L)}(U)\right| \leq 2^{L(H(U)+\epsilon)}$，所以当 $N &gt; \frac{L(H(U)+\epsilon_L)}{\log D}$ 时，我们一定有方法对所有典型列进行等长编码（像 $D^N \ge K^L$ 那样），而对所有的非典型列用统一的一个序列编码（例如全 D），当接收端接收到全 D 时，直接认为编码错误。</p>
+<p>此时错误概率即为 $p_e=p\left\{\hat{u}^L \neq u^L\right\}=p\left\{u^L \notin A_\epsilon^{(L)}(U)\right\}&lt;\epsilon$。由于当 $L \to +\infty$ 时，$\epsilon$ 也可以取得更小（见渐进等分）。所以我们有 $p_e = \epsilon \to 0 \ (L \to +\infty)$ —— 也就是先前所说的「渐进无差错编码」。</p>
 <p>逆定理的证明略去，基本思路就是使用 2B 中的另一侧结论。</p>
 </li>
 </ol>
 </li>
+</ul>
+<h3 id="lec-5-不等长编码">Lec 5 不等长编码</h3>
+<h4 id="51-引入不等长编码的优势">5.1 引入：不等长编码的优势</h4>
+<p>考虑 DMS $\{a_1,a_2,a_3\}$，概率密度为 $\{0.5,0.25,0.25\}$，$H(U)=1.5$。</p>
+<ul>
+<li>
+<p>若用等长编码，在 $L \to \infty$ 时才能达到最佳编码的效率（香农编码定理）。</p>
+</li>
+<li>
+<p>若用不等长编码，用 $ \{ 1,00,01\}$ 分别编码 $\{a_1,a_2,a_3\}$，编码速率 $1.5$ bit。和 $L$ 的长度无关。</p>
+</li>
+</ul>
+<p><em>不等长编码依然符合香农编码定理。</em></p>
+<h4 id="52-intro-不等长编码">5.2 Intro: 不等长编码</h4>
+<p>若无说明，$K$：消息集（字符集）大小；$L$：消息长度；$D$：编码集大小（一般为 2）；$n_1 \sim n_K$：单个字符编码后的长度，注意不是总长度。</p>
+<p><img src="images/it-25.png" alt="it-25" width="70%"></p>
+<p><strong>【唯一可译】</strong> 由于长度不确定，各字符之间没有「分隔符」。所以我们需要关注某段信息是否具有二义性。例如，假设有一个不唯一可译的编码 $\mathcal{B}$，其消息 $\{1001010\}$ 可能被译为 $\{100,1010\}$ 或 $\{1001,010\}$。</p>
+<p>形式化地讲，需要满足 <strong>非奇异性</strong> 和 <strong>可拓展性</strong>。假设编码方法可以视作函数 $\phi(x)$，其中 $x$ 是一个原始字符。非奇异性要求 $\phi(x) \neq \phi(y) \ (x \neq y)$；可扩展性要求 $\phi(x^{L_1}) \neq \phi(y^{L_2})$。</p>
+<p><strong>【即时可译】</strong> 接收端接收到一段消息时的中途，可能暂时还无法确定这个前缀的意义。这会产生「译码延时」。</p>
+<p>注意：「即时可译」是建立在「唯一可译」的基础上的。</p>
+<ul>
+<li>
+<p>唯一可译的判据：Sardinas &amp; Petterson 判据</p>
+<p>考虑如下的算法：设编码集为 $c$（在 5.1 中 $c=\{1,00,01\}$）。</p>
+<ol>
+<li>
+<p>初始化：令 $S_0=c$。</p>
+</li>
+<li>
+<p>迭代：用以下两种方法对 $S_0$ 进行迭代。大概就是枚举码字集 $c$，然后和 $S_{i-1}$ 进行前缀匹配 / 反前缀匹配得到 $S_i$。</p>
+ <p><img src="images/it-26.png" alt="it-26" width="70%"></p>
+</li>
+<li>
+<p>判断：若存在 $S_i$ 使得 $S_i \cap S_0 \neq \varnothing$，则不具有唯一可译性质。并且：</p>
+<p>若 $S_1 = \varnothing$，则该码唯一可译且即时可译。此时，一个码中没有码字是其它码字的前缀，称该码为 <strong>异字头码</strong>。</p>
+<p>若 $S_n = \varnothing \ (n&gt;1)$，则该码唯一可译且译码延时有限。</p>
+</li>
+</ol>
+<p>来看一个例子：</p>
+<p><img src="images/it-27.png" alt="it-27" width="90%"></p>
+<p>对于 Sardinas &amp; Petterson 判据，一个 subcase 的感性证明是：</p>
+<p><img src="images/it-28.png" alt="it-28"></p>
+</li>
+<li>
+<p>即时可译的 <strong>存在性</strong> 判据：Kraft 不等式</p>
+<p>Kraft 不等式：存在长度为 $n_1,n_2,\cdots,n_K$ 的 $D$ 元异字头码的充要条件是</p>
+<p>$$\sum\limits_{k=1}^KD^{-n_k}\le 1$$</p>
+<p>注意这里只给定了长度，没有给定具体的编码方式。</p>
+<p>首先，对于异字头码，若将其用树形表示，那么所有码字只出现在叶子上（一个码中没有码字是其它码字的前缀）。</p>
+<p><img src="images/it-29.png" alt="it-29"></p>
+<p>不等式证明如下（注意证明里砍的是叶节点而不是全部子树节点）：</p>
+<p><img src="images/it-30.png" alt="it-30"></p>
+</li>
+<li>
+<p>唯一可译码一定满足 Kraft 不等式</p>
+<p>证明：假设一个唯一可译码共对一共 $K$ 种消息进行译码，$x_i$ 被译为 $C(x_i) (1 \le i \le K)$。</p>
+<p>考虑</p>
+<p>$$\begin{aligned}
+\left(\sum_{k=1}^K D^{-n_k}\right)^r
+&amp; =\left(\sum_{k_1=1}^K D^{-n_{k_1}}\right)\left(\sum_{k_2=1}^K D^{-n_{k_2}}\right) \cdots\left(\sum_{k_r=1}^K D^{-n_{k_r}}\right) \newline
+&amp; =\sum_{k_1=1}^K \sum_{k_2=1}^K \cdots \sum_{k_r=1}^K D^{-\left(n_{k_1}+n_{k_2}+\cdots+n_{k_r}\right)} \newline
+&amp; =\sum_{i=1}^{rn_{\max}} A_i D^{-i}
+\end{aligned}
+$$</p>
+<p>其中 $A_i$ 是一种抽象的系数表示。细品上面的式子，会发现等式左侧的数学意义恰为【所有长度为 $r$ 的可能的原始消息】的多项式展开；那么对应地，$A_i$ 的意义则是所有长度为 $i$ 的【编码后消息】数目。由于唯一可译码的「可拓展性」，所以一定有 $A_i \le D^i$（若 $A_i &gt; D^i$，根据抽屉原理，一定存在两个不同的原始消息，它们映射到了同一个编码后消息上）。</p>
+<p>所以</p>
+<p>$$
+\sum_{k=1}^K D^{-n_k} \leq \left ( \sum_{i=1}^{rn_{\max}} 1 \right)^{\frac{1}{r}} = (rn_{\max})^{\frac{1}{r}}=e^{\frac{1}{r}\ln (rn_{\max})}
+$$</p>
+<p>当 $r \to \infty$，有 $\frac{1}{r}\ln r \to 0$，即上式在 $r \to \infty$ 时小于等于 $1$。</p>
+<p><strong>根据这一性质，对于任意的「唯一可译码」，一定存在一个同样编码长度的「异字头码」。这说明，如果一种码字方法唯一可译但是不即时可译，它总能够被优化！</strong></p>
+</li>
+<li>
+<p>不等长编码定理</p>
+<p>任何一个唯一可译码的平均码字长度必须满足 $\overline{n} \ge \frac{H(U)}{\log D}$，同时一定存在一个 $D$ 元唯一可译码，其平均长度满足 $\overline{n} \le \frac{H(U)}{\log D} + 1$。</p>
+<p><img src="images/it-31.png" alt="it-31"></p></li>
 </ul>
 
     </div>
@@ -812,6 +898,12 @@ $$</p>
             <li><a href="#42-香农编码定理">4.2 香农编码定理</a></li>
           </ul>
         </li>
+        <li><a href="#lec-5-不等长编码">Lec 5 不等长编码</a>
+          <ul>
+            <li><a href="#51-引入不等长编码的优势">5.1 引入：不等长编码的优势</a></li>
+            <li><a href="#52-intro-不等长编码">5.2 Intro: 不等长编码</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -863,7 +955,7 @@ $$</p>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&description=Chapter%201%20%e4%bf%a1%e6%81%af%e7%9a%84%e5%ba%a6%e9%87%8f%20Lec%201%20%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e7%9a%84%e7%86%b5%e5%92%8c%e4%ba%92%e4%bf%a1%e6%81%af%201.1%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%af%b9%e4%ba%8e%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7bX%2c%5cmathcal%7bX%7d%2cp%28x%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%29%3d-%5clog_ap%28x_k%29%24%24%0a%e5%bd%93%20%24a%3d2%24%ef%bc%8c%e4%b8%ba%e6%af%94%e7%89%b9%ef%bc%88bit%ef%bc%89%e3%80%82%e5%bd%93%20%24a%3de%24%ef%bc%8c%e4%b8%ba%e5%a5%88%e7%89%b9%ef%bc%88nat%ef%bc%89%e3%80%82%0a%e8%87%aa%e4%bf%a1%e6%81%af%e7%9a%84%e7%90%86%e8%a7%a3%0a%e4%ba%8b%e4%bb%b6%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%e8%a7%82%e5%af%9f%e8%80%85%e6%8f%90%e4%be%9b%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%ef%bc%9b%20%e8%a7%82%e5%af%9f%e8%80%85%e4%b8%ba%e7%a1%ae%e8%af%81%e8%af%a5%e4%ba%8b%e4%bb%b6%e6%89%80%e9%9c%80%e8%a6%81%e4%bb%98%e5%87%ba%e7%9a%84%e4%bb%a3%e4%bb%b7%ef%bc%88%e7%b1%bb%e6%af%94%e5%8a%9f%e4%b8%8e%e8%83%bd%e9%87%8f%ef%bc%89%ef%bc%9b%20%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%87%aa%e4%bf%a1%e6%81%af%e5%b9%b6%e4%b8%8d%e4%bb%a3%e8%a1%a8%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%ef%bc%8c%e4%ba%8b%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%8f%af%e8%a8%80%e3%80%82%20%e4%be%8b%e5%a6%82%ef%bc%8c%24p%28x_k%29%3d1%24%20%e6%97%b6%ef%bc%8c%24I%28x_k%29%3d0%24%ef%bc%9a%e3%80%8c%e6%98%8e%e5%a4%a9%e5%a4%aa%e9%98%b3%e4%bb%8e%e4%b8%9c%e8%be%b9%e5%8d%87%e8%b5%b7%e3%80%82%e3%80%8d%e8%bf%99%e5%8f%a5%e8%af%9d%e6%b2%a1%e6%9c%89%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a1.2%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%e3%80%81%e4%b8%a4%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%ba%92%e4%bf%a1%e6%81%af%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%0a%e5%af%b9%e4%ba%8e%e4%ba%8c%e7%bb%b4%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%9d%a1%e4%bb%b6%e4%b8%8b%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%7cy_j%29%3d-%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e5%b7%b2%e7%9f%a5%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%ef%bc%8c%e7%aa%81%e7%84%b6%20%24%7bX%3dx_k%7d%24%20%e5%8f%88%e5%8f%91%e7%94%9f%e4%ba%86%ef%bc%8c%e8%bf%99%e4%bb%b6%e4%ba%8b%e6%83%85%e6%89%80%e6%8f%90%e4%be%9b%e7%bb%99%e8%a7%82%e5%af%9f%e8%80%85%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%0a%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e4%b8%8e%e4%ba%8b%e4%bb%b6%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%20%e4%ba%92%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%3by_j%29%3dI%28x_k%29-I%28x_k%7cy_j%29%3d%20-%20%5clog%20p%28x_k%29%20%2b%20%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e4%ba%8b%e4%bb%b6%20%24%7bY%3dy_j%7d%24%20%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%20%24%7bX%3dx_k%7d%24%20%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e7%9a%84%e9%99%8d%e4%bd%8e%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%e5%85%b7%e6%9c%89%e5%af%b9%e7%a7%b0%e6%80%a7%ef%bc%81%24I%28x_k%3by_j%29%3dI%28y_j%3bx_k%29%24%ef%bc%8c%e4%bb%8e%e5%ae%9a%e4%b9%89%e5%87%ba%e5%8f%91%e5%8a%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86%e8%af%81%e6%98%8e%e5%8d%b3%e5%8f%af%e3%80%82" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_it%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e4%bf%a1%e6%81%af%e7%90%86%e8%ae%ba&description=Chapter%201%20%e4%bf%a1%e6%81%af%e7%9a%84%e5%ba%a6%e9%87%8f%20Lec%201%20%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e7%9a%84%e7%86%b5%e5%92%8c%e4%ba%92%e4%bf%a1%e6%81%af%201.1%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%af%b9%e4%ba%8e%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%5c%7bX%2c%5cmathcal%7bX%7d%2cp%28x%29%5c%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%20%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%29%3d-%5clog_ap%28x_k%29%24%24%0a%e5%bd%93%20%24a%3d2%24%ef%bc%8c%e4%b8%ba%e6%af%94%e7%89%b9%ef%bc%88bit%ef%bc%89%e3%80%82%e5%bd%93%20%24a%3de%24%ef%bc%8c%e4%b8%ba%e5%a5%88%e7%89%b9%ef%bc%88nat%ef%bc%89%e3%80%82%0a%e8%87%aa%e4%bf%a1%e6%81%af%e7%9a%84%e7%90%86%e8%a7%a3%0a%e4%ba%8b%e4%bb%b6%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%e8%a7%82%e5%af%9f%e8%80%85%e6%8f%90%e4%be%9b%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%ef%bc%9b%20%e8%a7%82%e5%af%9f%e8%80%85%e4%b8%ba%e7%a1%ae%e8%af%81%e8%af%a5%e4%ba%8b%e4%bb%b6%e6%89%80%e9%9c%80%e8%a6%81%e4%bb%98%e5%87%ba%e7%9a%84%e4%bb%a3%e4%bb%b7%ef%bc%88%e7%b1%bb%e6%af%94%e5%8a%9f%e4%b8%8e%e8%83%bd%e9%87%8f%ef%bc%89%ef%bc%9b%20%e4%ba%8b%e4%bb%b6%e7%9a%84%e8%87%aa%e4%bf%a1%e6%81%af%e5%b9%b6%e4%b8%8d%e4%bb%a3%e8%a1%a8%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%ef%bc%8c%e4%ba%8b%e4%bb%b6%e6%9c%ac%e8%ba%ab%e6%b2%a1%e6%9c%89%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e5%8f%af%e8%a8%80%e3%80%82%20%e4%be%8b%e5%a6%82%ef%bc%8c%24p%28x_k%29%3d1%24%20%e6%97%b6%ef%bc%8c%24I%28x_k%29%3d0%24%ef%bc%9a%e3%80%8c%e6%98%8e%e5%a4%a9%e5%a4%aa%e9%98%b3%e4%bb%8e%e4%b8%9c%e8%be%b9%e5%8d%87%e8%b5%b7%e3%80%82%e3%80%8d%e8%bf%99%e5%8f%a5%e8%af%9d%e6%b2%a1%e6%9c%89%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a1.2%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%e3%80%81%e4%b8%a4%e4%ba%8b%e4%bb%b6%e7%9a%84%e4%ba%92%e4%bf%a1%e6%81%af%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%0a%e5%af%b9%e4%ba%8e%e4%ba%8c%e7%bb%b4%e9%9a%8f%e6%9c%ba%e5%8f%98%e9%87%8f%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%5c%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%5c%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%5c%7bY%3dy_j%5c%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%9d%a1%e4%bb%b6%e4%b8%8b%e4%ba%8b%e4%bb%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%20%e6%9d%a1%e4%bb%b6%e8%87%aa%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%7cy_j%29%3d-%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e5%b7%b2%e7%9f%a5%20%24%5c%7bY%3dy_j%5c%7d%24%20%e5%8f%91%e7%94%9f%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%ef%bc%8c%e7%aa%81%e7%84%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e5%8f%88%e5%8f%91%e7%94%9f%e4%ba%86%ef%bc%8c%e8%bf%99%e4%bb%b6%e4%ba%8b%e6%83%85%e6%89%80%e6%8f%90%e4%be%9b%e7%bb%99%e8%a7%82%e5%af%9f%e8%80%85%e7%9a%84%e4%bf%a1%e6%81%af%e9%87%8f%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%0a%e6%a6%82%e7%8e%87%e7%a9%ba%e9%97%b4%20%24%5c%7b%28X%2cY%29%2c%5cmathcal%7bX%20%5ctimes%20Y%7d%2c%20p%28x%2cy%29%5c%7d%24%ef%bc%8c%e4%ba%8b%e4%bb%b6%20%24%5c%7bY%3dy_j%5c%7d%24%20%e4%b8%8e%e4%ba%8b%e4%bb%b6%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%20%e4%ba%92%e4%bf%a1%e6%81%af%20%e5%ae%9a%e4%b9%89%e4%b8%ba%0a%24%24I%28x_k%3by_j%29%3dI%28x_k%29-I%28x_k%7cy_j%29%3d%20-%20%5clog%20p%28x_k%29%20%2b%20%5clog%20p%28x_k%7cy_j%29%24%24%0a%e6%9c%ac%e8%b4%a8%e6%98%af%e4%ba%8b%e4%bb%b6%20%24%5c%7bY%3dy_j%5c%7d%24%20%e5%8f%91%e7%94%9f%e5%90%8e%e5%af%b9%20%24%5c%7bX%3dx_k%5c%7d%24%20%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7%e7%9a%84%e9%99%8d%e4%bd%8e%e3%80%82%0a%e4%ba%92%e4%bf%a1%e6%81%af%e5%85%b7%e6%9c%89%e5%af%b9%e7%a7%b0%e6%80%a7%ef%bc%81%24I%28x_k%3by_j%29%3dI%28y_j%3bx_k%29%24%ef%bc%8c%e4%bb%8e%e5%ae%9a%e4%b9%89%e5%87%ba%e5%8f%91%e5%8a%a0%e8%b4%9d%e5%8f%b6%e6%96%af%e5%ae%9a%e7%90%86%e8%af%81%e6%98%8e%e5%8d%b3%e5%8f%af%e3%80%82" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
