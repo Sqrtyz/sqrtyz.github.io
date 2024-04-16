@@ -50,7 +50,7 @@ date: 2024-01-01
 
 ![cod-55](images/cod-55.png)
 
-#### 2. I-Type (ld)
+#### 2. I-Type (ONLY ld)
 
 ![cod-58](images/cod-58.png)
 
@@ -58,17 +58,17 @@ date: 2024-01-01
 
 + 其中 `20{inst[31]}` 是在做符号位拓展，因为本来也支持立即数为负的情况。
 
-#### 3. S-Type (sd)
+#### 3. S-Type (ONLY sd)
 
 ![cod-57](images/cod-57.png)
 
-#### 4. SB-Type (beq)
+#### 4. SB-Type (ONLY beq)
 
 ![cod-56](images/cod-56.png)
 
 + 这里 ALU 执行的是 sub 运算，然后根据 `zero` 判断是否相等。如果 `zero` 为 1（beq 条件满足）且 `branch` 为 1（本条指令为 beq），那么就开跳。
 
-#### 5. UJ-Type (jal)
+#### 5. UJ-Type (ONLY jal)
 
 ![cod-59](images/cod-59.png)
 
@@ -102,3 +102,86 @@ date: 2024-01-01
 或许可以回顾一下 ALU：
 
 ![cod-9](images/cod-9.png)
+
+
+
+## Chapter 4-2 Processor: Pipeline Ver
+
+### Intro
+
++ 不同指令耗时不一
+
+    例如在下图中，假设各部分的操作时长为：Memory Access, 200ps; ALU, 200ps; RegFile Access, 100ps。
+    
+    那么执行一次 `ld` 指令耗时为 800ps。执行一次 `sd` 指令耗时为 700ps。
+
+    <p><img src="images/cod-61.png" alt="cod-61" width="80%"></p>
+
++ Pipelining Analogy
+
+    一种优化思路是从瓶颈（例如 `ld`）下手。然而我们还有另外一种优化思路——将【单周期 CPU】改为【流水线 CPU】。所谓流水线，可以参照这幅图：
+
+    <p><img src="images/cod-62.png" alt="cod-62" width="70%"></p>
+
+    对应到 CPU 中，我们可以尝试把其分为若干个区域（或步骤），让每个区域同时工作，实现整体的流水线工作。
+
+### RISC-V Pipeline Intro
+
+RISC-V CPU 可以划分为以下五个阶段：
+
+1. **IF**: Instruction fetch from memory
+2. **ID**: Instruction decode & read from register
+3. **EX**: Execute operation or calculate address (ALU Part)
+4. **MEM**: Access memory operand
+5. **WB**: Write result back to register
+
+然后，一种简单的思路就是，我让五个阶段「流水线式」地工作，下图地两张图生动地说明了这一原理：
+
+<p><img src="images/cod-63.png" alt="cod-63" width="90%"></p>
+
+<p><img src="images/cod-64.png" alt="cod-64" width="90%"></p>
+
+理想情况下，这一转变将让 CPU 提速 5 倍（因为有 5 个阶段，当然实际不会到达这个数值，看上图的下半部分可以理解；而且后面还有各种 hazards）。
+
+### Hazards
+
+中文意为「冒险」，表示流水线 CPU 实现中可能遇到的各种容易出问题的情况。
+
+#### 1. Structure Hazard
+
+可以想象，如果 data memory 和 instruction memory 是在同一部分的话，在 pipeline 的情形下，有的周期会调用同一块内存，这将产生冲突。
+
+好在 RISC-V 的设计将 data memory 和 instruction memory 分隔开，所以我们几乎不用考虑 Structure Hazard。
+
+#### 2. Data Hazard
+
++ Data Hazard
+
+    有的时候执行某一个指令，要求前一个指令完成数据写入。考虑这样的两个相邻指令：
+
+    ```ass
+    add x19, x0, x1
+    sub x2, x19, x3
+    ```
+
+    <p><img src="images/cod-65.png" alt="cod-65" width="90%"></p>
+
+    add 指令的 WB 必须要在 sub 指令的 ID 之前执行（原因显然），所以两个指令之间无法再「紧密地排列在流水线上」，中间需要隔两个 bubble。
+
+    【OBSERVATION】观察上上张图，WB 的写 reg 是在上半 cycle，ID 的读 reg 是在下半 cycle。这种设计的缘由其实在这里有所体现。
+
++ Forwarding
+
+    解决这种情况的一种方案是 Forwarding。大概思路是有的时候我们不必等待一个数据被写入 reg，然后才再次使用；而是可以直接用某种 extra connection 来直接高效地使用。下图演示了 Forwarding 的解决方案。
+
+    <p><img src="images/cod-66.png" alt="cod-66" width="90%"></p>
+
+    然而，并非所有 Data Hazard 都可以用 Forwarding 解决。考虑这样的情形：
+
+    <p><img src="images/cod-67.png" alt="cod-67" width="90%"></p>
+
+    显然 sub 已经没办法再提前一个 cycle 了，不然 sub 的 EX 和 ld 的 MEM 将处在同一 cycle，而 sub 的 EX 需要 ld 的 MEM 提供前提数据。
+
+    不过，也可以通过修改汇编代码来规避这一问题——
+
+    <p><img src="images/cod-68.png" alt="cod-68" width="90%"></p>

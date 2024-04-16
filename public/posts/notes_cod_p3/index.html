@@ -224,13 +224,25 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
         <li><a href="#processor-datapath-details">Processor Datapath Details</a>
           <ul>
             <li><a href="#1-r-type">1. R-Type</a></li>
-            <li><a href="#2-i-type-ld">2. I-Type (ld)</a></li>
-            <li><a href="#3-s-type-sd">3. S-Type (sd)</a></li>
-            <li><a href="#4-sb-type-beq">4. SB-Type (beq)</a></li>
-            <li><a href="#5-uj-type-jal">5. UJ-Type (jal)</a></li>
+            <li><a href="#2-i-type-only-ld">2. I-Type (ONLY ld)</a></li>
+            <li><a href="#3-s-type-only-sd">3. S-Type (ONLY sd)</a></li>
+            <li><a href="#4-sb-type-only-beq">4. SB-Type (ONLY beq)</a></li>
+            <li><a href="#5-uj-type-only-jal">5. UJ-Type (ONLY jal)</a></li>
           </ul>
         </li>
         <li><a href="#controller">Controller</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-4-2-processor-pipeline-ver">Chapter 4-2 Processor: Pipeline Ver</a>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#risc-v-pipeline-intro">RISC-V Pipeline Intro</a></li>
+        <li><a href="#hazards">Hazards</a>
+          <ul>
+            <li><a href="#1-structure-hazard">1. Structure Hazard</a></li>
+            <li><a href="#2-data-hazard">2. Data Hazard</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -258,7 +270,7 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          4 minute read
+          8 minute read
         </div>
         
         
@@ -336,20 +348,20 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
 <h3 id="processor-datapath-details">Processor Datapath Details</h3>
 <h4 id="1-r-type">1. R-Type</h4>
 <p><img src="images/cod-55.png" alt="cod-55"></p>
-<h4 id="2-i-type-ld">2. I-Type (ld)</h4>
+<h4 id="2-i-type-only-ld">2. I-Type (ONLY ld)</h4>
 <p><img src="images/cod-58.png" alt="cod-58"></p>
 <p><strong>[ATTENTION]</strong> 图片有点问题，指令中的 <code>rs1</code> 连到寄存器的 <code>rs2</code> 上了，应当连到 <code>rs1</code> 上。</p>
 <ul>
 <li>其中 <code>20{inst[31]}</code> 是在做符号位拓展，因为本来也支持立即数为负的情况。</li>
 </ul>
-<h4 id="3-s-type-sd">3. S-Type (sd)</h4>
+<h4 id="3-s-type-only-sd">3. S-Type (ONLY sd)</h4>
 <p><img src="images/cod-57.png" alt="cod-57"></p>
-<h4 id="4-sb-type-beq">4. SB-Type (beq)</h4>
+<h4 id="4-sb-type-only-beq">4. SB-Type (ONLY beq)</h4>
 <p><img src="images/cod-56.png" alt="cod-56"></p>
 <ul>
 <li>这里 ALU 执行的是 sub 运算，然后根据 <code>zero</code> 判断是否相等。如果 <code>zero</code> 为 1（beq 条件满足）且 <code>branch</code> 为 1（本条指令为 beq），那么就开跳。</li>
 </ul>
-<h4 id="5-uj-type-jal">5. UJ-Type (jal)</h4>
+<h4 id="5-uj-type-only-jal">5. UJ-Type (ONLY jal)</h4>
 <p><img src="images/cod-59.png" alt="cod-59"></p>
 <ul>
 <li>注意是 PC+4 进入到 <code>Write Data</code> 中。</li>
@@ -380,6 +392,61 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
 <p><img src="images/cod-60.png" alt="cod-60"></p>
 <p>或许可以回顾一下 ALU：</p>
 <p><img src="images/cod-9.png" alt="cod-9"></p>
+<h2 id="chapter-4-2-processor-pipeline-ver">Chapter 4-2 Processor: Pipeline Ver</h2>
+<h3 id="intro">Intro</h3>
+<ul>
+<li>
+<p>不同指令耗时不一</p>
+<p>例如在下图中，假设各部分的操作时长为：Memory Access, 200ps; ALU, 200ps; RegFile Access, 100ps。</p>
+<p>那么执行一次 <code>ld</code> 指令耗时为 800ps。执行一次 <code>sd</code> 指令耗时为 700ps。</p>
+  <p><img src="images/cod-61.png" alt="cod-61" width="80%"></p>
+</li>
+<li>
+<p>Pipelining Analogy</p>
+<p>一种优化思路是从瓶颈（例如 <code>ld</code>）下手。然而我们还有另外一种优化思路——将【单周期 CPU】改为【流水线 CPU】。所谓流水线，可以参照这幅图：</p>
+  <p><img src="images/cod-62.png" alt="cod-62" width="70%"></p>
+<p>对应到 CPU 中，我们可以尝试把其分为若干个区域（或步骤），让每个区域同时工作，实现整体的流水线工作。</p>
+</li>
+</ul>
+<h3 id="risc-v-pipeline-intro">RISC-V Pipeline Intro</h3>
+<p>RISC-V CPU 可以划分为以下五个阶段：</p>
+<ol>
+<li><strong>IF</strong>: Instruction fetch from memory</li>
+<li><strong>ID</strong>: Instruction decode &amp; read from register</li>
+<li><strong>EX</strong>: Execute operation or calculate address (ALU Part)</li>
+<li><strong>MEM</strong>: Access memory operand</li>
+<li><strong>WB</strong>: Write result back to register</li>
+</ol>
+<p>然后，一种简单的思路就是，我让五个阶段「流水线式」地工作，下图地两张图生动地说明了这一原理：</p>
+<p><img src="images/cod-63.png" alt="cod-63" width="90%"></p>
+<p><img src="images/cod-64.png" alt="cod-64" width="90%"></p>
+<p>理想情况下，这一转变将让 CPU 提速 5 倍（因为有 5 个阶段，当然实际不会到达这个数值，看上图的下半部分可以理解；而且后面还有各种 hazards）。</p>
+<h3 id="hazards">Hazards</h3>
+<p>中文意为「冒险」，表示流水线 CPU 实现中可能遇到的各种容易出问题的情况。</p>
+<h4 id="1-structure-hazard">1. Structure Hazard</h4>
+<p>可以想象，如果 data memory 和 instruction memory 是在同一部分的话，在 pipeline 的情形下，有的周期会调用同一块内存，这将产生冲突。</p>
+<p>好在 RISC-V 的设计将 data memory 和 instruction memory 分隔开，所以我们几乎不用考虑 Structure Hazard。</p>
+<h4 id="2-data-hazard">2. Data Hazard</h4>
+<ul>
+<li>
+<p>Data Hazard</p>
+<p>有的时候执行某一个指令，要求前一个指令完成数据写入。考虑这样的两个相邻指令：</p>
+<pre tabindex="0"><code class="language-ass" data-lang="ass">add x19, x0, x1
+sub x2, x19, x3
+</code></pre>  <p><img src="images/cod-65.png" alt="cod-65" width="90%"></p>
+<p>add 指令的 WB 必须要在 sub 指令的 ID 之前执行（原因显然），所以两个指令之间无法再「紧密地排列在流水线上」，中间需要隔两个 bubble。</p>
+<p>【OBSERVATION】观察上上张图，WB 的写 reg 是在上半 cycle，ID 的读 reg 是在下半 cycle。这种设计的缘由其实在这里有所体现。</p>
+</li>
+<li>
+<p>Forwarding</p>
+<p>解决这种情况的一种方案是 Forwarding。大概思路是有的时候我们不必等待一个数据被写入 reg，然后才再次使用；而是可以直接用某种 extra connection 来直接高效地使用。下图演示了 Forwarding 的解决方案。</p>
+  <p><img src="images/cod-66.png" alt="cod-66" width="90%"></p>
+<p>然而，并非所有 Data Hazard 都可以用 Forwarding 解决。考虑这样的情形：</p>
+  <p><img src="images/cod-67.png" alt="cod-67" width="90%"></p>
+<p>显然 sub 已经没办法再提前一个 cycle 了，不然 sub 的 EX 和 ld 的 MEM 将处在同一 cycle，而 sub 的 EX 需要 ld 的 MEM 提供前提数据。</p>
+<p>不过，也可以通过修改汇编代码来规避这一问题——</p>
+  <p><img src="images/cod-68.png" alt="cod-68" width="90%"></p></li>
+</ul>
 
     </div>
   </article>
@@ -420,13 +487,25 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
         <li><a href="#processor-datapath-details">Processor Datapath Details</a>
           <ul>
             <li><a href="#1-r-type">1. R-Type</a></li>
-            <li><a href="#2-i-type-ld">2. I-Type (ld)</a></li>
-            <li><a href="#3-s-type-sd">3. S-Type (sd)</a></li>
-            <li><a href="#4-sb-type-beq">4. SB-Type (beq)</a></li>
-            <li><a href="#5-uj-type-jal">5. UJ-Type (jal)</a></li>
+            <li><a href="#2-i-type-only-ld">2. I-Type (ONLY ld)</a></li>
+            <li><a href="#3-s-type-only-sd">3. S-Type (ONLY sd)</a></li>
+            <li><a href="#4-sb-type-only-beq">4. SB-Type (ONLY beq)</a></li>
+            <li><a href="#5-uj-type-only-jal">5. UJ-Type (ONLY jal)</a></li>
           </ul>
         </li>
         <li><a href="#controller">Controller</a></li>
+      </ul>
+    </li>
+    <li><a href="#chapter-4-2-processor-pipeline-ver">Chapter 4-2 Processor: Pipeline Ver</a>
+      <ul>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#risc-v-pipeline-intro">RISC-V Pipeline Intro</a></li>
+        <li><a href="#hazards">Hazards</a>
+          <ul>
+            <li><a href="#1-structure-hazard">1. Structure Hazard</a></li>
+            <li><a href="#2-data-hazard">2. Data Hazard</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

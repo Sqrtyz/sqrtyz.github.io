@@ -62,10 +62,12 @@ Instruction
 汇编语言是用人类看得懂的语言来描述指令集。否则指令集的机器码都是一堆二进制数字，人类读起来非常麻烦，但汇编是用类似人类语言的方式描述指令集，读起来方便多了。
 汇编指令是让人看得懂的，只是指令集的另外一种表示形式。
 RISC vs. CISC
-Arithmetic Operations Instruction Formats
+Basics: Instructions and Registers Instruction Formats
 前者是可以理解为操作类型，后者可以理解为操作参数。
-Add and Subtraction
-Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \gets b&#43;c$ Always 3 operand R Arithmetic subtract sub a,b,c $a \gets b-c$ Always 3 operand R 例如，对于一段 C 代码 f = (g &#43; h) - (i &#43; j);，可以写成如下的 RISC-V 指令：" />
+Register Operands
+对于 RISC-V 指令集，其使用的寄存器类型为 $32\times 64\text{-bit}$。可以想象成一个寄存器有 32 行，每一行有一个变量，其长度为 64 bits（等于 8 bytes，是一个 double / long long 的大小，也被称为 dword）。
+这些寄存器的「各行」各司其职。其职能如下表所示。
+举个例子：f = (g &#43; h) - (i &#43; j);，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/posts/notes_cod_p2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-01-01T00:00:00+00:00" />
@@ -82,10 +84,12 @@ Instruction
 汇编语言是用人类看得懂的语言来描述指令集。否则指令集的机器码都是一堆二进制数字，人类读起来非常麻烦，但汇编是用类似人类语言的方式描述指令集，读起来方便多了。
 汇编指令是让人看得懂的，只是指令集的另外一种表示形式。
 RISC vs. CISC
-Arithmetic Operations Instruction Formats
+Basics: Instructions and Registers Instruction Formats
 前者是可以理解为操作类型，后者可以理解为操作参数。
-Add and Subtraction
-Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \gets b&#43;c$ Always 3 operand R Arithmetic subtract sub a,b,c $a \gets b-c$ Always 3 operand R 例如，对于一段 C 代码 f = (g &#43; h) - (i &#43; j);，可以写成如下的 RISC-V 指令："/>
+Register Operands
+对于 RISC-V 指令集，其使用的寄存器类型为 $32\times 64\text{-bit}$。可以想象成一个寄存器有 32 行，每一行有一个变量，其长度为 64 bits（等于 8 bytes，是一个 double / long long 的大小，也被称为 dword）。
+这些寄存器的「各行」各司其职。其职能如下表所示。
+举个例子：f = (g &#43; h) - (i &#43; j);，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。"/>
 
   
   
@@ -211,7 +215,7 @@ Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p2%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20II%29&description=Chapter%202.%20Instructions%3a%20Language%20of%20the%20Machine%20Introduction%20Process%20of%20Compiling%0a%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b%ef%bc%9a%e9%ab%98%e7%ba%a7%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%9c%ba%e5%99%a8%e8%af%ad%e8%a8%80%e3%80%82%0a%e4%be%8b%e5%a6%82%ef%bc%8cA%20%2b%20B%20%24%5cto%24%20add%20A%2c%20B%20%24%5cto%24%201000110010100000%e3%80%82%0aInstruction%0a%e6%8c%87%e4%bb%a4%e6%98%af%e3%80%8c%e6%9c%ba%e5%99%a8%e7%9a%84%e8%af%ad%e8%a8%80%e3%80%8d%e3%80%82%e5%a6%82%e6%9e%9c%e8%af%b4%20Instruction%20%e6%98%af%20Word%ef%bc%8c%e9%82%a3%e4%b9%88%20Instruction%20set%20%e5%88%99%e6%98%af%20Vocabulary%e3%80%82%0a%e6%9c%ac%e8%af%be%e7%a8%8b%e9%87%87%e5%8f%96%e7%9a%84%e6%8c%87%e4%bb%a4%e9%9b%86%e4%b8%ba%20RISC-V%e3%80%82%e8%bf%99%e6%98%af%e4%b8%80%e7%a7%8d%e7%b2%be%e7%ae%80%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%0a%e5%85%b3%e4%ba%8e%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e5%92%8c%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%85%b3%e7%b3%bb%ef%bc%8c%e6%91%98%e5%8f%96%e4%b8%a4%e6%9d%a1%e7%9f%a5%e4%b9%8e%e5%9b%9e%e7%ad%94%ef%bc%9a%0a%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e6%98%af%e7%94%a8%e4%ba%ba%e7%b1%bb%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%e8%af%ad%e8%a8%80%e6%9d%a5%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%e5%90%a6%e5%88%99%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e6%9c%ba%e5%99%a8%e7%a0%81%e9%83%bd%e6%98%af%e4%b8%80%e5%a0%86%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%95%b0%e5%ad%97%ef%bc%8c%e4%ba%ba%e7%b1%bb%e8%af%bb%e8%b5%b7%e6%9d%a5%e9%9d%9e%e5%b8%b8%e9%ba%bb%e7%83%a6%ef%bc%8c%e4%bd%86%e6%b1%87%e7%bc%96%e6%98%af%e7%94%a8%e7%b1%bb%e4%bc%bc%e4%ba%ba%e7%b1%bb%e8%af%ad%e8%a8%80%e7%9a%84%e6%96%b9%e5%bc%8f%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%ef%bc%8c%e8%af%bb%e8%b5%b7%e6%9d%a5%e6%96%b9%e4%be%bf%e5%a4%9a%e4%ba%86%e3%80%82%0a%e6%b1%87%e7%bc%96%e6%8c%87%e4%bb%a4%e6%98%af%e8%ae%a9%e4%ba%ba%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%ef%bc%8c%e5%8f%aa%e6%98%af%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%8f%a6%e5%a4%96%e4%b8%80%e7%a7%8d%e8%a1%a8%e7%a4%ba%e5%bd%a2%e5%bc%8f%e3%80%82%0aRISC%20vs.%20CISC%0aArithmetic%20Operations%20Instruction%20Formats%0a%e5%89%8d%e8%80%85%e6%98%af%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e7%b1%bb%e5%9e%8b%ef%bc%8c%e5%90%8e%e8%80%85%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e5%8f%82%e6%95%b0%e3%80%82%0aAdd%20and%20Subtraction%0aCategory%20Instruction%20Example%20Meaning%20Comments%20Type%20Arithmetic%20add%20add%20a%2cb%2cc%20%24a%20%5cgets%20b%2bc%24%20Always%203%20operand%20R%20Arithmetic%20subtract%20sub%20a%2cb%2cc%20%24a%20%5cgets%20b-c%24%20Always%203%20operand%20R%20%e4%be%8b%e5%a6%82%ef%bc%8c%e5%af%b9%e4%ba%8e%e4%b8%80%e6%ae%b5%20C%20%e4%bb%a3%e7%a0%81%20f%20%3d%20%28g%20%2b%20h%29%20-%20%28i%20%2b%20j%29%3b%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%86%99%e6%88%90%e5%a6%82%e4%b8%8b%e7%9a%84%20RISC-V%20%e6%8c%87%e4%bb%a4%ef%bc%9a" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p2%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20II%29&description=Chapter%202.%20Instructions%3a%20Language%20of%20the%20Machine%20Introduction%20Process%20of%20Compiling%0a%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b%ef%bc%9a%e9%ab%98%e7%ba%a7%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%9c%ba%e5%99%a8%e8%af%ad%e8%a8%80%e3%80%82%0a%e4%be%8b%e5%a6%82%ef%bc%8cA%20%2b%20B%20%24%5cto%24%20add%20A%2c%20B%20%24%5cto%24%201000110010100000%e3%80%82%0aInstruction%0a%e6%8c%87%e4%bb%a4%e6%98%af%e3%80%8c%e6%9c%ba%e5%99%a8%e7%9a%84%e8%af%ad%e8%a8%80%e3%80%8d%e3%80%82%e5%a6%82%e6%9e%9c%e8%af%b4%20Instruction%20%e6%98%af%20Word%ef%bc%8c%e9%82%a3%e4%b9%88%20Instruction%20set%20%e5%88%99%e6%98%af%20Vocabulary%e3%80%82%0a%e6%9c%ac%e8%af%be%e7%a8%8b%e9%87%87%e5%8f%96%e7%9a%84%e6%8c%87%e4%bb%a4%e9%9b%86%e4%b8%ba%20RISC-V%e3%80%82%e8%bf%99%e6%98%af%e4%b8%80%e7%a7%8d%e7%b2%be%e7%ae%80%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%0a%e5%85%b3%e4%ba%8e%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e5%92%8c%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%85%b3%e7%b3%bb%ef%bc%8c%e6%91%98%e5%8f%96%e4%b8%a4%e6%9d%a1%e7%9f%a5%e4%b9%8e%e5%9b%9e%e7%ad%94%ef%bc%9a%0a%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e6%98%af%e7%94%a8%e4%ba%ba%e7%b1%bb%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%e8%af%ad%e8%a8%80%e6%9d%a5%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%e5%90%a6%e5%88%99%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e6%9c%ba%e5%99%a8%e7%a0%81%e9%83%bd%e6%98%af%e4%b8%80%e5%a0%86%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%95%b0%e5%ad%97%ef%bc%8c%e4%ba%ba%e7%b1%bb%e8%af%bb%e8%b5%b7%e6%9d%a5%e9%9d%9e%e5%b8%b8%e9%ba%bb%e7%83%a6%ef%bc%8c%e4%bd%86%e6%b1%87%e7%bc%96%e6%98%af%e7%94%a8%e7%b1%bb%e4%bc%bc%e4%ba%ba%e7%b1%bb%e8%af%ad%e8%a8%80%e7%9a%84%e6%96%b9%e5%bc%8f%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%ef%bc%8c%e8%af%bb%e8%b5%b7%e6%9d%a5%e6%96%b9%e4%be%bf%e5%a4%9a%e4%ba%86%e3%80%82%0a%e6%b1%87%e7%bc%96%e6%8c%87%e4%bb%a4%e6%98%af%e8%ae%a9%e4%ba%ba%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%ef%bc%8c%e5%8f%aa%e6%98%af%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%8f%a6%e5%a4%96%e4%b8%80%e7%a7%8d%e8%a1%a8%e7%a4%ba%e5%bd%a2%e5%bc%8f%e3%80%82%0aRISC%20vs.%20CISC%0aBasics%3a%20Instructions%20and%20Registers%20Instruction%20Formats%0a%e5%89%8d%e8%80%85%e6%98%af%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e7%b1%bb%e5%9e%8b%ef%bc%8c%e5%90%8e%e8%80%85%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e5%8f%82%e6%95%b0%e3%80%82%0aRegister%20Operands%0a%e5%af%b9%e4%ba%8e%20RISC-V%20%e6%8c%87%e4%bb%a4%e9%9b%86%ef%bc%8c%e5%85%b6%e4%bd%bf%e7%94%a8%e7%9a%84%e5%af%84%e5%ad%98%e5%99%a8%e7%b1%bb%e5%9e%8b%e4%b8%ba%20%2432%5ctimes%2064%5ctext%7b-bit%7d%24%e3%80%82%e5%8f%af%e4%bb%a5%e6%83%b3%e8%b1%a1%e6%88%90%e4%b8%80%e4%b8%aa%e5%af%84%e5%ad%98%e5%99%a8%e6%9c%89%2032%20%e8%a1%8c%ef%bc%8c%e6%af%8f%e4%b8%80%e8%a1%8c%e6%9c%89%e4%b8%80%e4%b8%aa%e5%8f%98%e9%87%8f%ef%bc%8c%e5%85%b6%e9%95%bf%e5%ba%a6%e4%b8%ba%2064%20bits%ef%bc%88%e7%ad%89%e4%ba%8e%208%20bytes%ef%bc%8c%e6%98%af%e4%b8%80%e4%b8%aa%20double%20%2f%20long%20long%20%e7%9a%84%e5%a4%a7%e5%b0%8f%ef%bc%8c%e4%b9%9f%e8%a2%ab%e7%a7%b0%e4%b8%ba%20dword%ef%bc%89%e3%80%82%0a%e8%bf%99%e4%ba%9b%e5%af%84%e5%ad%98%e5%99%a8%e7%9a%84%e3%80%8c%e5%90%84%e8%a1%8c%e3%80%8d%e5%90%84%e5%8f%b8%e5%85%b6%e8%81%8c%e3%80%82%e5%85%b6%e8%81%8c%e8%83%bd%e5%a6%82%e4%b8%8b%e8%a1%a8%e6%89%80%e7%a4%ba%e3%80%82%0a%e4%b8%be%e4%b8%aa%e4%be%8b%e5%ad%90%ef%bc%9af%20%3d%20%28g%20%2b%20h%29%20-%20%28i%20%2b%20j%29%3b%ef%bc%8c%e6%88%91%e4%bb%ac%e5%81%87%e8%ae%be%e7%9b%ae%e5%89%8d%20%24f%2cg%2ch%2ci%2cj%24%20%e7%9a%84%e5%80%bc%e5%88%86%e5%88%ab%e4%bd%8d%e4%ba%8e%e5%9c%b0%e5%9d%80%20x19%2c%20x20%2c%20x21%2c%20x22%2c%20x23%e3%80%82" aria-label="Tumblr">
       <i class="fab fa-tumblr " aria-hidden="true"></i>
     </a>
   </li>
@@ -230,16 +234,15 @@ Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \
     <li><a href="#chapter-2-instructions-language-of-the-machine">Chapter 2. Instructions: Language of the Machine</a>
       <ul>
         <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#arithmetic-operations">Arithmetic Operations</a></li>
-        <li><a href="#operands">Operands</a></li>
-        <li><a href="#signed--unsigned-numbers">Signed &amp; Unsigned Numbers</a></li>
-        <li><a href="#representing-instructions">Representing Instructions</a></li>
-        <li><a href="#logical-operations">Logical Operations</a></li>
-        <li><a href="#decision-instructions">Decision Instructions</a></li>
-        <li><a href="#jump-register">Jump Register</a></li>
+        <li><a href="#basics-instructions-and-registers">Basics: Instructions and Registers</a></li>
+        <li><a href="#al-1-arithmetic-logical-and-memory">AL 1: Arithmetic, Logical and Memory</a></li>
+        <li><a href="#ml-1-representing-instructions-of-r--i--s">ML 1: Representing Instructions of R / I / S</a></li>
+        <li><a href="#al-2-decision-instructions">AL 2: Decision Instructions</a></li>
+        <li><a href="#al-3-jump-register">AL 3: Jump Register</a></li>
         <li><a href="#supporting-procedures">Supporting Procedures</a></li>
         <li><a href="#other-width">Other Width</a></li>
-        <li><a href="#addressing-for-32-bit-immediate-and-addresses">Addressing for 32-Bit Immediate and Addresses</a></li>
+        <li><a href="#ml-2-addressing-for-32-bit-immediate-and-addresses">ML 2: Addressing for 32-Bit Immediate and Addresses</a></li>
+        <li><a href="#summary">SUMMARY</a></li>
         <li><a href="#some-extensions-of-ch2">Some Extensions of CH2</a></li>
       </ul>
     </li>
@@ -268,7 +271,7 @@ Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          26 minute read
+          25 minute read
         </div>
         
         
@@ -304,13 +307,27 @@ Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \
 <p><img src="images/cod-31.png" alt="cod-31"></p>
 </li>
 </ul>
-<h3 id="arithmetic-operations">Arithmetic Operations</h3>
+<h3 id="basics-instructions-and-registers">Basics: Instructions and Registers</h3>
 <ul>
 <li>
 <p>Instruction Formats</p>
 <p><img src="images/cod-32.png" alt="cod-32"></p>
 <p>前者是可以理解为操作类型，后者可以理解为操作参数。</p>
 </li>
+<li>
+<p>Register Operands</p>
+<p>对于 RISC-V 指令集，其使用的寄存器类型为 $32\times 64\text{-bit}$。可以想象成一个寄存器有 32 行，每一行有一个变量，其长度为 64 bits（等于 8 bytes，是一个 double / long long 的大小，也被称为 dword）。</p>
+<p>这些寄存器的「各行」各司其职。其职能如下表所示。</p>
+<p><img src="images/cod-33.png" alt="cod-33"></p>
+<p>举个例子：<code>f = (g + h) - (i + j);</code>，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。</p>
+<p>那么我们应该这样描述 RISC-V 指令：</p>
+<pre tabindex="0"><code>add x5, x20, x21
+add x6, x22, x23
+sub x19, x5, x6
+</code></pre></li>
+</ul>
+<h3 id="al-1-arithmetic-logical-and-memory">AL 1: Arithmetic, Logical and Memory</h3>
+<ul>
 <li>
 <p>Add and Subtraction</p>
 <table>
@@ -343,28 +360,40 @@ Category Instruction Example Meaning Comments Type Arithmetic add add a,b,c $a \
 </tr>
 </tbody>
 </table>
-<p>例如，对于一段 C 代码 <code>f = (g + h) - (i + j);</code>，可以写成如下的 RISC-V 指令：</p>
-<pre tabindex="0"><code>add t0, g, h
-add t1, i, j
-sub f, t0, t1
-</code></pre><p>不过，实际上这些变量并不能「写成」t0, g, h 这种。这一点我们马上就会提及。</p>
 </li>
-</ul>
-<h3 id="operands">Operands</h3>
-<ul>
 <li>
-<p>Register Operands</p>
-<p>对于 RISC-V 指令集，其使用的寄存器类型为 $32\times 64\text{-bit}$。可以想象成一个寄存器有 32 行，每一行有一个变量，其长度为 64 bits（等于 8 bytes，是一个 double / long long 的大小，也被称为 dword）。</p>
-<p>这些寄存器的「各行」各司其职。其职能如下表所示。</p>
-<p><img src="images/cod-33.png" alt="cod-33"></p>
-<p>还是用之前的例子，<code>f = (g + h) - (i + j);</code>，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。</p>
-<p>那么我们应该这样描述 RISC-V 指令：</p>
-<pre tabindex="0"><code>add x5, x20, x21
-add x6, x22, x23
-sub x19, x5, x6
-</code></pre></li>
+<p>Immediate Arithmetic</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Instruction</th>
+<th>Example</th>
+<th>Meaning</th>
+<th>Comments</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arithmetic</td>
+<td>addi immediate</td>
+<td><code>addi a,b,c</code></td>
+<td>$a \gets b+c$</td>
+<td>$c$ is a constant</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li>
-<p>Memory Operands</p>
+<p>Logical Arithmetic</p>
+<p><img src="images/cod-39.png" alt="cod-39"></p>
+<p><img src="images/cod-40.png" alt="cod-40"></p>
+<p>（懒得敲表格了，直接截图）</p>
+</li>
+<li>
+<p>Memory Operations</p>
 <ul>
 <li>
 <p>Basics</p>
@@ -404,7 +433,7 @@ sd x9, 96(x22)
 <td>Data Transfer</td>
 <td>load dword</td>
 <td><code>ld x5, 40(x6)</code></td>
-<td>x5 = Memory[x6+40]</td>
+<td>x5 = Mem[x6+40]</td>
 <td>dword from mem to reg</td>
 <td>I</td>
 </tr>
@@ -412,43 +441,15 @@ sd x9, 96(x22)
 <td>Data Transfer</td>
 <td>store dword</td>
 <td><code>sd x5, 40(x6)</code></td>
-<td>Memory[x6+40] = x5</td>
+<td>Mem[x6+40] = x5</td>
 <td>dword from reg to mem</td>
 <td>S</td>
 </tr>
 </tbody>
 </table>
 </li>
-<li>
-<p>Add immediate</p>
-<table>
-<thead>
-<tr>
-<th>Category</th>
-<th>Instruction</th>
-<th>Example</th>
-<th>Meaning</th>
-<th>Comments</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Arithmetic</td>
-<td>addi immediate</td>
-<td><code>addi a,b,c</code></td>
-<td>$a \gets b+c$</td>
-<td>$c$ is a constant</td>
-<td>I</td>
-</tr>
-</tbody>
-</table>
-</li>
 </ul>
 </li>
-</ul>
-<h3 id="signed--unsigned-numbers">Signed &amp; Unsigned Numbers</h3>
-<ul>
 <li>
 <p>Sign Extension</p>
 <p>Example: 8-bit to 16-bit</p>
@@ -457,7 +458,7 @@ sd x9, 96(x22)
 <p>在 RISC-V 中，<code>lb</code> 操作用于执行「同符号位拓展」，<code>lbu</code> 操作用于执行「补 0 位拓展」。</p>
 </li>
 </ul>
-<h3 id="representing-instructions">Representing Instructions</h3>
+<h3 id="ml-1-representing-instructions-of-r--i--s">ML 1: Representing Instructions of R / I / S</h3>
 <ul>
 <li>
 <p>汇编码 $\to$ 机器码</p>
@@ -486,16 +487,7 @@ sd x9, 96(x22)
 </ul>
 </li>
 </ul>
-<h3 id="logical-operations">Logical Operations</h3>
-<ul>
-<li>
-<p>基本逻辑运算符及其 RISC-V</p>
-<p><img src="images/cod-39.png" alt="cod-39"></p>
-<p><img src="images/cod-40.png" alt="cod-40"></p>
-<p>（懒得敲表格了，直接截图）</p>
-</li>
-</ul>
-<h3 id="decision-instructions">Decision Instructions</h3>
+<h3 id="al-2-decision-instructions">AL 2: Decision Instructions</h3>
 <p>基本 RISC-V 语句：beq &amp; bne</p>
 <table>
 <thead>
@@ -600,7 +592,7 @@ Exit:
 <p><img src="images/cod-41.png" alt="cod-41"></p>
 </li>
 </ul>
-<h3 id="jump-register">Jump Register</h3>
+<h3 id="al-3-jump-register">AL 3: Jump Register</h3>
 <p>RISC-V 中的无条件跳转主要包含两种指令：<code>jal</code> 和 <code>jalr</code>。</p>
 <table>
 <thead>
@@ -728,8 +720,8 @@ Exit:
 <pre tabindex="0"><code>lb rd, offset(rs1)
 lh rd, offset(rs1)
 lw rd, offset(rs1)
-</code></pre><h3 id="addressing-for-32-bit-immediate-and-addresses">Addressing for 32-Bit Immediate and Addresses</h3>
-<p>这部分对 32 位立即数赋值 / 32 位寻址的具体实现进行讲解。</p>
+</code></pre><h3 id="ml-2-addressing-for-32-bit-immediate-and-addresses">ML 2: Addressing for 32-Bit Immediate and Addresses</h3>
+<p>这部分讲解 32 位立即数赋值 / 32 位寻址的机器码层面具体实现。</p>
 <ul>
 <li>
 <p>32-Bit Immediate Addressing (U-Type)</p>
@@ -762,6 +754,7 @@ lw rd, offset(rs1)
 <p>上回说到 bne 的格式是 <code>bne rs1, rs2, L1</code> 其中 <code>L1</code> 是某个标签，表示了某处的指令。然而实际上机器肯定无法识别 <code>L1</code>，所以实际上这里 L1 翻译成机器码是一个 offset。</p>
 <p>举例：<code>bne x10, x11, 2000</code>（2000 = 0111 1101 0000）</p>
 <p><img src="images/cod-47.png" alt="cod-47"></p>
+<p>上图的 Inst 那一行有些神金，首先一般不用 Inst 表示（就用 imm），然后应该最低位从 0 开始。</p>
 <p>注意，由于所有的 RISC-V 指令都是 32 位的（本课程不讨论 16 位），所以指令的地址（byte 单位）一定满足末两位为 0。所以 RISC-V 的设计者决定在实际机器编码时，省略 offset 的最后一位，只将 offset 中的非 LSB 部分写入机器码（这样可以使 offset 支持更远的距离）。</p>
 </li>
 <li>
@@ -778,28 +771,28 @@ lw rd, offset(rs1)
 <p><img src="images/cod-49.png" alt="cod-49"></p>
 <p>解读 bne 那一行：rs1 表示的是 x9，rs2 表示的是 x24。对于 SB-Type 指令，funct7 和 rd 列共同组成了 immediate。可以看到本指令的立即数为 <code>000000000110(0)</code> （最后一个 0 在机器码中被省去），对应的就是 +12。而我们看到 bne 和 Exit 差 3 条指令，即为 12 Bytes。</p>
 </li>
-<li>
-<p>回头来看所有的指令类型…… <strong>SUMMARY</strong></p>
+</ul>
+<h3 id="summary">SUMMARY</h3>
 <p><img src="images/cod-36.png" alt="cod-36"></p>
 <p>个人感觉指令基本上是按「格式」分类，而不是「作用」分类。</p>
 <ul>
 <li>
-<p>R 型：主要用于「算术操作」。rd 表示被赋值寄存器，rs1 和 rs2 表示操作数。</p>
+<p>R 型：<strong>主要用于「算术操作」</strong>。rd 表示被赋值寄存器，rs1 和 rs2 表示操作数。</p>
 </li>
 <li>
-<p>I 型：目前可用于「load」「立即数算术」「jalr」。load 和 jalr 的共同点是都有一个基地址 rs1，同时有一个偏移量 imm。随后它们的 rd 都会改变，load 会把内存中读到的值放进 rd，jalr 会把 PC+4 放进 rd。</p>
+<p>I 型：<strong>目前可用于「load」「立即数算术」「jalr」</strong>。load 和 jalr 的共同点是都有一个基地址 rs1，同时有一个偏移量 imm。随后它们的 rd 都会改变，load 会把内存中读到的值放进 rd，jalr 会把 PC+4 放进 rd。</p>
 </li>
 <li>
-<p>SB 型：目前可用于「选择型跳转」。rs1 和 rs2 执行某种比较运算，跳转的偏移量存储在 imm 中。</p>
+<p>SB 型：<strong>目前可用于「选择型跳转」</strong>。rs1 和 rs2 执行某种比较运算，跳转的偏移量存储在 imm 中。</p>
 </li>
 <li>
-<p>UJ 型：目前可用于「jal」。jal 只有一个偏移量 offset，同时也会把 PC+4 放进 rd。</p>
+<p>UJ 型：<strong>目前可用于「jal」</strong>。jal 只有一个偏移量 offset，同时也会把 PC+4 放进 rd。</p>
 </li>
 <li>
-<p>U 型：目前可用于「立即数赋值」。把 imm 放进 rd（取低 32 位）的高 20 位。</p>
+<p>U 型：<strong>目前可用于「立即数赋值」</strong>。把 imm 放进 rd（取低 32 位）的高 20 位。</p>
 </li>
 <li>
-<p>S 型：目前可用于「store」。store 会把 rs2 寄存器中的内容写入基地址 rs1，偏移量 imm 的位置。</p>
+<p>S 型：<strong>目前可用于「store」</strong>。store 会把 rs2 寄存器中的内容写入基地址 rs1，偏移量 imm 的位置。</p>
 </li>
 </ul>
 <p>可以看到，rs1 / rs2 / rd / imm 都是有其意义的。</p>
@@ -815,8 +808,6 @@ lw rd, offset(rs1)
 </li>
 <li>
 <p>rs2 则通常表示第二个操作数。</p>
-</li>
-</ul>
 </li>
 </ul>
 <h3 id="some-extensions-of-ch2">Some Extensions of CH2</h3>
@@ -946,16 +937,15 @@ lw rd, offset(rs1)
     <li><a href="#chapter-2-instructions-language-of-the-machine">Chapter 2. Instructions: Language of the Machine</a>
       <ul>
         <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#arithmetic-operations">Arithmetic Operations</a></li>
-        <li><a href="#operands">Operands</a></li>
-        <li><a href="#signed--unsigned-numbers">Signed &amp; Unsigned Numbers</a></li>
-        <li><a href="#representing-instructions">Representing Instructions</a></li>
-        <li><a href="#logical-operations">Logical Operations</a></li>
-        <li><a href="#decision-instructions">Decision Instructions</a></li>
-        <li><a href="#jump-register">Jump Register</a></li>
+        <li><a href="#basics-instructions-and-registers">Basics: Instructions and Registers</a></li>
+        <li><a href="#al-1-arithmetic-logical-and-memory">AL 1: Arithmetic, Logical and Memory</a></li>
+        <li><a href="#ml-1-representing-instructions-of-r--i--s">ML 1: Representing Instructions of R / I / S</a></li>
+        <li><a href="#al-2-decision-instructions">AL 2: Decision Instructions</a></li>
+        <li><a href="#al-3-jump-register">AL 3: Jump Register</a></li>
         <li><a href="#supporting-procedures">Supporting Procedures</a></li>
         <li><a href="#other-width">Other Width</a></li>
-        <li><a href="#addressing-for-32-bit-immediate-and-addresses">Addressing for 32-Bit Immediate and Addresses</a></li>
+        <li><a href="#ml-2-addressing-for-32-bit-immediate-and-addresses">ML 2: Addressing for 32-Bit Immediate and Addresses</a></li>
+        <li><a href="#summary">SUMMARY</a></li>
         <li><a href="#some-extensions-of-ch2">Some Extensions of CH2</a></li>
       </ul>
     </li>
@@ -1008,7 +998,7 @@ lw rd, offset(rs1)
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p2%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20II%29&description=Chapter%202.%20Instructions%3a%20Language%20of%20the%20Machine%20Introduction%20Process%20of%20Compiling%0a%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b%ef%bc%9a%e9%ab%98%e7%ba%a7%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%9c%ba%e5%99%a8%e8%af%ad%e8%a8%80%e3%80%82%0a%e4%be%8b%e5%a6%82%ef%bc%8cA%20%2b%20B%20%24%5cto%24%20add%20A%2c%20B%20%24%5cto%24%201000110010100000%e3%80%82%0aInstruction%0a%e6%8c%87%e4%bb%a4%e6%98%af%e3%80%8c%e6%9c%ba%e5%99%a8%e7%9a%84%e8%af%ad%e8%a8%80%e3%80%8d%e3%80%82%e5%a6%82%e6%9e%9c%e8%af%b4%20Instruction%20%e6%98%af%20Word%ef%bc%8c%e9%82%a3%e4%b9%88%20Instruction%20set%20%e5%88%99%e6%98%af%20Vocabulary%e3%80%82%0a%e6%9c%ac%e8%af%be%e7%a8%8b%e9%87%87%e5%8f%96%e7%9a%84%e6%8c%87%e4%bb%a4%e9%9b%86%e4%b8%ba%20RISC-V%e3%80%82%e8%bf%99%e6%98%af%e4%b8%80%e7%a7%8d%e7%b2%be%e7%ae%80%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%0a%e5%85%b3%e4%ba%8e%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e5%92%8c%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%85%b3%e7%b3%bb%ef%bc%8c%e6%91%98%e5%8f%96%e4%b8%a4%e6%9d%a1%e7%9f%a5%e4%b9%8e%e5%9b%9e%e7%ad%94%ef%bc%9a%0a%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e6%98%af%e7%94%a8%e4%ba%ba%e7%b1%bb%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%e8%af%ad%e8%a8%80%e6%9d%a5%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%e5%90%a6%e5%88%99%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e6%9c%ba%e5%99%a8%e7%a0%81%e9%83%bd%e6%98%af%e4%b8%80%e5%a0%86%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%95%b0%e5%ad%97%ef%bc%8c%e4%ba%ba%e7%b1%bb%e8%af%bb%e8%b5%b7%e6%9d%a5%e9%9d%9e%e5%b8%b8%e9%ba%bb%e7%83%a6%ef%bc%8c%e4%bd%86%e6%b1%87%e7%bc%96%e6%98%af%e7%94%a8%e7%b1%bb%e4%bc%bc%e4%ba%ba%e7%b1%bb%e8%af%ad%e8%a8%80%e7%9a%84%e6%96%b9%e5%bc%8f%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%ef%bc%8c%e8%af%bb%e8%b5%b7%e6%9d%a5%e6%96%b9%e4%be%bf%e5%a4%9a%e4%ba%86%e3%80%82%0a%e6%b1%87%e7%bc%96%e6%8c%87%e4%bb%a4%e6%98%af%e8%ae%a9%e4%ba%ba%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%ef%bc%8c%e5%8f%aa%e6%98%af%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%8f%a6%e5%a4%96%e4%b8%80%e7%a7%8d%e8%a1%a8%e7%a4%ba%e5%bd%a2%e5%bc%8f%e3%80%82%0aRISC%20vs.%20CISC%0aArithmetic%20Operations%20Instruction%20Formats%0a%e5%89%8d%e8%80%85%e6%98%af%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e7%b1%bb%e5%9e%8b%ef%bc%8c%e5%90%8e%e8%80%85%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e5%8f%82%e6%95%b0%e3%80%82%0aAdd%20and%20Subtraction%0aCategory%20Instruction%20Example%20Meaning%20Comments%20Type%20Arithmetic%20add%20add%20a%2cb%2cc%20%24a%20%5cgets%20b%2bc%24%20Always%203%20operand%20R%20Arithmetic%20subtract%20sub%20a%2cb%2cc%20%24a%20%5cgets%20b-c%24%20Always%203%20operand%20R%20%e4%be%8b%e5%a6%82%ef%bc%8c%e5%af%b9%e4%ba%8e%e4%b8%80%e6%ae%b5%20C%20%e4%bb%a3%e7%a0%81%20f%20%3d%20%28g%20%2b%20h%29%20-%20%28i%20%2b%20j%29%3b%ef%bc%8c%e5%8f%af%e4%bb%a5%e5%86%99%e6%88%90%e5%a6%82%e4%b8%8b%e7%9a%84%20RISC-V%20%e6%8c%87%e4%bb%a4%ef%bc%9a" aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fnotes_cod_p2%2f&name=%e3%80%90%e7%ac%94%e8%ae%b0%e3%80%91%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90%20%28Part%20II%29&description=Chapter%202.%20Instructions%3a%20Language%20of%20the%20Machine%20Introduction%20Process%20of%20Compiling%0a%e7%bc%96%e8%af%91%e8%bf%87%e7%a8%8b%ef%bc%9a%e9%ab%98%e7%ba%a7%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%20%24%5cto%24%20%e6%9c%ba%e5%99%a8%e8%af%ad%e8%a8%80%e3%80%82%0a%e4%be%8b%e5%a6%82%ef%bc%8cA%20%2b%20B%20%24%5cto%24%20add%20A%2c%20B%20%24%5cto%24%201000110010100000%e3%80%82%0aInstruction%0a%e6%8c%87%e4%bb%a4%e6%98%af%e3%80%8c%e6%9c%ba%e5%99%a8%e7%9a%84%e8%af%ad%e8%a8%80%e3%80%8d%e3%80%82%e5%a6%82%e6%9e%9c%e8%af%b4%20Instruction%20%e6%98%af%20Word%ef%bc%8c%e9%82%a3%e4%b9%88%20Instruction%20set%20%e5%88%99%e6%98%af%20Vocabulary%e3%80%82%0a%e6%9c%ac%e8%af%be%e7%a8%8b%e9%87%87%e5%8f%96%e7%9a%84%e6%8c%87%e4%bb%a4%e9%9b%86%e4%b8%ba%20RISC-V%e3%80%82%e8%bf%99%e6%98%af%e4%b8%80%e7%a7%8d%e7%b2%be%e7%ae%80%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%0a%e5%85%b3%e4%ba%8e%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e5%92%8c%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%85%b3%e7%b3%bb%ef%bc%8c%e6%91%98%e5%8f%96%e4%b8%a4%e6%9d%a1%e7%9f%a5%e4%b9%8e%e5%9b%9e%e7%ad%94%ef%bc%9a%0a%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80%e6%98%af%e7%94%a8%e4%ba%ba%e7%b1%bb%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%e8%af%ad%e8%a8%80%e6%9d%a5%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%e3%80%82%e5%90%a6%e5%88%99%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e6%9c%ba%e5%99%a8%e7%a0%81%e9%83%bd%e6%98%af%e4%b8%80%e5%a0%86%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%95%b0%e5%ad%97%ef%bc%8c%e4%ba%ba%e7%b1%bb%e8%af%bb%e8%b5%b7%e6%9d%a5%e9%9d%9e%e5%b8%b8%e9%ba%bb%e7%83%a6%ef%bc%8c%e4%bd%86%e6%b1%87%e7%bc%96%e6%98%af%e7%94%a8%e7%b1%bb%e4%bc%bc%e4%ba%ba%e7%b1%bb%e8%af%ad%e8%a8%80%e7%9a%84%e6%96%b9%e5%bc%8f%e6%8f%8f%e8%bf%b0%e6%8c%87%e4%bb%a4%e9%9b%86%ef%bc%8c%e8%af%bb%e8%b5%b7%e6%9d%a5%e6%96%b9%e4%be%bf%e5%a4%9a%e4%ba%86%e3%80%82%0a%e6%b1%87%e7%bc%96%e6%8c%87%e4%bb%a4%e6%98%af%e8%ae%a9%e4%ba%ba%e7%9c%8b%e5%be%97%e6%87%82%e7%9a%84%ef%bc%8c%e5%8f%aa%e6%98%af%e6%8c%87%e4%bb%a4%e9%9b%86%e7%9a%84%e5%8f%a6%e5%a4%96%e4%b8%80%e7%a7%8d%e8%a1%a8%e7%a4%ba%e5%bd%a2%e5%bc%8f%e3%80%82%0aRISC%20vs.%20CISC%0aBasics%3a%20Instructions%20and%20Registers%20Instruction%20Formats%0a%e5%89%8d%e8%80%85%e6%98%af%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e7%b1%bb%e5%9e%8b%ef%bc%8c%e5%90%8e%e8%80%85%e5%8f%af%e4%bb%a5%e7%90%86%e8%a7%a3%e4%b8%ba%e6%93%8d%e4%bd%9c%e5%8f%82%e6%95%b0%e3%80%82%0aRegister%20Operands%0a%e5%af%b9%e4%ba%8e%20RISC-V%20%e6%8c%87%e4%bb%a4%e9%9b%86%ef%bc%8c%e5%85%b6%e4%bd%bf%e7%94%a8%e7%9a%84%e5%af%84%e5%ad%98%e5%99%a8%e7%b1%bb%e5%9e%8b%e4%b8%ba%20%2432%5ctimes%2064%5ctext%7b-bit%7d%24%e3%80%82%e5%8f%af%e4%bb%a5%e6%83%b3%e8%b1%a1%e6%88%90%e4%b8%80%e4%b8%aa%e5%af%84%e5%ad%98%e5%99%a8%e6%9c%89%2032%20%e8%a1%8c%ef%bc%8c%e6%af%8f%e4%b8%80%e8%a1%8c%e6%9c%89%e4%b8%80%e4%b8%aa%e5%8f%98%e9%87%8f%ef%bc%8c%e5%85%b6%e9%95%bf%e5%ba%a6%e4%b8%ba%2064%20bits%ef%bc%88%e7%ad%89%e4%ba%8e%208%20bytes%ef%bc%8c%e6%98%af%e4%b8%80%e4%b8%aa%20double%20%2f%20long%20long%20%e7%9a%84%e5%a4%a7%e5%b0%8f%ef%bc%8c%e4%b9%9f%e8%a2%ab%e7%a7%b0%e4%b8%ba%20dword%ef%bc%89%e3%80%82%0a%e8%bf%99%e4%ba%9b%e5%af%84%e5%ad%98%e5%99%a8%e7%9a%84%e3%80%8c%e5%90%84%e8%a1%8c%e3%80%8d%e5%90%84%e5%8f%b8%e5%85%b6%e8%81%8c%e3%80%82%e5%85%b6%e8%81%8c%e8%83%bd%e5%a6%82%e4%b8%8b%e8%a1%a8%e6%89%80%e7%a4%ba%e3%80%82%0a%e4%b8%be%e4%b8%aa%e4%be%8b%e5%ad%90%ef%bc%9af%20%3d%20%28g%20%2b%20h%29%20-%20%28i%20%2b%20j%29%3b%ef%bc%8c%e6%88%91%e4%bb%ac%e5%81%87%e8%ae%be%e7%9b%ae%e5%89%8d%20%24f%2cg%2ch%2ci%2cj%24%20%e7%9a%84%e5%80%bc%e5%88%86%e5%88%ab%e4%bd%8d%e4%ba%8e%e5%9c%b0%e5%9d%80%20x19%2c%20x20%2c%20x21%2c%20x22%2c%20x23%e3%80%82" aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>

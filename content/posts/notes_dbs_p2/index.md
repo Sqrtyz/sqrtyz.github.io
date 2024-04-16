@@ -421,6 +421,12 @@ A language in which SQL queries are embedded is referred to as a **Host language
 
         <p><img src="images/dbs-27.png" alt="dbs-27" width="90%"></p>
 
+        一个例子如下：
+
+        <p><img src="images/dbs-38.png" alt="dbs-38" width="60%"></p>
+
+        注意：打箭头的一方表示 ONE，无箭头实线的一方表示 MANY。此处「one to many」的意思是 one instructor 可以对应 many students；但如果放到联系集中考虑的话，反而某个 instructor 会在联系集中出现多次，某个 student 则只会在联系集中出现一次。注意区分意义。
+
     + 全参与和部分参与：
 
         全参与说明对应的那一侧都在 Relationship Set 中至少出现过一次。部分参与则无此限制。

@@ -30,32 +30,13 @@ date: 2024-01-01
 
     ![cod-31](images/cod-31.png)
 
-### Arithmetic Operations
+### Basics: Instructions and Registers
 
 + Instruction Formats
 
     ![cod-32](images/cod-32.png)
 
     前者是可以理解为操作类型，后者可以理解为操作参数。
-
-+ Add and Subtraction
-
-    | Category | Instruction | Example | Meaning | Comments |Type|
-    |---|---|---|---|---|---|
-    |Arithmetic|add|`add a,b,c`|$a \gets b+c$|Always 3 operand|R|
-    |Arithmetic|subtract|`sub a,b,c`|$a \gets b-c$|Always 3 operand|R|
-
-    例如，对于一段 C 代码 `f = (g + h) - (i + j);`，可以写成如下的 RISC-V 指令：
-
-    ```
-    add t0, g, h
-    add t1, i, j
-    sub f, t0, t1
-    ```
-
-    不过，实际上这些变量并不能「写成」t0, g, h 这种。这一点我们马上就会提及。
-
-### Operands
 
 + Register Operands
 
@@ -65,7 +46,7 @@ date: 2024-01-01
 
     ![cod-33](images/cod-33.png)
 
-    还是用之前的例子，`f = (g + h) - (i + j);`，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。
+    举个例子：`f = (g + h) - (i + j);`，我们假设目前 $f,g,h,i,j$ 的值分别位于地址 x19, x20, x21, x22, x23。
 
     那么我们应该这样描述 RISC-V 指令：
 
@@ -75,7 +56,30 @@ date: 2024-01-01
     sub x19, x5, x6
     ```
 
-+ Memory Operands
+### AL 1: Arithmetic, Logical and Memory
+
++ Add and Subtraction
+
+    | Category | Instruction | Example | Meaning | Comments |Type|
+    |---|---|---|---|---|---|
+    |Arithmetic|add|`add a,b,c`|$a \gets b+c$|Always 3 operand|R|
+    |Arithmetic|subtract|`sub a,b,c`|$a \gets b-c$|Always 3 operand|R|
+
++ Immediate Arithmetic
+
+    | Category | Instruction | Example | Meaning | Comments |Type|
+    |---|---|---|---|---|---|
+    |Arithmetic|addi immediate|`addi a,b,c`|$a \gets b+c$|$c$ is a constant|I|
+
++ Logical Arithmetic
+
+    ![cod-39](images/cod-39.png)
+
+    ![cod-40](images/cod-40.png)
+
+    （懒得敲表格了，直接截图）
+
++ Memory Operations
 
     + Basics
 
@@ -107,17 +111,8 @@ date: 2024-01-01
 
         | Category | Instruction | Example | Meaning | Comments |Type|
         |---|---|---|---|---|---|
-        |Data Transfer|load dword|`ld x5, 40(x6)`|x5 = Memory[x6+40]|dword from mem to reg|I|
-        |Data Transfer|store dword|`sd x5, 40(x6)`|Memory[x6+40] = x5|dword from reg to mem|S|
-
-    + Add immediate
-  
-        | Category | Instruction | Example | Meaning | Comments |Type|
-        |---|---|---|---|---|---|
-        |Arithmetic|addi immediate|`addi a,b,c`|$a \gets b+c$|$c$ is a constant|I|
-
-
-### Signed & Unsigned Numbers
+        |Data Transfer|load dword|`ld x5, 40(x6)`|x5 = Mem[x6+40]|dword from mem to reg|I|
+        |Data Transfer|store dword|`sd x5, 40(x6)`|Mem[x6+40] = x5|dword from reg to mem|S|
 
 + Sign Extension
 
@@ -129,7 +124,7 @@ date: 2024-01-01
 
     在 RISC-V 中，`lb` 操作用于执行「同符号位拓展」，`lbu` 操作用于执行「补 0 位拓展」。
 
-### Representing Instructions
+### ML 1: Representing Instructions of R / I / S
 
 + 汇编码 $\to$ 机器码
 
@@ -164,17 +159,7 @@ date: 2024-01-01
         ![cod-38](images/cod-38.png)
 
 
-### Logical Operations
-
-+ 基本逻辑运算符及其 RISC-V
-
-    ![cod-39](images/cod-39.png)
-
-    ![cod-40](images/cod-40.png)
-
-    （懒得敲表格了，直接截图）
-
-### Decision Instructions
+### AL 2: Decision Instructions
 
 基本 RISC-V 语句：beq & bne
 
@@ -279,7 +264,7 @@ Unsigned comparison: `bltu`, `bgeu`（在后面加 u 变成无符号）
     ![cod-41](images/cod-41.png)
 
 
-### Jump Register
+### AL 3: Jump Register
 
 RISC-V 中的无条件跳转主要包含两种指令：`jal` 和 `jalr`。
 
@@ -396,9 +381,9 @@ lh rd, offset(rs1)
 lw rd, offset(rs1)
 ```
 
-### Addressing for 32-Bit Immediate and Addresses
+### ML 2: Addressing for 32-Bit Immediate and Addresses
 
-这部分对 32 位立即数赋值 / 32 位寻址的具体实现进行讲解。
+这部分讲解 32 位立即数赋值 / 32 位寻址的机器码层面具体实现。
 
 + 32-Bit Immediate Addressing (U-Type)
 
@@ -419,6 +404,8 @@ lw rd, offset(rs1)
     举例：`bne x10, x11, 2000`（2000 = 0111 1101 0000）
 
     ![cod-47](images/cod-47.png)
+
+    上图的 Inst 那一行有些神金，首先一般不用 Inst 表示（就用 imm），然后应该最低位从 0 开始。
 
     注意，由于所有的 RISC-V 指令都是 32 位的（本课程不讨论 16 位），所以指令的地址（byte 单位）一定满足末两位为 0。所以 RISC-V 的设计者决定在实际机器编码时，省略 offset 的最后一位，只将 offset 中的非 LSB 部分写入机器码（这样可以使 offset 支持更远的距离）。
 
@@ -442,36 +429,35 @@ lw rd, offset(rs1)
 
     解读 bne 那一行：rs1 表示的是 x9，rs2 表示的是 x24。对于 SB-Type 指令，funct7 和 rd 列共同组成了 immediate。可以看到本指令的立即数为 `000000000110(0)` （最后一个 0 在机器码中被省去），对应的就是 +12。而我们看到 bne 和 Exit 差 3 条指令，即为 12 Bytes。
 
-+ 回头来看所有的指令类型…… **SUMMARY**
+### SUMMARY
 
-    ![cod-36](images/cod-36.png)
+![cod-36](images/cod-36.png)
 
-    个人感觉指令基本上是按「格式」分类，而不是「作用」分类。
+个人感觉指令基本上是按「格式」分类，而不是「作用」分类。
 
-    + R 型：主要用于「算术操作」。rd 表示被赋值寄存器，rs1 和 rs2 表示操作数。
++ R 型：**主要用于「算术操作」**。rd 表示被赋值寄存器，rs1 和 rs2 表示操作数。
 
-    + I 型：目前可用于「load」「立即数算术」「jalr」。load 和 jalr 的共同点是都有一个基地址 rs1，同时有一个偏移量 imm。随后它们的 rd 都会改变，load 会把内存中读到的值放进 rd，jalr 会把 PC+4 放进 rd。
++ I 型：**目前可用于「load」「立即数算术」「jalr」**。load 和 jalr 的共同点是都有一个基地址 rs1，同时有一个偏移量 imm。随后它们的 rd 都会改变，load 会把内存中读到的值放进 rd，jalr 会把 PC+4 放进 rd。
 
-    + SB 型：目前可用于「选择型跳转」。rs1 和 rs2 执行某种比较运算，跳转的偏移量存储在 imm 中。
++ SB 型：**目前可用于「选择型跳转」**。rs1 和 rs2 执行某种比较运算，跳转的偏移量存储在 imm 中。
 
-    + UJ 型：目前可用于「jal」。jal 只有一个偏移量 offset，同时也会把 PC+4 放进 rd。
++ UJ 型：**目前可用于「jal」**。jal 只有一个偏移量 offset，同时也会把 PC+4 放进 rd。
 
-    + U 型：目前可用于「立即数赋值」。把 imm 放进 rd（取低 32 位）的高 20 位。
++ U 型：**目前可用于「立即数赋值」**。把 imm 放进 rd（取低 32 位）的高 20 位。
 
-    + S 型：目前可用于「store」。store 会把 rs2 寄存器中的内容写入基地址 rs1，偏移量 imm 的位置。
++ S 型：**目前可用于「store」**。store 会把 rs2 寄存器中的内容写入基地址 rs1，偏移量 imm 的位置。
 
-    可以看到，rs1 / rs2 / rd / imm 都是有其意义的。
-    
-    + imm 通常表示常量，所以也经常表示 offset。注意 imm 的「上下界」（比如 `imm[31:12]`）有其意义。大概是，如果 imm 用于表示某指令的 X 部分，则 `imm[a:b]` 表示 imm 部分表示的是 `X[a:b]`。
+可以看到，rs1 / rs2 / rd / imm 都是有其意义的。
 
-    + rs1 通常表示基地址。也有的时候表示第一个操作数。
++ imm 通常表示常量，所以也经常表示 offset。注意 imm 的「上下界」（比如 `imm[31:12]`）有其意义。大概是，如果 imm 用于表示某指令的 X 部分，则 `imm[a:b]` 表示 imm 部分表示的是 `X[a:b]`。
 
-    + rd 通常是一个会被写入新内容的寄存器地址。
++ rs1 通常表示基地址。也有的时候表示第一个操作数。
 
-    + rs2 则通常表示第二个操作数。
++ rd 通常是一个会被写入新内容的寄存器地址。
+
++ rs2 则通常表示第二个操作数。
 
 ### Some Extensions of CH2
-
 
 1. Synchronization in RISC-V (RISC-V 同步问题)
 
