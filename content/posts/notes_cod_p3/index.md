@@ -155,7 +155,7 @@ RISC-V CPU 可以划分为以下五个阶段：
 
 #### 2. Data Hazard
 
-+ Data Hazard
++ Problem: Data Hazard
 
     有的时候执行某一个指令，要求前一个指令完成数据写入。考虑这样的两个相邻指令：
 
@@ -170,7 +170,7 @@ RISC-V CPU 可以划分为以下五个阶段：
 
     【OBSERVATION】观察上上张图，WB 的写 reg 是在上半 cycle，ID 的读 reg 是在下半 cycle。这种设计的缘由其实在这里有所体现。
 
-+ Forwarding
++ Solution: Forwarding
 
     解决这种情况的一种方案是 Forwarding。大概思路是有的时候我们不必等待一个数据被写入 reg，然后才再次使用；而是可以直接用某种 extra connection 来直接高效地使用。下图演示了 Forwarding 的解决方案。
 
@@ -185,3 +185,136 @@ RISC-V CPU 可以划分为以下五个阶段：
     不过，也可以通过修改汇编代码来规避这一问题——
 
     <p><img src="images/cod-68.png" alt="cod-68" width="90%"></p>
+
+#### 3. Control Hazard
+
++ Problem: Stall on Branch
+
+    <p><img src="images/cod-69.png" alt="cod-69" width="80%"></p>
+
+    类似于这种 Branch Jumping 带来的停顿。上图有点问题，按理来说应当是两行 bubble。
+
++ Solution: Branch Prediction
+
+    字面意思，提前预测 branch 的结果。一般可以分为静态预测 (Static branch prediction) 和动态预测 (Dynamic branch prediction)。
+
+    静态预测一般是在软件层面上，根据普遍的 branch 选择结果进行预测。
+
+    动态预测一般是在硬件层面上，比如可以基于上一次 branch 的选择结果进行预测（考虑循环的情形，这种预测应当是成功率较高的）。
+
+### RISC-V Pipelined Datapath
+
+在解决这一系列 hazards 之前，我们需要对 CPU 的结构进行修改。总的图形如下：
+
+<p><img src="images/cod-70.png" alt="cod-70" width="100%"></p>
+
++ 四个中间寄存器：`IF/ID`，`ID/EX`，`EX/MEM` 以及 `MEM/WB`。
+
+    字面意思表明了其所处位置。引入寄存器的目的是显而易见的，是为了使得在流水线上，每个周期的指令依然能正确读取数据。比如观察 Reg 的 Write Data 输入，肯定得引入 `MEM/WB` 的值，而不是当前 Instruction Memory 的值。它们之间差了有 3 个 CC。
+
+    注意这个改变只是最基本的，保证 pipeline 能正常运作的。它还没有解决 hazards 的问题。
+
++ Control 信号：`EX`，`MEM(M)` 以及 `WB`。
+
+    回顾单周期 CPU，除去 `jal` 使用的 jump 信号，Controller 一共给出 7 个信号。根据其作用阶段的不同，将其分为
+
+    1. EX (作用于 EX 阶段)：包含 `ALUop`，`ALUsrc`。
+
+    2. MEM (作用于 MEM 阶段)：包含 `Branch`，`MemRead`，`MemWrite`。
+
+    3. WB (作用于 WB 阶段)：包含 `MemToReg`，`RegWrite`。
+
+    可以看到，在流水线上 Controller 对应的寄存器的大小是越来越小的，这一点也很好理解，毕竟到后面的 stage 某些 control signal 就不再起作用了。
+
+
+### Data Hazard Solution
+
+#### 1. R-R Case
+
+情景：考虑以下的 RISC-V 指令：
+
+```asm
+sub x2, x1, x3
+and x12, x2, x5
+or x13, x6, x2
+add x14, x2, x2
+sd x15, 100(x2)
+```
+
+<p><img src="images/cod-71.png" alt="cod-71" width="100%"></p>
+
+从上图可以看出，Data Hazard 发生当且仅当
+
++ 前序指令的 `rd` 和后序指令的 `rs1/rs2` 重合，即
+
+    1a. `EX/MEM.RegisterRd` = `ID/EX.RegisterRs1`
+
+    1b. `EX/MEM.RegisterRd` = `ID/EX.RegisterRs2`
+
+    2a. `MEM/WB.RegisterRd` = `ID/EX.RegisterRs1`
+
+    2b. `MEM/WB.RegisterRd` = `ID/EX.RegisterRs2`
+
+    四条中有一条满足即可。
+
++ 执行写入操作
+
+    `EX/MEM.Controller.RegWrite` $= 1$
+
+    `MEM/WB.Controller.RegWrite` $= 1$
+
+    要求哪条满足主要是看上面选的是 1 还是 2。
+
++ 不是虚空写入
+
+    `EX/MEM.RegisterRd` $\neq 0$
+
+    `MEM/WB.RegisterRd` $\neq 0$
+
+    要求哪条满足主要是看上面选的是 1 还是 2。
+
+所以，我们可以加入这样的逻辑来完成 Forwarding：
+
+<p><img src="images/cod-72.png" alt="cod-72" width="100%"></p>
+
+
+#### 2. Load-R Case
+
+情景：考虑以下的 RISC-V 指令：
+
+```asm
+ld x2, 20(x1)
+and x4, x2, x5
+or x8, x2, x6
+add x9, x4, x2
+```
+
+<p><img src="images/cod-73.png" alt="cod-73" width="100%"></p>
+
+可以发现，第二行的指令无论如何都没有机会执行了，所以 `add x4, x2, x5` 必然会推后一个 CC。对于这一情况的判断，我们可以在上图橙色处完成。判断条件为
+
++ 前序指令的 `rd` 和后序指令的 `rs1/rs2` 重合，即
+
+    a. `ID/EX.RegisterRd = IF/ID.RegisterRs1`
+
+    b. `ID/EX.RegisterRd = IF/ID.RegisterRs2`
+
+    两条中有一条满足即可。注意上面条件的两侧不要搞反。
+
++ 执行 Load 操作
+
+    `ID/EX.Controller.MemRead` $= 1$
+
+如果条件满足，我们首先要进行 Stall（熄火）。操作为
+
+1. 将当前指令（也就是下一个 CC 的 ID/EX）寄存器全部归零。
+
+2. 再次读取 PC，即不调到 PC+4。
+
+Stall 后，我们再执行 Forwarding 来保证指令的正常运行。这一部分的 Forwarding 操作和 R-R Case 几乎一致，唯一的区别是 Forwarding 的执行是在判断生效的两个 CC 后。
+
+下图展示了考虑 Load-R Case 的 Pipeline。可以看到主要区别是加入了 Stall 的考量。
+
+<p><img src="images/cod-74.png" alt="cod-74" width="100%"></p>
+
+### Branch Hazard Solution

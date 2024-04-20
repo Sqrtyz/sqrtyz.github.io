@@ -529,3 +529,213 @@ section 被作为弱实体是因为它可能重复。例如，COD 课和 DBS 课
     <p><img src="images/dbs-37.png" alt="dbs-37" width="50%"></p>
 
     两种处理方式都是允许的。上面的信息更简洁，下面的话在特定情况查询更方便。
+
+
+## Lecture 6. Relational Database Design
+
+### First Normal Form 第一范式
+
+A relational schema R is in first normal form (1NF) if **the domains of all attributes of R are atomic**.
+
+违反原子性的 attrs:
+
++ Composite attributes (复合属性) --- set of names 
++ Multi-value attribute (多值属性) --- a person’s phones 
++ Complex data type (过于复杂的类型) --- object-oriented
+
+简单来说，atomic 要求每一个 attr 都 **不可分割**。
+
++ 不符合 1NF（例如多值属性），有以下解决方案：
+
+    1. Use multi fields
+
+        e.g., `person(pname, ..., phon1, phon2, phon3, ...)`
+
+    2. Use a separate table
+
+        e.g., `phone(pname, phone)`
+
+    3. Use a single field
+
+        e.g., `person(pname, ..., phones, ...)`
+
++ 如何理解 ATOMIC（根据意义确定）
+
+    Atomicity is actually a property of how the elements of the domain are used. 
+    
+    E.g., Strings would normally be considered indivisible. 
+    
+    Suppose that students are given roll numbers which are strings of the form 
+    CS0012 or EE1127.
+    
+    If the first two characters are extracted to find the department, **the domain of roll numbers is not atomic**. 
+
+### BCNF and 3NF BC 范式与第三范式
+
+#### 1 / Pitfalls in Relational Database Design
+
+
++ A Pitfall in Relational Database Design
+
+    考虑 Banking Example 中的一张表
+
+    ```
+    Lending-schema = (branch-name, branch-city, assets, customer-name, loan-number, amount)
+    ```
+
+    <p><img src="images/dbs-39.png" alt="dbs-39" width="70%"></p>
+
+    branch-name, branch-city, assets 发生了大量重复。这是一个冗余的设计。
+
+    事实上，除了浪费空间，这种设计还会导致许多问题。比如一个 branch 没有贷款客户，我们该如何存储这个 branch 的信息？
+
++ Decomposition
+
+    一个分解方法是，将 `(ABCD)` 分解为 `(AB)` 和 `(BCD)`，或者分解为 `(ACD)` 和 `(ABD)`，等等。
+
+    【定义】**无损连接分解**：假设某 schema $(R)$ 被分解为 $(R_1,R_2) \ (R_1 \cup R_2 = R)$，并且对于所有可能的 relation $r$，有 $r = \Pi_{R_1}(r) \bowtie \Pi_{R_2}(r)$，则认为 $R \to R_1+R_2$ 是无损的。
+
+
+#### 2 / Function Dependencies
+
++ Basic Def
+
+    The functional dependency $\alpha \to \beta$ holds on $R$ if and only if for any legal relations $r(R)$, whenever any two tuples $t_1$ and $t_2$ of $r$ agree on:
+
+    The attributes $\alpha$, they also agree on the attributes $\beta$, i.e., 
+
+    $$t_1[\alpha]=t_2[\alpha] \implies t_1[\beta]=t_2[\beta] $$
+
+    简单来说，函数依赖关系 $\alpha \to \beta$ 说明 $\alpha$ 能唯一地决定 $\beta$。例如，对于这样一个表格，有 $B \to A$ 成立。
+
+    |A|B|
+    |---|---|
+    |1|4|
+    |1|5|
+    |3|7|
+
+    不难发现，若 $K$ 是 relation $r(R)$ 的 super key，那么 $K \to R$；若 $K$ 是 relation $r(R)$ 的 candidate key，那么还需要有：不存在 $\alpha \subset K$，满足 $\alpha \to R$。
+
+    根据某个 $r(R)$ 的实例似乎可以判断某组函数依赖 $\alpha \to \beta$ 是否成立，然而这样往往是不准确的，还是要按 $R$ 的意义来。
+
++ Trivial / Non-Trivial FD
+
+    平凡的函数依赖：$\alpha \to \beta$，且 $\beta \subseteq \alpha$。
+
+    非平凡的函数依赖：$\alpha \to \beta$，且 $\beta \nsubseteq \alpha$。
+
++ Closure 闭包
+
+    函数依赖关系 $F$ 的闭包记作 $F^{+}$。其意义是 $F \implies F^{+}$，且 $F^{+}$ 是极大的。
+
+    如何寻找函数依赖 $F$ 的闭包，依赖下列定律（下面三个定律已经完备）：
+
+    + 自反律：If $\beta \subseteq \alpha$, then $\alpha \to \beta$
+
+    + 增补律：If $\alpha \to \beta$, then $\gamma\alpha \to \gamma\beta$
+
+    + 传递律：If $\alpha \to \beta$ and $\beta \to \gamma$, then $\alpha \to \gamma$
+
+    为了加速寻找 $F \implies F^{+}$，还可以使用以下三个引申的定律：
+
+    + 合并律：If $\alpha \to \beta$ and $\alpha \to \gamma$, then $\alpha \to \beta\gamma$
+
+    + 分解律：If $\alpha \to \beta\gamma$, then $\alpha \to \beta$ and $\alpha \to \gamma$
+
+    + 伪传递律：If $\alpha \to \beta$ and $\gamma\beta \to \delta$, then $\alpha\gamma \to \delta$
+
++ 属性集的闭包
+
+    计算 $F \implies F^{+}$ 是繁琐的。有的时候我们只关心某个属性集 $\alpha$ 可以决定哪些属性。称这些被 $\alpha$ 决定的属性构成的集合为 $\alpha^{+}$。
+
+    【理解检测 1】$\alpha \to \beta$ is in $F^{+}$ means that $\beta \subseteq \alpha^{+}$.
+
+    【理解检测 2】对于所有的 $\alpha \subseteq R$，将函数依赖 $\alpha \to \beta \ (\beta \in \alpha^{+})$ 组合在一起，就构成了 $F^{+}$。
+
++ 正则覆盖
+
+    上面是说怎样「扩大」函数依赖集合，接下来讨论如何「缩减」。可以证明，对于一组函数依赖集合 $F$，总能找到一个极小的 $F_c$，使得两者等价。
+
+    为了找到 $F_c$，经验上可以应用三条方法：
+
+    1. 直接删去可被其它函数依赖推出的函数依赖。
+
+        例如 $F=\\{A \to C, A \to B, B \to C\\} $，显然 $A \to C$ 可以走人了。
+
+    2. 删去左侧冗余。
+
+        如 $F=\\{A \to B, B \to C, AC \to D\\} $ 可缩为 $F=\\{A \to B, B \to C, A \to D\\} $。这个过程可以被数学描述为，当 $A \in \alpha$，并且
+
+        $$F \implies (F-\\{\alpha \to \beta \\}) \cup \\{(\alpha - A) \to \beta \\}$$
+
+        那么 $\alpha \to \beta$ 可以删去左侧冗余项 $A$。注意上面虽然只有 $\implies$，但实际上 $\implies$ 就可以推出 $\iff$，所以左右两侧实际上就是等价的，这符合「缩减」的要求。事实上，由于 $F \implies (F-\\{\alpha \to \beta \\})$ 是必然的，所以只要满足
+
+        $$F \implies \\{(\alpha - A) \to \beta \\}$$
+
+        就可以执行「缩减」。
+
+    3. 删去右侧冗余。
+
+        原理几乎同上，不再赘述。
+
+#### 3 / Decomposition
+
+回到第 1 部分。我们希望对表格进行分解，使其成为一个「更好的设计」。具体来说，我们有以下三个层次的目标（假设 $R \to R_1,R_2,\cdots,R_n$）：
+
+1. 无损连接分解。这是最基本的。
+
+2. 依赖保持。
+
+3. 分解后的表格 $R_1,R_2,\cdots,R_n$ 满足 BCNF 或 3NF。
+
+一个一个说：
+
++ 无损连接分解（考虑一分为二的情况）
+
+    可以证明，无损连接分解的 **充要条件** 是，分解后的二个子模式的共同属性必须是 $R_1$ 或 $R_2$ 的码。或者说，要么有 $R_1 \cap R_2 \to R_1$，要么有 $R_1 \cap R_2 \to R_2$。证明可以画一个模拟表格来证。
+
++ 依赖保持
+
+    假设某种分解是 $R \to R_1,R_2,\cdots,R_n$。设 $R$ 所具有的函数依赖集合为 $F^{+}$，定义 $F_i \subseteq F^{+}$，其中 $F_i$ 包含且仅包含箭头两侧都属于 $R_i$ 的函数依赖。
+
+    如果有
+
+    $$(F_1 \cup F_2 \cup \cdots \cup F_n)^{+}=F^{+}$$
+
+    则认为这种分解满足 **依赖保持** 性质。
+
+    例如，$R=(A,B,C)$，$F=\\{A \to B, B \to C\\}$，有以下两种分解方案：
+
+    【方案一】$R_1=\\{A,B\\},R_2=\\{B,C\\}$
+
+    【方案二】$R_1=\\{A,B\\},R_2=\\{A,C\\}$
+
+    两方案都满足无损连接分解，但只有方案一满足依赖保持。
+
++ BCNF / 3NF
+
+    下一节细说。
+
+#### 4 / BCNF
+
+对于 relation $r(R)$，若其函数依赖集合为 $F$，对于所有 $(\alpha \to \beta) \in F^{+}$，若总满足两者其一：
+
+1. $(\alpha \to \beta)$ 是平凡的
+
+2. $\alpha$ 是 $R$ 的 Super Key（亦即：$R = \alpha^{+}$）
+
+则认为 $r(R)$ 符合 BCNF。
+
+例如，若 $R=(A,B,C)$，$F=\\{A \to B, B \to C\\}$，则 $r(R)$ 并不符合 BCNF。
+
++ BCNF 的判定
+
+    可以证明，**只需根据函数依赖集合 $F$ 判断是否满足 BCNF 即可；不必转化成 $F^{+}$ 再进行判断**。换句话说，把上面的定义语言中的 $(\alpha \to \beta) \in F^{+}$ 替换成 $(\alpha \to \beta) \in F$ 进行判断即可。
+
+    在分解的情景下则略有差别，如 $R \to R_1,R_2,\cdots,R_n$。若要判断 $R$ 是否符合 BCNF，可以直接拿 $F$ 判断；但若要判断 $R_1,R_2,\cdots,R_n$ 是否符合 BCNF，则必须使用 $F_i \subseteq F^{+}$ 来进行判断。
+
+    <p><img src="images/dbs-40.png" alt="dbs-40" width="70%"></p>
+
++ BCNF 分解
+
+#### 5 / 3NF

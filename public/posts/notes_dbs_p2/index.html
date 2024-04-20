@@ -219,6 +219,20 @@ blob: binary large object &ndash; object is a large collection of uninterpreted 
         <li><a href="#将-e-r-模型转化为表格">将 E-R 模型转化为表格</a></li>
       </ul>
     </li>
+    <li><a href="#lecture-6-relational-database-design">Lecture 6. Relational Database Design</a>
+      <ul>
+        <li><a href="#first-normal-form-第一范式">First Normal Form 第一范式</a></li>
+        <li><a href="#bcnf-and-3nf-bc-范式与第三范式">BCNF and 3NF BC 范式与第三范式</a>
+          <ul>
+            <li><a href="#1--pitfalls-in-relational-database-design">1 / Pitfalls in Relational Database Design</a></li>
+            <li><a href="#2--function-dependencies">2 / Function Dependencies</a></li>
+            <li><a href="#3--decomposition">3 / Decomposition</a></li>
+            <li><a href="#4--bcnf">4 / BCNF</a></li>
+            <li><a href="#5--3nf">5 / 3NF</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -244,7 +258,7 @@ blob: binary large object &ndash; object is a large collection of uninterpreted 
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          18 minute read
+          28 minute read
         </div>
         
         
@@ -610,6 +624,9 @@ existing data.</li>
 <li>
 <p>考虑映射数目（一对一 / 一对多 / 多对多）：</p>
   <p><img src="images/dbs-27.png" alt="dbs-27" width="90%"></p>
+<p>一个例子如下：</p>
+  <p><img src="images/dbs-38.png" alt="dbs-38" width="60%"></p>
+<p>注意：打箭头的一方表示 ONE，无箭头实线的一方表示 MANY。此处「one to many」的意思是 one instructor 可以对应 many students；但如果放到联系集中考虑的话，反而某个 instructor 会在联系集中出现多次，某个 student 则只会在联系集中出现一次。注意区分意义。</p>
 </li>
 <li>
 <p>全参与和部分参与：</p>
@@ -692,6 +709,215 @@ existing data.</li>
 <p>两种处理方式都是允许的。上面的信息更简洁，下面的话在特定情况查询更方便。</p>
 </li>
 </ul>
+<h2 id="lecture-6-relational-database-design">Lecture 6. Relational Database Design</h2>
+<h3 id="first-normal-form-第一范式">First Normal Form 第一范式</h3>
+<p>A relational schema R is in first normal form (1NF) if <strong>the domains of all attributes of R are atomic</strong>.</p>
+<p>违反原子性的 attrs:</p>
+<ul>
+<li>Composite attributes (复合属性) &mdash; set of names</li>
+<li>Multi-value attribute (多值属性) &mdash; a person’s phones</li>
+<li>Complex data type (过于复杂的类型) &mdash; object-oriented</li>
+</ul>
+<p>简单来说，atomic 要求每一个 attr 都 <strong>不可分割</strong>。</p>
+<ul>
+<li>
+<p>不符合 1NF（例如多值属性），有以下解决方案：</p>
+<ol>
+<li>
+<p>Use multi fields</p>
+<p>e.g., <code>person(pname, ..., phon1, phon2, phon3, ...)</code></p>
+</li>
+<li>
+<p>Use a separate table</p>
+<p>e.g., <code>phone(pname, phone)</code></p>
+</li>
+<li>
+<p>Use a single field</p>
+<p>e.g., <code>person(pname, ..., phones, ...)</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>如何理解 ATOMIC（根据意义确定）</p>
+<p>Atomicity is actually a property of how the elements of the domain are used.</p>
+<p>E.g., Strings would normally be considered indivisible.</p>
+<p>Suppose that students are given roll numbers which are strings of the form
+CS0012 or EE1127.</p>
+<p>If the first two characters are extracted to find the department, <strong>the domain of roll numbers is not atomic</strong>.</p>
+</li>
+</ul>
+<h3 id="bcnf-and-3nf-bc-范式与第三范式">BCNF and 3NF BC 范式与第三范式</h3>
+<h4 id="1--pitfalls-in-relational-database-design">1 / Pitfalls in Relational Database Design</h4>
+<ul>
+<li>
+<p>A Pitfall in Relational Database Design</p>
+<p>考虑 Banking Example 中的一张表</p>
+<pre tabindex="0"><code>Lending-schema = (branch-name, branch-city, assets, customer-name, loan-number, amount)
+</code></pre>  <p><img src="images/dbs-39.png" alt="dbs-39" width="70%"></p>
+<p>branch-name, branch-city, assets 发生了大量重复。这是一个冗余的设计。</p>
+<p>事实上，除了浪费空间，这种设计还会导致许多问题。比如一个 branch 没有贷款客户，我们该如何存储这个 branch 的信息？</p>
+</li>
+<li>
+<p>Decomposition</p>
+<p>一个分解方法是，将 <code>(ABCD)</code> 分解为 <code>(AB)</code> 和 <code>(BCD)</code>，或者分解为 <code>(ACD)</code> 和 <code>(ABD)</code>，等等。</p>
+<p>【定义】<strong>无损连接分解</strong>：假设某 schema $(R)$ 被分解为 $(R_1,R_2) \ (R_1 \cup R_2 = R)$，并且对于所有可能的 relation $r$，有 $r = \Pi_{R_1}(r) \bowtie \Pi_{R_2}(r)$，则认为 $R \to R_1+R_2$ 是无损的。</p>
+</li>
+</ul>
+<h4 id="2--function-dependencies">2 / Function Dependencies</h4>
+<ul>
+<li>
+<p>Basic Def</p>
+<p>The functional dependency $\alpha \to \beta$ holds on $R$ if and only if for any legal relations $r(R)$, whenever any two tuples $t_1$ and $t_2$ of $r$ agree on:</p>
+<p>The attributes $\alpha$, they also agree on the attributes $\beta$, i.e.,</p>
+<p>$$t_1[\alpha]=t_2[\alpha] \implies t_1[\beta]=t_2[\beta] $$</p>
+<p>简单来说，函数依赖关系 $\alpha \to \beta$ 说明 $\alpha$ 能唯一地决定 $\beta$。例如，对于这样一个表格，有 $B \to A$ 成立。</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>不难发现，若 $K$ 是 relation $r(R)$ 的 super key，那么 $K \to R$；若 $K$ 是 relation $r(R)$ 的 candidate key，那么还需要有：不存在 $\alpha \subset K$，满足 $\alpha \to R$。</p>
+<p>根据某个 $r(R)$ 的实例似乎可以判断某组函数依赖 $\alpha \to \beta$ 是否成立，然而这样往往是不准确的，还是要按 $R$ 的意义来。</p>
+</li>
+<li>
+<p>Trivial / Non-Trivial FD</p>
+<p>平凡的函数依赖：$\alpha \to \beta$，且 $\beta \subseteq \alpha$。</p>
+<p>非平凡的函数依赖：$\alpha \to \beta$，且 $\beta \nsubseteq \alpha$。</p>
+</li>
+<li>
+<p>Closure 闭包</p>
+<p>函数依赖关系 $F$ 的闭包记作 $F^{+}$。其意义是 $F \implies F^{+}$，且 $F^{+}$ 是极大的。</p>
+<p>如何寻找函数依赖 $F$ 的闭包，依赖下列定律（下面三个定律已经完备）：</p>
+<ul>
+<li>
+<p>自反律：If $\beta \subseteq \alpha$, then $\alpha \to \beta$</p>
+</li>
+<li>
+<p>增补律：If $\alpha \to \beta$, then $\gamma\alpha \to \gamma\beta$</p>
+</li>
+<li>
+<p>传递律：If $\alpha \to \beta$ and $\beta \to \gamma$, then $\alpha \to \gamma$</p>
+</li>
+</ul>
+<p>为了加速寻找 $F \implies F^{+}$，还可以使用以下三个引申的定律：</p>
+<ul>
+<li>
+<p>合并律：If $\alpha \to \beta$ and $\alpha \to \gamma$, then $\alpha \to \beta\gamma$</p>
+</li>
+<li>
+<p>分解律：If $\alpha \to \beta\gamma$, then $\alpha \to \beta$ and $\alpha \to \gamma$</p>
+</li>
+<li>
+<p>伪传递律：If $\alpha \to \beta$ and $\gamma\beta \to \delta$, then $\alpha\gamma \to \delta$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>属性集的闭包</p>
+<p>计算 $F \implies F^{+}$ 是繁琐的。有的时候我们只关心某个属性集 $\alpha$ 可以决定哪些属性。称这些被 $\alpha$ 决定的属性构成的集合为 $\alpha^{+}$。</p>
+<p>【理解检测 1】$\alpha \to \beta$ is in $F^{+}$ means that $\beta \subseteq \alpha^{+}$.</p>
+<p>【理解检测 2】对于所有的 $\alpha \subseteq R$，将函数依赖 $\alpha \to \beta \ (\beta \in \alpha^{+})$ 组合在一起，就构成了 $F^{+}$。</p>
+</li>
+<li>
+<p>正则覆盖</p>
+<p>上面是说怎样「扩大」函数依赖集合，接下来讨论如何「缩减」。可以证明，对于一组函数依赖集合 $F$，总能找到一个极小的 $F_c$，使得两者等价。</p>
+<p>为了找到 $F_c$，经验上可以应用三条方法：</p>
+<ol>
+<li>
+<p>直接删去可被其它函数依赖推出的函数依赖。</p>
+<p>例如 $F=\{A \to C, A \to B, B \to C\} $，显然 $A \to C$ 可以走人了。</p>
+</li>
+<li>
+<p>删去左侧冗余。</p>
+<p>如 $F=\{A \to B, B \to C, AC \to D\} $ 可缩为 $F=\{A \to B, B \to C, A \to D\} $。这个过程可以被数学描述为，当 $A \in \alpha$，并且</p>
+<p>$$F \implies (F-\{\alpha \to \beta \}) \cup \{(\alpha - A) \to \beta \}$$</p>
+<p>那么 $\alpha \to \beta$ 可以删去左侧冗余项 $A$。注意上面虽然只有 $\implies$，但实际上 $\implies$ 就可以推出 $\iff$，所以左右两侧实际上就是等价的，这符合「缩减」的要求。事实上，由于 $F \implies (F-\{\alpha \to \beta \})$ 是必然的，所以只要满足</p>
+<p>$$F \implies \{(\alpha - A) \to \beta \}$$</p>
+<p>就可以执行「缩减」。</p>
+</li>
+<li>
+<p>删去右侧冗余。</p>
+<p>原理几乎同上，不再赘述。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3--decomposition">3 / Decomposition</h4>
+<p>回到第 1 部分。我们希望对表格进行分解，使其成为一个「更好的设计」。具体来说，我们有以下三个层次的目标（假设 $R \to R_1,R_2,\cdots,R_n$）：</p>
+<ol>
+<li>
+<p>无损连接分解。这是最基本的。</p>
+</li>
+<li>
+<p>依赖保持。</p>
+</li>
+<li>
+<p>分解后的表格 $R_1,R_2,\cdots,R_n$ 满足 BCNF 或 3NF。</p>
+</li>
+</ol>
+<p>一个一个说：</p>
+<ul>
+<li>
+<p>无损连接分解（考虑一分为二的情况）</p>
+<p>可以证明，无损连接分解的 <strong>充要条件</strong> 是，分解后的二个子模式的共同属性必须是 $R_1$ 或 $R_2$ 的码。或者说，要么有 $R_1 \cap R_2 \to R_1$，要么有 $R_1 \cap R_2 \to R_2$。证明可以画一个模拟表格来证。</p>
+</li>
+<li>
+<p>依赖保持</p>
+<p>假设某种分解是 $R \to R_1,R_2,\cdots,R_n$。设 $R$ 所具有的函数依赖集合为 $F^{+}$，定义 $F_i \subseteq F^{+}$，其中 $F_i$ 包含且仅包含箭头两侧都属于 $R_i$ 的函数依赖。</p>
+<p>如果有</p>
+<p>$$(F_1 \cup F_2 \cup \cdots \cup F_n)^{+}=F^{+}$$</p>
+<p>则认为这种分解满足 <strong>依赖保持</strong> 性质。</p>
+<p>例如，$R=(A,B,C)$，$F=\{A \to B, B \to C\}$，有以下两种分解方案：</p>
+<p>【方案一】$R_1=\{A,B\},R_2=\{B,C\}$</p>
+<p>【方案二】$R_1=\{A,B\},R_2=\{A,C\}$</p>
+<p>两方案都满足无损连接分解，但只有方案一满足依赖保持。</p>
+</li>
+<li>
+<p>BCNF / 3NF</p>
+<p>下一节细说。</p>
+</li>
+</ul>
+<h4 id="4--bcnf">4 / BCNF</h4>
+<p>对于 relation $r(R)$，若其函数依赖集合为 $F$，对于所有 $(\alpha \to \beta) \in F^{+}$，若总满足两者其一：</p>
+<ol>
+<li>
+<p>$(\alpha \to \beta)$ 是平凡的</p>
+</li>
+<li>
+<p>$\alpha$ 是 $R$ 的 Super Key（亦即：$R = \alpha^{+}$）</p>
+</li>
+</ol>
+<p>则认为 $r(R)$ 符合 BCNF。</p>
+<p>例如，若 $R=(A,B,C)$，$F=\{A \to B, B \to C\}$，则 $r(R)$ 并不符合 BCNF。</p>
+<ul>
+<li>
+<p>BCNF 的判定</p>
+<p>可以证明，<strong>只需根据函数依赖集合 $F$ 判断是否满足 BCNF 即可；不必转化成 $F^{+}$ 再进行判断</strong>。换句话说，把上面的定义语言中的 $(\alpha \to \beta) \in F^{+}$ 替换成 $(\alpha \to \beta) \in F$ 进行判断即可。</p>
+<p>在分解的情景下则略有差别，如 $R \to R_1,R_2,\cdots,R_n$。若要判断 $R$ 是否符合 BCNF，可以直接拿 $F$ 判断；但若要判断 $R_1,R_2,\cdots,R_n$ 是否符合 BCNF，则必须使用 $F_i \subseteq F^{+}$ 来进行判断。</p>
+  <p><img src="images/dbs-40.png" alt="dbs-40" width="70%"></p>
+</li>
+<li>
+<p>BCNF 分解</p>
+</li>
+</ul>
+<h4 id="5--3nf">5 / 3NF</h4>
 
     </div>
   </article>
@@ -741,6 +967,20 @@ existing data.</li>
         <li><a href="#an-e-r-example">An E-R Example</a></li>
         <li><a href="#扩展-e-r-模型性质">扩展 E-R 模型性质</a></li>
         <li><a href="#将-e-r-模型转化为表格">将 E-R 模型转化为表格</a></li>
+      </ul>
+    </li>
+    <li><a href="#lecture-6-relational-database-design">Lecture 6. Relational Database Design</a>
+      <ul>
+        <li><a href="#first-normal-form-第一范式">First Normal Form 第一范式</a></li>
+        <li><a href="#bcnf-and-3nf-bc-范式与第三范式">BCNF and 3NF BC 范式与第三范式</a>
+          <ul>
+            <li><a href="#1--pitfalls-in-relational-database-design">1 / Pitfalls in Relational Database Design</a></li>
+            <li><a href="#2--function-dependencies">2 / Function Dependencies</a></li>
+            <li><a href="#3--decomposition">3 / Decomposition</a></li>
+            <li><a href="#4--bcnf">4 / BCNF</a></li>
+            <li><a href="#5--3nf">5 / 3NF</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

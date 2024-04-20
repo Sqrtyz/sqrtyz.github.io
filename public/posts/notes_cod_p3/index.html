@@ -241,8 +241,17 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
           <ul>
             <li><a href="#1-structure-hazard">1. Structure Hazard</a></li>
             <li><a href="#2-data-hazard">2. Data Hazard</a></li>
+            <li><a href="#3-control-hazard">3. Control Hazard</a></li>
           </ul>
         </li>
+        <li><a href="#risc-v-pipelined-datapath">RISC-V Pipelined Datapath</a></li>
+        <li><a href="#data-hazard-solution">Data Hazard Solution</a>
+          <ul>
+            <li><a href="#1-r-r-case">1. R-R Case</a></li>
+            <li><a href="#2-load-r-case">2. Load-R Case</a></li>
+          </ul>
+        </li>
+        <li><a href="#branch-hazard-solution">Branch Hazard Solution</a></li>
       </ul>
     </li>
   </ul>
@@ -270,7 +279,7 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          8 minute read
+          13 minute read
         </div>
         
         
@@ -429,7 +438,7 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
 <h4 id="2-data-hazard">2. Data Hazard</h4>
 <ul>
 <li>
-<p>Data Hazard</p>
+<p>Problem: Data Hazard</p>
 <p>有的时候执行某一个指令，要求前一个指令完成数据写入。考虑这样的两个相邻指令：</p>
 <pre tabindex="0"><code class="language-ass" data-lang="ass">add x19, x0, x1
 sub x2, x19, x3
@@ -438,15 +447,123 @@ sub x2, x19, x3
 <p>【OBSERVATION】观察上上张图，WB 的写 reg 是在上半 cycle，ID 的读 reg 是在下半 cycle。这种设计的缘由其实在这里有所体现。</p>
 </li>
 <li>
-<p>Forwarding</p>
+<p>Solution: Forwarding</p>
 <p>解决这种情况的一种方案是 Forwarding。大概思路是有的时候我们不必等待一个数据被写入 reg，然后才再次使用；而是可以直接用某种 extra connection 来直接高效地使用。下图演示了 Forwarding 的解决方案。</p>
   <p><img src="images/cod-66.png" alt="cod-66" width="90%"></p>
 <p>然而，并非所有 Data Hazard 都可以用 Forwarding 解决。考虑这样的情形：</p>
   <p><img src="images/cod-67.png" alt="cod-67" width="90%"></p>
 <p>显然 sub 已经没办法再提前一个 cycle 了，不然 sub 的 EX 和 ld 的 MEM 将处在同一 cycle，而 sub 的 EX 需要 ld 的 MEM 提供前提数据。</p>
 <p>不过，也可以通过修改汇编代码来规避这一问题——</p>
-  <p><img src="images/cod-68.png" alt="cod-68" width="90%"></p></li>
+  <p><img src="images/cod-68.png" alt="cod-68" width="90%"></p>
+</li>
 </ul>
+<h4 id="3-control-hazard">3. Control Hazard</h4>
+<ul>
+<li>
+<p>Problem: Stall on Branch</p>
+  <p><img src="images/cod-69.png" alt="cod-69" width="80%"></p>
+<p>类似于这种 Branch Jumping 带来的停顿。上图有点问题，按理来说应当是两行 bubble。</p>
+</li>
+<li>
+<p>Solution: Branch Prediction</p>
+<p>字面意思，提前预测 branch 的结果。一般可以分为静态预测 (Static branch prediction) 和动态预测 (Dynamic branch prediction)。</p>
+<p>静态预测一般是在软件层面上，根据普遍的 branch 选择结果进行预测。</p>
+<p>动态预测一般是在硬件层面上，比如可以基于上一次 branch 的选择结果进行预测（考虑循环的情形，这种预测应当是成功率较高的）。</p>
+</li>
+</ul>
+<h3 id="risc-v-pipelined-datapath">RISC-V Pipelined Datapath</h3>
+<p>在解决这一系列 hazards 之前，我们需要对 CPU 的结构进行修改。总的图形如下：</p>
+<p><img src="images/cod-70.png" alt="cod-70" width="100%"></p>
+<ul>
+<li>
+<p>四个中间寄存器：<code>IF/ID</code>，<code>ID/EX</code>，<code>EX/MEM</code> 以及 <code>MEM/WB</code>。</p>
+<p>字面意思表明了其所处位置。引入寄存器的目的是显而易见的，是为了使得在流水线上，每个周期的指令依然能正确读取数据。比如观察 Reg 的 Write Data 输入，肯定得引入 <code>MEM/WB</code> 的值，而不是当前 Instruction Memory 的值。它们之间差了有 3 个 CC。</p>
+<p>注意这个改变只是最基本的，保证 pipeline 能正常运作的。它还没有解决 hazards 的问题。</p>
+</li>
+<li>
+<p>Control 信号：<code>EX</code>，<code>MEM(M)</code> 以及 <code>WB</code>。</p>
+<p>回顾单周期 CPU，除去 <code>jal</code> 使用的 jump 信号，Controller 一共给出 7 个信号。根据其作用阶段的不同，将其分为</p>
+<ol>
+<li>
+<p>EX (作用于 EX 阶段)：包含 <code>ALUop</code>，<code>ALUsrc</code>。</p>
+</li>
+<li>
+<p>MEM (作用于 MEM 阶段)：包含 <code>Branch</code>，<code>MemRead</code>，<code>MemWrite</code>。</p>
+</li>
+<li>
+<p>WB (作用于 WB 阶段)：包含 <code>MemToReg</code>，<code>RegWrite</code>。</p>
+</li>
+</ol>
+<p>可以看到，在流水线上 Controller 对应的寄存器的大小是越来越小的，这一点也很好理解，毕竟到后面的 stage 某些 control signal 就不再起作用了。</p>
+</li>
+</ul>
+<h3 id="data-hazard-solution">Data Hazard Solution</h3>
+<h4 id="1-r-r-case">1. R-R Case</h4>
+<p>情景：考虑以下的 RISC-V 指令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#50fa7b">sub</span> x2, x1, x3
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#50fa7b">and</span> x12, x2, x5
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#50fa7b">or</span> x13, x6, x2
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#50fa7b">add</span> x14, x2, x2
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#50fa7b">sd</span> x15, <span style="color:#bd93f9">100</span>(x2)
+</span></span></code></pre></div><p><img src="images/cod-71.png" alt="cod-71" width="100%"></p>
+<p>从上图可以看出，Data Hazard 发生当且仅当</p>
+<ul>
+<li>
+<p>前序指令的 <code>rd</code> 和后序指令的 <code>rs1/rs2</code> 重合，即</p>
+<p>1a. <code>EX/MEM.RegisterRd</code> = <code>ID/EX.RegisterRs1</code></p>
+<p>1b. <code>EX/MEM.RegisterRd</code> = <code>ID/EX.RegisterRs2</code></p>
+<p>2a. <code>MEM/WB.RegisterRd</code> = <code>ID/EX.RegisterRs1</code></p>
+<p>2b. <code>MEM/WB.RegisterRd</code> = <code>ID/EX.RegisterRs2</code></p>
+<p>四条中有一条满足即可。</p>
+</li>
+<li>
+<p>执行写入操作</p>
+<p><code>EX/MEM.Controller.RegWrite</code> $= 1$</p>
+<p><code>MEM/WB.Controller.RegWrite</code> $= 1$</p>
+<p>要求哪条满足主要是看上面选的是 1 还是 2。</p>
+</li>
+<li>
+<p>不是虚空写入</p>
+<p><code>EX/MEM.RegisterRd</code> $\neq 0$</p>
+<p><code>MEM/WB.RegisterRd</code> $\neq 0$</p>
+<p>要求哪条满足主要是看上面选的是 1 还是 2。</p>
+</li>
+</ul>
+<p>所以，我们可以加入这样的逻辑来完成 Forwarding：</p>
+<p><img src="images/cod-72.png" alt="cod-72" width="100%"></p>
+<h4 id="2-load-r-case">2. Load-R Case</h4>
+<p>情景：考虑以下的 RISC-V 指令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#50fa7b">ld</span> x2, <span style="color:#bd93f9">20</span>(x1)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#50fa7b">and</span> x4, x2, x5
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#50fa7b">or</span> x8, x2, x6
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#50fa7b">add</span> x9, x4, x2
+</span></span></code></pre></div><p><img src="images/cod-73.png" alt="cod-73" width="100%"></p>
+<p>可以发现，第二行的指令无论如何都没有机会执行了，所以 <code>add x4, x2, x5</code> 必然会推后一个 CC。对于这一情况的判断，我们可以在上图橙色处完成。判断条件为</p>
+<ul>
+<li>
+<p>前序指令的 <code>rd</code> 和后序指令的 <code>rs1/rs2</code> 重合，即</p>
+<p>a. <code>ID/EX.RegisterRd = IF/ID.RegisterRs1</code></p>
+<p>b. <code>ID/EX.RegisterRd = IF/ID.RegisterRs2</code></p>
+<p>两条中有一条满足即可。注意上面条件的两侧不要搞反。</p>
+</li>
+<li>
+<p>执行 Load 操作</p>
+<p><code>ID/EX.Controller.MemRead</code> $= 1$</p>
+</li>
+</ul>
+<p>如果条件满足，我们首先要进行 Stall（熄火）。操作为</p>
+<ol>
+<li>
+<p>将当前指令（也就是下一个 CC 的 ID/EX）寄存器全部归零。</p>
+</li>
+<li>
+<p>再次读取 PC，即不调到 PC+4。</p>
+</li>
+</ol>
+<p>Stall 后，我们再执行 Forwarding 来保证指令的正常运行。这一部分的 Forwarding 操作和 R-R Case 几乎一致，唯一的区别是 Forwarding 的执行是在判断生效的两个 CC 后。</p>
+<p>下图展示了考虑 Load-R Case 的 Pipeline。可以看到主要区别是加入了 Stall 的考量。</p>
+<p><img src="images/cod-74.png" alt="cod-74" width="100%"></p>
+<h3 id="branch-hazard-solution">Branch Hazard Solution</h3>
 
     </div>
   </article>
@@ -504,8 +621,17 @@ sub x2, x19, x3
           <ul>
             <li><a href="#1-structure-hazard">1. Structure Hazard</a></li>
             <li><a href="#2-data-hazard">2. Data Hazard</a></li>
+            <li><a href="#3-control-hazard">3. Control Hazard</a></li>
           </ul>
         </li>
+        <li><a href="#risc-v-pipelined-datapath">RISC-V Pipelined Datapath</a></li>
+        <li><a href="#data-hazard-solution">Data Hazard Solution</a>
+          <ul>
+            <li><a href="#1-r-r-case">1. R-R Case</a></li>
+            <li><a href="#2-load-r-case">2. Load-R Case</a></li>
+          </ul>
+        </li>
+        <li><a href="#branch-hazard-solution">Branch Hazard Solution</a></li>
       </ul>
     </li>
   </ul>
