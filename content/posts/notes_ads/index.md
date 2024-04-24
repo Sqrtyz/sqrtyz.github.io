@@ -98,7 +98,7 @@ $m$ 次操作累加，得 $\sum\limits_{l=1}^m F(l) + \varphi(D_m) - \varphi(D_0
     2. The root is black.
     3. Every leaf (NIL) is black.
     4. If a node is red, then both its children are black.
-    5. For each node, all simple paths from the node to descendant 
+    5. For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 
     注意有 NIL，也就是说有个虚拟的叶子节点。
 
@@ -163,8 +163,13 @@ $m$ 次操作累加，得 $\sum\limits_{l=1}^m F(l) + \varphi(D_m) - \varphi(D_0
 
 ### Topic 3. B+ Tree
 
+B+ Tree 的查找时间复杂度是 $O(\log_{\frac{m}{2}}n)$！
 
-咕
+B+ Tree 的插入：下图展示了插入 19 的过程。大概思路就是，首先放进对应的节点，如果发现节点吃不消了（大于 $m$）就分裂，然后让父节点儿子数目加 1。如果发现父节点吃不消了（大于 $m$）就再次分裂，让爷节点儿子数目加 1。这个过程是不断向上的，直到某个祖先吃得消为止。
+
+如果到根都吃不消的话，则需要对根进行分裂，然后创建一个新的根节点。
+
+![adsbp-1](images/ads-bp-1.png)
 
 
 ### Topic 4. Inverted File Index
@@ -412,3 +417,13 @@ The recurrence $T(N) = aT(N/b) + f(N)$ can be solved as follows:
 **主定理形式 3（幂函数加对数形式）**
 
 ![ads-mm-4](images/ads-mm-4.png)
+
+### Topic SP. Lesson from Mid-Term Exam
+
++ 看红黑树。至少对插入操作非常熟悉。
+
++ 看 B+ 树。考前手推几个 case。
+
++ 要不下次先做选择题？
+
+### Topic 9. ???

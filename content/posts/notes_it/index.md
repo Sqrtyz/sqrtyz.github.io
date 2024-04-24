@@ -666,4 +666,67 @@ $$D^N \ge K^L \ (N \ge \frac{L \log K}{\log D})$$
 
   任何一个唯一可译码的平均码字长度必须满足 $\overline{n} \ge \frac{H(U)}{\log D}$，同时一定存在一个 $D$ 元唯一可译码，其平均长度满足 $\overline{n} \le \frac{H(U)}{\log D} + 1$。
 
-  <p><img src="images/it-31.png" alt="it-31"></p>
+  <p><img src="images/it-31.png" alt="it-31" width="80%"></p>
+
+#### 5.3 Huffman 编码
+
+基本思路：对于概率分布
+
+$$
+U \sim\left(\begin{array}{ccccc}a_1 & a_2 & \cdots & a_{K-1} & a_K \newline
+p_1 & \geq p_2 & \cdots & \geq p_{K-1} & \geq p_K\end{array}\right)$$
+
+每次找 $p$ 最小的两个符号 $a_{K-1}, a_K$，赋予其 LSB 以 $0$ 和 $1$，然后将其合并。不断迭代此过程，直至概率分布集合中只剩下一个符号。例如
+
+<p><img src="images/it-32.png" alt="it-32" width="70%"></p>
+
++ Huffman 编码正确性理解
+
+  1. 对于给定信源，存在最佳唯一可译码（二元码），其最小概率的两个消息对应的码字等长，且长度最长，同时这两个码字的最后一位码元取值不同。
+
+  证明略去。
+
+  2. 对辅助源 $U'$ 的最佳编码也是对原始源 $U$ 的最佳编码。
+
++ D 元 Huffman 编码
+
+  和二元的情形基本一致。
+  
+  唯一的区别是，若 $K=(D-1)i+1$，则每次均有 $D$ 个消息要合并，短标号充分利用；若 $K=(D-1)i+M$，则需要在最开始提前增补 $D-M$ 个概率为零的虚拟消息，使得短标号得到充分利用。一个例子如下。
+
+  <p><img src="images/it-33.png" alt="it-33" width="70%"></p>
+
+#### 5.4 Shannon 编码
+
+Shannon 编码并非最优，但它可以在一开始确定所有符号的码长，同时它也满足前缀码的性质。对于
+
+$$
+U \sim\left(\begin{array}{ccccc}a_1 & a_2 & \cdots & a_{K-1} & a_K \newline
+p_1 & \geq p_2 & \cdots & \geq p_{K-1} & \geq p_K\end{array}\right)$$
+
+记 $P_k=\sum\limits_{i=1}^{k-1}p_i \ (P_1=0)$，$P_k=0.c_1c_2\cdots c_{l_k}\cdots$（二进制展开）。其中 $l_k=\lceil \log \frac{1}{p_k}  \rceil$
+
+那么 $a_k$ 的 Shannon 码字即为 $c_1c_2\cdots c_{l_k}$。
+
+举例（码字行是 Shannon 编码）：
+
+<p><img src="images/it-34.png" alt="it-34" width="70%"></p>
+
++ Shannon 码为前缀码的证明
+
+  引理：如果把长度为 $l$ 的二进制码字 $z＝z_1z_2\cdots z_l$ 与一个区间 
+  
+  $$(0.z_1z_2\cdots z_l,0.z_1z_2\cdots z_l+\frac{1}{2^l}]$$
+  
+  对应，则一个码是前缀码就等价于这些码字所对应的区间彼此不相交。证明略去。
+
+  回到原命题，那么
+
+  <p><img src="images/it-36.png" alt="it-36" width="50%"></p>
+
+  这表明 Shannon 码为前缀码。
+
+
+#### 5.5 Fano 编码
+
+<p><img src="images/it-35.png" alt="it-35" width="90%"></p>

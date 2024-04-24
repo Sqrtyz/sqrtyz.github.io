@@ -254,7 +254,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          26 minute read
+          27 minute read
         </div>
         
         
@@ -420,7 +420,10 @@ $$</p>
 </li>
 </ul>
 <h3 id="topic-3-b-tree">Topic 3. B+ Tree</h3>
-<p>咕</p>
+<p>B+ Tree 的查找时间复杂度是 $O(\log_{\frac{m}{2}}n)$！</p>
+<p>B+ Tree 的插入：下图展示了插入 19 的过程。大概思路就是，首先放进对应的节点，如果发现节点吃不消了（大于 $m$）就分裂，然后让父节点儿子数目加 1。如果发现父节点吃不消了（大于 $m$）就再次分裂，让爷节点儿子数目加 1。这个过程是不断向上的，直到某个祖先吃得消为止。</p>
+<p>如果到根都吃不消的话，则需要对根进行分裂，然后创建一个新的根节点。</p>
+<p><img src="images/ads-bp-1.png" alt="adsbp-1"></p>
 <h3 id="topic-4-inverted-file-index">Topic 4. Inverted File Index</h3>
 <ul>
 <li>
