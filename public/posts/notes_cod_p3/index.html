@@ -251,7 +251,21 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
             <li><a href="#2-load-r-case">2. Load-R Case</a></li>
           </ul>
         </li>
-        <li><a href="#branch-hazard-solution">Branch Hazard Solution</a></li>
+        <li><a href="#branch-hazard-solution">Branch Hazard Solution</a>
+          <ul>
+            <li><a href="#1-static-prediction">1. Static Prediction</a></li>
+            <li><a href="#2-dynamic-prediction">2. Dynamic Prediction</a></li>
+            <li><a href="#3-calculating-the-branch-target">3. Calculating the Branch Target</a></li>
+          </ul>
+        </li>
+        <li><a href="#exceptions-and-interrupts">Exceptions and Interrupts</a></li>
+        <li><a href="#instruction-level-parallelism-ilp">Instruction-Level Parallelism (ILP)</a>
+          <ul>
+            <li><a href="#1-introduction-and-terms">1. Introduction and Terms</a></li>
+            <li><a href="#2-static-multiple-issue">2. Static Multiple Issue</a></li>
+            <li><a href="#3-dynamic-multiple-issue">3. Dynamic Multiple Issue</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -279,7 +293,7 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          13 minute read
+          20 minute read
         </div>
         
         
@@ -564,6 +578,141 @@ sub x2, x19, x3
 <p>下图展示了考虑 Load-R Case 的 Pipeline。可以看到主要区别是加入了 Stall 的考量。</p>
 <p><img src="images/cod-74.png" alt="cod-74" width="100%"></p>
 <h3 id="branch-hazard-solution">Branch Hazard Solution</h3>
+<h4 id="1-static-prediction">1. Static Prediction</h4>
+<p>考虑以下指令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>36: <span style="color:#50fa7b">sub</span> x10, x4, x8
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>40: <span style="color:#50fa7b">beq</span> x1, x3, <span style="color:#bd93f9">32</span> <span style="color:#6272a4">// PC-relative branch to 40+32=72
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>44: <span style="color:#50fa7b">and</span> x12, x2, x5
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>48: <span style="color:#50fa7b">orr</span> x13, x2, x6
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>52: <span style="color:#50fa7b">add</span> x14, x4, x2
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>56: <span style="color:#50fa7b">sub</span> x15, x6, x7
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#50fa7b">...</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>72: <span style="color:#50fa7b">ld</span> x4, <span style="color:#bd93f9">50</span>(x7)
+</span></span></code></pre></div><p>我们假设采取静态预测（预测为 Not Taken），那么有</p>
+<p><img src="images/cod-75.png" alt="cod-75" width="90%"></p>
+<p>判断预测是否正确是看 <code>x1</code> 和 <code>x3</code> 是否相等。如果预测正确（的确为 Not Taken），则无事发生，所有指令照常进入流水线；如果预测错误（实际为 Taken），则需要</p>
+<ul>
+<li>
+<p>立刻对 IF/ID 寄存器进行 Flush，使得其下一个周期为 Bubble</p>
+</li>
+<li>
+<p>向 PC 中输入 PC+Offset，使 IF 获取跳转后的指令</p>
+</li>
+</ul>
+<p><img src="images/cod-76.png" alt="cod-76" width="90%"></p>
+<h4 id="2-dynamic-prediction">2. Dynamic Prediction</h4>
+<p>基本思路是，根据之前 branch 的选择结果决定之后的选择结果。这样做的依据是，假设我们处于一个循环体之中，大多数时候我们需要 take branch，只有循环开始 / 结束的时候才是 not take branch。</p>
+<ul>
+<li>
+<p>1-bit predictor</p>
+<p>拿一个一位的寄存器存储上一次的 branch 结果。下一次 predict 根据这个 1-bit predictor 做出预测。</p>
+</li>
+<li>
+<p>2-bit predictor</p>
+<p>只会在连续两次的错误预测之后才会更改预测。从直观上看这个 predictor 更为「固执」。</p>
+  <p><img src="images/cod-77.png" alt="cod-77" width="60%"></p>
+</li>
+</ul>
+<h4 id="3-calculating-the-branch-target">3. Calculating the Branch Target</h4>
+<p>很明显，计算要跳到哪里 (Branch Target) 需要使用 ALU 进行计算，这会导致一定的延迟。</p>
+<p><strong>Branch Target Buffer</strong> 可以缓存下跳转的地址，下次就可以直接跳转并获取对应的指令。</p>
+<h3 id="exceptions-and-interrupts">Exceptions and Interrupts</h3>
+<ul>
+<li>
+<p>可能导致异常与中断的情况</p>
+<p>异常：例如未定义的 opcode, syscall 等。</p>
+<p>中断：例如外界 I/O 进行了操作导致指令中断。</p>
+</li>
+<li>
+<p>基本处理方法</p>
+<ol>
+<li>SEPC: 可以理解为存储出问题的 PC 的一个寄存器。</li>
+<li>SCAUSE: 可以理解为存储问题信息的一个寄存器。例如，SCAUSE 可以存储 opcode / hardware malfunction 等。</li>
+<li>handler: 可以理解为用于处理问题的专门指令。假设其地址位于 <code>0000 0000 1C09 0000</code>。</li>
+</ol>
+<p>出问题时，先将 PC 存储到 SEPC 中，然后跳到专门的 handler。</p>
+<p>handler 决定该采取何种措施。如果程序可重启，则采取适当措施后通过 SEPC 跳回去；反之则需要终止程序，根据 SEPC 和 SCAUSE 等信息报错。</p>
+</li>
+<li>
+<p>Pipeline with Exceptions</p>
+<p>可以看到，相比于处理 hazards 的 pipeline，这玩意儿主要是多了几个后面的指令寄存器的 flush。</p>
+  <p><img src="images/cod-78.png" alt="cod-78" width="90%"></p>
+<p>具体地，例如 <code>add x1, x2, x1</code> 在 ALU 阶段发生异常，我们会执行以下步骤：</p>
+<ol>
+<li>保护 <code>x1</code> 不被异常地写入。</li>
+<li>完成 <code>add x1, x2, x1</code> 之前的指令。</li>
+<li>flush 掉 <code>add</code> 及之前的所有正在处理的指令（寄存器置零）。</li>
+<li>设置好 SEPC 和 SCAUSE。</li>
+<li>跳转到 handler。</li>
+</ol>
+</li>
+<li>
+<p>Multiple Exceptions</p>
+<p>多重异常的情况，一般是处理最先出现的异常。</p>
+</li>
+</ul>
+<h3 id="instruction-level-parallelism-ilp">Instruction-Level Parallelism (ILP)</h3>
+<p>之前提到的 CPU 加速的方法是流水线，此外还有一种可能是：指令并行 (ILP)。</p>
+<p>可以预见，这是一种非常冒险的举动，但它的确可以为 CPU 再提一下速度。</p>
+<h4 id="1-introduction-and-terms">1. Introduction and Terms</h4>
+<ul>
+<li>
+<p>Multiple Issue (多发)</p>
+<p>可分为 static multiple issue 和 dynamic multiple issue。</p>
+<p>Static Multiple Issue: 编译器来决定把哪些指令「捆在一起」，以规避可能发生的 hazards。</p>
+<p>Dynamic Multiple Issue: CPU 来检测指令流并决定把那些指令「捆在一起」，编译器只起到辅助作用。显然这个难度更大。</p>
+</li>
+<li>
+<p>Speculation (前瞻)</p>
+</li>
+</ul>
+<h4 id="2-static-multiple-issue">2. Static Multiple Issue</h4>
+<p>显然，静态多发要求各个 issue slot 之内的指令互不依赖。当然，issue slot 之间的指令是可能产生依赖的。必要时，编译器可能向某个 issue slot 中加入 bubble。</p>
+<ul>
+<li>
+<p>RISC-V 静态双指令并行</p>
+<p>基本思路：一个 issue slot 装两个指令，其中一个只能为 ALU/branch，另外一个只能是 load/store。例如：</p>
+  <p><img src="images/cod-79.png" alt="cod-79" width="70%"></p>
+<p>考虑双指令并行的流水线 CPU 如下图所示：</p>
+  <p><img src="images/cod-80.png" alt="cod-80" width="90%"></p>
+<p>例如，我们可以看到 ALU 多了一个，并且多出来的那个不再接 MUX。这是因为 ld/sd 用的 ALU，其 ALUSource 已经固定。</p>
+<hr>
+<p>当然，「打包」不能乱打。例如以下两条指令显然是不能位于同一个 issue slot 的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#50fa7b">add</span> x10, x0, x1
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#50fa7b">ld</span> x2, <span style="color:#bd93f9">0</span>(x10)
+</span></span></code></pre></div><p>一个打包的正确示例如下：</p>
+  <p><img src="images/cod-81.png" alt="cod-81" width="70%"></p>
+<p>注意：</p>
+<ol>
+<li><code>ld x31, 0(x20)</code> 和 <code>add x31, x31, x21</code> 中间还隔了一个 CC，这是因为 load-use hazard 中间必须要空一个 CC。</li>
+<li><code>sd x31, 0(x20)</code> 变为 <code>sd x31, 8(x20)</code>，这是因为我们把 <code>addi</code> 移到了 <code>sd</code> 之前。所以后做 <code>sd</code> 的话就需要做一些调整。</li>
+<li><code>add x31, x31, x21</code> 和 <code>sd x31, 8(x20)</code> 之间的 data hazard 处理方法和之前讲的 R-R 基本一致，也是可以用 forwarding 无缝链接的。</li>
+</ol>
+</li>
+<li>
+<p>循环展开</p>
+<p>编译器层面 / 高级语言层面对循环进行展开，有利于指令并行加速。</p>
+<p>这个例子执行了对相邻内存中的数据增加一个固定值 <code>x21</code>。使用循环展开来使得 ALU/branch 和 load/store 能更好地耦合。</p>
+  <p><img src="images/cod-82.png" alt="cod-82" width="70%"></p>
+</li>
+</ul>
+<h4 id="3-dynamic-multiple-issue">3. Dynamic Multiple Issue</h4>
+<ul>
+<li>
+<p>动态调整指令的顺序</p>
+<p>为了实现动态多发，不仅是要动态地把指令归到若干个 slots 中，必要时还可以动态调整指令的执行顺序。例如</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#50fa7b">ld</span> x31, <span style="color:#bd93f9">20</span>(x21)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#50fa7b">add</span> x1, x31, x2
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#50fa7b">sub</span> x23, x23, x3
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#50fa7b">andi</span> x5, x23, <span style="color:#bd93f9">20</span>
+</span></span></code></pre></div><p>可以把 <code>add</code> 和 <code>sub</code> 对换，在不影响功能的基础上规避了一个 bubble。</p>
+</li>
+<li>
+<p>动态多发基本框架</p>
+  <p><img src="images/cod-83.png" alt="cod-83" width="80%"></p>
+</li>
+<li></li>
+</ul>
 
     </div>
   </article>
@@ -631,7 +780,21 @@ sub x2, x19, x3
             <li><a href="#2-load-r-case">2. Load-R Case</a></li>
           </ul>
         </li>
-        <li><a href="#branch-hazard-solution">Branch Hazard Solution</a></li>
+        <li><a href="#branch-hazard-solution">Branch Hazard Solution</a>
+          <ul>
+            <li><a href="#1-static-prediction">1. Static Prediction</a></li>
+            <li><a href="#2-dynamic-prediction">2. Dynamic Prediction</a></li>
+            <li><a href="#3-calculating-the-branch-target">3. Calculating the Branch Target</a></li>
+          </ul>
+        </li>
+        <li><a href="#exceptions-and-interrupts">Exceptions and Interrupts</a></li>
+        <li><a href="#instruction-level-parallelism-ilp">Instruction-Level Parallelism (ILP)</a>
+          <ul>
+            <li><a href="#1-introduction-and-terms">1. Introduction and Terms</a></li>
+            <li><a href="#2-static-multiple-issue">2. Static Multiple Issue</a></li>
+            <li><a href="#3-dynamic-multiple-issue">3. Dynamic Multiple Issue</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

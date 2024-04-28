@@ -279,6 +279,17 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
         </li>
       </ul>
     </li>
+    <li><a href="#chapter-3-信息的传输">Chapter 3 信息的传输</a>
+      <ul>
+        <li><a href="#lec-6-信道容量">Lec 6 信道容量</a>
+          <ul>
+            <li><a href="#61-dmc-intro">6.1 DMC Intro</a></li>
+            <li><a href="#62-dmc-examples">6.2 DMC Examples</a></li>
+            <li><a href="#63-信道的组合">6.3 信道的组合</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -304,7 +315,7 @@ $$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) &#43; \log p(x_k|y_j)$$
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          33 minute read
+          35 minute read
         </div>
         
         
@@ -875,6 +886,96 @@ p_1 &amp; \geq p_2 &amp; \cdots &amp; \geq p_{K-1} &amp; \geq p_K\end{array}\rig
 </ul>
 <h4 id="55-fano-编码">5.5 Fano 编码</h4>
 <p><img src="images/it-35.png" alt="it-35" width="90%"></p>
+<hr>
+<h2 id="chapter-3-信息的传输">Chapter 3 信息的传输</h2>
+<ul>
+<li>
+<p>回顾信息传输模型</p>
+<p><img src="images/it-23.png" alt="it-23" width="70%"></p>
+</li>
+<li>
+<p>信道的抽象数学模型</p>
+<p><img src="images/it-37.png" alt="it-37" width="70%"></p>
+<p>其中 $W$ 可视为原始信息编码后的结果，$x^n$ 进入信道，$y^n$ 是接收方从信道中获得的信号，$\hat{W}$ 是接收方对信道信号的解读，它同时是对 $W$ 的估计。</p>
+</li>
+</ul>
+<h3 id="lec-6-信道容量">Lec 6 信道容量</h3>
+<p>信道容量定义为输出序列对不同输入序列所提供的最大互信息，即</p>
+<p>$$C = \lim\limits_{n \to \infty} \frac{1}{n} \max\limits_{P(X^n)} \left[I(X_1X_2\cdots X_N;Y_1Y_2\cdots Y_N) \right]$$</p>
+<p>注意 $\max$ 这里枚举的是不同的输入概率分布。</p>
+<h4 id="61-dmc-intro">6.1 DMC Intro</h4>
+<p>对于离散无记忆信道 (DMC, 定义见上)，$I(X_1X_2\cdots X_N;Y_1Y_2\cdots Y_N) \le \sum_{n=1}^N I(X_n;Y_n)$</p>
+<p>其中等号在输入为独立随机序列时达到。证明如下</p>
+<p><img src="images/it-38.png" alt="it-38" width="60%"></p>
+<p>（注意这些仅仅对 DMC 成立。特别地，当输入独立随机时，必有输出也独立随机，进而有 $H(Y)=\sum\limits_{i=1}^n H(Y_i)$ 的等号成立）</p>
+<p>因此，当输入独立随机时，有</p>
+<p>$$C = \lim\limits_{n \to \infty} \frac{1}{n} \max\limits_{P(x^n)} \left[I(X_1X_2\cdots X_N;Y_1Y_2\cdots Y_N) \right] = \max\limits_{P(X)} I(X;Y)$$</p>
+<p>这将大大简化接下来的讨论难度。</p>
+<h4 id="62-dmc-examples">6.2 DMC Examples</h4>
+<ul>
+<li>
+<p>无噪信道</p>
+<p><img src="images/it-39.png" alt="it-39" width="80%"></p>
+</li>
+<li>
+<p>无损信道</p>
+<p><img src="images/it-40.png" alt="it-40" width="80%"></p>
+</li>
+<li>
+<p>确定信道</p>
+<p><img src="images/it-41.png" alt="it-41" width="80%"></p>
+</li>
+<li>
+<p>无用信道</p>
+<p><img src="images/it-42.png" alt="it-42" width="80%"></p>
+</li>
+<li>
+<p>复制信道</p>
+<p><img src="images/it-43.png" alt="it-43" width="80%"></p>
+</li>
+<li>
+<p>二元对称信道 BSC</p>
+<p><img src="images/it-44.png" alt="it-44" width="80%"></p>
+</li>
+<li>
+<p>二元除删信道 BEC</p>
+<p><img src="images/it-45.png" alt="it-45" width="80%"></p>
+</li>
+</ul>
+<h4 id="63-信道的组合">6.3 信道的组合</h4>
+<ul>
+<li>
+<p>平行信道（积信道）</p>
+<p><img src="images/it-46.png" alt="it-46" width="80%"></p>
+</li>
+<li>
+<p>开关信道（和信道）</p>
+<p><img src="images/it-47.png" alt="it-47" width="80%"></p>
+</li>
+<li>
+<p>级联信道</p>
+<p><img src="images/it-48.png" alt="it-48" width="80%"></p>
+</li>
+<li>
+<p>实例：两个对称信道的组合</p>
+<p>假设有两个对称信道</p>
+<p><img src="images/it-49.png" alt="it-49" width="60%"></p>
+<ol>
+<li>
+<p>积组合</p>
+ <p><img src="images/it-50.png" alt="it-50" width="80%"></p>
+</li>
+<li>
+<p>和组合</p>
+ <p><img src="images/it-51.png" alt="it-51" width="80%"></p>
+</li>
+<li>
+<p>级联组合</p>
+ <p><img src="images/it-52.png" alt="it-52" width="70%"></p></li>
+</ol>
+</li>
+</ul>
+
     </div>
   </article>
 
@@ -955,6 +1056,17 @@ p_1 &amp; \geq p_2 &amp; \cdots &amp; \geq p_{K-1} &amp; \geq p_K\end{array}\rig
             <li><a href="#53-huffman-编码">5.3 Huffman 编码</a></li>
             <li><a href="#54-shannon-编码">5.4 Shannon 编码</a></li>
             <li><a href="#55-fano-编码">5.5 Fano 编码</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#chapter-3-信息的传输">Chapter 3 信息的传输</a>
+      <ul>
+        <li><a href="#lec-6-信道容量">Lec 6 信道容量</a>
+          <ul>
+            <li><a href="#61-dmc-intro">6.1 DMC Intro</a></li>
+            <li><a href="#62-dmc-examples">6.2 DMC Examples</a></li>
+            <li><a href="#63-信道的组合">6.3 信道的组合</a></li>
           </ul>
         </li>
       </ul>

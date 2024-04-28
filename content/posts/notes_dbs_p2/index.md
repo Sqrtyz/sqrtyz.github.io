@@ -738,4 +738,140 @@ A relational schema R is in first normal form (1NF) if **the domains of all attr
 
 + BCNF 分解
 
+    遵循以下算法：
+
+    1. 假设当前关系集合为 $R_1, R_2, \cdots, R_n$。初始只有一个 $R$。
+
+    2. 不断在关系集中寻找一个不符合 BCNF 的关系 $R_i$，假设其具有一个非平凡函数依赖 $(\alpha \to \beta)$，其中 $\alpha$ 非 Super Key，且 $\beta$ 应当尽可能地大。
+    
+    3. 将 $R_i$ 分解为 $\alpha \cup \beta$ 和 $R_i - \beta$。重复 2, 3 步骤直到所有关系都满足 BCNF。
+
+    例子：
+
+    <p><img src="images/dbs-41.png" alt="dbs-41" width="70%"></p>
+
 #### 5 / 3NF
+
+3NF 比 BCNF 稍弱。一个关系 $R$ 满足 3NF，当且仅当对于其所具有的所有函数依赖 $(\alpha \to \beta) \subseteq F^{+}$，满足以下三个条件中的至少一个：
+
+1. $(\alpha \to \beta)$ 是平凡的；
+
+2. $\alpha$ 是 $R$ 的 Super Key；
+
+3. 对于 $\beta - \alpha$ 中的任意单属性 $A \in (\beta - \alpha)$，满足 $A$ 至少属于某一组 Candidate Key。
+
++ 例子：
+
+    <p><img src="images/dbs-42.png" alt="dbs-42" width="70%"></p>
+
+    相比于 BCNF，3NF 可能会造成信息冗余。例如，对于这个例子，满足 3NF 的关系为 $R=(J,K,L)$。可以想象，将三者置于同一表格中将导致同一门课、同一老师的信息在非常多的行中同时出现（因为要对应多个学生），这就导致了冗余。
+
++ 3NF 判定算法
+
+    和判定是否符合 BCNF 时一样，在判定 3NF 时我们只需要检查 $F$ 而不是 $F^{+}$。证明不会。
+
+    具体地，在判定之前，我们需要列出所有的 Candidate Key，假设这些 Candidate Key 的属性并集为 $D$。对于 $F$ 中的每一个非平凡函数依赖 $(\alpha \to \beta)$，首先观察 $\alpha$ 是否是 Super Key；如果不是，观察 $\beta$ 中是否每一项都属于 $D$ 即可。
+
+    判定 3NF 是一个 NP-Hard 问题，瓶颈在于找出所有的 Candidate Key。
+
++ 3NF 分解算法
+
+    在分解 3NF 之前，**首先找出 $F$ 的正则覆盖 $F_C$。**
+
+    <p><img src="images/dbs-43.png" alt="dbs-43" width="70%"></p>
+
+    Step 1. 对于 $F_c$ 中 **每一个** 函数依赖 $\alpha \to \beta$，构建表格 $r_i = r(\alpha, \beta)$。显然这一步不违反 3NF 的第 2 条。
+
+    Step 2. 如果构建出的这些表格 $R_1,R_2,\cdots,R_n$ 均不含 Candidate Key，则建立一个新表 $R_{n+1}=r(\text{Any Candidate Key})$。这一步的目的是保证分解是无损的，既可以通过 $R_1,R_2,\cdots,R_{n+1}$ 不重不漏地还原 $R$。显然这一步不违反 3NF 的第 3 条。
+
+    Step 3. 删除冗余。如果前两步骤得到的表格发生了例如 $R_x \subseteq R_y$ 的情况，则需要删除 $R_x$。
+
+    感觉正确性很难严格证明，不过手玩几个也没发现问题。
+    
+
++ BCNF vs. 3NF
+
+    可以证明，我们永远可以将关系 $R$ 进行 BCNF 无损分解，但函数依赖不一定保留。
+
+    可以证明，我们永远可以将关系 $R$ 进行 3NF 无损分解，且保留所有函数依赖。
+
+
+### 4NF 第四范式
+
+#### 1 / MultiValued Dependencies
+
+对于一个 relation schema $R$，我们认为多值依赖 $\alpha \to\to \beta$ 成立，当且仅当，对于任意实例化关系 $r(R)$，均满足：
+
+若取出任意满足 $t_1[\alpha]=t_2[\alpha]$ 的行 $t_1,t_2$，总存在行 $t_3,t_4$ 使得
+
++ $t_1[\alpha]=t_2[\alpha]=t_3[\alpha]=t_4[\alpha]$
++ $t_3[\beta]=t_1[\beta]$
++ $t_3[R - \alpha - \beta]=t_2[R - \alpha - \beta]$
++ $t_4[\beta]=t_2[\beta]$
++ $t_4[R - \alpha - \beta]=t_1[R - \alpha - \beta]$
+
+<p><img src="images/dbs-44.png" alt="dbs-44" width="60%"></p>
+
+从直觉上解读这个定义，大概是说「$\alpha$ 和 $\beta$ 的关系」与「$\alpha$ 和 $R - \alpha -\beta$ 的关系」是相互独立的。可以这样思考：假如说我们看到了两行 $t_1, t_2$，那么我们希望同时也能看到两行 $t_3,t_4$ 是 $t_1, t_2$「错排杂交」后得到的结果，因为这能体现「相互独立」的性质。
+
+例如，以下表格
+
+|$\alpha$|$\beta$|$R-\alpha-\beta$|
+|---|---|---|
+|1|1|1|
+|1|1|2|
+|1|1|3|
+|1|2|1|
+|1|2|2|
+|1|2|3|
+
+是存在 $\alpha \to\to \beta$ 的，但如果删除其中任意一行，将不再有 $\alpha \to\to \beta$。
+
+显然，如果 $\alpha \to\to \beta$，那么也会有 $\alpha \to\to 
+(R-\alpha-\beta)$。
+
+从对称性上来考虑，我们定义一个 $\alpha \to\to \beta$ 是平凡的，当且仅当 $\beta \subseteq \alpha$ 或者 $\alpha \cup \beta = R$。
+
+**关于 MVD 的一点理论：**
+
++ 函数依赖和多值依赖
+
+    如果 $\alpha \to \beta$，那么必有 $\alpha \to\to \beta$。这个事情是很显然的。
+
++ 多值依赖闭包
+
+    类似于函数依赖，定义 $D^{+}$ 为多值依赖集合 $D$ 的传递闭包。
+
++ 一些性质
+
+    若 $A \to\to BC$，则 $AB \to\to C$。
+
+    若 $\alpha \to\to \beta, \beta \to\to \gamma$，则 $\alpha \to\to \gamma - \beta$。
+
+#### 2 / 4NF
+
+关系 $R$ 具有多值依赖 $D$，对于任意 $(\alpha \to\to \beta) \subseteq D^{+}$，若 $\alpha \to\to \beta$ 满足两者其一：
+
++ $\alpha \to\to \beta$ 是平凡的
+
++ $\alpha$ 是 $R$ 的 Super Key
+
+则认为 $R$ 符合 4NF。当一个关系符合 4NF，它一定也符合 BCNF 和 3NF。
+
++ 4NF 分解算法
+
+    首先，假设 $R \to R_1,R_2,\cdots, R_n$。对于 $R_i$，其所具有的多值依赖 $D_i$ 包含：所有 $\alpha \to\to (\beta \cap R_i)$，其中 $(\alpha \to\to \beta) \subseteq D^{+}$。
+
+    4NF 的分解和 BCNF 类似，遵循以下算法：
+
+    1. 假设当前关系集合为 $R_1, R_2, \cdots, R_n$。初始只有一个 $R_1=R$。
+
+    2. 不断在关系集中寻找一个不符合 4NF 的关系 $R_i$，假设其具有一个非平凡多值依赖 $(\alpha \to\to \beta)$，其中 $\alpha$ 非 Super Key，且 $\alpha \cap \beta = \empty$。
+    
+    3. 将 $R_i$ 分解为 $\alpha \cup \beta$ 和 $R_i - \beta$。重复 2, 3 步骤直到所有关系都满足 4NF。
+
+    可以证明，这个分解是无损的。
+    
+    例子：
+
+    <p><img src="images/dbs-45.png" alt="dbs-45" width="80%"></p>
