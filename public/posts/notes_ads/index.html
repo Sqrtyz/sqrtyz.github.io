@@ -228,7 +228,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <li><a href="#topic-7-backtracking-alpha-beta-剪枝">Topic 7. Backtracking: Alpha-Beta 剪枝</a></li>
         <li><a href="#topic-8-master-method-主定理">Topic 8. Master Method 主定理</a></li>
         <li><a href="#topic-sp-lesson-from-mid-term-exam">Topic SP. Lesson from Mid-Term Exam</a></li>
-        <li><a href="#topic-9-">Topic 9. ???</a></li>
+        <li><a href="#topic-9-计算理论基础">Topic 9. 计算理论基础</a></li>
       </ul>
     </li>
   </ul>
@@ -256,7 +256,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          27 minute read
+          31 minute read
         </div>
         
         
@@ -639,7 +639,79 @@ $$</p>
 <p>要不下次先做选择题？</p>
 </li>
 </ul>
-<h3 id="topic-9-">Topic 9. ???</h3>
+<h3 id="topic-9-计算理论基础">Topic 9. 计算理论基础</h3>
+<ul>
+<li>
+<p>Turing Machine</p>
+<ul>
+<li>
+<p>确定性图灵机 (DTM)：类似于一个状态机。根据当前状态和纸带上的字符，可以跳转到下一个状态，或者覆写当前的字符。</p>
+</li>
+<li>
+<p>非确定性图灵机 (NTM)：可以视作一次可以转移到多个状态的 DTM（无限并行），也可以视作一个「运气极好」的 DTM，每次转移都是转移到最好的结果。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>P, NP, NP-Hard, NPC</p>
+<ul>
+<li>
+<p>P 问题：可在多项式时间内被 DTM 所解决（判定）的问题。</p>
+</li>
+<li>
+<p>NP 问题：可在多项式时间内被 NTM 所解决（判定）的问题。</p>
+<p>或者说，可在多项式时间内被 DTM 验证某个解是否正确的问题。</p>
+</li>
+<li>
+<p>NP-Hard 问题：如果一个问题可以被所有的 NP 问题归约到，那么它是 NP-Hard 问题。</p>
+</li>
+<li>
+<p>NPC 问题：如果一个问题既是 NP-Hard，又是 NP 问题，那么称其为 NPC 问题。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>P 与 NP</p>
+<p>目前只知道 $P \subseteq NP$，但究竟是 $P \subset NP$ 还是 $P=NP$ 尚无定论。似乎学界更为倾向于前者。</p>
+<p><img src="images/ads-pnp-1.png" alt="ads-pnp-1"></p>
+</li>
+<li>
+<p>证明一个问题是 NPC 的</p>
+<ol>
+<li>
+<p>证明它是一个 NP 问题（可在多项式时间内被 DTM 验证某个答案是否正确）</p>
+</li>
+<li>
+<p>证明某个已知的 NPC 问题可以被归约到它</p>
+</li>
+</ol>
+</li>
+<li>
+<p>co-NP 不等于 NP</p>
+<p>NP 问题的反不一定是 NP 问题。例如如果问一张图中是否存在 Hamilton 回路，我们可以在多项式时间内验证某个解是否正确（因为这个解包含了一种具体的路径）；但我们无法在多项式时间内验证反问题，既「一张图中是否不存在 Hamilton 回路」，我们无法在多项式时间内验证某个解是否正确，因为只有试过所有的路径，我们才能断言不存在 Hamilton 回路。</p>
+</li>
+<li>
+<p>形式语言理论</p>
+<ul>
+<li>
+<p>抽象化问题、语言</p>
+<p><img src="images/ads-pnp-2.png" alt="ads-pnp-2"></p>
+<p>可以把一个求答案的问题变成一个 0/1 decision 问题。</p>
+<p>定义语言 $L = \{x \in \Sigma^{*}: Q(x) = 1 \}$。</p>
+</li>
+<li>
+<p>在形式语言理论下，我们可以重新稍微形式化地去定义 P 和 NP 问题</p>
+<p>$$P = \{L \subseteq \{0,1\}^{*}: \text{There exists an algorithm A that decides L in poly time}\}$$</p>
+<p>此处 decide 意为算法 $A$ 必须要找到所有满足 $L$ 语言的 $x$，不重不漏。</p>
+<p>同时</p>
+<p>$$NP = \{L \subseteq \{0,1\}^{*}: \text{There exists a certificate } y \text{ with } |y|=O(|x|^c) \text{ such that } A(x,y)=1 \}$$</p>
+<p>注意这个不知道从哪里蹦出来的解本身也得是多项式的。</p>
+<p>例如，我们可以用某种 01 语言来描述数独。定义 $Q(x)=1$ 当且仅当 $x$ 语言所描述的数独是正确的解。显然，不存在多项式算法 $A$ 来 decide 集合 $L$（因为这样就相当于在多项式时间内找到了所有的解），所以数独的求解不是一个 P 问题。</p>
+<p>但是当我们给定一个特定的解 $y$ 时，我们可以在多项式内确定 $A(x,y) = 1 \text{ or } 0$。所以数独的求解是一个 NP 问题。</p>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
   </article>
@@ -684,7 +756,7 @@ $$</p>
         <li><a href="#topic-7-backtracking-alpha-beta-剪枝">Topic 7. Backtracking: Alpha-Beta 剪枝</a></li>
         <li><a href="#topic-8-master-method-主定理">Topic 8. Master Method 主定理</a></li>
         <li><a href="#topic-sp-lesson-from-mid-term-exam">Topic SP. Lesson from Mid-Term Exam</a></li>
-        <li><a href="#topic-9-">Topic 9. ???</a></li>
+        <li><a href="#topic-9-计算理论基础">Topic 9. 计算理论基础</a></li>
       </ul>
     </li>
   </ul>
