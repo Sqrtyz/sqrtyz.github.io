@@ -256,7 +256,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          31 minute read
+          32 minute read
         </div>
         
         
@@ -696,18 +696,19 @@ $$</p>
 <li>
 <p>抽象化问题、语言</p>
 <p><img src="images/ads-pnp-2.png" alt="ads-pnp-2"></p>
-<p>可以把一个求答案的问题变成一个 0/1 decision 问题。</p>
-<p>定义语言 $L = \{x \in \Sigma^{*}: Q(x) = 1 \}$。</p>
+<p>大概是说，可以把一个求答案的问题转化为若干个 0/1 decision 问题？</p>
+<p>定义语言 $L = \{x \in \Sigma^{*}: Q(x) = 1 \}$。其中 $Q(x) = 1$ 表示某 01 字符串 $x$ 描述了某一个 decision 问题实例，并且这个问题实例有解。</p>
 </li>
 <li>
-<p>在形式语言理论下，我们可以重新稍微形式化地去定义 P 和 NP 问题</p>
+<p>在形式语言理论下，我们可以更形式化地定义 P 和 NP 问题</p>
 <p>$$P = \{L \subseteq \{0,1\}^{*}: \text{There exists an algorithm A that decides L in poly time}\}$$</p>
-<p>此处 decide 意为算法 $A$ 必须要找到所有满足 $L$ 语言的 $x$，不重不漏。</p>
-<p>同时</p>
-<p>$$NP = \{L \subseteq \{0,1\}^{*}: \text{There exists a certificate } y \text{ with } |y|=O(|x|^c) \text{ such that } A(x,y)=1 \}$$</p>
-<p>注意这个不知道从哪里蹦出来的解本身也得是多项式的。</p>
-<p>例如，我们可以用某种 01 语言来描述数独。定义 $Q(x)=1$ 当且仅当 $x$ 语言所描述的数独是正确的解。显然，不存在多项式算法 $A$ 来 decide 集合 $L$（因为这样就相当于在多项式时间内找到了所有的解），所以数独的求解不是一个 P 问题。</p>
-<p>但是当我们给定一个特定的解 $y$ 时，我们可以在多项式内确定 $A(x,y) = 1 \text{ or } 0$。所以数独的求解是一个 NP 问题。</p>
+<p>此处 decide 意为算法 $A$ 必须要找到所有属于 $L$ 语言的 $x$（亦即 $Q(x)=1$），不重不漏。</p>
+<p>同时若有</p>
+<p>$$L = \{x \in \{0,1\}^{*}: \text{There exists a certificate } y \text{ with } |y|=O(|x|^c) \text{ such that } A(x,y)=1 \}$$</p>
+<p>成立，则 $L$ 描述了一个 NP 问题。注意这个不知道从哪里蹦出来的解 $y$，它本身也得是多项式规模的。</p>
+<p>例如，假设 $Q(x)=1$ 当且仅当 $x$ 描述了某个无向图且这个图从 $S$ 到 $T$ 的最短路小于等于 $k$，这是一个 decision 问题。确实存在一个算法 $A$，能在多项式时间内找出集合 $L$，所以这个 decision 问题是 P 的。</p>
+<p>再如，假设 $Q(x)=1$ 当且仅当 $x$ 语言所描述的是某个 $9 \times 9$ 数独且其有解。显然，不存在多项式算法 $A$ 来 decide 集合 $L$（因为判断单个数独是否有解无法在 poly-time 内完成），所以数独的求解不是一个 P 问题。</p>
+<p>但是对于某一个 $x \in \{0,1\}^{*}$，当我们给定一个特定的解 $y$ 时，此时就有了题面 $x$ 和某答案 $y$ 的组合。若我们可以在多项式时间内确定 $A(x,y) = 1$，这说明我们可以在多项式时间内验证 $L$。所以数独的求解是一个 NP 问题。</p>
 </li>
 </ul>
 </li>
