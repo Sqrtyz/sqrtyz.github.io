@@ -293,7 +293,7 @@ Registers 寄存器。RISC-V 具有 32 个各 64 位的寄存器。"/>
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          20 minute read
+          21 minute read
         </div>
         
         
@@ -615,7 +615,7 @@ sub x2, x19, x3
 </ul>
 <h4 id="3-calculating-the-branch-target">3. Calculating the Branch Target</h4>
 <p>很明显，计算要跳到哪里 (Branch Target) 需要使用 ALU 进行计算，这会导致一定的延迟。</p>
-<p><strong>Branch Target Buffer</strong> 可以缓存下跳转的地址，下次就可以直接跳转并获取对应的指令。</p>
+<p><strong>Branch Target Buffer</strong> 可以直接缓存下跳转的地址，下次就可以直接跳转并获取对应的指令。</p>
 <h3 id="exceptions-and-interrupts">Exceptions and Interrupts</h3>
 <ul>
 <li>
@@ -663,7 +663,10 @@ sub x2, x19, x3
 <p>Dynamic Multiple Issue: CPU 来检测指令流并决定把那些指令「捆在一起」，编译器只起到辅助作用。显然这个难度更大。</p>
 </li>
 <li>
-<p>Speculation (前瞻)</p>
+<p>Speculation (前瞻执行)</p>
+<p>某些指令可以更早地执行（例如，提前预测并执行 branch outcome 处的指令）。当然，如果 speculation 是错误的，则需要 rollback。</p>
+<p>前瞻执行可以由编译器完成，亦可以由硬件完成。</p>
+<p>可以结合接下来的 RISC-V 静态双指令并行的例子理解 speculation。</p>
 </li>
 </ul>
 <h4 id="2-static-multiple-issue">2. Static Multiple Issue</h4>
@@ -710,8 +713,8 @@ sub x2, x19, x3
 <li>
 <p>动态多发基本框架</p>
   <p><img src="images/cod-83.png" alt="cod-83" width="80%"></p>
+<p>乱序执行，顺序 commit。</p>
 </li>
-<li></li>
 </ul>
 
     </div>

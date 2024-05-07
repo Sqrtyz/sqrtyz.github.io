@@ -229,6 +229,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <li><a href="#topic-8-master-method-主定理">Topic 8. Master Method 主定理</a></li>
         <li><a href="#topic-sp-lesson-from-mid-term-exam">Topic SP. Lesson from Mid-Term Exam</a></li>
         <li><a href="#topic-9-计算理论基础">Topic 9. 计算理论基础</a></li>
+        <li><a href="#topic-10-approximation">Topic 10. Approximation</a></li>
       </ul>
     </li>
   </ul>
@@ -256,7 +257,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          32 minute read
+          36 minute read
         </div>
         
         
@@ -713,6 +714,82 @@ $$</p>
 </ul>
 </li>
 </ul>
+<h3 id="topic-10-approximation">Topic 10. Approximation</h3>
+<ul>
+<li>
+<p>Packing Problem</p>
+<ul>
+<li>
+<p>问题：若干个体积为 $[0,1]$ 的物品，装到尽量少的体积为 $1$ 的箱子里。</p>
+</li>
+<li>
+<p>在线估计：Next Fit（顺序瞎装，不够就开）/ First Fit（装到目前第一个能装的，不够就开）/ Best Fit（装到目前能装的且余空间最小的，不够就开）</p>
+<p>可以证明，无论何种在线 approximation，最坏情况答案都会达到最优解的 $\frac{5}{3}$ 倍。</p>
+<p>对于 Next Fit，上界是 $2$ 倍。</p>
+<p>对于 First Fit / Best Fit，上界是 $1.7$ 倍。</p>
+</li>
+<li>
+<p>离线估计：先降序排序，然后用 First Fit 或者 Best Fit。</p>
+<p>离线估计的 FF/BF 又称为 FFD / BFD，上界是 $1.5$ 倍。当规模大时，上界约为 $\frac{11}{9}$ 倍。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Knapsack Problem</p>
+<ul>
+<li>
+<p>问题：$p_i$ 表价值，$w_i$ 表体积。01 背包。</p>
+</li>
+<li>
+<p>估计：可以证明，贪心算法（取 $p_i$ 贪心和 $\frac{p_i}{w_i}$ 贪心的 max 者）得到的答案一定不超过实际最优解的 2 倍。</p>
+<p>证明：</p>
+<p>引入另外一个问题：分数背包，每个物品可以取 $0\leq x_i\leq 1 (x_i \in \mathcal{Q})$ 个。</p>
+<p>$p_{max}$ 指 $p_i$ 贪心答案，$p_{dens}$ 指 $\frac{p_i}{w_i}$ 贪心答案，$p_{greedy}$ 指两者 max。</p>
+<p>$p_{opt}$ 指 01 背包最优解，$p_{frac}$ 指分数背包最优解。</p>
+<p>列举一些不等式：</p>
+<ul>
+<li>
+<p>$p_{max} \leq P_{opt} \leq P_{frac}$</p>
+</li>
+<li>
+<p>$p_{max} \leq P_{greedy}$</p>
+</li>
+<li>
+<p>$P_{opt} \leq P_{greedy} + p_{max}$</p>
+<p>这是因为考虑分数背包，一定是由 $\frac{p_i}{w_i}$ 贪心结果加上一个不超过 $p_{max}$ 的玩意儿构成的。</p>
+</li>
+</ul>
+<p>于是有</p>
+<p>$$ \frac{P_{opt}}{P_{greedy}} \leq 1 + \frac{p_{max}}{P_{greedy}} \leq 2$$</p>
+</li>
+<li>
+<p>传统的 01 背包算法</p>
+<p>正常来说 01 背包的复杂度是 $\mathcal{O}(n^2p)$（其实也可以是 $\mathcal{O}(n^2w)$，但本质上都差不多）。看似是多项式的复杂度，然而 $p$ 可以很大（若输入长度为 $l$，则可以到 $2^l$）。</p>
+  <p><img src="images/ads-app1.png" alt="ads-app1" width="80%"></p>
+<p>一个可能的做法是把 $p$ 给搞小。具体地，我们令</p>
+<p>$$K=\epsilon\frac{P_{\max}}{n}, p_i&rsquo;=\frac{p_i}{K}$$</p>
+<p>理论上可以将时间复杂度压至 $\mathcal{O}(n^3/\epsilon)$。这样得到的答案 $P_{alg}$ 满足 $(1+\epsilon)P_{alg}\ge P_{opt}$。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Clustering Problem</p>
+<ul>
+<li>
+<p>问题：给定 $n$ 个点，使用 $K$ 个圆进行覆盖，最小化圆半径。</p>
+</li>
+<li>
+<p>估计：对于某个最优解 $r^{<em>}$，如果我们令 $r=2r^{</em>}$，则存在如下的一种次解：所有圆心都在点上。这个事情很显然，因为对于半径为 $r^{<em>}$ 的圆，其内所有点的两两距离都小于 $2r^{</em>}$。</p>
+</li>
+<li>
+<p>寻找圆心：</p>
+<p>可以使用二分（二分 $r=2r^{*}$ ），若需要的圆数目大于 $K$，说明接下来应扩大半径，反之尝试缩小半径。</p>
+<p>也可以每次找离当前 center 集合最远的点，如此迭代 $k$ 次直接得到答案。</p>
+<p>总之，用这一套方法找到的答案一定小于等于实际最优解的 2 倍。</p>
+</li>
+</ul>
+</li>
+</ul>
 
     </div>
   </article>
@@ -758,6 +835,7 @@ $$</p>
         <li><a href="#topic-8-master-method-主定理">Topic 8. Master Method 主定理</a></li>
         <li><a href="#topic-sp-lesson-from-mid-term-exam">Topic SP. Lesson from Mid-Term Exam</a></li>
         <li><a href="#topic-9-计算理论基础">Topic 9. 计算理论基础</a></li>
+        <li><a href="#topic-10-approximation">Topic 10. Approximation</a></li>
       </ul>
     </li>
   </ul>
