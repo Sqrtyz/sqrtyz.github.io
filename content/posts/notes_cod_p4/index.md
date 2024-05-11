@@ -49,7 +49,7 @@ date: 2024-05-01
     Calculate: Average read time
     
     + **4ms** seek time
-    + $\frac{1}{2} \times \frac{15000}{60}$ = **2ms** rotational latency（1/2 是因为至多转半圈）
+    + $\frac{1}{2} \times \frac{15000}{60}$ = **2ms** rotational latency（1/2 表示期望）
     + $\frac{512B}{100MB/s}$ = **0.005ms** transfer time
     + **0.2ms** controller delay
     + Total: **6.2ms**
@@ -163,7 +163,7 @@ Direct Mapped 的具体寻址方式之前已经介绍。
 
         1. Write-back 只向缓存中写入数据，回头找个合适的时机写入内存。好处是很快，但是会导致数据的 inconsistent。
 
-            此外，Write-back 不能直接丢弃 cached data（例如由 read miss 引起的替换），这是因为其中的值可能并未被同步到 memory。故而 cache 的 control bit 需要使用两位：valid bit【依然和原来一样，表示是否数据有效】和 dirty bit【表示是否同步到 memory 中，未同步则为 0】。
+            此外，Write-back 不能直接丢弃 cached data（例如由 read miss 引起的替换），这是因为其中的值可能并未被同步到 memory。故而 cache 的 control bit 需要使用两位：valid bit【依然和原来一样，表示是否数据有效】和 dirty bit【表示是否同步到 memory 中，未同步则为 0】。如果替换时发现被替换者 dirty bit 为 0，则需要先将被替换者写入内存。
 
         2. Write-through 则同时向缓存和内存写入数据。好处是可以保证数据的 consistency，但是速度会较慢。
 

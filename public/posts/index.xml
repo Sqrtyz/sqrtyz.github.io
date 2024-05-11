@@ -7,14 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Sqrtyz</copyright>
-    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2024 07:07:07 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【笔记】数据库系统 (Part III)</title>
+      <link>http://localhost:1313/posts/notes_dbs_p3/</link>
+      <pubDate>Wed, 01 May 2024 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/posts/notes_dbs_p3/</guid>
+      <description>Lecture 8. Storage and File Structure Global Overview Overview of Physical Storage Media 感觉这部分和计组重了。&#xA;Primary storage: Fastest but volatile&#xA;Secondary storage (辅助存储器，联机存储器): non-volatile, moderately fast access time&#xA;Tertiary storage (三级存储器，脱机存储器): non-volatile, slow access time&#xA;计算机本身基本上只考虑了上两级。&#xA;第三级就类似于磁带、CD-ROM 这种玩意儿，所以叫「脱机存储器」。&#xA;Magnetic Disks Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Measure Performance of Disks&#xA;Seek time (寻道时间)&#xA;工作：arm 找到正确的 track</description>
+    </item>
     <item>
       <title>【笔记】计算机组成 (Part IV)</title>
       <link>http://localhost:1313/posts/notes_cod_p4/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/notes_cod_p4/</guid>
-      <description>Chapter 5 Memory Hierarchy Fundamental Introduction Transistor 晶体管 类似于一个开关。栅极为 1 时两侧的 N 型半导体硅连通，input 连接到 output。&#xA;Basic Memory Types SRAM (Static Random Access Memory)&#xA;六个晶体管。static 是指这种存储器只需要保持通电，里面的数据就可以永远保持。但是当断点之后，里面的数据仍然会丢失。&#xA;SRAM 速度较快，但是成本更高，占用的空间更多。所以像诸如 CPU 的高速缓存，才会采用 SRAM。&#xA;DRAM (Dynamic Random Access Memory)&#xA;一个电容加一个晶体管。由于 DRAM 使用电容存储，所以必须隔一段时间 refresh 一次，否则因为不断的微小漏电可能导致数据丢失。&#xA;DRAM 速度较慢，但是成本更低。所以可以用于作为 main memory。&#xA;Memory Hierarchy Introduction Hierarchies bases on memories of different speeds and size.&#xA;金字塔越往上，memory 更 expensive / small / fast。&#xA;Cache Basics Cache Intro - Direct Mapped Cache 基本思路</description>
+      <description>Chapter 5 Memory Hierarchy Introduction Transistor 晶体管 类似于一个开关。栅极为 1 时两侧的 N 型半导体硅连通，input 连接到 output。&#xA;Basic Memory Types SRAM (Static Random Access Memory)&#xA;六个晶体管。static 是指这种存储器只需要保持通电，里面的数据就可以永远保持。但是当断点之后，里面的数据仍然会丢失。&#xA;SRAM 速度较快，但是成本更高，占用的空间更多。所以像诸如 CPU 的高速缓存，才会采用 SRAM。&#xA;DRAM (Dynamic Random Access Memory)&#xA;一个电容加一个晶体管。由于 DRAM 使用电容存储，所以必须隔一段时间 refresh 一次，否则因为不断的微小漏电可能导致数据丢失。&#xA;DRAM 速度较慢，但是成本更低。所以可以用于作为 main memory。&#xA;Flash Storage&#xA;中文为闪存。我们熟知的 SSD（固态硬盘）一般就使用闪存存储数据。&#xA;Disk Storage&#xA;计算 disk 的读取时间 - 例题：&#xA;Given: 512B sector, 15,000 rpm, 4ms average seek time, 100MB/s transfer rate, 0.2ms controller overhead.&#xA;Calculate: Average read time</description>
     </item>
     <item>
       <title>【笔记】数据库系统 (Part II)</title>

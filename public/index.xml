@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Sqrtyz</copyright>
-    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2024 07:07:07 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【笔记】数据库系统 (Part III)</title>
+      <link>http://localhost:1313/posts/notes_dbs_p3/</link>
+      <pubDate>Wed, 01 May 2024 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/posts/notes_dbs_p3/</guid>
+      <description>Lecture 8. Storage and File Structure Global Overview Overview of Physical Storage Media 感觉这部分和计组重了。&#xA;Primary storage: Fastest but volatile&#xA;Secondary storage (辅助存储器，联机存储器): non-volatile, moderately fast access time&#xA;Tertiary storage (三级存储器，脱机存储器): non-volatile, slow access time&#xA;计算机本身基本上只考虑了上两级。&#xA;第三级就类似于磁带、CD-ROM 这种玩意儿，所以叫「脱机存储器」。&#xA;Magnetic Disks Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Measure Performance of Disks&#xA;Seek time (寻道时间)&#xA;工作：arm 找到正确的 track</description>
+    </item>
     <item>
       <title>【笔记】计算机组成 (Part IV)</title>
       <link>http://localhost:1313/posts/notes_cod_p4/</link>
