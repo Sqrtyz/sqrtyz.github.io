@@ -107,9 +107,9 @@ Hierarchies bases on memories of different speeds and size.
 
 + Set Associative
 
-    介于 Direct Mapped 和 Fully Associative 之间。内存中的 block 可以对到 cache 中 **某个 set** 的任何 block。对于 Set Associative，一个 set 如果包含 $k$ blocks，那么这个 cache 又被称为 $k$-way set associative。
-
-    DM 和 FA 可以视作特殊的 SA。比如 DM 就是 $1$-way SA，FA 就是 $m$-way SA（其中 $m$ 表示 block 数目）。
+    介于 Direct Mapped 和 Fully Associative 之间。内存中的 block 可以对到 cache 中 **某个 set** 的任何 block。set 的选取和 block 一致，即 **(Cache Set Address)** = **(Memory Block Address)** mod **(Number of sets in the cache)**
+    
+    对于 Set Associative，一个 set 如果包含 $k$ blocks，那么这个 cache 又被称为 $k$-way set associative。DM 和 FA 可以视作特殊的 SA。比如 DM 就是 $1$-way SA，FA 就是 $m$-way SA（其中 $m$ 表示 block 数目）。
 
 #### Cache Topic 2 - Block Identification
 
@@ -254,3 +254,21 @@ Direct Mapped 的具体寻址方式之前已经介绍。
 #### Example Quiz
 
 <p><img src="images/cod-97.png" alt="cod-97" width="60%"></p>
+
+
+### L1 and L2 Cache Hierarchy
+
+回顾之前的金字塔图，我们可以将 Cache 分为 L1 Cache 和 L2 Cache（两者均采用 SRAM，唯一的区别在于大小不同，L1 Cache 略快于 L2 Cache）。
+
+如果 L1 Cache miss 了，就去 L2 Cache 读取；如果再 miss，就去 DRAM。
+
+考虑这样一道计算题：
+
++ CPI of 1.0 on a 5GHz machine 
+
++ Initial: 2% miss rate, 100ns DRAM access
+
++ Adding L2 Cache: 5ns access time, decreases miss rate to 0.5%
+
+### Virtual Memory
+

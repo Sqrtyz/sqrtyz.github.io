@@ -230,6 +230,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <li><a href="#topic-sp-lesson-from-mid-term-exam">Topic SP. Lesson from Mid-Term Exam</a></li>
         <li><a href="#topic-9-计算理论基础">Topic 9. 计算理论基础</a></li>
         <li><a href="#topic-10-approximation">Topic 10. Approximation</a></li>
+        <li><a href="#topic-11-local-search">Topic 11. Local Search</a></li>
       </ul>
     </li>
   </ul>
@@ -257,7 +258,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          36 minute read
+          37 minute read
         </div>
         
         
@@ -427,6 +428,8 @@ $$</p>
 <p>B+ Tree 的插入：下图展示了插入 19 的过程。大概思路就是，首先放进对应的节点，如果发现节点吃不消了（大于 $m$）就分裂，然后让父节点儿子数目加 1。如果发现父节点吃不消了（大于 $m$）就再次分裂，让爷节点儿子数目加 1。这个过程是不断向上的，直到某个祖先吃得消为止。</p>
 <p>如果到根都吃不消的话，则需要对根进行分裂，然后创建一个新的根节点。</p>
 <p><img src="images/ads-bp-1.png" alt="adsbp-1"></p>
+<p><em>注意上图似乎有些问题。首先按照 Wikipedia 的说法，2-3 树是 B 树而非 B+ 树。其次，大多数网络资源定义 m 阶 B+ 树叶子节点大小为 m-1，非叶节点的孩子数目为 m；ADS 课程中则定义 m 阶 B+ 树叶子节点大小为 m，非叶节点的孩子数目为 m。非常诡异。</em></p>
+<p>// FIXME: 定义问题</p>
 <h3 id="topic-4-inverted-file-index">Topic 4. Inverted File Index</h3>
 <ul>
 <li>
@@ -790,6 +793,11 @@ $$</p>
 </ul>
 </li>
 </ul>
+<h3 id="topic-11-local-search">Topic 11. Local Search</h3>
+<ul>
+<li>邻域搜索</li>
+</ul>
+<p>对于一个凸优化问题，</p>
 
     </div>
   </article>
@@ -836,6 +844,7 @@ $$</p>
         <li><a href="#topic-sp-lesson-from-mid-term-exam">Topic SP. Lesson from Mid-Term Exam</a></li>
         <li><a href="#topic-9-计算理论基础">Topic 9. 计算理论基础</a></li>
         <li><a href="#topic-10-approximation">Topic 10. Approximation</a></li>
+        <li><a href="#topic-11-local-search">Topic 11. Local Search</a></li>
       </ul>
     </li>
   </ul>
