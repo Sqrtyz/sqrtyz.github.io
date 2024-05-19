@@ -11,6 +11,9 @@
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-05-01T07:07:07+01:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/posts/notes_it_p2/</loc>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/notes_cod_p4/</loc>
     <lastmod>2024-05-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -35,7 +38,7 @@
     <loc>http://localhost:1313/posts/notes_crypto/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/notes_it/</loc>
+    <loc>http://localhost:1313/posts/notes_it_p1/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/notes_dbs_p1/</loc>

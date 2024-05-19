@@ -17,6 +17,13 @@
       <description>Lecture 8. Storage and File Structure Global Overview Overview of Physical Storage Media 感觉这部分和计组重了。&#xA;Primary storage: Fastest but volatile&#xA;Secondary storage (辅助存储器，联机存储器): non-volatile, moderately fast access time&#xA;Tertiary storage (三级存储器，脱机存储器): non-volatile, slow access time&#xA;计算机本身基本上只考虑了上两级。&#xA;第三级就类似于磁带、CD-ROM 这种玩意儿，所以叫「脱机存储器」。&#xA;Magnetic Disks Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Measure Performance of Disks&#xA;Seek time (寻道时间)&#xA;工作：arm 找到正确的 track</description>
     </item>
     <item>
+      <title>【笔记】信息理论 (Part II)</title>
+      <link>http://localhost:1313/posts/notes_it_p2/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_it_p2/</guid>
+      <description>Chapter 3 信息的传输 回顾信息传输模型&#xA;信道的抽象数学模型&#xA;其中 $W$ 可视为原始信息编码后的结果，$x^n$ 进入信道，$y^n$ 是接收方从信道中获得的信号，$\hat{W}$ 是接收方对信道信号的解读，它同时是对 $W$ 的估计。&#xA;Lec 6 信道容量 信道容量定义为输出序列对不同输入序列所提供的最大互信息，即&#xA;$$C = \lim\limits_{n \to \infty} \frac{1}{n} \max\limits_{P(X^n)} \left[I(X_1X_2\cdots X_N;Y_1Y_2\cdots Y_N) \right]$$&#xA;注意 $\max$ 这里枚举的是不同的输入概率分布。&#xA;6.1 DMC Intro 对于离散无记忆信道 (DMC, 定义见上)，$I(X_1X_2\cdots X_N;Y_1Y_2\cdots Y_N) \le \sum_{n=1}^N I(X_n;Y_n)$&#xA;其中等号在输入为独立随机序列时达到。证明如下&#xA;（注意这些仅仅对 DMC 成立。特别地，当输入独立随机时，必有输出也独立随机，进而有 $H(Y)=\sum\limits_{i=1}^n H(Y_i)$ 的等号成立）&#xA;因此，当输入独立随机时，有&#xA;$$C = \lim\limits_{n \to \infty} \frac{1}{n} \max\limits_{P(x^n)} \left[I(X_1X_2\cdots X_N;Y_1Y_2\cdots Y_N) \right] = \max\limits_{P(X)} I(X;Y)$$&#xA;这将大大简化接下来的讨论难度。&#xA;6.2 DMC Examples 无噪信道&#xA;无损信道</description>
+    </item>
+    <item>
       <title>【笔记】计算机组成 (Part IV)</title>
       <link>http://localhost:1313/posts/notes_cod_p4/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
@@ -73,10 +80,10 @@
       <description>Introduction Brief Intro&#xA;DES AES 对称密码学算法（加密的密钥和解密的密钥一致）&#xA;RSA ECC 非对称密码学算法（加密的密钥和解密的密钥不一致）&#xA;Enigma Enigma 加密&#xA;密钥：五选三齿轮、齿轮初始状态、接线板&#xA;加密：&#xA;首先字母 $c$ 通过接线板进行字母对换，若存在无序接线对 $(c,c_0)$，得到 $c_0$（若不存在则依然为 $c$）； 分别通过三张齿轮对应的表 Rotor I, II, III, 得到 $c_0 \to c_1 \to c_2 \to c_3$； $c_3$ 通过反射板 Reflector 得到 $c_3&amp;rsquo;$； 逆序通过三张齿轮对应的表 Rotor III, II, I, 得到 $c_3&amp;rsquo; \to c_2&amp;rsquo; \to c_1&amp;rsquo; \to c_0&amp;rsquo;$； $c_0&amp;rsquo;$ 通过接线板进行字母对换，得到 $c&amp;rsquo;$。$c&amp;rsquo;$ 即为加密结果。 Rotor 和 Reflector 均可视为一一对应的字母表，例如 &amp;ldquo;ABCDE ~ EBCAD&amp;rdquo; 这种。&#xA;关于齿轮&#xA;每个齿轮具有两个参数：Message Key / Ring Setting。Ring Setting 可视作齿轮的固有性质且在某次密码箱的使用过程中不发生改变；Message Key 则在一次加密 / 解密时具有一个初始状态，且 每输入一个字母 后会发生一次转动（Message Key 自增 1）。</description>
     </item>
     <item>
-      <title>【笔记】信息理论</title>
-      <link>http://localhost:1313/posts/notes_it/</link>
+      <title>【笔记】信息理论 (Part I)</title>
+      <link>http://localhost:1313/posts/notes_it_p1/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/notes_it/</guid>
+      <guid>http://localhost:1313/posts/notes_it_p1/</guid>
       <description>Chapter 1 信息的度量 Lec 1 随机变量的熵和互信息 1.1 自信息 对于概率空间 $\{X,\mathcal{X},p(x)\}$，事件 $\{X=x_k\}$ 的 自信息 定义为&#xA;$$I(x_k)=-\log_ap(x_k)$$&#xA;当 $a=2$，为比特（bit）。当 $a=e$，为奈特（nat）。&#xA;自信息的理解&#xA;事件发生后对观察者提供的信息量； 观察者为确证该事件所需要付出的代价（类比功与能量）； 事件的自信息并不代表事件的不确定性，事件本身没有不确定性可言。 例如，$p(x_k)=1$ 时，$I(x_k)=0$：「明天太阳从东边升起。」这句话没有信息量。&#xA;1.2 条件自信息、两事件的互信息 条件自信息&#xA;对于二维随机变量概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 发生的条件下事件 $\{X=x_k\}$ 的 条件自信息 定义为&#xA;$$I(x_k|y_j)=-\log p(x_k|y_j)$$&#xA;本质是已知 $\{Y=y_j\}$ 发生的情况下，突然 $\{X=x_k\}$ 又发生了，这件事情所提供给观察者的信息量。&#xA;互信息&#xA;概率空间 $\{(X,Y),\mathcal{X \times Y}, p(x,y)\}$，事件 $\{Y=y_j\}$ 与事件 $\{X=x_k\}$ 的 互信息 定义为&#xA;$$I(x_k;y_j)=I(x_k)-I(x_k|y_j)= - \log p(x_k) + \log p(x_k|y_j)$$&#xA;本质是事件 $\{Y=y_j\}$ 发生后对 $\{X=x_k\}$ 的不确定性的降低。&#xA;互信息具有对称性！$I(x_k;y_j)=I(y_j;x_k)$，从定义出发加贝叶斯定理证明即可。</description>
     </item>
     <item>
