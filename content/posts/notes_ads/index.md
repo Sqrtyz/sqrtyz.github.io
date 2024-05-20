@@ -571,4 +571,62 @@ The recurrence $T(N) = aT(N/b) + f(N)$ can be solved as follows:
 
 + 邻域搜索
 
-对于一个凸优化问题，
+    对于一个凸优化问题，直接根据当前状态往最优解靠近显然是能找到全局最优的。
+
+    可惜有的时候问题不那么凸，所以这种靠近只能找到邻域内的最优。是为 Local Search。
+
++ 模拟退火
+
+    在 Local Search 的基础上加了和温度相关的随机跳出。
+
++ Example: Max-Cut Problem
+
+    + 问题：给一张图 $G$，点黑白染色，使得异色边权和最大。
+
+    + LS 算法：对于当前图状态 $G_{cur}$，如果换某个点的颜色可以让答案更大就换，反之不换。
+
+        首先这个算法肯定是能结束的，因为答案一直在增加，但是有上界。
+
+        不难证明，这种 Local Search 所得答案 $w(A,B) \ge \frac{1}{2} w(A^*,B^*)$。
+
+    + 平衡 Accuracy 和 Complexity
+
+        上面的这种算法实际上不是多项式的。比如最坏情况下答案每次迭代就加 $1$，但是边权可以很大，可能会炸到 $\mathcal{O}(nW)$。
+
+        如果采取这样的一种算法：换色当且仅当对答案的提升超过 $\frac{2\epsilon}{|V|} w(A,B)$，其中 $w(A,B)$ 是当前的答案。
+
+        不难证明，在这种 trade-off 下，答案界变为 $(2+\epsilon)w(A,B) \ge w(A^*,B^*)$。
+
+        但相应地，复杂度优化至 $\mathcal{O}(n / \epsilon \log W)$。
+
+    + 冷知识：上述的 $w(A^*,B^*)$ 换成全图边权和 $w_{tot}$ 也是对的，因为就是这么放缩来的。
+
+
+### Topic 12. Randomized Algorithm
+
++ Hiring Problem
+
+    $n$ 个人依次来面试，每个人都有能力值 $q_i$。面试一个人花费 $Ci$，对一个人「签定金」花费 $Ch$。目标是 **尽可能少花费**，保证能力值最高的人被签下。需要即时决策。
+
+    【随机初始化】将 $n$ 个人的面试顺序随机，然后一个个面。如果当前 interviewee 能力值比之前都高，就签下定金。
+
+    第 $i$ 个人被签的概率为 $\frac{1}{i}$。所以期望花费为 $n \times Ci + \ln n \times Ch$。
+
++ Hiring Problem II
+
+    前问题的基础上，要求至多签下一人。目标是 **要求签下最高能力值的人概率尽可能大**，不再考虑花费。
+
+    【只签一人策略】前 $k$ 个人一概不签，从第 $k+1$ 个人开始遇到比之前好的就签下，然后直接结束。我们来算一下这种策略签下最高能力者的概率：
+
+    <p><img src="images/ads-ra-1.png" alt="ads-ra-1" width="80%"></p>
+
+    可以发现 $\text{Pr}(S) \ge \frac{k}{N} \ln \frac{N}{k}$。根据数学知识可知 $k=N/e$ 取到最优。此时成功概率为 $\frac{1}{e}$。
+
++ Quick Sort
+
+    就那个带 pivot 的排序。这个排序最差复杂度是 $\mathcal{O}(n^2)$ 的，但期望是 $\mathcal{O}(n \ln n)$ 的（证明考虑枚举两点 $i,j$，考虑这两点之间产生比较的概率为 $\frac{2}{|i-j|}$）。
+
+    一个更稳定的方法是找到中间的 pivot（没找到就重新找，期望找寻次数为 2）。
+
+    <p><img src="images/ads-ra-2.png" alt="ads-ra-2" width="50%"></p>
+

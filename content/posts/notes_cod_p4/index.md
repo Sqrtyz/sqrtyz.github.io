@@ -255,6 +255,9 @@ Direct Mapped 的具体寻址方式之前已经介绍。
 
 <p><img src="images/cod-97.png" alt="cod-97" width="60%"></p>
 
+#### Miss Penalty 一图流
+
+<p><img src="images/cod-99.png" alt="cod-99" width="80%"></p>
 
 ### L1 and L2 Cache Hierarchy
 
@@ -272,3 +275,42 @@ Direct Mapped 的具体寻址方式之前已经介绍。
 
 ### Virtual Memory
 
++ Basic Concepts
+
+    和之前印象中的 virtual memory 有点区别。似乎不是拿 disk 当 memory 用，据说 virtual memory 有很多所指。
+
+    不管这些。我们接下来讨论的 virtual memory 实际上就是一个介于 CPU 和「实际地址」之间的「中介」。在实际过程中，CPU 只抛出虚拟地址，根据虚拟地址得到实际内存地址再去访问 cache memory (SRAM) / main memory (DRAM) / disk。
+
+    <p><img src="images/cod-100.png" alt="cod-100" width="80%"></p>
+
++ Fetching Physical Address Method I: Page Table
+
+    一般来说 page table 位于 main memory 中，就像一般的内存那样存储了从 virtual address 到 physical address 的映射。
+    
+    如果某个数据不在 physical memory 中，则 virtual address 映射到的会是 disk address。此时称发生了 page fault，同时这会导致极大的 miss penalty。
+
+    <p><img src="images/cod-101.png" alt="cod-101" width="70%"></p>
+
+    下图展示了具体如何利用 page table 将 virtual address 映射到 physical address 的方法。前半部分拿进去查表，后半部分 offset 保持不变。当然，这只是 page table hit 的情况。
+
+    <p><img src="images/cod-102.png" alt="cod-102" width="80%"></p>
+
++ Fetching Physical Address Method II: TLB
+
+    为了加速从 virtual address 找 physical address 这一过程，我们可以添加一个 TLB (Translation-lookaside Buffer) 模块。
+
+    TLB 可以视作一个「关于 page table 的 fully-associative cache」。注意 TLB 只存储映射到 physical memory 的情形。
+
+    <p><img src="images/cod-103.png" alt="cod-103" width="80%"></p>
+
++ Whole Structure
+
+    考虑 TLB 后，memory data 的获取流程如下（图中未显示 page table 的情形，不过应该比较好脑补）。
+
+    <p><img src="images/cod-104.png" alt="cod-104" width="80%"></p>
+
+    <p><img src="images/cod-105.png" alt="cod-105" width="80%"></p>
+
++ 理解检测
+
+    <p><img src="images/cod-106.png" alt="cod-106" width="80%"></p>
