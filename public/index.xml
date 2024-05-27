@@ -17,6 +17,13 @@
       <description>Lecture 8. Storage and File Structure Global Overview Overview of Physical Storage Media 感觉这部分和计组重了。&#xA;Primary storage: Fastest but volatile&#xA;Secondary storage (辅助存储器，联机存储器): non-volatile, moderately fast access time&#xA;Tertiary storage (三级存储器，脱机存储器): non-volatile, slow access time&#xA;计算机本身基本上只考虑了上两级。&#xA;第三级就类似于磁带、CD-ROM 这种玩意儿，所以叫「脱机存储器」。&#xA;Magnetic Disks Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Measure Performance of Disks&#xA;Seek time (寻道时间)&#xA;工作：arm 找到正确的 track</description>
     </item>
     <item>
+      <title>【笔记】数据库系统 (Part IV)</title>
+      <link>http://localhost:1313/posts/notes_dbs_p4/</link>
+      <pubDate>Wed, 01 May 2024 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/posts/notes_dbs_p4/</guid>
+      <description>Lecture 11. Query Optimization 11.1 Transformation of Relational Expressions 通过使 query 表达式转换为一些更好做的等价形式来优化查询。&#xA;Definition of Equivalence Two relational algebra expressions are said to be equivalent if the two expressions generate the same set of tuples on every legal database instance. Notes that order of tuples is irrelevant.&#xA;【NOTES】对于 multiset 的情形，只需要保证重数也一致即可。&#xA;Equivalence Rules Conjunctive selection operations can be deconstructed into a sequence of individual selections.&#xA;$$\sigma_{\theta_1 \land \theta_2}(E) = \sigma_{\theta_1}(\sigma_{\theta_2}(E))$$&#xA;Selection operations are commutative.</description>
+    </item>
+    <item>
       <title>【笔记】信息理论 (Part II)</title>
       <link>http://localhost:1313/posts/notes_it_p2/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>

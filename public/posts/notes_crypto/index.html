@@ -227,6 +227,7 @@ Enigma Enigma 加密
         <li><a href="#流密码-rc4">流密码 (RC4)</a></li>
         <li><a href="#des">DES</a></li>
         <li><a href="#aes">AES</a></li>
+        <li><a href="#rsa">RSA</a></li>
       </ul>
     </li>
   </ul>
@@ -254,7 +255,7 @@ Enigma Enigma 加密
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          14 minute read
+          17 minute read
         </div>
         
         
@@ -510,6 +511,47 @@ p = D(E(D(c, k3), k2), k1);
 </code></pre></li>
 </ol>
 <h3 id="aes">AES</h3>
+<pre tabindex="0"><code>TODO
+</code></pre><h3 id="rsa">RSA</h3>
+<ul>
+<li>
+<p>RSA</p>
+<p>【欧拉定理】若 $\gcd(a,m) = 1$，$a^{\varphi(m)} \equiv 1 (\bmod m)$。</p>
+<p>选取两个大素数 $p,q$，令 $n=pq$。由欧拉函数的积性可知 $\varphi(n)=(p-1)(q-1)$。</p>
+<p>随机选择加密密钥 $e$，计算其在模 $(p-1)(q-1)$（亦即 $\varphi(n)$）意义下的逆元 $d$。</p>
+<p>于是就有了如下密钥对：</p>
+<ul>
+<li>
+<p>加密：若明文为 $m$，则 $c = m^e (\bmod n)$。</p>
+</li>
+<li>
+<p>解密：若密文为 $c$，则 $m = c^d (\bmod n)$。</p>
+</li>
+</ul>
+<p>这是显然的。因为解密后的结果</p>
+<p>$$m&rsquo; = c^d = (m^e)^d = m^{de}=m^{(de \bmod \varphi(n))}=m$$</p>
+<p>一般而言，公钥和 $n$ 是可以公开的；私钥是不能公开的。当然 $p,q$ 也是不能公开的。</p>
+</li>
+<li>
+<p>加密传输</p>
+<p>假设 A 要发一封信 $L$ 给 B。假设私钥 $d$，公钥 $e$。</p>
+<ol>
+<li>B 告知 A $e,n$。加密方法为 $L&rsquo; = RSA(L, e)$。</li>
+<li>B 用 $L = RSA(L&rsquo;,d)$ 完成解密。</li>
+</ol>
+</li>
+<li>
+<p>数字签名</p>
+<p>RSA 除了可以用于加密传输，还可以用于数字签名。在这种情况下，使用路径是相反的。</p>
+<p>假设 A 具有一个私钥 $d$，公钥 $e$。现在 A 要传给 B 一个数据包 $P$，则数字签名：</p>
+<p>$$M&rsquo; = RSA(MD5(P),d)$$</p>
+<p>接收方接收到数据包 $P$ 及数字签名 $M&rsquo;$，用以下方法验证：</p>
+<ul>
+<li>比较 $MD5(P)$ 和 $RSA(M&rsquo;,e)$。</li>
+</ul>
+<p>这样的话中间攻击者即使篡改了 $P$，也无法找到一个合适的数字签名替代 $M&rsquo;_{fake}$。因为他们不具有私钥。</p>
+</li>
+</ul>
 
     </div>
   </article>
@@ -553,6 +595,7 @@ p = D(E(D(c, k3), k2), k1);
         <li><a href="#流密码-rc4">流密码 (RC4)</a></li>
         <li><a href="#des">DES</a></li>
         <li><a href="#aes">AES</a></li>
+        <li><a href="#rsa">RSA</a></li>
       </ul>
     </li>
   </ul>
