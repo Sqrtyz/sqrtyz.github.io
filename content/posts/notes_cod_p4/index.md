@@ -34,26 +34,45 @@ date: 2024-05-01
 
     <p><img src="images/cod-86.png" alt="cod-86" width="40%"></p>
 
-+ Flash Storage
-
-    中文为闪存。我们熟知的 SSD（固态硬盘）一般就使用闪存存储数据。
-
 + Disk Storage
 
     <p><img src="images/cod-98.png" alt="cod-98" width="80%"></p>
 
-    计算 disk 的读取时间 - 例题：
+    + Structure
 
-    Given: 512B sector, 15,000 rpm, 4ms average seek time, 100MB/s transfer rate, 0.2ms controller overhead.
+        + **Platter** 盘子。一个磁盘一般有 4-16 个盘子。
 
-    Calculate: Average read time
+        + **Track** 轨道。对应图上不同半径的环。
+
+        + **Sector** 扇区。每个 track 又被分割为若干 sectors。
+
+        + **Cylinder** 所有 platter 同一半径的 track 集合。
+
+        + **Read-write head** 读写头。
+
+    + Average Read Time of Disks
+
+        基本方法为考虑四部分：
+
+        1. 寻道时间 Seek time
+        2. 旋转等待时间 Rotational latency
+        3. 数据传输时间 Transfer time
+        4. 控制用时 Control time
+
+        【例题】Given 512B sector, 15,000 rpm, 4ms average seek time, 100MB/s transfer rate, 0.2ms controller overhead. Calculate average read time.
+        
+        1. **4ms** seek time
+        2. $\frac{1}{2} \times \frac{15000}{60}$ = **2ms** rotational latency（1/2 表示期望）
+        3. $\frac{512B}{100MB/s}$ = **0.005ms** transfer time
+        4. **0.2ms** controller delay
+
+        Total: **6.2ms**
+
++ Flash Storage
+
+    中文为闪存。比硬盘快了 100~1000 倍。Flash 又分为 NOR flash 和 NAND flash。
     
-    + **4ms** seek time
-    + $\frac{1}{2} \times \frac{15000}{60}$ = **2ms** rotational latency（1/2 表示期望）
-    + $\frac{512B}{100MB/s}$ = **0.005ms** transfer time
-    + **0.2ms** controller delay
-    + Total: **6.2ms**
-
+    我们熟知的 SSD（固态硬盘）一般就使用闪存存储数据。
 
 #### Memory Hierarchy
 
@@ -314,3 +333,117 @@ Direct Mapped 的具体寻址方式之前已经介绍。
 + 理解检测
 
     <p><img src="images/cod-106.png" alt="cod-106" width="80%"></p>
+
+
+## Chapter 6 Storage, Networks and Other Peripherals
+
+### Introduction
+
++ Typical I/O Devices
+
+    <p><img src="images/cod-107.png" alt="cod-107" width="80%"></p>
+
++ Three Characters of I/O
+
+    1. Behavior
+    
+        行为。例如是做 input，还是 output，还是 storage。
+
+    2. Partner
+        
+        对象。交互对象，例如 mouse 的 partner 是人，network 的 partner 是机器。
+
+    3. Data Rate
+
+        I/O device 和 main memory/processor 之间的数据传输速度峰值。
+
++ I/O Performance Measurement: **Throughput** and **Response Time**
+
+### Disk Storage and Dependability
+
++ Availability Measurement
+
+    1. MTTF (Mean Time to Failure)
+
+        平均故障时间。即一个部件期望的无故障运行时长。
+
+    2. MTTR (Mean Time to Repair)
+
+        平均修复时间。即一个部件发生故障后期望的修复所需时长。
+
+    3. MTBF (Mean Time Between Failures) = MTTF + MTTR
+    4. Availability = MTTF / (MTTF + MTTR)
+
++ Reliability Measurement
+
+    考虑一个情景：我们能否使用非常多的小 disk 来组成大 disk，进而缩短 disk 和 CPU/Memory 之间的速度差距？
+
+    <p><img src="images/cod-108.png" alt="cod-108" width="60%"></p>
+
+    答案是否定的。因为 (MTTF of N disks) = (MTTF of 1 Disk) / N。如此设计会让 disk 的可靠性大幅下降。
+
+    实际上 reliability 的衡量建立于 availability 的衡量之上：
+
+    1. AFR (annual failure rate) = percentage of devices to fail per year
+
+        = (365 $\times$ 24) hours / MTTF in hours
+
+    2. "nines of availability" per year (中间是 availability，右边是 meaning)
+
+        <p><img src="images/cod-109.png" alt="cod-109" width="60%"></p>
+
+
++ Magnetic Disk
+
+    详见 Chapter 5: Introduction: Basic Memory Type 部分。
+
++ Flash Storage
+
+    详见 Chapter 5: Introduction: Basic Memory Type 部分。
+
++ RAID
+
+    <p><img src="images/cod-110.png" alt="cod-110" width="60%"></p>
+
+    DBS 部分已有介绍。这边只作简要补充。
+
+    + RAID 0: No Redundancy (Skipped)
+
+    + RAID 1: Disk Mirroring/Shadowing (Skipped)
+
+    + RAID 2: Error Correction Code (Skipped, *UNUSED* now)
+
+    + RAID 3: Bit-Interleaved Parity Disk
+
+        <p><img src="images/cod-113.png" alt="cod-113" width="50%"></p>
+
+        其中 0, 1, 2, ..., 23 是数据的实际顺序。但是每个方框只包含了一个 bit。
+
+    + RAID 4: Block-Interleaved Parity Disk
+
+        <p><img src="images/cod-111.png" alt="cod-111" width="70%"></p>
+
+        其中 0, 1, 2, ..., 23 是数据的实际顺序。每个方框只包含了一个 block。
+        
+        【写入分析 1】一次 Logical Write 将会涉及到 2 次 Physical Read 和 2 次 Physical Write（如上右图所示）。
+        
+        【写入分析 2】对比 RAID 3 和 RAID 4 的 small writes（绿色部分示意，假设 8bit）。RAID 3 需要进行 4 次串行的「Main Disk + Parity Disk」的物理读取和写入（无法并行是因为 Parity Disk 在 4 次中都需要被访问）；而 RAID 4 由于 8bit 都位于 block 0 中，所以只需要一次「Main Disk + Parity Disk」的物理读取和写入。
+
+    + RAID 5: Block-Interleaved Distributed Parity Disk
+
+        <p><img src="images/cod-112.png" alt="cod-112" width="80%"></p>
+
+        其中 0, 1, 2, ..., 23 是数据的实际顺序。
+
+        【写入分析 3】这种分布式设计允许更为激进的并行写入。例如：我要 logical write D0 和 D5。对于 RAID 5，这 $2 \times 2$ 个 disks **互不干扰**，可以同时进行；但是对于 RAID 4，$P$ 校验位使用同一个 disk，logical write 必须分两波次进行。
+
+    + RAID 6: P + Q Redundancy
+
+        在 RAID 5 的基础上，使用两个 Redundancy Disk。
+
+    + Comparison
+
+        1. 一般而言，RAID 3 比 RAID 4 更擅长长序列读取，RAID 4 比 RAID 3 更擅长小范围读取；
+        2. RAID 3 在 small writes 上具有最低的 throughput；RAID 3. 4. 5 在 large writes 上具有几乎一致的 throughput。
+
+### Buses and Other Connections

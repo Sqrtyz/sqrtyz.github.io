@@ -5,21 +5,17 @@ date = 2024-05-01T07:07:07+01:00
 
 ## Lecture 8. Storage and File Structure
 
-### Global Overview
-
-
-
 ### Overview of Physical Storage Media
 
 感觉这部分和计组重了。
 
 <p><img src="images/dbs-46.png" alt="dbs-46" width="70%"></p>
 
-**Primary storage**: Fastest but volatile
++ **Primary storage**: Fastest but volatile
 
-**Secondary storage** (辅助存储器，联机存储器): non-volatile, moderately fast access time
++ **Secondary storage** (辅助存储器，联机存储器): non-volatile, moderately fast access time
 
-**Tertiary storage** (三级存储器，脱机存储器): non-volatile, slow access time
++ **Tertiary storage** (三级存储器，脱机存储器): non-volatile, slow access time
 
 计算机本身基本上只考虑了上两级。
 
@@ -54,6 +50,8 @@ date = 2024-05-01T07:07:07+01:00
     + Data-transfer time (数据传输时间)
 
         工作：数据传输。
+
+    一般来说，前三个加起来就是 average read time。
 
     + Mean time to failure (MTTF, 平均故障时间)
 

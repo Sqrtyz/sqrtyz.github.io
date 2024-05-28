@@ -14,7 +14,7 @@
       <link>http://localhost:1313/posts/notes_dbs_p3/</link>
       <pubDate>Wed, 01 May 2024 07:07:07 +0100</pubDate>
       <guid>http://localhost:1313/posts/notes_dbs_p3/</guid>
-      <description>Lecture 8. Storage and File Structure Global Overview Overview of Physical Storage Media 感觉这部分和计组重了。&#xA;Primary storage: Fastest but volatile&#xA;Secondary storage (辅助存储器，联机存储器): non-volatile, moderately fast access time&#xA;Tertiary storage (三级存储器，脱机存储器): non-volatile, slow access time&#xA;计算机本身基本上只考虑了上两级。&#xA;第三级就类似于磁带、CD-ROM 这种玩意儿，所以叫「脱机存储器」。&#xA;Magnetic Disks Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Measure Performance of Disks&#xA;Seek time (寻道时间)&#xA;工作：arm 找到正确的 track</description>
+      <description>Lecture 8. Storage and File Structure Overview of Physical Storage Media 感觉这部分和计组重了。&#xA;Primary storage: Fastest but volatile&#xA;Secondary storage (辅助存储器，联机存储器): non-volatile, moderately fast access time&#xA;Tertiary storage (三级存储器，脱机存储器): non-volatile, slow access time&#xA;计算机本身基本上只考虑了上两级。&#xA;第三级就类似于磁带、CD-ROM 这种玩意儿，所以叫「脱机存储器」。&#xA;Magnetic Disks Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Measure Performance of Disks&#xA;Seek time (寻道时间)&#xA;工作：arm 找到正确的 track&#xA;Rotational latency time (旋转等待时间)</description>
     </item>
     <item>
       <title>【笔记】数据库系统 (Part IV)</title>
@@ -35,7 +35,7 @@
       <link>http://localhost:1313/posts/notes_cod_p4/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/notes_cod_p4/</guid>
-      <description>Chapter 5 Memory Hierarchy Introduction Transistor 晶体管 类似于一个开关。栅极为 1 时两侧的 N 型半导体硅连通，input 连接到 output。&#xA;Basic Memory Types SRAM (Static Random Access Memory)&#xA;六个晶体管。static 是指这种存储器只需要保持通电，里面的数据就可以永远保持。但是当断点之后，里面的数据仍然会丢失。&#xA;SRAM 速度较快，但是成本更高，占用的空间更多。所以像诸如 CPU 的高速缓存，才会采用 SRAM。&#xA;DRAM (Dynamic Random Access Memory)&#xA;一个电容加一个晶体管。由于 DRAM 使用电容存储，所以必须隔一段时间 refresh 一次，否则因为不断的微小漏电可能导致数据丢失。&#xA;DRAM 速度较慢，但是成本更低。所以可以用于作为 main memory。&#xA;Flash Storage&#xA;中文为闪存。我们熟知的 SSD（固态硬盘）一般就使用闪存存储数据。&#xA;Disk Storage&#xA;计算 disk 的读取时间 - 例题：&#xA;Given: 512B sector, 15,000 rpm, 4ms average seek time, 100MB/s transfer rate, 0.2ms controller overhead.&#xA;Calculate: Average read time</description>
+      <description>Chapter 5 Memory Hierarchy Introduction Transistor 晶体管 类似于一个开关。栅极为 1 时两侧的 N 型半导体硅连通，input 连接到 output。&#xA;Basic Memory Types SRAM (Static Random Access Memory)&#xA;六个晶体管。static 是指这种存储器只需要保持通电，里面的数据就可以永远保持。但是当断点之后，里面的数据仍然会丢失。&#xA;SRAM 速度较快，但是成本更高，占用的空间更多。所以像诸如 CPU 的高速缓存，才会采用 SRAM。&#xA;DRAM (Dynamic Random Access Memory)&#xA;一个电容加一个晶体管。由于 DRAM 使用电容存储，所以必须隔一段时间 refresh 一次，否则因为不断的微小漏电可能导致数据丢失。&#xA;DRAM 速度较慢，但是成本更低。所以可以用于作为 main memory。&#xA;Disk Storage&#xA;Structure&#xA;Platter 盘子。一个磁盘一般有 4-16 个盘子。&#xA;Track 轨道。对应图上不同半径的环。&#xA;Sector 扇区。每个 track 又被分割为若干 sectors。&#xA;Cylinder 所有 platter 同一半径的 track 集合。&#xA;Read-write head 读写头。&#xA;Average Read Time of Disks</description>
     </item>
     <item>
       <title>【笔记】数据库系统 (Part II)</title>
@@ -78,6 +78,13 @@
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/notes_ads/</guid>
       <description>Topic 1. Splay 复杂度分析 用到了势能分析的方法。&#xA;$$ \hat{c_i}=c_i+\varphi(D_i)-\varphi(D_{i-1}) $$&#xA;定义平衡树 $D_i$ 状态的势能 $\varphi(D_i)=\sum\limits_{i \in T} R(i)=\sum\limits_{i \in T} \log size(i)$，$size(i)$ 是 $i$ 子树的大小。&#xA;考虑 单个 节点的 Splay 到根的过程，会经历若干次如下过程（其中 zig 至多经过一次）：&#xA;引理（对数均值不等式）&#xA;若有 $a+b \le c$，那么 $\log a + \log b \le 2 \log c - 2$。&#xA;证明：等价形式 $4ab \le c^2$，这是显然的。&#xA;zig&#xA;$$ \begin{aligned} \hat{c_i} &amp;amp; = c_i+\varphi(D_i)-\varphi(D_{i-1}) \newline &amp;amp; = 1 - R(P) - R(X) + R(P&amp;rsquo;) + R(X&amp;rsquo;) \newline &amp;amp; = 1 + R(P&amp;rsquo;) - R(X) \newline &amp;amp; \le 1 + R(X&amp;rsquo;) - R(X) \newline &amp;amp; \le 1 + 3(R(X&amp;rsquo;)-R(X)) \end{aligned} $$</description>
+    </item>
+    <item>
+      <title>【笔记】CPP 随笔</title>
+      <link>http://localhost:1313/posts/notes_cpp/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/notes_cpp/</guid>
+      <description>瞎几把写写。&#xA;Copy ctor &amp;amp; Overload of equal sign 等于号重载也有返回值，为了支持连等号操作。&#xA;1Fraction&amp;amp; Fraction::operator = (const Fraction &amp;amp;b) { 2 this -&amp;gt; numerator = b.numerator; 3 this -&amp;gt; denominator = b.denominator; 4 this -&amp;gt; quotient = b.quotient; 5 return *this; 6} 虽然理论上 void 也可行，但不支持连等。&#xA;调用谁的问题&#xA;1Fraction f0(2, 3); 2Fraction f1(1, 3); 3Fraction f2 = f1; // Call the COPY CTOR! 4Fraction f3; f3 = f1; // Call the OVERLOAD PART! 编译器会优化类似于 f4 = f0 + f1 的语句。你会发现等号那里对应的拷贝构造函数并没有被「显式」地调用。</description>
     </item>
     <item>
       <title>【笔记】Crypto</title>

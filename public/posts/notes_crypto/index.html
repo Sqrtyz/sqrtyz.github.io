@@ -135,7 +135,7 @@ Enigma Enigma 加密
         
         
         <li>
-          <a class="icon" href="http://localhost:1313/posts/notes_ads/" aria-label="Next">
+          <a class="icon" href="http://localhost:1313/posts/notes_cpp/" aria-label="Next">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
@@ -550,6 +550,13 @@ p = D(E(D(c, k3), k2), k1);
 <li>比较 $MD5(P)$ 和 $RSA(M&rsquo;,e)$。</li>
 </ul>
 <p>这样的话中间攻击者即使篡改了 $P$，也无法找到一个合适的数字签名替代 $M&rsquo;_{fake}$。因为他们不具有私钥。</p>
+</li>
+<li>
+<p>OpenSSL 调库注意事项</p>
+<ol>
+<li>每次用完 RSA Decrypt/Encrypt 后都要重置 <code>prsa</code>。原因未知。</li>
+<li><code>RSA_PKCS1_PADDING</code> 有 type 1 / type 2 两种。</li>
+</ol>
 </li>
 </ul>
 
