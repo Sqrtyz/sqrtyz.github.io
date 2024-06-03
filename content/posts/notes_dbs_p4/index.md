@@ -84,3 +84,18 @@ Two relational algebra expressions are said to be equivalent if the two expressi
 具体例子参见课件。
 
 $ \Pi_{T.branch_name} ( (\Pi_{branch_name, assets}(\rho_T(branch))) \bowtie_{T.assets > S.assets} (\Pi_{assets} (\sigma_{branch_city = 'Brooklyn'}(\rho_S(branch))))) $
+
+
+### 11.2 Statistics for Cost Estimation
+
+为了方便 optimization，我们希望在执行某个操作之前，高效地估计操作的结果大小（例如，select / join 的大小）。
+
+#### Selection Result Estimation
+
+#### Join Result Estimation
+
+
+## Lecture 12. Transaction
+
+### 12.1
+

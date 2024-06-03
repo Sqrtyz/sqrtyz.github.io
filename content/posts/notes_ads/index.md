@@ -630,3 +630,46 @@ The recurrence $T(N) = aT(N/b) + f(N)$ can be solved as follows:
 
     <p><img src="images/ads-ra-2.png" alt="ads-ra-2" width="50%"></p>
 
+### Topic 13. Parallel Algorithm
+
+### Topic 14. External Merge Sort
+
+妈的，和 DBS 讲的又有点不一样。个人理解是：
+
++ DBS 那边没有采取多个 tapes 的概念，而是直接认为每一轮的数据都只存储在一个磁盘（一个 tape）中。这边则采用了多个磁带，磁头均是线性向前移动的，节省了大量的寻道时间。
+
++ 此外采取堆进行排序。所以我们认为 $k$-way merge 恰好只需要 $k$ 个单位（一个单位包含了一个堆节点）的内存即可实现（而不是 $k+1$ 个）。需要的磁带数目为 $2k$（反复使用，$k$ 个存之前，$k$ 个存之后）。进行的 pass 数目为 $1 + \lceil \log_k (N/k)\rceil$。
+
+<p><img src="images/ads-ems-1.png" alt="ads-ems-1" width="80%"></p>
+
+注意：归并的结果也是按照 tape 交错放置的，这是为了保证下一轮中每个 tape 包含的 run 数目尽可能平均。于是下一轮就又可以多个磁头并行开跑，完成排序。
+
++ Optimization 1: Reducing the Number of Tapes
+
+    考虑如何用 3 个 tapes 来完成 2-way merge（$k=2$）:
+
+    <p><img src="images/ads-ems-2.png" alt="ads-ems-2" width="80%"></p>
+
+    如上图所示，注意进行归并的 run 长度可能不同。起始 run 数目需要满足「斐波拉契数列」才能完美完成。另外上图中可以认为起始 run 长度为 $2$。
+
+    和下图这种方式的优势在于，可以省下 copy 的时间（下图将 17 runs 分裂为 9 runs + 8 runs 相当于做了一次 copy）。
+
+    <p><img src="images/ads-ems-3.png" alt="ads-ems-3" width="50%"></p>
+
++ Optimization 2: Using Block as Unit
+
+    和 DBS 那边一样，使用一个 block 来表示一个单位。
+
+    如此的话，整个内存 buffer 会被拆分成 $k$ 个 input buffer 和 $1$ 个 output buffer。只有写完一个 output buffer，才会整体将该 block 写出到对应磁带中。
+
+    <p><img src="images/ads-ems-4.png" alt="ads-ems-4" width="70%"></p>
+
+    有一个弱点是：比如对于 output buffer，必须在全部写完后才能输出，不能同时执行「写 output buffer」和「output buffer 输出」。而这两件工作本身在硬件上是不冲突的。
+
+    所以有一个方法是把 output buffer 翻个倍，一个用来实时写入，一个实时输出。这样的话我们就需要 2 个 output buffer。对 input buffer 作同样的处理，最后需要的 buffer 总量为 $2k+2$。
+
++ Optimization 3: Replacement Selection
+
+    仅考虑 initial pass: 尽可能久地利用一个堆，使得每个 run 的长度尽可能长。进而减少 run 的初始数目，以及归并的轮数。可以证明，这样弄出来的 run 初始长度期望值为 $2k$。
+
+    <p><img src="images/ads-ems-5.png" alt="ads-ems-5" width="80%"></p>

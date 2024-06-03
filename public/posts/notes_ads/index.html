@@ -232,6 +232,8 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <li><a href="#topic-10-approximation">Topic 10. Approximation</a></li>
         <li><a href="#topic-11-local-search">Topic 11. Local Search</a></li>
         <li><a href="#topic-12-randomized-algorithm">Topic 12. Randomized Algorithm</a></li>
+        <li><a href="#topic-13-parallel-algorithm">Topic 13. Parallel Algorithm</a></li>
+        <li><a href="#topic-14-external-merge-sort">Topic 14. External Merge Sort</a></li>
       </ul>
     </li>
   </ul>
@@ -259,7 +261,7 @@ $$ \begin{aligned} \hat{c_i} &amp; = c_i&#43;\varphi(D_i)-\varphi(D_{i-1}) \newl
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          41 minute read
+          43 minute read
         </div>
         
         
@@ -851,6 +853,31 @@ $$</p>
   <p><img src="images/ads-ra-2.png" alt="ads-ra-2" width="50%"></p>
 </li>
 </ul>
+<h3 id="topic-13-parallel-algorithm">Topic 13. Parallel Algorithm</h3>
+<h3 id="topic-14-external-merge-sort">Topic 14. External Merge Sort</h3>
+<p>妈的，和 DBS 讲的又有点不一样。个人理解是，DBS 那边没有采取多个 tapes 的概念，而是直接认为每一轮的数据都只存储在一个磁盘（一个 tape）中。</p>
+<p>所以 seek 的次数也有所不同：这边由于采用了多个磁带，磁头均是线性向前移动的，节省了大量的寻道时间。</p>
+<p><img src="images/ads-ems-1.png" alt="ads-ems-1" width="80%"></p>
+<p>由于采取了堆来进行排序，所以我们认为 $k$-way merge 恰好只需要 $k$ 个单位的内存即可实现（而不是 $k+1$ 个）。需要的磁带数目为 $2k$（反复使用，$k$ 个存之前，$k$ 个存之后）。进行的 pass 数目为 $1 + \lceil \log_k (N/k)\rceil$。</p>
+<ul>
+<li>
+<p>Optimization 1: Reducing the Number of Tapes</p>
+<p>考虑如何用 3 个 tapes 来完成 2-way merge（$k=2$）:</p>
+  <p><img src="images/ads-ems-2.png" alt="ads-ems-2" width="80%"></p>
+<p>如上图所示，注意进行归并的 run 长度可能不同。起始 run 数目需要满足「斐波拉契数列」才能完美完成。另外上图中可以认为起始 run 长度为 $2$。</p>
+<p>和下图这种方式的优势在于，可以省下 copy 的时间（下图将 17 runs 分裂为 9 runs + 8 runs 相当于做了一次 copy）。</p>
+  <p><img src="images/ads-ems-3.png" alt="ads-ems-3" width="50%"></p>
+</li>
+<li>
+<p>Optimization 2: Using Block as Unit</p>
+<p>和 DBS 那边一样，使用一个 block 来表示一个单位。</p>
+<p>如此的话，整个内存 buffer 会被拆分成 $k$ 个 input buffer 和 $1$ 个 output buffer。</p>
+  <p><img src="images/ads-ems-4.png" alt="ads-ems-4" width="70%"></p>
+</li>
+<li>
+<p>Optimization 3: Replacement Selection</p>
+</li>
+</ul>
 
     </div>
   </article>
@@ -899,6 +926,8 @@ $$</p>
         <li><a href="#topic-10-approximation">Topic 10. Approximation</a></li>
         <li><a href="#topic-11-local-search">Topic 11. Local Search</a></li>
         <li><a href="#topic-12-randomized-algorithm">Topic 12. Randomized Algorithm</a></li>
+        <li><a href="#topic-13-parallel-algorithm">Topic 13. Parallel Algorithm</a></li>
+        <li><a href="#topic-14-external-merge-sort">Topic 14. External Merge Sort</a></li>
       </ul>
     </li>
   </ul>
