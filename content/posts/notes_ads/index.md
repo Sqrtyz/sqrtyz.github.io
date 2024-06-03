@@ -673,3 +673,13 @@ The recurrence $T(N) = aT(N/b) + f(N)$ can be solved as follows:
     仅考虑 initial pass: 尽可能久地利用一个堆，使得每个 run 的长度尽可能长。进而减少 run 的初始数目，以及归并的轮数。可以证明，这样弄出来的 run 初始长度期望值为 $2k$。
 
     <p><img src="images/ads-ems-5.png" alt="ads-ems-5" width="80%"></p>
+
+    + Another Path: Huffman Merging Strategy
+
+        注意在这种 initial pass 的生成方法下，每个 run 的长度可能不一。如果考虑另一种 merge 方式，即每次不再是 $k$ 合一（# of run 几何减少），而是选择两个进行 merge（# of run 线性减少）。在此种情形下，我们如何减少 merge 的开销（假设 merge 长度为 $a,b$ 的两个 run 的开销为 $a+b$）？
+
+        答案是使用 Huffman 编码树（其实就是每次找最小的两个合并……）。比如说，对于大小为 $2,4,5,15$ 的 4 个 run，可以证明，最小的合并开销为 $43$ 个单位。
+
+        <p><img src="images/ads-ems-6.png" alt="ads-ems-6" width="40%"></p>
+
+        值得一提的是，如果要实现这种线性减少的 merge 策略，我们似乎需要 $t$ 个 tape（其中 $t$ 是 initial pass 生成的 run 数目），但这个数字似乎会很大；不然的话用 $1$ 个 tape 就会产生非常多的寻道时间，感觉不会这么做。
