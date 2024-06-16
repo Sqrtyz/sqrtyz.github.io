@@ -446,4 +446,250 @@ Direct Mapped 的具体寻址方式之前已经介绍。
         1. 一般而言，RAID 3 比 RAID 4 更擅长长序列读取，RAID 4 比 RAID 3 更擅长小范围读取；
         2. RAID 3 在 small writes 上具有最低的 throughput；RAID 3. 4. 5 在 large writes 上具有几乎一致的 throughput。
 
-### Buses and Other Connections
+### Buses
+
+#### Buses Basics
+
++ Buses
+
+    总线是多条线的组合，用于进行各模块之间的数据传输。
+
+    分为 control lines 和 data lines，其中 data lines 可以传输地址和具体数据。
+
++ Bus Transactions
+
+    1. Output 流程（CPU 指示内存向 devices 中写出数据）
+
+        <p><img src="images/cod-114.png" alt="cod-114" width="80%"></p>
+
+    2. Input 流程（CPU 指示内存从 devices 中读取数据）
+
+        <p><img src="images/cod-115.png" alt="cod-115" width="70%"></p>
+
+#### Asynchronous Data Fetching: Handshaking Protocol
+
+考虑一个情形：某个 I/O Device 希望从 memory 中读取数据。在「同步」和「异步」的情况下，读取方法有所差异。接下来介绍异步读取的「握手协议」：
+
+<p><img src="images/cod-116.png" alt="cod-116" width="90%"></p>
+
+橙色表示 I/O Device 的信号，黑色表示 memory 的信号。Ack 相当于一条辅助信号线，用于告诉对方「我收到了你的请求 / 回应」。
+
+1. When memory sees the ReadReq line, it reads the address from the data 
+bus, begin the memory read operation，then raises Ack to tell the device 
+that the ReadReq signal has been seen.
+
+2. I/O device sees the Ack line high and releases the ReadReq data lines.
+
+3. Memory sees that ReadReq is low and drops the Ack line.
+
+4. When the memory has the data ready, it places the data on the data lines 
+and raises DataRdy.
+
+5. The I/O device sees DataRdy, reads the data from the bus , and signals that 
+it has the data by raising ACK. 
+
+6. The memory sees Ack signals, drops DataRdy, and releases the data lines.
+
+7. Finally, the I/O device, seeing DataRdy go low, drops the ACK line, which 
+indicates that the transmission is completed.
+
+【例题】
+
+> Assume: **The synchronous bus** has a clock cycle time of 50 ns, and each bus transmission takes 1 clock cycle. **The asynchronous bus** requires 40 ns per handshake. The data portion of both buses is 32 bits wide.
+> 
+> Question: Find the **bandwidth** for each bus when reading one word from a 200-ns memory.
+
++ Synchronous Case
+
+    1. Send the address to memory : 50ns 
+    2. Read the memory : 200ns
+    3. Send the data to the device : 50ns
+    
+    Thus, the total time is 300 ns. So, the bandwidth = 4bytes/300ns = 13.3MB/s
+
++ Asynchronous Case
+
+    回顾之前的握手协议图。
+
+    Step 1: 40ns
+
+    Step 2, 3, 4: $\max$(2 $\times$ 40ns + 40ns, 200ns) = 200ns
+
+    Step 5, 6, 7: 3 $\times$ 40ns = 120ns
+
+    所以读取一个 word 的总时间为 $360\text{ns}$。转换成带宽即为 $11.1$ MB/s。
+
+#### Bus Arbitration
+
+当总线被多个 I/O Device 申请使用时，需要有人完成调度。一般承担这个工作的是 processor。
+
+四个常见的调度模式：
+
++ daisy chain
++ centralized
++ self selection
++ collision detection
+
+#### Bus Bandwidth Computation
+
++ 例题
+
+    <p><img src="images/cod-117.png" alt="cod-117" width="80%"></p>
+
+    Suppose we have a system with the following characteristic:
+
+    1. A memory and bus system supporting block access of (4~16) 32-bit words.
+
+    2. A 64-bit synchronous bus clocked at 200 MHz, with each 64-bit transfer taking 1 clock cycle, and 1 clock cycle required to send an address to memory.
+
+    3. Two clock cycles needed between each bus transaction.（每次利用总线读取一个 block 视作一个 transaction，每个 transaction 之间需要空 2 个周期）
+     
+    4. A memory access time for the first four words of 200ns; each additional set of four words can be read in 20 ns. Assume that a bus transfer of the most recently read data and a read of the next four words can be overlapped.
+
+    Q1. Find the **sustained bandwidth** and the latency for a read of 256 words for transfers that use **4-word blocks** and for transfers that use **16-word blocks**. 
+    
+    Q2. Also compute **effective number of bus transactions** per second for each case.
+
++ 解答（4-word block case）
+
+    For each block, it takes
+
+    1. **1 CC** to send the address to memory
+    2. 200ns/(5ns/cycle) = **40 CC** to read memory
+    3. **2 CC** to send the data from the memory
+    4. **2 CC** needed between each bus operation.
+
+    This is a total of **45 CC**.
+    
+    Since there are 256/4 = 64 blocks, the transfer of 256 words takes 45 $\times$ 64 = 2880 CC. 
+    
+    The latency for the transfer of 256 words is: 2880 cycles $\times$ (5ns/cycle) = 14,400 ns.
+
+    Final answer:
+
+    + Number of bus transactions per second: 
+    
+        $64 \text{ transactions} \times \frac{1 \text{second}}{14,400 \text{ns}} = 4.44 \text{M transactions/s}$.
+
+        注意，当使用 4-word block 进行传输时，一次 256-word transfer 实际上包含了 64 次 bus transactions。
+
+    + Bandwidth
+
+        $1024 \text{bytes} \times \frac{1 \text{second}}{14,400 \text{ns}} = 71.11 \text{ MB/s}$.
+
++ 解答 (16-word block case)
+
+    For each block, it takes
+
+    1. **1 CC** to send the address to memory
+    2. 260ns/(5ns/cycle) = **52 CC** to read memory
+    3. **2 CC** to send the data from the memory **(Overlap Considered)**
+    4. **2 CC** needed between each bus operation.
+
+    This is a total of **57 CC**.
+    
+    Since there are 256/16 = 16 blocks, the transfer of 256 words takes 57 $\times$ 16 = 912 CC. 
+    
+    The latency for the transfer of 256 words is: 912 cycles $\times$ (5ns/cycle) = 4,560 ns.
+
+    Final answer:
+
+    + Number of bus transactions per second: 
+    
+        $16 \text{ transactions} \times \frac{1 \text{second}}{4,560 \text{ns}} = 3.51 \text{M transactions/s}$.
+
+    + Bandwidth
+
+        $1024 \text{bytes} \times \frac{1 \text{second}}{4,560 \text{ns}} = 224.56 \text{ MB/s}$.
+
+### Interfacing I/O Devices to the Memory, Processor, and OS
+
++ I/O Characteristics
+
+    1. (shared) 被多个程序共享
+    2. (interrupts) 使用中断进行交互
+    3. (complex) 底层控制非常复杂
+    
++ I/O Communication Types
+
+    1. 由 OS 发出指令给到 I/O devices（注意不是硬件）
+    2. I/O devices 相应指令（无论是否成功完成操作）
+    3. 数据传输，必须发生在 I/O devices 和 memory 之中
+
++ How to Give Commands to I/O Devices?
+
+    【Method 1】Memory-Mapped I/O
+
+    一种巧妙的设计，即每个 I/O 都与某个内存地址建立映射。当需要访问某个 I/O 时，直接用 `lw` 或 `sw` 等指令访问对应的 I/O 即可。
+
+    【Method 2】Special I/O Instructions
+
+    指令集为 I/O 专门设计的指令。例如 `in al, port` 和 `out port, al` 等。
+
++ Communication with Processor
+
+    1. **Polling（轮寻）**：定期（如每 10ms）去寻访某个 I/O，看其在过去的 10ms 内有无 I/O 请求。若有则执行。
+
+    2. **Interrupt（中断）**：当某个 I/O 发出请求，立刻中断 processor 并赶去执行。
+
+        <p><img src="images/cod-118.png" alt="cod-118" width="80%"></p>
+
+        从上图可以看出，为了 incept data，printer 会抛出 request interrupt。
+        
+        而每当 printer 抛出一个 request interrupt，都会导致 CPU 产生一个中断（对应 response interrupt），并在这个中断中为 printer 传输数据。
+
+    3. **Direct Memory Access (DMA)**：
+
+        实际上是 Interrupt 下的一个子分支，不过加入了 DMA 的优化。简单理解为，CPU 创建了一个专门处理 I/O 事件的「小跟班」DMA。
+
+        以往 I/O Device 想要和 memory 交互（获取数据），必须要经过 CPU（这是因为 CPU 才能控制 memory）。而这会导致 CPU 被频繁中断，不好。
+
+        优化后，在某一批次的 I/O 之前，CPU 事先创建并初始化一个 DMA，使其代为执行自己职责。这样只有在这一批 I/O 开始和结尾会导致 CPU 产生中断（共计 2 次，少了很多）。
+
+        <p><img src="images/cod-119.png" alt="cod-119" width="60%"></p>
+
++ Measure the Performance of Polling / Interrupt / DMA
+
+    1. Polling
+
+        + Question:
+
+            <p><img src="images/cod-120.png" alt="cod-120" width="60%"></p>
+
+        + Solution:
+        
+        <p><img src="images/cod-121.png" alt="cod-121" width="60%"></p>
+
+    2. Interrupt
+
+        + Question: 
+        
+            Suppose we have the same hard disk and processor we used in the former example, but we used interrupt-driven I/O. The overhead for each transfer, including the interrupt, is 500 clock cycles. Find the fraction of the processor consumed if **the hard disk is only transferring data 5% of the time**.
+
+        + Solution:
+
+            实际上，最后一句话的假设是使得 Interrupt 在绝大多数情况下效率高于 Polling 的根本原因。考虑一个较长的时间段，比如说 1s。在此期间有 0.05s 我们进行 hard-disk I/O。这 0.05s 内我们需要传输 $0.05 \times 4 \text{MB} = 200 \text{KB}$ 数据。一次 data transfer 为 $16 \text{B}$，所以总共会造成 $12,500$ 次中断，损失 $12,500 \times 500 = 6.25 \times 10^6 \text{CC}$。
+
+            一秒钟共 $500 \times 10^6 \text{CC}$，所以损失率为 $1.25\\%$。
+
+    3. DMA
+
+        + Question:
+
+            Suppose we have the same hard disk and processor we used in the former example. 
+            
+            Assume that the initial setup of a DMA transfer takes 1000 clock cycles for the processor, and assume the handling of the interrupt at DMA completion requires 500 clock cycles for the processor. 
+            
+            The hard disk has a transfer rate of 4MB/sec and uses DMA. The average transfer from disk is 8 KB.*（这里的意思是，每次 transfer 的数据量大小 8KB。每次 transfer 之间可能相隔较久，所以需要重新初始化 DMA）* Assume the disk is actively transferring 100% of the time. 
+            
+            Please find what fraction of the processor time is consumed.
+
+        + Solution:
+
+            一次 disk transfer 所需时间为 8KB / (4MB / s) = 2ms。
+
+            由于假设所有时间都在做 disk I/O，所以相当于 1s 内会做 500 批 disk I/O。
+
+            每批 disk I/O 需要重新建立 DMA，同时打断 CPU，这部分总共消耗 1500 CC。
+
+            所以 1s 内会使得 CPU 中断 $7.5 \times 10^5 \text{CC}$。损失率为 $0.2\\%$。

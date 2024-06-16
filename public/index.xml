@@ -21,7 +21,7 @@
       <link>http://localhost:1313/posts/notes_dbs_p4/</link>
       <pubDate>Wed, 01 May 2024 07:07:07 +0100</pubDate>
       <guid>http://localhost:1313/posts/notes_dbs_p4/</guid>
-      <description>Lecture 11. Query Optimization 11.1 Transformation of Relational Expressions 通过使 query 表达式转换为一些更好做的等价形式来优化查询。&#xA;Definition of Equivalence Two relational algebra expressions are said to be equivalent if the two expressions generate the same set of tuples on every legal database instance. Notes that order of tuples is irrelevant.&#xA;【NOTES】对于 multiset 的情形，只需要保证重数也一致即可。&#xA;Equivalence Rules Conjunctive selection operations can be deconstructed into a sequence of individual selections.&#xA;$$\sigma_{\theta_1 \land \theta_2}(E) = \sigma_{\theta_1}(\sigma_{\theta_2}(E))$$&#xA;Selection operations are commutative.</description>
+      <description>Lecture 12. Transaction 12.1 Transaction Basics Transaction 是不可再分的数据库操作&#xA;ACID 原则：Atomicity / Consistency / Isolation / Durability&#xA;Transaction 执行状态&#xA;介绍一种非常笨重的 ACID 维持方法：Shadow-Database Scheme&#xA;每次 transaction 之前都先拷一整个出来。&#xA;12.2 Schedules 调度 考虑两个 transaction $T_1, T_2$：&#xA;Schedule 1 &amp;amp; Schedule 2 (Serial)&#xA;Serial schedule 意为，在「时间轴」上，每个事务互不穿插。显然，在 serial schedule 下，事务的 consistency 可以得到保证。&#xA;但是串行调度较为低效，为此我们需要并行调度。&#xA;Schedule 3 &amp;amp; Schedule 4 (Concurrent)&#xA;如果在「时间轴」上事务相互穿插，我们认为这种调度是并行的。&#xA;观察可以发现，schedule 4 破坏了事务的 consistency。因为最后 $A+B$ 的值发生了改变。这是一种不好的调度。&#xA;12.3 Serializability 串行化 从 schedule 4 可以看出，不是每种并行调度都是好的，因为 consistency 可能遭到破坏。但是我们知道，所有的串行调度都可以保证 consistency，所以我们有了一个评判并行调度的标准，即看它是否可被串行化。</description>
     </item>
     <item>
       <title>【笔记】信息理论 (Part II)</title>

@@ -395,13 +395,12 @@ overflow 的判定遵循下表：
 
     一些术语：
 
-    + 保留位 (guard bit)：最后 round 之后结果的最低位。
+    + 保留位 (guard bit)：第一个被舍掉的位。
 
-    + 近似位 (round bit)：guard bit 的后面一位，也是第一个被舍掉的位。
+    + 近似位 (round bit)：guard bit 的后面一位，亦即第二个被舍掉的位。
 
     + 粘滞位 (sticky bit)：round bit 后面的所有位的 OR 构成 sticky bit。
 
     Rounding 规则如下：
 
     ![cod-30](images/cod-30.png)
-
