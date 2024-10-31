@@ -14,7 +14,7 @@ date: 2024-01-01
     
     其中 $D_1=\\{Alice,Bob,Gino\\}, D_2 = \\{1,2,\cdots,100\\}$。
 
-    注意这里的「关系」和离散数学中的「关系」没有关系。
+    离散数学中学的是二元关系 ($R \subseteq A \times B$)，这里本质上是二元关系的拓展。
 
 + Relation Schema & Relation Instance
 

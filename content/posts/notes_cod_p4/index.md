@@ -198,15 +198,15 @@ Direct Mapped 的具体寻址方式之前已经介绍。
 
     + Write Miss Strategy
 
-        1. 若 Write Hit Strategy 采取 Write-back，则 miss 时采取 Write allocate 策略。
+        1. 若 Write Hit Strategy 采取 Write-back，则 miss 时一般采取 Write allocate 策略（理论上也可以采取 Write around 策略）。
 
-            即：**如果 Write misses，先把对应的内存数据读到缓存中**，转换为 Write hits 的情况再后续处理。
+            Write allocate：**如果 Write misses，先把对应的内存数据读到缓存中**，转换为 Write hits 的情况再后续处理。
             
             注意，由于一个 block 可能包含若干个 word，所以我们也有必要这样做。考虑情景：本来一个 block 对应的 4 words 分别为 [A B C D]，考虑只写其中的一个 word。如果 write miss 发生，cache 中的对应 block 变为 [X E X X]（其中 [X X X X] 是对应 cache entry 的原始值），后面写到内存中，变为 [X E X X]，但实际上应该是 [A E C D]。
 
-        2. 若 Write Hit Strategy 采取 Write-through，则 miss 时通常采取 Write around 策略（理论上也可以采取 Write allocate 策略）。
+        2. 若 Write Hit Strategy 采取 Write-through，则 miss 时一般采取 Write around 策略（理论上也可以采取 Write allocate 策略）。
 
-            即：**如果 Write misses**，直接绕过 cache 把对应的数据写入 memory。想来确实也可以这么干。
+            Write around：**如果 Write misses**，直接绕过 cache 把对应的数据写入 memory。想来确实也可以这么干。
 
 #### Cache-Memory Data Transfer
 

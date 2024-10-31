@@ -255,7 +255,7 @@ Enigma Enigma 加密
         <div class="article-read-time">
           <i class="far fa-clock"></i>
           
-          17 minute read
+          18 minute read
         </div>
         
         
@@ -442,7 +442,21 @@ D = D + D&#39;
 </code></pre></li>
 </ul>
 <h3 id="sha-1">SHA-1</h3>
-<p>咕咕咕</p>
+<p>MD5 加强版。很多部分和 MD5 一样。</p>
+<ul>
+<li>
+<p>首先也是 padding 到 56 bytes。最后的 8 bytes 补报文总长，但这次是 <strong>大端</strong> 填充。</p>
+</li>
+<li>
+<p>然后也是按 64 bytes 分块，每个块内分成 16 个 32bit 的子块。</p>
+</li>
+<li>
+<p>块内的话，这 16 个子块会被扩充到 80 个子块。然后过程变量（专用名：链接变量）$A,B,C,D,E$ 经过这 80 个子块的操作变为 $A&rsquo;,B&rsquo;,C&rsquo;,D&rsquo;,E&rsquo;$。和 MD5 类似地，$A&rsquo;,B&rsquo;,C&rsquo;,D&rsquo;,E&rsquo;$ 和 $A,B,C,D,E$ 加和后，运送到下一个块中。</p>
+</li>
+<li>
+<p>$A,B,C,D,E$ 有初值。最后一个块的输出拼起来即为密文。</p>
+</li>
+</ul>
 <h3 id="分组密码-ecb-cbc-cfb">分组密码 (ECB, CBC, CFB)</h3>
 <ol>
 <li>

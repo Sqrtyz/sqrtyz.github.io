@@ -105,7 +105,7 @@
       <link>http://localhost:1313/posts/notes_dbs_p1/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/notes_dbs_p1/</guid>
-      <description>Lecture 2. Relation Model Definition of Relation&#xA;设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。&#xA;例如，$r=\{(Bob,17),(Alice,18),(Gino,21)\}$。&#xA;其中 $D_1=\{Alice,Bob,Gino\}, D_2 = \{1,2,\cdots,100\}$。&#xA;注意这里的「关系」和离散数学中的「关系」没有关系。&#xA;Relation Schema &amp;amp; Relation Instance&#xA;Relation Schema 可理解为表头，是所有 attributes 的集合。&#xA;Relation Instance 可理解为实例，包含了某个时刻的实际表数据。&#xA;设 $A_1, A_2, \cdots, A_n$ 是所有的 attributes，那么记 Relation Schema $R=(A_1, A_2, \cdots, A_n)$，记 Relation $r = r(R) = r(A_1, A_2, \cdots, A_n)$。&#xA;Relation Schema 和 Relation 一般是大小写对应的，例如关系 $s = s(S)$。&#xA;关系的直观表示方法：Table&#xA;Key&#xA;Let $K \subset R$.</description>
+      <description>Lecture 2. Relation Model Definition of Relation&#xA;设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。&#xA;例如，$r=\{(Bob,17),(Alice,18),(Gino,21)\}$。&#xA;其中 $D_1=\{Alice,Bob,Gino\}, D_2 = \{1,2,\cdots,100\}$。&#xA;离散数学中学的是二元关系 ($R \subseteq A \times B$)，这里本质上是二元关系的拓展。&#xA;Relation Schema &amp;amp; Relation Instance&#xA;Relation Schema 可理解为表头，是所有 attributes 的集合。&#xA;Relation Instance 可理解为实例，包含了某个时刻的实际表数据。&#xA;设 $A_1, A_2, \cdots, A_n$ 是所有的 attributes，那么记 Relation Schema $R=(A_1, A_2, \cdots, A_n)$，记 Relation $r = r(R) = r(A_1, A_2, \cdots, A_n)$。&#xA;Relation Schema 和 Relation 一般是大小写对应的，例如关系 $s = s(S)$。</description>
     </item>
     <item>
       <title>【笔记】计算机组成 (Part I)</title>
@@ -183,6 +183,13 @@
       <pubDate>Fri, 01 Jan 1999 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/qxmx/</guid>
       <description>谨以此文 纪念远去的一切&#xA;序 曾经作为《情系母校》的阅读者，我一度也幻想着等我毕业后也要在那上面写些什么。但当真正变为执笔人的那一刻，那双落在键盘上的手却又停了下来。我感觉到有情感即将喷涌而出，但当我细细反省时似乎又没有。我开始害怕自己是不是已经失去了些什么——也是因为这个原因，我便立下决心，尽早把我的回忆保存下来。&#xA;第四幕 2022 年 6 月 8 日，石室天府中学。&#xA;下午五点，英语考试的终场铃声准时响起。我呆滞地望着眼前的试卷，是的——我的三年学习，或者说前面的所有 12 年学习，似乎已经被包括眼前这张在内的四张答题卡概括。陌生的老师收走我的试卷，我起身走出教室，拿走放在外面的书包，任脚步将我带向大门。在那里，我们的老师正在等候。&#xA;由于考场位置和座位号的原因，我几乎每场考试都是第一个到达校门。我到现在都记得语文考试结束后，班主任（R 老师）见我第一个出来说，「这个是第一名！」。紧接全场第二、三个出来的同学恰好都是我们班的，R 老师兴奋了——「前三名都是我们班的！」。我们三个都笑 R 老师的迷信，但谁又不希望他的预言成真。高考成绩出来后，我只能说 R 老师的预测还是相当准确——不过七高的理科状元不是我，而是那位第二个出来的同学。&#xA;返校的车上，和预期的一样，所有人有说有笑。不过由于数学爆炸的原因，我的情绪依然处于低谷。我知道这很情绪用事，但我开始讨厌周围的吵闹。可能是理解我，也可能是他也考的不咋地，旁边的 L 同学也显得很平静。&#xA;我开始和我旁边的 L 同学聊起了高考制度，谈起了以后的人生。「你说，有没有可能，我们从此就见不着面了？」 L 问我。我不知道该如何回应，事实上，我也不希望这种情况发生。但我同时深知，在命运的十字路口，所有人都是渺小的。我只是叹了口气，他知道我已经回答。&#xA;由于 9 号还要进行英语口语测试，当天晚上我在学校宿舍度过。如果我没记错的话，L 同学当晚也是住校。聊了一会儿后，我们各自睡觉。我在床上听了很久的歌，主要原因应该还是深陷数学失利的 emo 无法自拔。逐渐地，我开始回忆起高考前这几天发生的一切，进而是这三年…… 无数束想法转瞬即逝，在我脑海中打上懊悔或不甘的印记后随即消失。&#xA;我的大脑陷入混沌。嘈杂之中，我遁入回忆。&#xA;第一幕 2019 年 7 月 x 日，成都七中高新校区。&#xA;我来到这个学校应该比同级的绝大多数同学要早。夏令营开始前，我和 D 同学因为有信竞基础提前到学校进行训练。印象很深的是当时我和 D 与两位生竞的学长同住一间寝室。一天下午其中一个学长开始感慨七林和七高竞赛水平的差距，还对我们说「你们要为七高的竞赛争光啊」。我承认我当时挺受这句话触动，在后面的竞赛生涯中这句话也常常在我的脑海中响起并激励着我前行。可惜的是最终我并没有实现学长的期望（其实更是我自己的期望），当然这都是后话了。这个夏令营前阶段可能只持续了不到两周，接着正式的夏令营就开始了。不得不说那真的是很美好的一段时光。大概有一个月时间都可以徜徉在自己喜欢的竞赛中，学习节奏也比较舒缓，还认识了很多新朋友。偶尔还可以去楼下买零食带回机房吃，然后在机房里面摸鱼（generals.io?）。那种纯粹和充实非常让人怀念。&#xA;时间来到 9 月份，文化课之旅正式开始。刚进校时，班主任 R 老师给我们的印象是非常严格的那种。我记得当时 Z 同学还调侃说以后得「夹着尾巴做人了」。不过大概过了一个学期大家就摸清楚了 R 老师可能是雷声大雨点小那种。但这也是好事，我感觉那段时间随着大家对 R 老师的认识加深，班级气氛明显要活跃了好多 233。&#xA;高一进校时我的成绩还是不错。印象最深的是大概 11 月份停课去西安参加了为期一周的信息学竞赛培训。培训感觉没学到太多东西，不过回来第二天参加月考倒是从上次年级十几名升到了年级第八 (?)。那段时间又拿了一个 CSP-S 的一等奖（虽然很好拿），嗯感觉就挺高光时刻的。然后晃晃悠悠就来到了高一下学期，也就是我们熟知的 2020 年 1 月——新冠疫情的出现。</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/bydnotes_ml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bydnotes_ml/</guid>
+      <description>Neural Network Basics FNN CNN RNN Reinforcement Learning Basics </description>
     </item>
   </channel>
 </rss>

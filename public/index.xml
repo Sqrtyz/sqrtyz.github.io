@@ -105,7 +105,7 @@
       <link>http://localhost:1313/posts/notes_dbs_p1/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/notes_dbs_p1/</guid>
-      <description>Lecture 2. Relation Model Definition of Relation&#xA;设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。&#xA;例如，$r=\{(Bob,17),(Alice,18),(Gino,21)\}$。&#xA;其中 $D_1=\{Alice,Bob,Gino\}, D_2 = \{1,2,\cdots,100\}$。&#xA;注意这里的「关系」和离散数学中的「关系」没有关系。&#xA;Relation Schema &amp;amp; Relation Instance&#xA;Relation Schema 可理解为表头，是所有 attributes 的集合。&#xA;Relation Instance 可理解为实例，包含了某个时刻的实际表数据。&#xA;设 $A_1, A_2, \cdots, A_n$ 是所有的 attributes，那么记 Relation Schema $R=(A_1, A_2, \cdots, A_n)$，记 Relation $r = r(R) = r(A_1, A_2, \cdots, A_n)$。&#xA;Relation Schema 和 Relation 一般是大小写对应的，例如关系 $s = s(S)$。&#xA;关系的直观表示方法：Table&#xA;Key&#xA;Let $K \subset R$.</description>
+      <description>Lecture 2. Relation Model Definition of Relation&#xA;设有集合 $D_1, D_2, \cdots, D_n$，则关系 $r$ 定义为 $D_i$ 笛卡尔积的子集。&#xA;例如，$r=\{(Bob,17),(Alice,18),(Gino,21)\}$。&#xA;其中 $D_1=\{Alice,Bob,Gino\}, D_2 = \{1,2,\cdots,100\}$。&#xA;离散数学中学的是二元关系 ($R \subseteq A \times B$)，这里本质上是二元关系的拓展。&#xA;Relation Schema &amp;amp; Relation Instance&#xA;Relation Schema 可理解为表头，是所有 attributes 的集合。&#xA;Relation Instance 可理解为实例，包含了某个时刻的实际表数据。&#xA;设 $A_1, A_2, \cdots, A_n$ 是所有的 attributes，那么记 Relation Schema $R=(A_1, A_2, \cdots, A_n)$，记 Relation $r = r(R) = r(A_1, A_2, \cdots, A_n)$。&#xA;Relation Schema 和 Relation 一般是大小写对应的，例如关系 $s = s(S)$。</description>
     </item>
     <item>
       <title>【笔记】计算机组成 (Part I)</title>
@@ -190,6 +190,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
       <description>你是？</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/bydnotes_ml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bydnotes_ml/</guid>
+      <description>Neural Network Basics FNN CNN RNN Reinforcement Learning Basics </description>
     </item>
   </channel>
 </rss>
