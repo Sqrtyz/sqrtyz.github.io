@@ -30,7 +30,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-computer-organization-note-part-4-of-4",
+        },{id: "post-information-theory-note-part-2-of-2",
+        
+          title: "Information Theory Note (Part 2 of 2)",
+        
+        description: "Information Theory Note (Part 2 of 2)",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/IT-NOTE-2/";
+          
+        },
+      },{id: "post-information-theory-note-part-1-of-2",
+        
+          title: "Information Theory Note (Part 1 of 2)",
+        
+        description: "Information Theory Note (Part 1 of 2)",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/IT-NOTE-1/";
+          
+        },
+      },{id: "post-computer-organization-note-part-4-of-4",
         
           title: "Computer Organization Note (Part 4 of 4)",
         
