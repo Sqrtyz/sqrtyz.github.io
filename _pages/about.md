@@ -25,8 +25,10 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hello! I am Yuzhuo Tian, currently an undergraduate student from [Zhejiang University](https://www.zju.edu.cn/english/) majoring in Computer Science and Technology. My primary research focus on **computer vision and spatial intelligence**, I am also open to and interested in some other fields like robotics and VLA model.
+Hello! I am Yuzhuo Tian, currently an undergraduate student from [Zhejiang University](https://www.zju.edu.cn/english/) majoring in Computer Science and Technology. At the same time, I am also pursuing a minor in [ACEE program](http://ckc.zju.edu.cn/34924/list.htm) at [Chu Kochen Honer College](http://ckc.zju.edu.cn/ckcen/). My primary research focus on **computer vision and spatial intelligence**, I am also open to and interested in some other fields like robotics and VLA model.
 
 I am fortunate to conduct research in State Key Lab of CAD&CG with research professor [Hao Chen](https://stan-haochen.github.io/) and X-D Lab with assistant professor [Yiyi Liao](https://yiyiliao.github.io/) previously. Currently, I am doing an internship about 3D mapping at [AI4CE Lab, New York University](https://ai4ce.github.io/) led by [Prof. Chen Feng](https://engineering.nyu.edu/faculty/chen-feng).
 
 My goal is to explore the limits of how artificial intelligence models understand the visual world, and furthermore, try to apply the visual understanding to agent's decision in real life.
+
+You can view my CV [here](https://sqrtyz.github.io/assets/pdf/Resume-yuzhuo.pdf).
