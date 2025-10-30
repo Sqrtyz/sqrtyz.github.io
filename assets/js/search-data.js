@@ -41,6 +41,50 @@ ninja.data = [{
             window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
           
         },
+      },{id: "post-computer-organization-note-part-4-of-4",
+        
+          title: "Computer Organization Note (Part 4 of 4)",
+        
+        description: "Contains content about memory and hierarchy storage.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/CO-NOTE-4/";
+          
+        },
+      },{id: "post-computer-organization-note-part-3-of-4",
+        
+          title: "Computer Organization Note (Part 3 of 4)",
+        
+        description: "Contains content about CPU design.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/CO-NOTE-3/";
+          
+        },
+      },{id: "post-computer-organization-note-part-2-of-4",
+        
+          title: "Computer Organization Note (Part 2 of 4)",
+        
+        description: "Contains content about ISA.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/CO-NOTE-2/";
+          
+        },
+      },{id: "post-computer-organization-note-part-1-of-4",
+        
+          title: "Computer Organization Note (Part 1 of 4)",
+        
+        description: "Contains content about CO introduction and arithmetic knowledge.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/CO-NOTE-1/";
+          
+        },
       },{id: "post-displaying-external-posts-on-your-al-folio-blog",
         
           title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
