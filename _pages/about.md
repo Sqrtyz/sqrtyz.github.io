@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Stay hungry, stay foolish.
+subtitle: "Oh river take me out / Take me out to the unknown"
 
 profile:
   align: right
