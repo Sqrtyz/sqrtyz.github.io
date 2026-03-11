@@ -29,4 +29,4 @@ Hello! I am Yuzhuo Tian, currently an undergraduate student from [Zhejiang Unive
 
 I am fortunate to conduct research in State Key Lab of CAD&CG with research professor [Hao Chen](https://stan-haochen.github.io/) and X-D Lab with assistant professor [Yiyi Liao](https://yiyiliao.github.io/) previously. Currently, I am doing an internship about 3D mapping at [AI4CE Lab, New York University](https://ai4ce.github.io/) led by [Prof. Chen Feng](https://engineering.nyu.edu/faculty/chen-feng).
 
-You can view my CV [here](https://sqrtyz.github.io/assets/pdf/Resume-yuzhuo.pdf) (Updated on Dec. 29 2025) and a Naive Research Agenda [here](https://sqrtyz.github.io/assets/pdf/RI_CLIP.pdf) (Updated on Dec. 30 2025).
+You can view my CV [here](https://sqrtyz.github.io/assets/pdf/Resume-yuzhuo.pdf) (Updated on Mar. 10 2026).
